@@ -1,0 +1,51 @@
+# Мой Дашборд (AI Workspace)
+
+## Как запустить локально
+
+Важно: если открыть `index.html` двойным кликом (как `file://`), браузер обычно блокирует загрузку `data/*.json`.
+
+Запуск через встроенный сервер (рекомендуется):
+
+```powershell
+.\start_dashboard.ps1 -Open
+```
+
+Быстрый вариант через двойной клик:
+
+- `start_dashboard.cmd`
+
+## Доступ с телефона
+
+Если телефон в той же Wi‑Fi сети:
+
+```powershell
+.\start_dashboard.ps1 -Lan
+```
+
+Скрипт покажет `LAN_URL` с IP этого ПК. Откройте его на телефоне в браузере.
+
+Через мобильный интернет “из любой точки” локальный сервер недоступен — нужен внешний хостинг или туннель с постоянно включенным ПК.
+
+Альтернатива без PowerShell-обертки:
+
+```powershell
+python .\scripts\dashboard\dashboard_server.py --port 8891
+```
+
+## Как обновить данные
+
+Сгенерировать `data/dashboard_data.json`, `data/mindmap.json`, обновить `projects.json`:
+
+```powershell
+python .\scripts\dashboard\sync_workspace_data.py
+```
+
+или
+
+```powershell
+.\scripts\dashboard\sync_workspace_data.ps1
+```
+
+## Хостинг
+
+См. `docs/hosting.md`.

@@ -1,0 +1,2425 @@
+{
+  "meta": {
+    "generatedAt": "2026-03-10T03:09:17",
+    "exportsRoot": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop",
+    "dashboardData": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\Мой Дашборд\\data\\dashboard_data.json",
+    "topicsSource": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Config\\topics.json",
+    "manualJsonTool": "C:\\Program Files\\Google\\Chrome\\Application\\chrome_proxy.exe"
+  },
+  "stats": {
+    "exportsScanned": 30,
+    "uniqueSources": 23,
+    "duplicateExports": 7,
+    "messageCount": 70458,
+    "jsonSources": 23,
+    "htmlSources": 2,
+    "invalidJsonFallbacks": 0
+  },
+  "summary": {
+    "overview": "Текущий способ хранения уже дал сильный исторический архив, но без регулярного сжатия он начинает работать как склад, а не как система принятия решений. Лучший следующий уровень — считать Telegram не местом хранения, а только входной шиной.",
+    "topAreas": [
+      {
+        "area": "Работа",
+        "count": 12
+      },
+      {
+        "area": "Я",
+        "count": 6
+      },
+      {
+        "area": "Семья",
+        "count": 5
+      }
+    ],
+    "topThemes": [
+      {
+        "theme": "AI и инструменты",
+        "count": 4
+      },
+      {
+        "theme": "Семья и события",
+        "count": 4
+      },
+      {
+        "theme": "Смешанная тема",
+        "count": 2
+      }
+    ],
+    "recommendations": [
+      "Держать отдельный слой triage для входящего, а не складывать сырые данные сразу в проекты.",
+      "Считать Saved Messages и экспортированные каналы разными типами источников: личный inbox и тематические потоки.",
+      "Каждую неделю пересматривать только топ-источники по рангу и новые дельты, чтобы не тонуть в историческом хвосте.",
+      "Новые skills предлагать на основании повторяющихся паттернов, а не единичных интересных сообщений."
+    ],
+    "risks": [
+      "В `telegram_inbox.py` лежат чувствительные токены и ключи в открытом виде; это стоит вынести в переменные окружения.",
+      "Часть экспортов продублирована и есть повреждённые JSON; для истории это нормально, но для автоматизации нужен явный слой дедупликации.",
+      "Без маршрутизации по жизненным зонам идеи из семьи, работы и личных интересов конкурируют в одной общей очереди."
+    ]
+  },
+  "sources": [
+    {
+      "id": "1868639191-web3nity-chat",
+      "sourceId": "1868639191",
+      "title": "Web3nity Chat",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "community",
+      "themeLabel": "Сообщества",
+      "rankScore": 100,
+      "messageCount": 63084,
+      "firstDate": "2022-12-08T17:21:41",
+      "lastDate": "2026-02-24T22:43:01",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_supergroup",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Web3nity Chat — источник по теме «Сообщества» с 63084 сообщениями (8 декабря 2022 — 24 февраля 2026). Сигнальные слова: ии, видео, очень, спасибо, тоже. Связано с проектами: Видео для гранта, CoPaw — Бот.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Смотреть источник как устойчивый тематический поток: разбирать пакетно раз в неделю, а не читать хаотично.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "ии",
+        "видео",
+        "очень",
+        "спасибо",
+        "тоже",
+        "https",
+        "через"
+      ],
+      "topDomains": [
+        "t.me",
+        "youtu.be",
+        "www.youtube.com",
+        "huggingface.co",
+        "youtube.com"
+      ],
+      "topMentions": [
+        "@web3nity_team_bot",
+        "@olvyfeedbackbot",
+        "@web3nity_team",
+        "@exploitex",
+        "@hanna_web3nity"
+      ],
+      "topHashtags": [
+        "#feedback",
+        "#ask",
+        "#сознание",
+        "#карта_сознания",
+        "#bdnf"
+      ],
+      "topSenders": [
+        "Web3nity Chat",
+        "Hanna Berji | Web3nity",
+        "My Rules",
+        "Александр"
+      ],
+      "sampleMessages": [
+        "Ещё один вариант мошенничества : НИКОГДА НЕ КОПИРУЙТЕ АДРЕС ТОКЕНА И ТЕМ БОЛЕЕ НЕ ПЕРЕХОДИТЕ ПО ССЫЛКЕ Никто не будет кидать в личку такого рода сообщения ! Пример выше : Скопиров…",
+        "Доброго вечора! Перше питання - з чого почати , коли знаєш тільки назву \"кріпта\" і все...?)",
+        "Так, я поняла что вы наверно не в курсе об отеле Вообщем, я очень занята курсом который делаю, отдаю туда все силы, и очень устала из-за этого. И муж мне предлагает снять отель на…",
+        "Хм. Из бесплатного начинай смотреть мои ролики на ютуб с САМОГО НАЧАЛА - там давала прям самую базу. А потом по пути как будут возникают вопросы гугли или в вбивай в ютубе Из плат…",
+        "ИНФОРМАЦИЯ ДЛЯ ТЕХ КТО ПОДПИСАН НА МОЙ ЮТУБ Участвуем в новом тестнете Отправляю ссылки и что нужно делать на проекте Scroll ( Тестнет) - подробное видео на ютуб под ником Web3nit…"
+      ],
+      "mediaCount": 4718,
+      "fileCount": 1752,
+      "duplicateCount": 1,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-24 (2)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-24 (2)",
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-24 (1)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-24 (2)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "видео",
+            "через"
+          ]
+        },
+        {
+          "id": "copaw-бот",
+          "title": "CoPaw — Бот",
+          "status": "paused",
+          "overlap": [
+            "через"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/community",
+        "project/видео-для-гранта",
+        "project/copaw-бот"
+      ]
+    },
+    {
+      "id": "708744350-saved-messages",
+      "sourceId": "708744350",
+      "title": "Saved Messages",
+      "lifeArea": "я",
+      "lifeAreaLabel": "Я",
+      "theme": "inbox",
+      "themeLabel": "Идеи и архив",
+      "rankScore": 100,
+      "messageCount": 2145,
+      "firstDate": "2020-09-03T20:46:17",
+      "lastDate": "2026-03-08T06:12:36",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "saved_messages",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Saved Messages — источник по теме «Идеи и архив» с 2145 сообщениями (3 сентября 2020 — 8 марта 2026). Сигнальные слова: https, com, ru, youtube, ии. Связано с проектами: Видео для гранта.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Смотреть источник как устойчивый тематический поток: разбирать пакетно раз в неделю, а не читать хаотично.",
+        "Использовать как личный inbox: каждый входящий элемент должен стать либо задачей, либо заметкой, либо архивом.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "https",
+        "com",
+        "ru",
+        "youtube",
+        "ии",
+        "которые",
+        "видео"
+      ],
+      "topDomains": [
+        "youtube.com",
+        "youtu.be",
+        "t.me",
+        "www.youtube.com",
+        "drive.google.com"
+      ],
+      "topMentions": [
+        "@exploitex",
+        "@overlamer1",
+        "@xor_journal",
+        "@spanch_auction_bot",
+        "@gozilla_bot"
+      ],
+      "topHashtags": [
+        "#хайфа",
+        "#аренда",
+        "#dahab",
+        "#квартира",
+        "#реклама"
+      ],
+      "topSenders": [
+        "Dmitry Kogan"
+      ],
+      "sampleMessages": [
+        "Часть 1 Дмитрий Елистратов о том, что такое энергия жизни и как научиться чувствовать жизнь https://zen.yandex.ru/media/taynizhizni/esli-vy-upravliaete-svoim-vnimaniem-vy-mojete-p…",
+        "Презентационный видеоролик для компании «СтройВент». https://youtu.be/K8Yp-yRogC4",
+        "Этот ролик даст вам ответы на насущные вопросы: 1)что мне нужно? 2) Может ли КОРА дать мне это? 3) И в чем смысл бытия. Начнем с главного.. Нет, не 42, но вот что мы знаем точно:…",
+        "На чем важно сделать акцент, что мы хотим, чтобы зритель точно запомнил? Наша специализация, в каких вопросах на нас можно положиться Наша надежность Наша Живость (гибкость, челов…",
+        "https://m.facebook.com/isaac.pintosevich.systems/photos/a.10152393743070931/10158916622365931/?type=3&sfnsn=scwspmo"
+      ],
+      "mediaCount": 1083,
+      "fileCount": 448,
+      "duplicateCount": 1,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (18)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (18)",
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-07"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (18)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "видео"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/я",
+        "theme/inbox",
+        "project/видео-для-гранта"
+      ]
+    },
+    {
+      "id": "1412270541-боты",
+      "sourceId": "1412270541",
+      "title": "Боты",
+      "lifeArea": "я",
+      "lifeAreaLabel": "Я",
+      "theme": "ai-tools",
+      "themeLabel": "AI и инструменты",
+      "rankScore": 100,
+      "messageCount": 1180,
+      "firstDate": "2023-04-14T11:32:26",
+      "lastDate": "2026-03-06T11:12:40",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Боты — источник по теме «AI и инструменты» с 1180 сообщениями (14 апреля 2023 — 6 марта 2026). Сигнальные слова: видео, ии, ai, работает, бесплатно. Связано с проектами: CoPaw — Бот, Видео для гранта.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Смотреть источник как устойчивый тематический поток: разбирать пакетно раз в неделю, а не читать хаотично.",
+        "Сжимать в reusable-формат: инструмент, кейс, принцип применения, ограничения, следующий эксперимент.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "видео",
+        "ии",
+        "ai",
+        "работает",
+        "бесплатно",
+        "нейронка",
+        "здесь"
+      ],
+      "topDomains": [
+        "ailib.ru",
+        "t.me",
+        "youtu.be",
+        "youtube.com",
+        "www.youtube.com"
+      ],
+      "topMentions": [
+        "@overlamer1",
+        "@xor_journal",
+        "@gptmainnews",
+        "@exploitex",
+        "@ai_newz"
+      ],
+      "topHashtags": [
+        "#neurointelligence",
+        "#ai",
+        "#serviсe",
+        "#изображение_в_изображение",
+        "#текст_в_текст"
+      ],
+      "topSenders": [
+        "Боты"
+      ],
+      "sampleMessages": [
+        "1. ПромоБот — @promocode_free_bot Бот находить свежие промокоды и акции на любые интернет-магазин или услуги. 2. Voicy — @voicybot Переводчик голосовых сообщений в текстовые. 3. Б…",
+        "Конвертирует различные файлы, в том числе документы из Word, ODT, TXT и картинки в формат PDF. 35. Gozilla Bot – @gozilla_bot Достает видео или аудио из социальных сетей и онлайн-…",
+        "https://blog.icontextgroup.ru/articles/20-nezamenimyh-telegram-botov-dlya-administratorov-kanalov-i-chatov",
+        "24 полезных нейроноки для всех диджитал направлений в одной удобной таблице. Сохраняйте, пересылайте друзьям",
+        "Удобная блок-схема по структуре запросов к ChatGPT. Не забудьте сохранить и поделиться с другом )"
+      ],
+      "mediaCount": 1058,
+      "fileCount": 543,
+      "duplicateCount": 1,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (19)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (19)",
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-04"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (19)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "copaw-бот",
+          "title": "CoPaw — Бот",
+          "status": "paused",
+          "overlap": [
+            "работает"
+          ]
+        },
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "видео"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/я",
+        "theme/ai-tools",
+        "project/copaw-бот",
+        "project/видео-для-гранта"
+      ]
+    },
+    {
+      "id": "2058687771-aimasters-me",
+      "sourceId": "2058687771",
+      "title": "Aimasters.Me ◽️",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "ai-tools",
+      "themeLabel": "AI и инструменты",
+      "rankScore": 100,
+      "messageCount": 463,
+      "firstDate": "2024-02-19T08:31:05",
+      "lastDate": "2026-03-03T06:56:37",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "public_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Aimasters.Me ◽️ — источник по теме «AI и инструменты» с 463 сообщениями (19 февраля 2024 — 3 марта 2026). Сигнальные слова: aimastersme, ai, chatgpt, claude, ии. Связано с проектами: CoPaw — Бот, Видео для гранта.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Смотреть источник как устойчивый тематический поток: разбирать пакетно раз в неделю, а не читать хаотично.",
+        "Сжимать в reusable-формат: инструмент, кейс, принцип применения, ограничения, следующий эксперимент.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "aimastersme",
+        "ai",
+        "chatgpt",
+        "claude",
+        "ии",
+        "через",
+        "работает"
+      ],
+      "topDomains": [
+        "t.me",
+        "youtu.be",
+        "getoutline.org",
+        "www.youtube.com",
+        "aimasters.me"
+      ],
+      "topMentions": [
+        "@aimastersme",
+        "@aimastarsme",
+        "@aimasters",
+        "@aesthetic_taping_zhytomyr",
+        "@tinkoffo_bot"
+      ],
+      "topHashtags": [
+        "#midjourney",
+        "#learn",
+        "#tutorial",
+        "#mj",
+        "#ai"
+      ],
+      "topSenders": [
+        "Aimasters.Me ◽️"
+      ],
+      "sampleMessages": [
+        "наконец-то годная шпаргалка по самым толковым сервисам на основе ИИ. каждый из них протестирован нами и мы смело можем их рекомендовать #learn #service #cheatsheet",
+        "ещё одна шпаргалка по проверенным и рабочим сервисам - тоже толково. сохраним тут, чтобы не потерять #cheatsheet #service",
+        "Создаем людей в Midjourney: #аватарка для шаблона сайта, #портрет_потребителя для презентации... ваши идеи? Prompt: photo ID, average 32 years old belarus {male, female}, imperfec…",
+        "Фантазийный сюжет стилизованный под винтажную фотосъемку в Midjourney: #иллюстрация, #креативный_контент, #мистификация Prompt: documentary photo of a warcraft orc {working in the…",
+        "Захватывающая #иллюстрация рассвета в смешанной технике Midjourney illustrations of sunrise in a {soviet::3, Finnish, Switzerland} suburbs, in the style of Simpsons::2, moebius, h…"
+      ],
+      "mediaCount": 428,
+      "fileCount": 43,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-03",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-03"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-03\\result.json",
+      "relatedProjects": [
+        {
+          "id": "copaw-бот",
+          "title": "CoPaw — Бот",
+          "status": "paused",
+          "overlap": [
+            "работает",
+            "через"
+          ]
+        },
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "через"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "Автономные ИИ-агенты и инструменты",
+          "overlap": [
+            "claude"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/ai-tools",
+        "project/copaw-бот",
+        "project/видео-для-гранта"
+      ]
+    },
+    {
+      "id": "2018953010-мой-бизнес",
+      "sourceId": "2018953010",
+      "title": "Мой бизнес",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "business",
+      "themeLabel": "Бизнес",
+      "rankScore": 96,
+      "messageCount": 529,
+      "firstDate": "2023-12-13T09:55:40",
+      "lastDate": "2026-02-20T12:33:27",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Мой бизнес — источник по теме «Бизнес» с 529 сообщениями (13 декабря 2023 — 20 февраля 2026). Сигнальные слова: видео, ai, ии, сервис, бесплатно. Связано с проектами: Видео для гранта.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Смотреть источник как устойчивый тематический поток: разбирать пакетно раз в неделю, а не читать хаотично.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "видео",
+        "ai",
+        "ии",
+        "сервис",
+        "бесплатно",
+        "https",
+        "нейронка"
+      ],
+      "topDomains": [
+        "ailib.ru",
+        "youtu.be",
+        "youtube.com",
+        "t.me",
+        "www.youtube.com"
+      ],
+      "topMentions": [
+        "@overlamer1",
+        "@xor_journal",
+        "@gptmainnews",
+        "@aioftheday",
+        "@chatkeeperbot"
+      ],
+      "topHashtags": [
+        "#neurointelligence",
+        "#ai",
+        "#serviсe",
+        "#текст_в_текст",
+        "#бизнес"
+      ],
+      "topSenders": [
+        "Мой бизнес"
+      ],
+      "sampleMessages": [
+        "Идеи: 1. Наклейки-экраны с вайфай/блютус и веб камерой + приложение для управления с помощью ИИ Например на любые поверхности (ценники, игрушки и тп). Приклеил и ребёнок может игр…",
+        "https://salebot.site/md/gulnara_intensiv?utm_source=tg_channel&utm_medium=post_30_11_23",
+        "Горбуновым: 1. Школа доброты, дружбы и тп психосоциальные навыки 2. Доп. услуга аниматор следящий за ребенком пока отдыхает родитель",
+        "Про (почти) бесплатные инструменты маркетинга в B2B Для удобства самих себя и наших клиентов собрал таблицу с 32 инструментами почти бесплатного маркетинга. Результаты можно забра…",
+        "Palet Palet – это конструктор сайтов, который позволяет быстро и легко создавать сайты с безграничными возможностями с помощью искусственного интеллекта, пользовательского интерфе…"
+      ],
+      "mediaCount": 451,
+      "fileCount": 257,
+      "duplicateCount": 1,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (3)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (3)",
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (1)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (3)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "видео"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/business",
+        "project/видео-для-гранта"
+      ]
+    },
+    {
+      "id": "2216373255-учеба",
+      "sourceId": "2216373255",
+      "title": "Учеба",
+      "lifeArea": "я",
+      "lifeAreaLabel": "Я",
+      "theme": "learning",
+      "themeLabel": "Обучение",
+      "rankScore": 92,
+      "messageCount": 98,
+      "firstDate": "2024-08-28T10:55:06",
+      "lastDate": "2026-02-15T13:52:53",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Учеба — источник по теме «Обучение» с 98 сообщениями (28 августа 2024 — 15 февраля 2026). Сигнальные слова: ии, https, работает, здесь, видео. Связано с проектами: CoPaw — Бот, Видео для гранта.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "ии",
+        "https",
+        "работает",
+        "здесь",
+        "видео",
+        "язык",
+        "chatgpt"
+      ],
+      "topDomains": [
+        "youtu.be",
+        "docs.yandex.ru",
+        "bit.ly",
+        "www.youtube.com",
+        "www.prodlenka.org"
+      ],
+      "topMentions": [
+        "@xor_journal",
+        "@gptmainnews",
+        "@how2ai",
+        "@creadvice",
+        "@ai_newz"
+      ],
+      "topHashtags": [
+        "#adobe",
+        "#подборки",
+        "#ai",
+        "#реклама"
+      ],
+      "topSenders": [
+        "Учеба"
+      ],
+      "sampleMessages": [
+        "6 Искусство обучать.pdf - Яндекс Документы https://docs.yandex.ru/docs/view?tm=1724663843&tld=ru&lang=ru&name=6%20%D0%98%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%BE%20%D0%BE%D…",
+        "👌🏻 Писать сценарий курса можно и без ТЗ. Главное, чтобы текст был увлекательным! 👌🏻Логлайн не нужен: держать в фокусе суть истории сценаристу не обязательно. 👌🏻Вовлекать нельзя —…",
+        "Средняя зарплата преподавателей — 55 643 ₽, а руководителей образовательных проектов — 150 000 ₽ Почему такая разница? 🔹Преподаватель = преподаватель. 🔹Руководитель образовательны…",
+        "💪 Уже монтирую ролик про релиз, всё реально очень круто и революционно, А пока держите главные ссылки на обновления: 1) Краткий весь Адоби МАКС 2) Новостная лента Адоби 3) Обновле…",
+        "📱 А вот и ролик про Адоби Макс! Реально революционная выставка Ютуб - https://youtu.be/tk6WthWdvzM ВК - ..."
+      ],
+      "mediaCount": 82,
+      "fileCount": 17,
+      "duplicateCount": 1,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (5)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (5)",
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (2)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (5)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "copaw-бот",
+          "title": "CoPaw — Бот",
+          "status": "paused",
+          "overlap": [
+            "работает"
+          ]
+        },
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "видео"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/я",
+        "theme/learning",
+        "project/copaw-бот",
+        "project/видео-для-гранта"
+      ]
+    },
+    {
+      "id": "2643494761-иишенка",
+      "sourceId": "2643494761",
+      "title": "ИИшенка",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "ai-tools",
+      "themeLabel": "AI и инструменты",
+      "rankScore": 91,
+      "messageCount": 216,
+      "firstDate": "2025-04-30T10:13:25",
+      "lastDate": "2026-03-04T13:43:21",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "ИИшенка — источник по теме «AI и инструменты» с 216 сообщениями (30 апреля 2025 — 4 марта 2026). Сигнальные слова: видео, n8n, https, этом, такое. Связано с проектами: Разведка приложений, Видео для гранта.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Смотреть источник как устойчивый тематический поток: разбирать пакетно раз в неделю, а не читать хаотично.",
+        "Сжимать в reusable-формат: инструмент, кейс, принцип применения, ограничения, следующий эксперимент.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "видео",
+        "n8n",
+        "https",
+        "этом",
+        "такое",
+        "поиск",
+        "ии"
+      ],
+      "topDomains": [
+        "t.me",
+        "github.com",
+        "iishenka.pro",
+        "ui.shadcn.com",
+        "cursor.com"
+      ],
+      "topMentions": [],
+      "topHashtags": [
+        "#picture"
+      ],
+      "topSenders": [
+        "ИИшенка"
+      ],
+      "sampleMessages": [
+        "Первое видео улетело в ютуб как найти видео? вбейте в поиск ютуба такое: ИИшенка Как Создать ИИ Ассистента с Данными Компании Без Кода Пошагово (n8n, Rag, Telegram)",
+        "Новое видео на канале! как загрузить 100+ файлов в ваш RAG и отдать это ассистенту? несложно объясняю тут как найти видео? в ютубе вбейте в поиск такое: ИИшенка Шаг за Шагом: Доба…",
+        "Новое видео на канале! Как законнектить Яндекс Диск и Supabase, а потом отдать это ассистенту? Объясняю тут 👆 как найти видео? в ютубе вбейте в поиск такое: ИИшенка ИИ Агент с Янд…",
+        "Новое видео на канале! Как развернуть n8n агентов в своём облаке абсолютно бесплатно? Объясняю тут 👆 как найти видео? в ютубе вбейте в поиск такое: ИИшенка Как БЕСПЛАТНО Построить…",
+        "Новое видео на канале! Как сделать автоматический лист ожидания (waitlist) который ведёт дискуссии с клиентами и с нейронкой внутри? Объясняю тут 👆 как найти видео? в ютубе вбейте…"
+      ],
+      "mediaCount": 101,
+      "fileCount": 74,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-06",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-06"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-06\\result.json",
+      "relatedProjects": [
+        {
+          "id": "appscout",
+          "title": "Разведка приложений",
+          "status": "active",
+          "overlap": [
+            "поиск"
+          ]
+        },
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "видео"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "Автономные ИИ-агенты и инструменты",
+          "overlap": [
+            "n8n"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/ai-tools",
+        "project/appscout",
+        "project/видео-для-гранта"
+      ]
+    },
+    {
+      "id": "2546853359-никита-велс-ai",
+      "sourceId": "2546853359",
+      "title": "Никита Велс | AI",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "ai-business",
+      "themeLabel": "AI в бизнесе",
+      "rankScore": 90,
+      "messageCount": 252,
+      "firstDate": "2025-06-06T20:05:07",
+      "lastDate": "2026-02-24T19:29:42",
+      "formats": [
+        "html",
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Никита Велс | AI — источник по теме «AI в бизнесе» с 252 сообщениями (6 июня 2025 — 24 февраля 2026). Сигнальные слова: n8n, claude, без, работает, которые. Связано с проектами: CoPaw — Бот, Видео для гранта.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Смотреть источник как устойчивый тематический поток: разбирать пакетно раз в неделю, а не читать хаотично.",
+        "Сжимать в reusable-формат: инструмент, кейс, принцип применения, ограничения, следующий эксперимент.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "n8n",
+        "claude",
+        "без",
+        "работает",
+        "которые",
+        "видео",
+        "https"
+      ],
+      "topDomains": [
+        "nickvels.ru",
+        "t.me",
+        "skillsmp.com",
+        "nickvel.notion.site",
+        "funpay.com"
+      ],
+      "topMentions": [
+        "@nickvels_workshop_bot",
+        "@nick9267",
+        "@botfather"
+      ],
+      "topHashtags": [],
+      "topSenders": [
+        "Никита Велс | AI"
+      ],
+      "sampleMessages": [
+        "Хей! Да, это пост-знакомство, но давай без нудятины в стиле «родился-учился»😄. Прочти, чтобы понять, какой движ тут будет. Прикинь, еще недавно я играл рок на сцене со своей групп…",
+        "🖐 Друзья, привет! На связи Никита. Я только начал, а нас уже 1300 человек, это огонь, спасибо вам🔥🔥🔥 Я долго собирал этот канал, чтобы здесь было максимально полезно и без лишней…",
+        "🔥Итак, друзья, вчера наконец добрался потестить Grok 4, и у меня смешанные впечатления. С одной стороны, конечно, цифры впечатляют: модель рвет бенчмарки, Маск шумит в Твиттере, в…",
+        "Окей, понял, что больше всего интересны вам разборы n8n) 🔥 Недавно решил проблему, которая, думаю, знакома многим: десятки сохранёнок в избранном ТГ, к которым потом никогда не во…",
+        "Иногда смотрю, как кто-то создает проект в GPT или свой GPTs, загружает кучу файлов в него и уверенно ждёт, что модель пройдётся по каждой строчке, \"обучится\" сама и, например, бу…"
+      ],
+      "mediaCount": 159,
+      "fileCount": 38,
+      "duplicateCount": 1,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-25",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-25",
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (20)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-25\\result.json",
+      "relatedProjects": [
+        {
+          "id": "copaw-бот",
+          "title": "CoPaw — Бот",
+          "status": "paused",
+          "overlap": [
+            "работает"
+          ]
+        },
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "видео"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Автономные ИИ-агенты и инструменты",
+          "overlap": [
+            "claude",
+            "n8n"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/ai-business",
+        "project/copaw-бот",
+        "project/видео-для-гранта"
+      ]
+    },
+    {
+      "id": "3463065989-дрессировщик-нейросетей",
+      "sourceId": "3463065989",
+      "title": "Дрессировщик Нейросетей",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "ai-tools",
+      "themeLabel": "AI и инструменты",
+      "rankScore": 89,
+      "messageCount": 95,
+      "firstDate": "2025-12-14T21:51:12",
+      "lastDate": "2026-02-24T06:25:14",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "public_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Дрессировщик Нейросетей — источник по теме «AI и инструменты» с 95 сообщениями (14 декабря 2025 — 24 февраля 2026). Сигнальные слова: claude, ии, code, без, gemini. Связано с проектами: CoPaw — Бот, Видео для гранта.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Сжимать в reusable-формат: инструмент, кейс, принцип применения, ограничения, следующий эксперимент.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "claude",
+        "ии",
+        "code",
+        "без",
+        "gemini",
+        "видео",
+        "google"
+      ],
+      "topDomains": [
+        "t.me",
+        "integrate.api.nvidia.com"
+      ],
+      "topMentions": [
+        "@tobilu"
+      ],
+      "topHashtags": [
+        "#1"
+      ],
+      "topSenders": [
+        "Дрессировщик Нейросетей"
+      ],
+      "sampleMessages": [
+        "Привет! Я Андрей Шиманович. ​Как говорится, обязательную программу выполнил: сына вырастил, дерево посадил, дом построил. Есть верный друг — овчарка Немец Балу. ​Но сидеть на мест…",
+        "МОЙ СТЕК НЕЙРОСЕТЕЙ: ОБНОВЛЕНИЕ Лидеры сменились. Пересобрал рабочий набор под новые реалии: 1. GEMINI 3 PRO — БАЗА Главный инструмент. Закрывает 90% задач: от текстов до графики.…",
+        "НЕЙРОСЕТЬ — ЭТО СИМУЛЯТОР, А НЕ СОБЕСЕДНИК Андрей Карпаты (Ex-OpenAI, Tesla) недавно подсветил фундаментальную ошибку в том, как мы пишем промпты. Я протестировал этот подход на р…",
+        "ДОБРЫЙ ДОКТОР аИИболит Я не люблю ходить по врачам — обычно просто отлеживаюсь. Но этот год устроил проверку: сначала аппендицит, потом скрутило спину. Хорошо, что до этого я собр…",
+        "OBSIDIAN И NOTION — ЭТО ХОРОШО, НО Я УСТАЛ Меня откровенно заколебало тратить время на то, чтобы «разгребать» и структурировать информацию руками. Вместо работы со смыслами ты раб…"
+      ],
+      "mediaCount": 66,
+      "fileCount": 3,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-24",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-24"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-02-24\\result.json",
+      "relatedProjects": [
+        {
+          "id": "copaw-бот",
+          "title": "CoPaw — Бот",
+          "status": "paused",
+          "overlap": [
+            "gemini"
+          ]
+        },
+        {
+          "id": "видео-для-гранта",
+          "title": "Видео для гранта",
+          "status": "paused",
+          "overlap": [
+            "видео"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Автономные ИИ-агенты и инструменты",
+          "overlap": [
+            "claude",
+            "code"
+          ]
+        },
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/ai-tools",
+        "project/copaw-бот",
+        "project/видео-для-гранта"
+      ]
+    },
+    {
+      "id": "1277711909-алиса-что-нового",
+      "sourceId": "1277711909",
+      "title": "Алиса, что нового?",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "mixed",
+      "themeLabel": "Смешанная тема",
+      "rankScore": 85,
+      "messageCount": 1880,
+      "firstDate": "2018-12-25T00:04:15",
+      "lastDate": "2026-03-07T12:34:24",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "public_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Алиса, что нового? — источник по теме «Смешанная тема» с 1880 сообщениями (25 декабря 2018 — 7 марта 2026). Сигнальные слова: алиса, яндекс, станции, алисой, алисы.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Смотреть источник как устойчивый тематический поток: разбирать пакетно раз в неделю, а не читать хаотично."
+      ],
+      "topKeywords": [
+        "алиса",
+        "яндекс",
+        "станции",
+        "алисой",
+        "алисы",
+        "подписывайтесь",
+        "яндекса"
+      ],
+      "topDomains": [
+        "yandex.ru",
+        "t.me",
+        "telegra.ph",
+        "bit.ly",
+        "youtu.be"
+      ],
+      "topMentions": [
+        "@yandex",
+        "@zioshik",
+        "@dshpsh",
+        "@heyalyosha",
+        "@arkrusinov"
+      ],
+      "topHashtags": [
+        "#пятничный_дайджест",
+        "#навык_среды",
+        "#дзен_среда",
+        "#ожидания",
+        "#неформат"
+      ],
+      "topSenders": [
+        "Алиса, что нового?"
+      ],
+      "sampleMessages": [
+        "Промокоды на Беру (одноразовые): PKRYNNPS действует от 4000. GWVZCZYD от 2500 скидка 1000.",
+        "Появилась команда «Алиса включи яндекс эфир». Поддержка онлайн тв теперь и на Станции!",
+        "Полезные ссылки: Доска Trello (пожелания и баги) https://clck.ru/EpGW8 Чат пользователей Яндекс. Станции https://t.me/station_yandex Яндекс. Телефон https://t.me/yandex_phone Подд…",
+        "Купить годовую подписку ivi всего за 1999 руб. вместо 4788 руб. Акция действует только на сайте ivi и в приложении для SmartTV.",
+        "Яндекс добавил подкасты в Музыку. На данный момент они в бета версии, но если на Станции сказать «Алиса включи <название подкаста>», то она его включит. Недокументированный функци…"
+      ],
+      "mediaCount": 1612,
+      "fileCount": 267,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-10",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-10"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-10\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/mixed"
+      ]
+    },
+    {
+      "id": "2926671013-кора-35-лет",
+      "sourceId": "2926671013",
+      "title": "КОРА 35 ЛЕТ",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "events",
+      "themeLabel": "События и комьюнити",
+      "rankScore": 83,
+      "messageCount": 140,
+      "firstDate": "2025-09-16T13:03:26",
+      "lastDate": "2026-02-13T18:13:04",
+      "formats": [
+        "html",
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "КОРА 35 ЛЕТ — источник по теме «События и комьюнити» с 140 сообщениями (16 сентября 2025 — 13 февраля 2026). Сигнальные слова: кора, https, com, сотрудников, компании. Связано с проектами: Стратегия КОРА.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "кора",
+        "https",
+        "com",
+        "сотрудников",
+        "компании",
+        "ии",
+        "si"
+      ],
+      "topDomains": [
+        "youtube.com",
+        "art.phygitalism.com",
+        "youtu.be",
+        "phygital.team",
+        "t.me"
+      ],
+      "topMentions": [
+        "@techno_yandex"
+      ],
+      "topHashtags": [],
+      "topSenders": [
+        "КОРА 35 ЛЕТ"
+      ],
+      "sampleMessages": [
+        "Пригласить бывших хороших сотрудников, которые могут поучаствовать и сформировать нужную атмосферу",
+        "В играх можно сделать роботов , как взаимодействовать с роботами и ИИ в ближ будущем",
+        "Или просто программу фин защиты для сотрудников, раздать приглашение в эру перемен фин инструмент",
+        "Поставить несколько видов сувенирных мастерских, например 3д принтер (фигурки КОРА, значки с именем), футболки+кепки прямо при тебе, монетный аттракцион с юбилейной монеткой КОРА,…",
+        "Можно даже игру для детей сотрудников про КОРА, и конкретных сотрудников сделать , типа квеста, загрузить на сайт и в rustore"
+      ],
+      "mediaCount": 21,
+      "fileCount": 32,
+      "duplicateCount": 1,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (7)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (7)",
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (6)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (7)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "kora-strategy",
+          "title": "Стратегия КОРА",
+          "status": "active",
+          "overlap": [
+            "кора"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/events",
+        "project/kora-strategy"
+      ]
+    },
+    {
+      "id": "1594437301-дети",
+      "sourceId": "1594437301",
+      "title": "ДЕТИ",
+      "lifeArea": "семья",
+      "lifeAreaLabel": "Семья",
+      "theme": "family",
+      "themeLabel": "Семья и события",
+      "rankScore": 72,
+      "messageCount": 170,
+      "firstDate": "2021-09-20T10:21:56",
+      "lastDate": "2026-02-11T12:14:24",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "ДЕТИ — источник по теме «Семья и события» с 170 сообщениями (20 сентября 2021 — 11 февраля 2026). Сигнальные слова: https, com, youtube, shorts, si.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Переводить обсуждения в чек-листы, события календаря и семейные решения с дедлайнами."
+      ],
+      "topKeywords": [
+        "https",
+        "com",
+        "youtube",
+        "shorts",
+        "si",
+        "ru",
+        "www"
+      ],
+      "topDomains": [
+        "youtube.com",
+        "www.avito.ru",
+        "deti.mann-ivanov-ferber.ru",
+        "iqsha.ru",
+        "jili-blog.ru"
+      ],
+      "topMentions": [
+        "@xor_journal",
+        "@gptmainnews",
+        "@techno_yandex"
+      ],
+      "topHashtags": [
+        "#сергейкозлов",
+        "#олегфоростенко",
+        "#5мин",
+        "#fypage",
+        "#viralshort"
+      ],
+      "topSenders": [
+        "ДЕТИ"
+      ],
+      "sampleMessages": [
+        "http://jili-blog.ru/wp-content/uploads/2016/05/4-5-6-Years-My-First-book-of-Amazing-Mazes.pdf",
+        "https://ul9wka.livejournal.com/tag/-%20%D0%A1%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B5/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%…",
+        "https://deti.mann-ivanov-ferber.ru/2021/07/14/kak-raznoobrazit-razvivayushhie-zanyatiya-s-rebenkom-idei-ot-aktivnyx-roditelej/",
+        "https://deti.mann-ivanov-ferber.ru/2021/09/14/stressoustojchivost-kak-nauchit-detej-prinimat-vyzovy-i-spravlyatsya-so-slozhnostyami/",
+        "https://www.mann-ivanov-ferber.ru/assets/media/files-2/samostoyatelnye-deti/SelfDrivenChild-mail_stamped.pdf"
+      ],
+      "mediaCount": 80,
+      "fileCount": 45,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (8)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (8)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (8)\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/семья",
+        "theme/family"
+      ]
+    },
+    {
+      "id": "3749471935-проекты-для-гимназии-давыдова",
+      "sourceId": "3749471935",
+      "title": "Проекты для Гимназии Давыдова.",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "education",
+      "themeLabel": "Образование и гранты",
+      "rankScore": 69,
+      "messageCount": 9,
+      "firstDate": "2026-02-15T18:56:52",
+      "lastDate": "2026-02-16T09:42:58",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Проекты для Гимназии Давыдова. — источник по теме «Образование и гранты» с 9 сообщениями (15 февраля 2026 — 16 февраля 2026). Сигнальные слова: ии, школы, проекта, 2026г, учителей. Связано с проектами: Фантом Давыдова, ИИ-агент для гимназии, Контур мониторинга интересной информации.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Связывать идеи с уже идущими образовательными проектами и грантовой повесткой, иначе знания не капитализируются.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "ии",
+        "школы",
+        "проекта",
+        "2026г",
+        "учителей",
+        "https",
+        "образования"
+      ],
+      "topDomains": [
+        "constructorium.ru",
+        "t.me"
+      ],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "Проекты для Гимназии Давыдова."
+      ],
+      "sampleMessages": [
+        "как одна из идей проекта на 2026г: система обучающих ботов для учеников и учителей (не в телеграм т.к.-заблокирован) https://constructorium.ru/projects/1091",
+        "какие у \"средней школы\" (образования детей) актуальные вызовы и реальные сложности последних лет и ближайшего будущего, в России в связи с ИИ, закрытием границ: 1. Потребность в \"…",
+        "сотрудничество с вузами Наб Челнов (пед и др. где работает мой знакомый) в рамках проекта ИИ для гимназии Давыдова",
+        "ВЫЗОВЫ школе: 1. финансовая ситуация в стране. возможные варианты ответных мер: перестроить систему управления всеми процессами в школе с учетом непосредственного участия родитлей…",
+        "Создание своего цифрового двойника Эльконина И Давыдова для учителей, администрации, школьного музея, а также совете цифровых двойников при разработке новых педагогических методов…"
+      ],
+      "mediaCount": 0,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (4)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (4)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (4)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "davydov-phantom",
+          "title": "Фантом Давыдова",
+          "status": "active",
+          "overlap": [
+            "давыдова",
+            "проекта"
+          ]
+        },
+        {
+          "id": "ии-агент-для-гимназии",
+          "title": "ИИ-агент для гимназии",
+          "status": "research",
+          "overlap": [
+            "гимназии",
+            "давыдова"
+          ]
+        },
+        {
+          "id": "interest-monitoring-loop",
+          "title": "Контур мониторинга интересной информации",
+          "status": "active",
+          "overlap": [
+            "проекты"
+          ]
+        },
+        {
+          "id": "gymnasium-landing",
+          "title": "Лендинг гимназии",
+          "status": "active",
+          "overlap": [
+            "гимназии"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии",
+            "образования"
+          ]
+        },
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/education",
+        "project/davydov-phantom",
+        "project/ии-агент-для-гимназии",
+        "project/interest-monitoring-loop"
+      ]
+    },
+    {
+      "id": "3473983539-план",
+      "sourceId": "3473983539",
+      "title": "План",
+      "lifeArea": "я",
+      "lifeAreaLabel": "Я",
+      "theme": "planning",
+      "themeLabel": "Планирование",
+      "rankScore": 60,
+      "messageCount": 24,
+      "firstDate": "2025-11-10T23:10:05",
+      "lastDate": "2026-03-09T09:08:06",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "План — источник по теме «Планирование» с 24 сообщениями (10 ноября 2025 — 9 марта 2026). Сигнальные слова: ии, елисею, давыдова, нко, лаборатория. Связано с проектами: Фантом Давыдова, ИИ-агент для гимназии.",
+      "applicationPrinciples": [
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "ии",
+        "елисею",
+        "давыдова",
+        "нко",
+        "лаборатория",
+        "будущего",
+        "самая"
+      ],
+      "topDomains": [],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "План"
+      ],
+      "sampleMessages": [
+        "Исследовать с гемини тему нейромозгового развития (тренировки) для детей и взрослых",
+        "Поставь свои цели на 2026: Ходить учиться йоге полгода-год Получить второй урок? Профессия, заработок, нейросети? Обнаружить что-то по настоящему вдохновенное .. Проработка архети…",
+        "Елисею и Дане много баллов за раннее укладывание и засыпание За папины уроки Елисею И медитацию",
+        "Мегастрой: Клей для плитки самый маленький объём Планка между плиткой и панелями Круглые наличники для смесителя и сушилки Крючки?",
+        "Мегастрой: Клей для плитки самый маленький объём Планка между плиткой и панелями Круглые наличники для смесителя и сушилки Крючки?"
+      ],
+      "mediaCount": 0,
+      "fileCount": 1,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09\\result.json",
+      "relatedProjects": [
+        {
+          "id": "davydov-phantom",
+          "title": "Фантом Давыдова",
+          "status": "active",
+          "overlap": [
+            "давыдова"
+          ]
+        },
+        {
+          "id": "ии-агент-для-гимназии",
+          "title": "ИИ-агент для гимназии",
+          "status": "research",
+          "overlap": [
+            "давыдова"
+          ]
+        }
+      ],
+      "relatedTopics": [
+        {
+          "name": "Прикладной ИИ в бизнесе",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ в социальных проектах",
+          "overlap": [
+            "ии"
+          ]
+        },
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "ии"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/я",
+        "theme/planning",
+        "project/davydov-phantom",
+        "project/ии-агент-для-гимназии"
+      ]
+    },
+    {
+      "id": "3347618063-подарки",
+      "sourceId": "3347618063",
+      "title": "Подарки",
+      "lifeArea": "семья",
+      "lifeAreaLabel": "Семья",
+      "theme": "family",
+      "themeLabel": "Семья и события",
+      "rankScore": 52,
+      "messageCount": 50,
+      "firstDate": "2025-11-12T09:48:30",
+      "lastDate": "2026-01-22T10:24:08",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Подарки — источник по теме «Семья и события» с 50 сообщениями (12 ноября 2025 — 22 января 2026). Сигнальные слова: https, лине, youtube, com, shorts.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Переводить обсуждения в чек-листы, события календаря и семейные решения с дедлайнами."
+      ],
+      "topKeywords": [
+        "https",
+        "лине",
+        "youtube",
+        "com",
+        "shorts",
+        "si",
+        "дане"
+      ],
+      "topDomains": [
+        "youtube.com",
+        "shop.info-mall.ru",
+        "clc.to",
+        "market.yandex.ru",
+        "ali.click"
+      ],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "Подарки"
+      ],
+      "sampleMessages": [
+        "ЛИНЕ Кружку Обуч.Курс самомассаж лица 2500р Абонемент на Пение В автомобиль (парктроник, ароматизатор?) Полотенце для ванны Бельё",
+        "ДАНЕ сапоги скороходы Меч кладенец (с его эмблемой и благородной надписью (*, \"во благо любви и защиты слабых\") Горку на кровать (типа корабль сделать?) Конструктор большой? Майка…",
+        "В ванную Белую затирку Наличники круглые хром для смесителя и полотешки Картридж д/смес. 2 шт в ванну и кухню Занавеску",
+        "Я думал, что умею расслабляться. Оказалось, нет! На выходных наконец-то получил свой Mind Tracker от компании Neiry. Ощущение, что получил устройство из будущего! Мне кажется, это…",
+        "s8-akkumulyator-dlya-samsung-g950-1-snyatyi-1.jpeg (512×512) https://shop.info-mall.ru/wp-content/uploads/2020/07/s8-akkumulyator-dlya-samsung-g950-1-snyatyi-1.jpeg"
+      ],
+      "mediaCount": 5,
+      "fileCount": 1,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (12)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (12)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (12)\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/семья",
+        "theme/family"
+      ]
+    },
+    {
+      "id": "3177413562-развитие-гимназии-давыдова",
+      "sourceId": "3177413562",
+      "title": "Развитие гимназии Давыдова",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "education",
+      "themeLabel": "Образование и гранты",
+      "rankScore": 51,
+      "messageCount": 14,
+      "firstDate": "2025-09-29T22:27:04",
+      "lastDate": "2025-10-20T22:31:51",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Развитие гимназии Давыдова — источник по теме «Образование и гранты» с 14 сообщениями (29 сентября 2025 — 20 октября 2025). Сигнальные слова: школы, например, сми, деструктивных, принципы. Связано с проектами: ИИ-агент для гимназии, Фантом Давыдова, Лендинг гимназии.",
+      "applicationPrinciples": [
+        "Связывать идеи с уже идущими образовательными проектами и грантовой повесткой, иначе знания не капитализируются.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "школы",
+        "например",
+        "сми",
+        "деструктивных",
+        "принципы",
+        "организации",
+        "принципов"
+      ],
+      "topDomains": [],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "Развитие гимназии Давыдова"
+      ],
+      "sampleMessages": [
+        "Внутренний (реальный, не публичный и декларируемый) кодекс, принципы и намерения управленцев школы, какие они?",
+        "Универсальные принципы и признаки гармоничной (развивающиеся?) организации и в частности общеобразовательной школы, подробная картина принципов и механизмов реализации этих принци…",
+        "Нужны офлайн-мероприятия школы для широкого круга интересующихся и участие на городских мероприятиях",
+        "Что главное и очень значимое для родителей учащихся и потенциальных клиентов частной школы? В чем с их точки зрения основные, очевидные и само собой разумеющиеся преимущества пере…",
+        "Работа pr службы: Непременное управление имиджем в публичном пространстве СМИ: Методологии проактивной и реактивной работы с мнением: Во всех СМИ где упоминается гимназия необходи…"
+      ],
+      "mediaCount": 0,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (16)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (16)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (16)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "ии-агент-для-гимназии",
+          "title": "ИИ-агент для гимназии",
+          "status": "research",
+          "overlap": [
+            "гимназии",
+            "давыдова"
+          ]
+        },
+        {
+          "id": "davydov-phantom",
+          "title": "Фантом Давыдова",
+          "status": "active",
+          "overlap": [
+            "давыдова"
+          ]
+        },
+        {
+          "id": "gymnasium-landing",
+          "title": "Лендинг гимназии",
+          "status": "active",
+          "overlap": [
+            "гимназии"
+          ]
+        },
+        {
+          "id": "генератор-идей",
+          "title": "Генератор идей",
+          "status": "backlog",
+          "overlap": [
+            "развитие"
+          ]
+        }
+      ],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/education",
+        "project/ии-агент-для-гимназии",
+        "project/davydov-phantom",
+        "project/gymnasium-landing"
+      ]
+    },
+    {
+      "id": "2000919176-мой-дом",
+      "sourceId": "2000919176",
+      "title": "Мой Дом",
+      "lifeArea": "семья",
+      "lifeAreaLabel": "Семья",
+      "theme": "home",
+      "themeLabel": "Дом",
+      "rankScore": 49,
+      "messageCount": 15,
+      "firstDate": "2024-05-20T11:50:07",
+      "lastDate": "2026-01-22T10:11:13",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Мой Дом — источник по теме «Дом» с 15 сообщениями (20 мая 2024 — 22 января 2026). Сигнальные слова: https, youtube, com, shorts, si.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Переводить обсуждения в чек-листы, события календаря и семейные решения с дедлайнами."
+      ],
+      "topKeywords": [
+        "https",
+        "youtube",
+        "com",
+        "shorts",
+        "si",
+        "ванную",
+        "кровать"
+      ],
+      "topDomains": [
+        "youtube.com",
+        "lemanapro.ru"
+      ],
+      "topMentions": [],
+      "topHashtags": [
+        "#ремонтквартиртюмень",
+        "#эл"
+      ],
+      "topSenders": [
+        "Мой Дом"
+      ],
+      "sampleMessages": [
+        "С папой: Деньги на учебу (половину ?) С дачи колеса Розетки и выкл-ли починить Сифоны заменить Смесители - картриджи Кладовая (порядок, полки/вешалки?) Шкафчик в ванную Полочки на…",
+        "Душ Разминка Медитация Вода Поливаю цветы Загружаю стирку На зарядку аккумы Заказываю клей, и др. и прошу заказать теплпол через папу * Стол-кровать Елисея: Убираю комп со стола П…",
+        "Грунтовка 1литр Ceresit ст17 Клей пена недорогая Ручки на входную дверь посмотреть",
+        "0. Спросить у отца или ЛАДМИРА и проверить мегаОметром на 2500вольт, тк Термопол можно включать через 4 недели после укладки на нее плитки 1. Штробить, загрунтовать и \"загидролить…",
+        "Как установить терморегулятор для теплого пола? #ремонтквартиртюмень #эл... https://youtube.com/shorts/QPUIWRM8tk0?si=7xjS9qMfBTW14fia"
+      ],
+      "mediaCount": 3,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (13)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (13)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (13)\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [
+        {
+          "name": "ИИ для бытовых и личных дел",
+          "overlap": [
+            "дом"
+          ]
+        }
+      ],
+      "tags": [
+        "telegram",
+        "area/семья",
+        "theme/home"
+      ]
+    },
+    {
+      "id": "5295267397-бизнес-идеи",
+      "sourceId": "5295267397",
+      "title": "БИЗНЕС ИДЕИ",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "mixed",
+      "themeLabel": "Смешанная тема",
+      "rankScore": 47,
+      "messageCount": 6,
+      "firstDate": "2026-01-13T11:29:16",
+      "lastDate": "2026-01-28T14:45:47",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_group",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "БИЗНЕС ИДЕИ — источник по теме «Смешанная тема» с 6 сообщениями (13 января 2026 — 28 января 2026). Сигнальные слова: https, youtube, com, shorts, si. Связано с проектами: Контур мониторинга интересной информации, Генератор идей.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Проверять связь с действующими проектами до создания новых сущностей, чтобы не размножать параллельные ветки."
+      ],
+      "topKeywords": [
+        "https",
+        "youtube",
+        "com",
+        "shorts",
+        "si",
+        "горизонта",
+        "год"
+      ],
+      "topDomains": [
+        "youtube.com"
+      ],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "Dmitry Kogan"
+      ],
+      "sampleMessages": [
+        "Эффект сжатого горизонта: почему год — плохая единица планирования Год слишком велик для удержания фокуса. Когда дедлайн далеко, действия расползаются, а стратегии пылятся в архив…"
+      ],
+      "mediaCount": 1,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (11)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (11)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (11)\\result.json",
+      "relatedProjects": [
+        {
+          "id": "interest-monitoring-loop",
+          "title": "Контур мониторинга интересной информации",
+          "status": "active",
+          "overlap": [
+            "идеи"
+          ]
+        },
+        {
+          "id": "генератор-идей",
+          "title": "Генератор идей",
+          "status": "backlog",
+          "overlap": [
+            "идеи"
+          ]
+        }
+      ],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/mixed",
+        "project/interest-monitoring-loop",
+        "project/генератор-идей"
+      ]
+    },
+    {
+      "id": "2376161178-работа",
+      "sourceId": "2376161178",
+      "title": "Работа",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "theme": "operations",
+      "themeLabel": "Операционка",
+      "rankScore": 44,
+      "messageCount": 32,
+      "firstDate": "2024-12-27T01:02:43",
+      "lastDate": "2026-02-25T10:38:15",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "Работа — источник по теме «Операционка» с 32 сообщениями (27 декабря 2024 — 25 февраля 2026). Сигнальные слова: чистых, фев, янв, получил, часов.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту."
+      ],
+      "topKeywords": [
+        "чистых",
+        "фев",
+        "янв",
+        "получил",
+        "часов",
+        "30мин",
+        "остаток"
+      ],
+      "topDomains": [
+        "biznaavtomate.online",
+        "ya.cc"
+      ],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "Работа"
+      ],
+      "sampleMessages": [
+        "https://biznaavtomate.online/tg_mashine3_dm?utm_source=tgposev_tc&utm_medium=autoweb&utm_campaign=11_03_pro_ai_news_P35XNEW_TKP&erid=2VtzqxNarTf",
+        "Потребности по ремонту: пылесос для строительства пыли Наждачки разной жесткости",
+        "ЗАДАЧИ Основные комнаты: Попробовать пошпаклевать Туалет: Стены Зашпаклевать Принести шпаклевку из дома? (В баночке) (спец растворитель из дома) проверить краску на масляность Куп…",
+        "У Игоря на старой квартире. 21 янв. с 13.45 до 14.45 22 янв. с 11.20 до 15.00 (-30мин) 23 янв. о 14.00-16.30 (-30мин) 25 янв 16.35 -18.35 25го Получил 5000 за 8ч работы 26 янв 11.…"
+      ],
+      "mediaCount": 0,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (17)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (17)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (17)\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/работа",
+        "theme/operations"
+      ]
+    },
+    {
+      "id": "3485495347-новый-год-коганы",
+      "sourceId": "3485495347",
+      "title": "НОВЫЙ ГОД КОГАНЫ",
+      "lifeArea": "семья",
+      "lifeAreaLabel": "Семья",
+      "theme": "family",
+      "themeLabel": "Семья и события",
+      "rankScore": 42,
+      "messageCount": 15,
+      "firstDate": "2025-11-30T17:43:40",
+      "lastDate": "2025-12-28T20:27:22",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "НОВЫЙ ГОД КОГАНЫ — источник по теме «Семья и события» с 15 сообщениями (30 ноября 2025 — 28 декабря 2025). Сигнальные слова: 3д, https, помочь, вместе, нг.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Переводить обсуждения в чек-листы, события календаря и семейные решения с дедлайнами."
+      ],
+      "topKeywords": [
+        "3д",
+        "https",
+        "помочь",
+        "вместе",
+        "нг",
+        "елисею",
+        "санта"
+      ],
+      "topDomains": [
+        "youtube.com",
+        "t.me"
+      ],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "НОВЫЙ ГОД КОГАНЫ"
+      ],
+      "sampleMessages": [
+        "Подарок Дане от Елисея и обратно, вместе с ними подумать и подготовить заранее (+написать друг другу письмо на новый год от имени гномиков и запечатать до нг)",
+        "Елисею помочь сформулировать цели на НГ, СОЗДАТЬ ВИРТУАЛЬНОЕ И РЕАЛЬНОЕ ПОРТФОЛИО ЕГО НОВЫХ НАВЫКОВ И КАЧЕСТВ",
+        "Лине курс фейслифтинг Айфон в рассрочку (2500р/мес) Кружку Спортбелье Кофе (мама?)",
+        "Тайный Санта: все делают по одному подарочку своими руками и вручают кладут в мешок Санта Клауса и вручают перед подарками деда мороза",
+        "https://youtube.com/shorts/YYsMHttbhsA?si=ge5v0ymgtPpq1X5B 3д куб в угол верхний комнаты"
+      ],
+      "mediaCount": 2,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (14)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (14)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (14)\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/семья",
+        "theme/family"
+      ]
+    },
+    {
+      "id": "3384207203-3д-принтер-и-печать",
+      "sourceId": "3384207203",
+      "title": "3д принтер и печать",
+      "lifeArea": "я",
+      "lifeAreaLabel": "Я",
+      "theme": "maker",
+      "themeLabel": "3D и мейкерство",
+      "rankScore": 42,
+      "messageCount": 12,
+      "firstDate": "2025-12-04T19:06:19",
+      "lastDate": "2026-02-02T14:28:22",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "3д принтер и печать — источник по теме «3D и мейкерство» с 12 сообщениями (4 декабря 2025 — 2 февраля 2026). Сигнальные слова: https, com, сопла, youtube, si.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту."
+      ],
+      "topKeywords": [
+        "https",
+        "com",
+        "сопла",
+        "youtube",
+        "si",
+        "нить",
+        "shorts"
+      ],
+      "topDomains": [
+        "youtube.com",
+        "3dtoday.ru",
+        "3d.hunyuanglobal.com"
+      ],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "3д принтер и печать"
+      ],
+      "sampleMessages": [
+        "Методы очистки сопла: 1. Нагрейте сопло до 250 ° C и продавите нить до тех пор, пока вы не увидите выходящий пластик из сопла. охладите экструдер до комнатной температуры, чтобы н…",
+        "Горячая прочистка о отбеливание сопла. https://3dtoday.ru/blogs/goga44/hot-cleaning-on-whitening-of-the-nozzle",
+        "Важное примечание: 1. лучше отжигать в полумраке, тогда цвет виден очень хорошо ну и конечно надо водить деталью в пламени для равномерного прогрева. Оплавляться начнут самые тонк…",
+        "Можно использовать газовую горелку-аэрозольку (у отца на балконе). Она намного эффективнее просто газа (не только выжигает, но и продувает огнём).",
+        "http://youtube.com/post/UgkxdGYeCHdzgmYwvwYHOk9avfREjlsciJ5r?si=wYVvGyqEEm1ilLTe"
+      ],
+      "mediaCount": 0,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (10)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (10)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (10)\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/я",
+        "theme/maker"
+      ]
+    },
+    {
+      "id": "2752375352-др-елисея-9-лет",
+      "sourceId": "2752375352",
+      "title": "ДР Елисея 9 лет",
+      "lifeArea": "семья",
+      "lifeAreaLabel": "Семья",
+      "theme": "family",
+      "themeLabel": "Семья и события",
+      "rankScore": 39,
+      "messageCount": 21,
+      "firstDate": "2025-10-05T11:43:04",
+      "lastDate": "2025-10-25T16:04:05",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "ДР Елисея 9 лет — источник по теме «Семья и события» с 21 сообщениями (5 октября 2025 — 25 октября 2025). Сигнальные слова: день, цели, год, фото, елисея.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту.",
+        "Переводить обсуждения в чек-листы, события календаря и семейные решения с дедлайнами."
+      ],
+      "topKeywords": [
+        "день",
+        "цели",
+        "год",
+        "фото",
+        "елисея",
+        "алиса",
+        "задания"
+      ],
+      "topDomains": [
+        "youtu.be",
+        "stoligra.ru"
+      ],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "ДР Елисея 9 лет"
+      ],
+      "sampleMessages": [
+        "Подготовка (задания) Вдохновенные Цели на год Квест Подарок/ки Активное развлечение (далекое необычное вдохновенное) Путешествие",
+        "Задания: 1. Выбрать цели на год (сформулировать вдохновение и заиметь на большой ватман с отд. треками): 2. Отношение/мысли к Дане /др. людям 3. Медитации каждый день 4. Ответстве…",
+        "Цели Проект творчества по книгам Создать компьютерную/телеф. игру Блогерство: Мои интересы Лайфхаки по жизни",
+        "Квест: 1. Готовый 2. Сам Лед Большие принципы Вкусняшки с подсказкой (киндер-яйцо в трайфле)",
+        "Подарки: Майки (+Дане) Мультик про Елисея? 3д принтер Что-то небольшое но функциональное повседневное Оборудовать его комнату: *книжн стеллаж * стол, комп стул. * продать 2ух этаж…"
+      ],
+      "mediaCount": 0,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (15)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (15)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (15)\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/семья",
+        "theme/family"
+      ]
+    },
+    {
+      "id": "3100966172-новая-жизнь",
+      "sourceId": "3100966172",
+      "title": "НОВАЯ ЖИЗНЬ",
+      "lifeArea": "я",
+      "lifeAreaLabel": "Я",
+      "theme": "self-development",
+      "themeLabel": "Саморазвитие",
+      "rankScore": 38,
+      "messageCount": 8,
+      "firstDate": "2025-10-13T07:25:15",
+      "lastDate": "2026-02-05T17:01:28",
+      "formats": [
+        "json"
+      ],
+      "sourceType": "private_channel",
+      "valid": true,
+      "parseStatus": "ok",
+      "summary": "НОВАЯ ЖИЗНЬ — источник по теме «Саморазвитие» с 8 сообщениями (13 октября 2025 — 5 февраля 2026). Сигнальные слова: жизни, influence, принятие, создать, др.",
+      "applicationPrinciples": [
+        "Выделять ссылки и превращать их в короткие action-notes, а не хранить весь поток как ленту."
+      ],
+      "topKeywords": [
+        "жизни",
+        "influence",
+        "принятие",
+        "создать",
+        "др",
+        "есмь",
+        "подготовка"
+      ],
+      "topDomains": [
+        "youtube.com",
+        "eduson.academy"
+      ],
+      "topMentions": [],
+      "topHashtags": [],
+      "topSenders": [
+        "НОВАЯ ЖИЗНЬ"
+      ],
+      "sampleMessages": [
+        "Подготовка к началу нового периода жизни психофизики: 42 года. А точнее выход из инфантильного (безинициативного, безответственного), невежественного, несконцентрированного режима…",
+        "1. Освоение йоги как профессиональной деятельности 2. Принятие и следование обету праведника (\"йогина\") 3. Полное принятие отношения (мыслительного паттерна) к происходящему как к…",
+        "http://youtube.com/post/UgkxmHw8UZpyNxFukNmleh_RlksaUOavjX_y?si=XGO_02kdqxvSk6Pa Для вечного юноши Инициация: От идей к жизни",
+        "https://eduson.academy/education-methodist-new?utm_source=influence&utm_medium=telegram&utm_campaign=Meth_HR_RE58_influence_LXDeducation&utm_content=14_01_26&roistat_param1=Meth&r…",
+        "Подработка архетипа Пуэр Поехать в Америку Пуститься в самовольное самостоятельное одиночное путешествие Создать какой-нибудь бизнес и делать там что-нибудь очень полезное и нужно…"
+      ],
+      "mediaCount": 0,
+      "fileCount": 0,
+      "duplicateCount": 0,
+      "primaryPath": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (9)",
+      "allPaths": [
+        "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (9)"
+      ],
+      "primaryFile": "C:\\Users\\Kogan\\Downloads\\Telegram Desktop\\ChatExport_2026-03-09 (9)\\result.json",
+      "relatedProjects": [],
+      "relatedTopics": [],
+      "tags": [
+        "telegram",
+        "area/я",
+        "theme/self-development"
+      ]
+    }
+  ],
+  "areaBuckets": [
+    {
+      "id": "работа",
+      "area": "работа",
+      "label": "Работа",
+      "count": 12,
+      "topThemes": [
+        "AI и инструменты",
+        "Смешанная тема",
+        "Образование и гранты"
+      ],
+      "sourceTitles": [
+        "Алиса, что нового?",
+        "ИИшенка",
+        "Aimasters.Me ◽️",
+        "Работа",
+        "Web3nity Chat",
+        "Никита Велс | AI"
+      ]
+    },
+    {
+      "id": "я",
+      "area": "я",
+      "label": "Я",
+      "count": 6,
+      "topThemes": [
+        "Планирование",
+        "Идеи и архив",
+        "AI и инструменты"
+      ],
+      "sourceTitles": [
+        "План",
+        "Saved Messages",
+        "Боты",
+        "Учеба",
+        "НОВАЯ ЖИЗНЬ",
+        "3д принтер и печать"
+      ]
+    },
+    {
+      "id": "семья",
+      "area": "семья",
+      "label": "Семья",
+      "count": 5,
+      "topThemes": [
+        "Семья и события",
+        "Дом"
+      ],
+      "sourceTitles": [
+        "ДЕТИ",
+        "Подарки",
+        "Мой Дом",
+        "НОВЫЙ ГОД КОГАНЫ",
+        "ДР Елисея 9 лет"
+      ]
+    }
+  ],
+  "skillSuggestions": [
+    {
+      "id": "telegram-export-intelligence",
+      "title": "telegram-export-intelligence",
+      "summary": "Навык для разбора экспортов Telegram Desktop в компактные карточки знаний, связи и рекомендации.",
+      "why": "У вас уже есть исторический массив экспортов; без отдельного навыка они остаются статичным архивом.",
+      "basedOn": [
+        "Web3nity Chat",
+        "Saved Messages",
+        "Боты",
+        "Aimasters.Me ◽️"
+      ]
+    },
+    {
+      "id": "saved-messages-triage",
+      "title": "saved-messages-triage",
+      "summary": "Навык для превращения Saved Messages в решения: task, note, project, archive.",
+      "why": "Личный inbox перегружен ссылками и заметками, но ценность появляется только после сортировки по типу действия.",
+      "basedOn": [
+        "Saved Messages",
+        "План"
+      ]
+    },
+    {
+      "id": "channel-idea-distiller",
+      "title": "channel-idea-distiller",
+      "summary": "Навык для сжатия AI-каналов и подборок ботов в применимые паттерны и идеи для агентов.",
+      "why": "Источники по ИИ и ботам дают много сигналов, но без стандарта быстро расползаются по заметкам.",
+      "basedOn": [
+        "Боты",
+        "Aimasters.Me ◽️",
+        "ИИшенка",
+        "Никита Велс | AI"
+      ]
+    },
+    {
+      "id": "family-ops-briefing",
+      "title": "family-ops-briefing",
+      "summary": "Навык для семейных чатов: резюме, решения, события, покупки и контрольные списки.",
+      "why": "Семейные источники лучше работают как операционная система дома, а не как набор разрозненных обсуждений.",
+      "basedOn": [
+        "ДЕТИ",
+        "Подарки",
+        "Мой Дом",
+        "НОВЫЙ ГОД КОГАНЫ"
+      ]
+    },
+    {
+      "id": "education-grant-radar",
+      "title": "education-grant-radar",
+      "summary": "Навык для систематизации школьных/грантовых идей и связывания их с текущими образовательными проектами.",
+      "why": "В образовательных источниках уже есть материал для развития гимназических инициатив и грантовых заявок.",
+      "basedOn": [
+        "Проекты для Гимназии Давыдова.",
+        "Развитие гимназии Давыдова"
+      ]
+    },
+    {
+      "id": "project-context-allocator",
+      "title": "project-context-allocator",
+      "summary": "Навык для автоматического распределения входящего по уже существующим проектам вместо создания дублей.",
+      "why": "У вас много активных проектов, и новые идеи должны сразу падать в существующие контексты, если связь уже есть.",
+      "basedOn": [
+        "Telegram-агрегатор",
+        "Навык Tech Radar",
+        "Основное рабочее пространство ИИ-агента",
+        "Самосовершенствующиеся агенты",
+        "Фантом Давыдова"
+      ]
+    }
+  ],
+  "projectSuggestions": [
+    {
+      "title": "Telegram Knowledge Ops",
+      "category": "работа",
+      "summary": "Отдельный проект-оператор для переработки телеграм-источников в Obsidian, dashboard и backlog экспериментов.",
+      "why": "Это снимет хаос между каналами, saved messages и вашими агентными проектами.",
+      "basedOn": [
+        "Боты",
+        "Aimasters.Me ◽️",
+        "ИИшенка",
+        "Никита Велс | AI"
+      ]
+    },
+    {
+      "title": "AI Tools Atlas",
+      "category": "работа",
+      "summary": "Каталог практичных AI-ботов, каналов, workflows и сценариев применения для CLI/IDE-агентов.",
+      "why": "В источниках уже накоплена база инструментов и AI-контента, которую можно превратить в ваш личный радар.",
+      "basedOn": [
+        "Боты",
+        "Aimasters.Me ◽️",
+        "ИИшенка",
+        "Никита Велс | AI"
+      ]
+    },
+    {
+      "title": "Family Operating System",
+      "category": "семья",
+      "summary": "Семейный слой знаний: события, подарки, дом, дети, решения, покупки и семейные проекты.",
+      "why": "Семейные чаты содержат планирование и контекст, который полезнее держать как систему, а не как историю сообщений.",
+      "basedOn": [
+        "ДЕТИ",
+        "Подарки",
+        "Мой Дом",
+        "НОВЫЙ ГОД КОГАНЫ"
+      ]
+    },
+    {
+      "title": "Gymnasium Strategy Radar",
+      "category": "работа",
+      "summary": "Радар идей и возможностей для гимназии: развитие, гранты, контент, партнёры и инициативы.",
+      "why": "Образовательные источники можно прямо связывать с уже существующими гимназическими проектами.",
+      "basedOn": [
+        "Проекты для Гимназии Давыдова.",
+        "Развитие гимназии Давыдова"
+      ]
+    },
+    {
+      "title": "Interest-to-Project Router",
+      "category": "я",
+      "summary": "Маршрутизатор новых идей по вашим активным темам и ролям: я, семья, работа.",
+      "why": "Сейчас источников становится больше, а значит нужна явная логика, куда должна попадать каждая новая мысль.",
+      "basedOn": [
+        "Прикладной ИИ в бизнесе",
+        "ИИ в социальных проектах",
+        "ИИ для бытовых и личных дел",
+        "Автономные ИИ-агенты и инструменты"
+      ]
+    }
+  ],
+  "processingProtocol": [
+    {
+      "step": "1. Захват",
+      "detail": "Каждый новый источник получает карточку с путём, типом, датой, объёмом и признаком дубликата."
+    },
+    {
+      "step": "2. Сжатие",
+      "detail": "Поток сразу переводится в короткое резюме: суть, сигналы, теги, возможное применение, а не в длинный пересказ."
+    },
+    {
+      "step": "3. Классификация",
+      "detail": "Материал распределяется по двум осям: жизненная зона (я, семья, работа) и тема (AI, бизнес, образование, дом и т.д.)."
+    },
+    {
+      "step": "4. Привязка",
+      "detail": "Перед созданием новых сущностей проверяется связь с уже существующими проектами, workflows, навыками и областями интереса."
+    },
+    {
+      "step": "5. Решение",
+      "detail": "Каждый элемент должен закончиться одним из статусов: задача, идея проекта, обновление skill, reference-note или архив."
+    },
+    {
+      "step": "6. Ревизия",
+      "detail": "Раз в неделю смотрятся только топ-источники и новые дельты, а не весь архив целиком."
+    }
+  ]
+}

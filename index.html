@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой Дашборд — AI Workspace</title>
+  <meta name="description"
+    content="Единый дашборд проектов, чатов, workflows и Telegram intelligence с автообновлением данных.">
+  <!-- PWA / Mobile -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#101319" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f7f7f8" media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* --- Auth Gate --- */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .auth-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .auth-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 36px 36px;
+      max-width: 380px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    body[data-theme="dark"] .auth-card {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .auth-icon {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+    }
+
+    .auth-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .auth-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .auth-input-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .auth-input:focus {
+      border-color: var(--accent);
+    }
+
+    .auth-input.error {
+      border-color: var(--idea-high);
+      animation: auth-shake 0.4s ease;
+    }
+
+    @keyframes auth-shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20%,
+      60% {
+        transform: translateX(-6px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(6px);
+      }
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .auth-btn:hover {
+      opacity: 0.88;
+    }
+
+    .auth-error-msg {
+      font-size: 0.78rem;
+      color: var(--idea-high);
+      margin-top: 10px;
+      min-height: 1.2em;
+    }
+
+    .dashboard-content.locked {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Auth Overlay -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-card">
+      <div class="auth-icon">◉</div>
+      <div class="auth-title">Мой Дашборд</div>
+      <div class="auth-subtitle">Введите пароль для доступа</div>
+      <form id="authForm" autocomplete="off">
+        <div class="auth-input-wrap">
+          <input class="auth-input" id="authPassword" type="password" placeholder="Пароль" autofocus>
+        </div>
+        <button class="auth-btn" type="submit">Войти</button>
+        <div class="auth-error-msg" id="authError"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="dashboard-content locked" id="dashboardContent">
+    <header class="header">
+      <div class="header-inner">
+        <div>
+          <div class="header-title">
+            <span class="icon">◉</span> Мой Дашборд
+          </div>
+          <div class="header-date" id="headerDate"></div>
+          <div class="header-sync" id="syncInfo"></div>
+        </div>
+        <div class="header-actions">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Поиск проектов…" autocomplete="off">
+          </div>
+          <button class="theme-toggle" id="themeToggle" type="button">Тема: день</button>
+          <a class="mindmap-link" href="mindmap.html">Mind Map</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="file-protocol-banner" id="fileProtocolBanner" hidden>
+      <div class="file-protocol-title">Дашборд открыт как file:// — браузер блокирует загрузку данных</div>
+      <div class="file-protocol-actions">
+        <a class="file-protocol-link" href="http://127.0.0.1:8891/index.html">Открыть локальный сервер</a>
+        <span class="file-protocol-hint">Если сервер не запущен: <code>.\start_dashboard.ps1 -Open</code></span>
+      </div>
+    </div>
+
+    <div class="stats-bar" id="statsBar"></div>
+
+    <main class="main">
+      <div class="overview-grid" id="overviewGrid"></div>
+
+      <div class="dashboard-tabs" id="mainTabs">
+        <button class="dashboard-tab active" type="button" data-panel="projectsPanel">Проекты</button>
+        <button class="dashboard-tab" type="button" data-panel="intelligencePanel">Информационный контур</button>
+        <button class="dashboard-tab" type="button" data-panel="ideasPanel">Идеи и развитие</button>
+      </div>
+
+      <section class="dashboard-panel active" id="projectsPanel">
+
+        <div class="section-title">Проекты</div>
+        <div class="project-group-tabs" id="projectGroupTabs"></div>
+        <div class="project-grid" id="projectGrid"></div>
+
+        <div class="section-title">Группы связанных проектов</div>
+        <div class="intel-layout">
+          <section class="feed-section">
+            <div class="feed-section-title">Смысловые контуры</div>
+            <div class="intel-grid" id="projectGroupGrid"></div>
+          </section>
+          <section class="feed-section">
+            <div class="feed-section-title">Очистка и консолидация</div>
+            <div id="consolidationSummary"></div>
+          </section>
+        </div>
+
+
+      </section>
+      <section class="dashboard-panel" id="intelligencePanel">
+        <div class="section-title">Telegram Intelligence</div>
+        <div class="intel-layout">
+          <section class="feed-section">
+            <div class="feed-section-title">Сводка и топ-источники</div>
+            <div id="telegramSummary"></div>
+            <div class="intel-grid" id="telegramSourceGrid"></div>
+          </section>
+          <section class="feed-section">
+            <div class="feed-section-title">Распределение и предложения</div>
+            <div class="intel-buckets" id="telegramAreaGrid"></div>
+            <div class="intel-subtitle">Новые навыки</div>
+            <div class="intel-grid" id="skillSuggestionGrid"></div>
+            <div class="intel-subtitle">Новые проекты</div>
+            <div class="intel-grid" id="projectSuggestionGrid"></div>
+            <div class="intel-subtitle">Протокол обработки</div>
+            <div class="protocol-list" id="processingProtocolList"></div>
+          </section>
+        </div>
+
+        <div class="section-title">Информационный контур</div>
+        <div class="intel-layout">
+          <section class="feed-section">
+            <div class="feed-section-title">Системная карточка и правило обработки</div>
+            <div id="systemProfileCard"></div>
+            <div class="intel-subtitle">Правило обработки</div>
+            <div class="protocol-list" id="systemProtocolList"></div>
+            <div class="intel-subtitle">Маршрутизация входящего</div>
+            <div class="protocol-list" id="systemRoutingList"></div>
+          </section>
+          <section class="feed-section">
+            <div class="feed-section-title">Новые навыки и проектные гипотезы</div>
+            <div class="intel-subtitle">Навыки для агентов</div>
+            <div class="intel-grid" id="monitorSkillGrid"></div>
+            <div class="intel-subtitle">Проектные гипотезы</div>
+            <div class="intel-grid" id="monitorProjectGrid"></div>
+            <div class="intel-subtitle">Рекомендации</div>
+            <div class="protocol-list" id="monitorRecommendationList"></div>
+          </section>
+        </div>
+
+      </section>
+      <section class="dashboard-panel" id="ideasPanel">
+        <div class="ideas-section">
+          <div class="section-title">Идеи</div>
+          <div class="section-title">Маршрутизация идей</div>
+          <div class="intel-layout">
+            <section class="feed-section">
+              <div class="feed-section-title">Очередь и исходы</div>
+              <div id="ideaRouterSummary"></div>
+              <div class="intel-subtitle">Что разбирать в первую очередь</div>
+              <div class="protocol-list" id="ideaRouterQueue"></div>
+            </section>
+            <section class="feed-section">
+              <div class="feed-section-title">Кластеры идей</div>
+              <div class="intel-grid" id="ideaRouterClusterGrid"></div>
+            </section>
+          </div>
+          <div class="ideas-grid" id="ideasGrid"></div>
+        </div>
+
+        <div class="upgrade-section">
+          <div class="section-title">Направления развития</div>
+          <div class="upgrade-grid" id="upgradeGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-wrap:wrap;">
+          <div class="modal-title" id="modalTitle"></div>
+          <span class="status-badge" id="modalStatus"></span>
+        </div>
+        <div class="modal-category" id="modalCategory"></div>
+        <div class="modal-desc" id="modalDesc"></div>
+        <div class="progress-container" style="margin-bottom:6px;">
+          <div class="progress-bar">
+            <div class="progress-fill" id="modalProgress" style="width:0%"></div>
+          </div>
+          <span class="progress-label" id="modalProgressLabel">0%</span>
+        </div>
+        <div class="modal-section-title">Задачи</div>
+        <ul class="task-list" id="modalTasks"></ul>
+        <div id="modalNotesWrap">
+          <div class="modal-section-title">Заметки и пути</div>
+          <div class="modal-notes" id="modalNotes"></div>
+        </div>
+        <div class="modal-tags" id="modalTags"></div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="ideaModalOverlay">
+      <div class="modal">
+        <button class="modal-close" id="ideaModalClose">&times;</button>
+        <div class="modal-title" id="ideaModalTitle"></div>
+        <div class="modal-desc" id="ideaModalDesc" style="margin-top:12px"></div>
+        <div id="ideaModalRelated" style="margin-top:14px;font-size:0.84rem;color:var(--text-secondary)"></div>
+        <div class="modal-tags" id="ideaModalTags" style="margin-top:14px"></div>
+        <div id="ideaModalDate" style="margin-top:12px;font-size:0.75rem;color:var(--text-muted)"></div>
+      </div>
+    </div>
+  </div><!-- /dashboard-content -->
+
+  <script>
+    (function () {
+      // SHA-256 hash of the password — change PASS_HASH to set a new password
+      // To generate: run in browser console: crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOUR_PASSWORD')).then(b => console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))
+      const PASS_HASH = 'b4c8ac20a87e493a3dd30a6f16094149771660c1ae17fbab1e4adfef86c76091';
+      const SESSION_KEY = 'dashboard_auth_v1';
+
+      async function sha256(text) {
+        const data = new TextEncoder().encode(text);
+        const hash = await crypto.subtle.digest('SHA-256', data);
+        return [...new Uint8Array(hash)].map(x => x.toString(16).padStart(2, '0')).join('');
+      }
+
+      function unlock() {
+        const overlay = document.getElementById('authOverlay');
+        const content = document.getElementById('dashboardContent');
+        if (overlay) overlay.classList.add('hidden');
+        if (content) content.classList.remove('locked');
+      }
+
+      // Check existing session
+      if (sessionStorage.getItem(SESSION_KEY) === 'ok') {
+        unlock();
+      }
+
+      const form = document.getElementById('authForm');
+      if (form) {
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          const input = document.getElementById('authPassword');
+          const errEl = document.getElementById('authError');
+          const pwd = (input.value || '').trim();
+          if (!pwd) return;
+
+          const hash = await sha256(pwd);
+          if (hash === PASS_HASH) {
+            sessionStorage.setItem(SESSION_KEY, 'ok');
+            unlock();
+          } else {
+            input.classList.add('error');
+            errEl.textContent = 'Неверный пароль';
+            setTimeout(() => input.classList.remove('error'), 500);
+          }
+        });
+      }
+    })();
+  </script>
+  <script src="app.js"></script>
+</body>
+
+</html>

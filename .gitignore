@@ -1,0 +1,25 @@
+# Temp files
+tmp_*
+*.bak
+*.log
+*.err
+*.out
+
+# Archives & heavy binaries
+*.zip
+*.pdf
+*.png
+
+# Separate projects
+gymnasium_site_v2/
+gymnasium_site_v2_publish/
+
+# Misc
+.netlify/
+node_modules/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/

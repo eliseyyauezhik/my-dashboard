@@ -1,0 +1,2613 @@
+{
+  "meta": {
+    "lastUpdated": "2026-03-11",
+    "version": "2.0-generated"
+  },
+  "stats": {
+    "projects": 22,
+    "chats": 30,
+    "workflows": 21,
+    "activeProjects": 16,
+    "missingProjects": 0,
+    "archivedProjects": 4,
+    "archivedChats": 24
+  },
+  "upgradePaths": [
+    {
+      "id": "up1",
+      "title": "Интерактивная Mind-Map",
+      "description": "Визуализация проектов на бесконечном холсте (React Flow / tldraw SDK). Зум, перетаскивание, связи.",
+      "complexity": "Средняя",
+      "timeEstimate": "1–2 дня"
+    },
+    {
+      "id": "up2",
+      "title": "Голосовые заметки",
+      "description": "Диктовка идей через Web Speech API или Whisper.cpp (WASM, всё локально, приватно).",
+      "complexity": "Средняя",
+      "timeEstimate": "1 день"
+    },
+    {
+      "id": "up3",
+      "title": "Лента новостей (RSS)",
+      "description": "Агрегатор новостей из избранных источников по вашим темам через RSS-парсер.",
+      "complexity": "Средняя",
+      "timeEstimate": "1–2 дня"
+    },
+    {
+      "id": "up4",
+      "title": "Realtime от агентов",
+      "description": "Живые обновления от ИИ-исследователей через Supabase Realtime / SSE / WebSocket.",
+      "complexity": "Высокая",
+      "timeEstimate": "1–2 недели"
+    },
+    {
+      "id": "up5",
+      "title": "Установка на телефон (PWA)",
+      "description": "Манифест + Service Worker: работа оффлайн, установка как приложение без App Store.",
+      "complexity": "Низкая",
+      "timeEstimate": "2–4 часа"
+    },
+    {
+      "id": "up6",
+      "title": "AI-суммаризация",
+      "description": "Автосаммари новостей и отчётов агентов через LLM (Edge Functions Supabase).",
+      "complexity": "Высокая",
+      "timeEstimate": "1–2 недели"
+    }
+  ],
+  "ideas": [
+    {
+      "id": "idea4",
+      "title": "Мультиагентное исследование",
+      "description": "Совет нейросетей: несколько специализированных агентов исследуют тему с разных сторон и синтезируют общий отчёт.",
+      "tags": [
+        "исследование",
+        "мультиагент",
+        "AI"
+      ],
+      "priority": "high",
+      "relatedProject": "ИИ-агент для гимназии",
+      "addedDate": "2026-03-04",
+      "theme": "education",
+      "themeLabel": "Образование",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "route": "project_update",
+      "routeLabel": "Обновить проект",
+      "routingReason": "Есть явная привязка к проекту «ИИ-агент для гимназии».",
+      "routingNextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+      "routingScore": 95,
+      "relatedProjectId": "ии-агент-для-гимназии",
+      "clusterId": "project-ии-агент-для-гимназии",
+      "clusterTitle": "Проект: ИИ-агент для гимназии"
+    },
+    {
+      "id": "idea1",
+      "title": "Автономный менеджер проектов",
+      "description": "ИИ-агент, который самостоятельно анализирует прогресс по проектам, предлагает приоритеты и генерирует задачи на день.",
+      "tags": [
+        "AI",
+        "агенты",
+        "продуктивность"
+      ],
+      "priority": "high",
+      "relatedProject": "Самосовершенствующиеся агенты",
+      "addedDate": "2026-03-05",
+      "theme": "agents",
+      "themeLabel": "Агентные системы",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "route": "project_update",
+      "routeLabel": "Обновить проект",
+      "routingReason": "Есть явная привязка к проекту «Самосовершенствующиеся агенты».",
+      "routingNextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+      "routingScore": 95,
+      "relatedProjectId": "самосовершенствующиеся-агенты",
+      "clusterId": "project-самосовершенствующиеся-агенты",
+      "clusterTitle": "Проект: Самосовершенствующиеся агенты"
+    },
+    {
+      "id": "idea2",
+      "title": "Личная база знаний с RAG",
+      "description": "Семантический поиск по всем документам, чатам и заметкам. Вопрос на русском → ответ из вашей базы знаний.",
+      "tags": [
+        "RAG",
+        "поиск",
+        "знание"
+      ],
+      "priority": "high",
+      "relatedProject": "Карта технологий",
+      "addedDate": "2026-03-05",
+      "theme": "knowledge",
+      "themeLabel": "База знаний",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "route": "project_update",
+      "routeLabel": "Обновить проект",
+      "routingReason": "Есть явная привязка к проекту «Карта технологий».",
+      "routingNextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+      "routingScore": 95,
+      "relatedProjectId": "карта-технологий",
+      "clusterId": "project-карта-технологий",
+      "clusterTitle": "Проект: Карта технологий"
+    },
+    {
+      "id": "idea6",
+      "title": "Голосовой ассистент в Telegram",
+      "description": "Расширение Telegram-бота CoPaw: полноценное голосовое общение, распознавание команд, TTS-ответы.",
+      "tags": [
+        "Telegram",
+        "голос",
+        "STT",
+        "TTS"
+      ],
+      "priority": "medium",
+      "relatedProject": "CoPaw — Бот",
+      "addedDate": "2026-03-04",
+      "theme": "media",
+      "themeLabel": "Медиа и контент",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "route": "project_update",
+      "routeLabel": "Обновить проект",
+      "routingReason": "Есть явная привязка к проекту «CoPaw — Бот».",
+      "routingNextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+      "routingScore": 94,
+      "relatedProjectId": "copaw-бот",
+      "clusterId": "project-copaw-бот",
+      "clusterTitle": "Проект: CoPaw — Бот"
+    },
+    {
+      "id": "idea5",
+      "title": "Образовательный цифровой двойник",
+      "description": "Модель школы / гимназии, в которой ИИ симулирует результаты внедрения разных образовательных методик.",
+      "tags": [
+        "образование",
+        "цифровой двойник",
+        "моделирование"
+      ],
+      "priority": "medium",
+      "relatedProject": "ИИ-агент для гимназии",
+      "addedDate": "2026-03-04",
+      "theme": "education",
+      "themeLabel": "Образование",
+      "lifeArea": "работа",
+      "lifeAreaLabel": "Работа",
+      "route": "project_update",
+      "routeLabel": "Обновить проект",
+      "routingReason": "Есть явная привязка к проекту «ИИ-агент для гимназии».",
+      "routingNextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+      "routingScore": 94,
+      "relatedProjectId": "ии-агент-для-гимназии",
+      "clusterId": "project-ии-агент-для-гимназии",
+      "clusterTitle": "Проект: ИИ-агент для гимназии"
+    },
+    {
+      "id": "idea3",
+      "title": "Автоматический видео-продакшн",
+      "description": "Конвейер: текст → слайды → озвучка → видео. Для презентаций, грантов, обучающих материалов.",
+      "tags": [
+        "видео",
+        "Remotion",
+        "TTS",
+        "автоматизация"
+      ],
+      "priority": "medium",
+      "relatedProject": "Видео для гранта",
+      "addedDate": "2026-03-05",
+      "theme": "education",
+      "themeLabel": "Образование",
+      "lifeArea": "я",
+      "lifeAreaLabel": "Я",
+      "route": "project_update",
+      "routeLabel": "Обновить проект",
+      "routingReason": "Есть явная привязка к проекту «Видео для гранта».",
+      "routingNextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+      "routingScore": 94,
+      "relatedProjectId": "видео-для-гранта",
+      "clusterId": "project-видео-для-гранта",
+      "clusterTitle": "Проект: Видео для гранта"
+    },
+    {
+      "id": "idea7",
+      "title": "Биржа идей (IdeaForge v2)",
+      "description": "Платформа для генерации, оценки и коллаборации над идеями. С поиском аналогов на GitHub/HN и авто-переводом.",
+      "tags": [
+        "идеи",
+        "коллаборация",
+        "поиск"
+      ],
+      "priority": "low",
+      "relatedProject": "Генератор идей",
+      "addedDate": "2026-03-03",
+      "theme": "family",
+      "themeLabel": "Семья и дом",
+      "lifeArea": "семья",
+      "lifeAreaLabel": "Семья",
+      "route": "project_update",
+      "routeLabel": "Обновить проект",
+      "routingReason": "Есть явная привязка к проекту «Генератор идей».",
+      "routingNextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+      "routingScore": 93,
+      "relatedProjectId": "генератор-идей",
+      "clusterId": "project-генератор-идей",
+      "clusterTitle": "Проект: Генератор идей"
+    }
+  ],
+  "monitoring": {
+    "profile": {
+      "title": "Системная карта интересов",
+      "summary": "Единая логика для перевода новых сигналов, ссылок, чатов, workflows и идей в проекты, навыки, решения, заметки и архив без расползания контекста.",
+      "roles": [
+        "архитектор AI-проектов",
+        "исследователь прикладного ИИ",
+        "разработчик агентных систем",
+        "организатор семейных и рабочих контуров"
+      ],
+      "lifeAreas": [
+        {
+          "id": "я",
+          "label": "Я",
+          "focus": "личное развитие, инструменты, база знаний, планирование"
+        },
+        {
+          "id": "семья",
+          "label": "Семья",
+          "focus": "дом, дети, события, подарки, семейные решения"
+        },
+        {
+          "id": "работа",
+          "label": "Работа",
+          "focus": "AI-проекты, образование, гранты, продуктовые и агентные системы"
+        }
+      ],
+      "focusThemes": [
+        "AI-агенты и skills",
+        "личная база знаний и RAG",
+        "идеи -> проекты",
+        "образование и гранты",
+        "семейная операционная система"
+      ],
+      "interestSignals": [
+        "связь с уже активным проектом или идеей",
+        "повторяющийся паттерн, который стоит превратить в skill",
+        "потенциал экономить время, усилия или деньги",
+        "усиливает образование, грантовые или агентные направления",
+        "может быть использовано в жизни, семье или работе в течение 30 дней"
+      ],
+      "noiseFilters": [
+        "сырой поток без понятного действия или связи",
+        "единичные вдохновляющие сообщения без повторяемого паттерна",
+        "дубликаты экспортов и пересохраненные материалы без новой пользы",
+        "темы, не попадающие ни в одну жизненную зону: я, семья, работа"
+      ],
+      "monitoringSources": [
+        "Telegram Desktop exports",
+        "индексы чатов и workflows Antigravity",
+        "архив проектов AI Workspace",
+        "Obsidian KnowledgeBase"
+      ],
+      "reviewCadence": [
+        {
+          "label": "Ежедневно",
+          "value": "смотреть только новые сигналы и входящий inbox, не перечитывать архив"
+        },
+        {
+          "label": "Еженедельно",
+          "value": "разбирать топ-источники, обновлять проекты, идеи и навыки"
+        },
+        {
+          "label": "Ежемесячно",
+          "value": "пересматривать карту интересов, закрывать лишние ветки и формировать новые проектные гипотезы"
+        }
+      ],
+      "currentFocusProjects": [
+        "Telegram-агрегатор",
+        "Контур мониторинга интересной информации",
+        "Мой Дашборд",
+        "Карта технологий",
+        "Навык Tech Radar",
+        "Самосовершенствующиеся агенты"
+      ],
+      "sourceHighlights": [
+        "Web3nity Chat",
+        "Saved Messages",
+        "Боты",
+        "Aimasters.Me ◽️",
+        "Мой бизнес"
+      ]
+    },
+    "stats": {
+      "activeProjects": 16,
+      "ideas": 7,
+      "trackedSources": 23,
+      "archivedProjects": 4,
+      "archivedChats": 24
+    },
+    "processingProtocol": [
+      {
+        "step": "1. Захват",
+        "detail": "Каждый новый источник или элемент получает путь, дату, тип, жизненную зону и признак дубликата."
+      },
+      {
+        "step": "2. Сжатие",
+        "detail": "Извлекается суперкороткое резюме: суть, сигнал, теги, возможное применение, следующий шаг."
+      },
+      {
+        "step": "3. Классификация",
+        "detail": "Материал раскладывается по осям: жизненная зона (я, семья, работа) и тема (AI, образование, дом, бизнес и т.д.)."
+      },
+      {
+        "step": "4. Привязка",
+        "detail": "Перед созданием новой сущности проверяется связь с существующим проектом, skill, workflow, идеей или заметкой."
+      },
+      {
+        "step": "5. Решение",
+        "detail": "Элемент должен завершиться одним исходом: обновление проекта, новая идея, новая задача, skill-candidate, reference-note или архив."
+      },
+      {
+        "step": "6. Ревизия",
+        "detail": "На обзор поднимаются только новые дельты и топ-сигналы; весь архив не перечитывается."
+      }
+    ],
+    "routingRules": [
+      {
+        "when": "Есть прямая связь с активным проектом",
+        "route": "Обновление карточки проекта",
+        "action": "Добавить краткое резюме, теги, источник и следующий шаг в существующий проект."
+      },
+      {
+        "when": "Появился повторяющийся паттерн действий для агента",
+        "route": "Кандидат в новый skill",
+        "action": "Оформить навык с применением, входами, выходами и правилами использования в CLI/IDE."
+      },
+      {
+        "when": "Есть сильный сигнал, но проекта еще нет",
+        "route": "Новая проектная гипотеза",
+        "action": "Создать короткую проектную карточку: цель, ценность, ближайший эксперимент, связи."
+      },
+      {
+        "when": "Материал полезен, но не тянет на проект",
+        "route": "Reference-note в базе знаний",
+        "action": "Сохранить компактную заметку с сутью, тегами, принципами применения и ссылкой на источник."
+      },
+      {
+        "when": "Материал не несет действия или связи",
+        "route": "Архив",
+        "action": "Оставить только путь и минимальный индекс без перегруза основного контура."
+      }
+    ],
+    "recommendations": [
+      "Считать Telegram, YouTube и другие потоки входным слоем, а не местом долгого хранения решений.",
+      "Создавать новую сущность только после проверки связи с уже существующим проектом или skill.",
+      "Держать суперсжатый формат карточек: суть, сигнал, теги, применение, next step, связи.",
+      "Навыки для агентов создавать по повторяющимся паттернам, а не по единичным интересным находкам.",
+      "Раз в неделю смотреть только топ-дельты и источники с наибольшим рангом, а не весь архив.",
+      "Держать отдельный слой triage для входящего, а не складывать сырые данные сразу в проекты.",
+      "Считать Saved Messages и экспортированные каналы разными типами источников: личный inbox и тематические потоки.",
+      "Каждую неделю пересматривать только топ-источники по рангу и новые дельты, чтобы не тонуть в историческом хвосте."
+    ],
+    "skillSuggestions": [
+      {
+        "id": "interest-to-project-router",
+        "code": "interest-to-project-router",
+        "title": "Маршрутизатор интересов в проекты",
+        "summary": "Навык для автоматического решения: обновить существующий проект, создать новую гипотезу или отправить материал в reference-note.",
+        "why": "У вас уже много параллельных контекстов, и новые сигналы должны попадать в правильную ветку без ручного хаоса."
+      },
+      {
+        "id": "project-signal-briefing",
+        "code": "project-signal-briefing",
+        "title": "Сводка проектных сигналов",
+        "summary": "Навык для выпуска сжатого weekly-brief по новым полезным сигналам для активных проектов.",
+        "why": "Это сокращает объем чтения и оставляет только применимые изменения, идеи и риски."
+      },
+      {
+        "id": "agent-skill-upgrade-radar",
+        "code": "agent-skill-upgrade-radar",
+        "title": "Радар обновления навыков агентов",
+        "summary": "Навык, который ищет повторяющиеся агентные задачи и предлагает новый skill или улучшение существующего.",
+        "why": "Полезные паттерны уже накоплены в чатах, workflows и Telegram-архиве, но пока не все превращены в reusable-инструменты."
+      },
+      {
+        "id": "telegram-telegram-export-intelligence",
+        "title": "telegram-export-intelligence",
+        "summary": "Навык для разбора экспортов Telegram Desktop в компактные карточки знаний, связи и рекомендации.",
+        "why": "У вас уже есть исторический массив экспортов; без отдельного навыка они остаются статичным архивом.",
+        "basedOn": [
+          "Web3nity Chat",
+          "Saved Messages",
+          "Боты",
+          "Aimasters.Me ◽️"
+        ],
+        "source": "telegram_intelligence"
+      },
+      {
+        "id": "telegram-saved-messages-triage",
+        "title": "saved-messages-triage",
+        "summary": "Навык для превращения Saved Messages в решения: task, note, project, archive.",
+        "why": "Личный inbox перегружен ссылками и заметками, но ценность появляется только после сортировки по типу действия.",
+        "basedOn": [
+          "Saved Messages",
+          "План"
+        ],
+        "source": "telegram_intelligence"
+      },
+      {
+        "id": "telegram-channel-idea-distiller",
+        "title": "channel-idea-distiller",
+        "summary": "Навык для сжатия AI-каналов и подборок ботов в применимые паттерны и идеи для агентов.",
+        "why": "Источники по ИИ и ботам дают много сигналов, но без стандарта быстро расползаются по заметкам.",
+        "basedOn": [
+          "Боты",
+          "Aimasters.Me ◽️",
+          "ИИшенка",
+          "Никита Велс | AI"
+        ],
+        "source": "telegram_intelligence"
+      }
+    ],
+    "projectSuggestions": [
+      {
+        "id": "personal-interest-radar",
+        "title": "Радар интересов и проектных сигналов",
+        "category": "Личная система",
+        "summary": "Отдельная витрина, где видно, какие темы и источники сейчас дают наибольший потенциал для новых проектов и решений.",
+        "why": "Помогает целостно смотреть на палитру идей и видеть, что усиливать в первую очередь."
+      },
+      {
+        "id": "idea-to-project-factory",
+        "title": "Фабрика идей в проекты",
+        "category": "AI / Инфраструктура",
+        "summary": "Контур превращения идей в проектные карточки с ближайшим экспериментом, критериями ценности и связями.",
+        "why": "Снижает количество подвешенных идей и делает развитие проектов управляемым."
+      },
+      {
+        "id": "agent-skills-library",
+        "title": "Библиотека навыков агентов",
+        "category": "AI / Агенты",
+        "summary": "Каталог навыков для CLI и IDE-агентов с правилами использования, шаблонами входов и ожидаемыми результатами.",
+        "why": "Позволяет системно наращивать reusable-слой вокруг ваших проектов и повторяющихся задач."
+      },
+      {
+        "id": "telegram-telegram-knowledge-ops",
+        "title": "Telegram Knowledge Ops",
+        "category": "работа",
+        "summary": "Отдельный проект-оператор для переработки телеграм-источников в Obsidian, dashboard и backlog экспериментов.",
+        "why": "Это снимет хаос между каналами, saved messages и вашими агентными проектами.",
+        "basedOn": [
+          "Боты",
+          "Aimasters.Me ◽️",
+          "ИИшенка",
+          "Никита Велс | AI"
+        ],
+        "source": "telegram_intelligence"
+      },
+      {
+        "id": "telegram-ai-tools-atlas",
+        "title": "AI Tools Atlas",
+        "category": "работа",
+        "summary": "Каталог практичных AI-ботов, каналов, workflows и сценариев применения для CLI/IDE-агентов.",
+        "why": "В источниках уже накоплена база инструментов и AI-контента, которую можно превратить в ваш личный радар.",
+        "basedOn": [
+          "Боты",
+          "Aimasters.Me ◽️",
+          "ИИшенка",
+          "Никита Велс | AI"
+        ],
+        "source": "telegram_intelligence"
+      },
+      {
+        "id": "telegram-family-operating-system",
+        "title": "Family Operating System",
+        "category": "семья",
+        "summary": "Семейный слой знаний: события, подарки, дом, дети, решения, покупки и семейные проекты.",
+        "why": "Семейные чаты содержат планирование и контекст, который полезнее держать как систему, а не как историю сообщений.",
+        "basedOn": [
+          "ДЕТИ",
+          "Подарки",
+          "Мой Дом",
+          "НОВЫЙ ГОД КОГАНЫ"
+        ],
+        "source": "telegram_intelligence"
+      }
+    ],
+    "ideaRouterSummary": {
+      "totalIdeas": 7,
+      "clusterCount": 6,
+      "routedToProject": 7,
+      "skillCandidates": 0,
+      "projectHypotheses": 0,
+      "referenceNotes": 0,
+      "archiveItems": 0
+    },
+    "ideaRouterRecommendations": [
+      "Сначала разбирать идеи с явной привязкой к проектам: они быстрее всего превращаются в действие.",
+      "Skill-кандидаты поднимать только там, где виден повторяемый паттерн, а не разовый интерес.",
+      "Новые проектные гипотезы оформлять через один ближайший эксперимент, а не через длинный backlog.",
+      "Проект: ИИ-агент для гимназии — 2 идей, базовый исход: Обновить проект",
+      "Проект: Карта технологий — 1 идей, базовый исход: Обновить проект",
+      "Проект: Самосовершенствующиеся агенты — 1 идей, базовый исход: Обновить проект",
+      "Проект: CoPaw — Бот — 1 идей, базовый исход: Обновить проект",
+      "Проект: Видео для гранта — 1 идей, базовый исход: Обновить проект"
+    ],
+    "projectGroups": [
+      {
+        "id": "news-aggregators",
+        "title": "Агрегаторы новостей и мониторинг",
+        "projectCount": 5,
+        "projectIds": [
+          "tgaggregator",
+          "interest-monitoring-loop",
+          "мой-дашборд",
+          "copaw-бот",
+          "генератор-идей"
+        ],
+        "projectTitles": [
+          "Telegram-агрегатор",
+          "Контур мониторинга интересной информации",
+          "Мой Дашборд",
+          "CoPaw — Бот",
+          "Генератор идей"
+        ],
+        "topTopics": [
+          "manual",
+          "agents"
+        ],
+        "activeProjects": 3,
+        "researchProjects": 0
+      },
+      {
+        "id": "idea-generators",
+        "title": "Генераторы идей и визуализация",
+        "projectCount": 2,
+        "projectIds": [
+          "tech-radar-skill",
+          "карта-технологий"
+        ],
+        "projectTitles": [
+          "Навык Tech Radar",
+          "Карта технологий"
+        ],
+        "topTopics": [
+          "antigravity",
+          "manual"
+        ],
+        "activeProjects": 2,
+        "researchProjects": 0
+      },
+      {
+        "id": "ai-system-growth",
+        "title": "Развитие ИИ-системы (ядро/база знаний)",
+        "projectCount": 4,
+        "projectIds": [
+          "appscout",
+          "ai-agent-core-workspace",
+          "antigravity-dashboard-workspace",
+          "system-interest-map"
+        ],
+        "projectTitles": [
+          "Разведка приложений",
+          "Основное рабочее пространство ИИ-агента",
+          "Рабочее пространство дашборда Antigravity",
+          "Системная карта интересов"
+        ],
+        "topTopics": [
+          "products",
+          "agents",
+          "antigravity"
+        ],
+        "activeProjects": 4,
+        "researchProjects": 0
+      },
+      {
+        "id": "ai-agents",
+        "title": "ИИ-агенты и автоматизация",
+        "projectCount": 2,
+        "projectIds": [
+          "самосовершенствующиеся-агенты",
+          "skills"
+        ],
+        "projectTitles": [
+          "Самосовершенствующиеся агенты",
+          "Навыки"
+        ],
+        "topTopics": [
+          "manual"
+        ],
+        "activeProjects": 1,
+        "researchProjects": 1
+      },
+      {
+        "id": "work-projects",
+        "title": "Рабочие проекты (Гимназия/Бизнес)",
+        "projectCount": 9,
+        "projectIds": [
+          "davydov-phantom",
+          "grant-presentation",
+          "gymnasium-landing",
+          "interactive-panels-rating",
+          "smartmeeting-backend",
+          "kora-strategy",
+          "ии-агент-для-гимназии",
+          "видео-для-гранта",
+          "презентация-образование-2035"
+        ],
+        "projectTitles": [
+          "Фантом Давыдова",
+          "Грантовая презентация",
+          "Лендинг гимназии",
+          "Рейтинг интерактивных панелей",
+          "Умное совещание: сервер",
+          "Стратегия КОРА",
+          "ИИ-агент для гимназии",
+          "Видео для гранта"
+        ],
+        "topTopics": [
+          "education",
+          "manual",
+          "products"
+        ],
+        "activeProjects": 6,
+        "researchProjects": 1
+      }
+    ],
+    "consolidation": {
+      "archivedProjects": 4,
+      "archivedChats": 24,
+      "projectMerges": 2,
+      "chatMerges": 0
+    }
+  },
+  "ideaRouter": {
+    "summary": {
+      "totalIdeas": 7,
+      "clusterCount": 6,
+      "routedToProject": 7,
+      "skillCandidates": 0,
+      "projectHypotheses": 0,
+      "referenceNotes": 0,
+      "archiveItems": 0
+    },
+    "queue": [
+      {
+        "ideaId": "idea4",
+        "title": "Мультиагентное исследование",
+        "route": "project_update",
+        "routeLabel": "Обновить проект",
+        "reason": "Есть явная привязка к проекту «ИИ-агент для гимназии».",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "relatedProject": "ИИ-агент для гимназии",
+        "lifeAreaLabel": "Работа",
+        "themeLabel": "Образование",
+        "priority": "high",
+        "score": 95
+      },
+      {
+        "ideaId": "idea1",
+        "title": "Автономный менеджер проектов",
+        "route": "project_update",
+        "routeLabel": "Обновить проект",
+        "reason": "Есть явная привязка к проекту «Самосовершенствующиеся агенты».",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "relatedProject": "Самосовершенствующиеся агенты",
+        "lifeAreaLabel": "Работа",
+        "themeLabel": "Агентные системы",
+        "priority": "high",
+        "score": 95
+      },
+      {
+        "ideaId": "idea2",
+        "title": "Личная база знаний с RAG",
+        "route": "project_update",
+        "routeLabel": "Обновить проект",
+        "reason": "Есть явная привязка к проекту «Карта технологий».",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "relatedProject": "Карта технологий",
+        "lifeAreaLabel": "Работа",
+        "themeLabel": "База знаний",
+        "priority": "high",
+        "score": 95
+      },
+      {
+        "ideaId": "idea6",
+        "title": "Голосовой ассистент в Telegram",
+        "route": "project_update",
+        "routeLabel": "Обновить проект",
+        "reason": "Есть явная привязка к проекту «CoPaw — Бот».",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "relatedProject": "CoPaw — Бот",
+        "lifeAreaLabel": "Работа",
+        "themeLabel": "Медиа и контент",
+        "priority": "medium",
+        "score": 94
+      },
+      {
+        "ideaId": "idea5",
+        "title": "Образовательный цифровой двойник",
+        "route": "project_update",
+        "routeLabel": "Обновить проект",
+        "reason": "Есть явная привязка к проекту «ИИ-агент для гимназии».",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "relatedProject": "ИИ-агент для гимназии",
+        "lifeAreaLabel": "Работа",
+        "themeLabel": "Образование",
+        "priority": "medium",
+        "score": 94
+      },
+      {
+        "ideaId": "idea3",
+        "title": "Автоматический видео-продакшн",
+        "route": "project_update",
+        "routeLabel": "Обновить проект",
+        "reason": "Есть явная привязка к проекту «Видео для гранта».",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "relatedProject": "Видео для гранта",
+        "lifeAreaLabel": "Я",
+        "themeLabel": "Образование",
+        "priority": "medium",
+        "score": 94
+      },
+      {
+        "ideaId": "idea7",
+        "title": "Биржа идей (IdeaForge v2)",
+        "route": "project_update",
+        "routeLabel": "Обновить проект",
+        "reason": "Есть явная привязка к проекту «Генератор идей».",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "relatedProject": "Генератор идей",
+        "lifeAreaLabel": "Семья",
+        "themeLabel": "Семья и дом",
+        "priority": "low",
+        "score": 93
+      }
+    ],
+    "clusters": [
+      {
+        "id": "project-ии-агент-для-гимназии",
+        "title": "Проект: ИИ-агент для гимназии",
+        "theme": "education",
+        "themeLabel": "Образование",
+        "lifeArea": "работа",
+        "lifeAreaLabel": "Работа",
+        "relatedProject": "ИИ-агент для гимназии",
+        "ideaCount": 2,
+        "ideaIds": [
+          "idea4",
+          "idea5"
+        ],
+        "ideaTitles": [
+          "Мультиагентное исследование",
+          "Образовательный цифровой двойник"
+        ],
+        "routeBias": "project_update",
+        "routeBiasLabel": "Обновить проект",
+        "topTags": [
+          "исследование",
+          "мультиагент",
+          "AI",
+          "образование",
+          "цифровой двойник"
+        ],
+        "summary": "Мультиагентное исследование · Образовательный цифровой двойник",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "score": 95
+      },
+      {
+        "id": "project-карта-технологий",
+        "title": "Проект: Карта технологий",
+        "theme": "knowledge",
+        "themeLabel": "База знаний",
+        "lifeArea": "работа",
+        "lifeAreaLabel": "Работа",
+        "relatedProject": "Карта технологий",
+        "ideaCount": 1,
+        "ideaIds": [
+          "idea2"
+        ],
+        "ideaTitles": [
+          "Личная база знаний с RAG"
+        ],
+        "routeBias": "project_update",
+        "routeBiasLabel": "Обновить проект",
+        "topTags": [
+          "RAG",
+          "поиск",
+          "знание"
+        ],
+        "summary": "Личная база знаний с RAG",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "score": 95
+      },
+      {
+        "id": "project-самосовершенствующиеся-агенты",
+        "title": "Проект: Самосовершенствующиеся агенты",
+        "theme": "agents",
+        "themeLabel": "Агентные системы",
+        "lifeArea": "работа",
+        "lifeAreaLabel": "Работа",
+        "relatedProject": "Самосовершенствующиеся агенты",
+        "ideaCount": 1,
+        "ideaIds": [
+          "idea1"
+        ],
+        "ideaTitles": [
+          "Автономный менеджер проектов"
+        ],
+        "routeBias": "project_update",
+        "routeBiasLabel": "Обновить проект",
+        "topTags": [
+          "AI",
+          "агенты",
+          "продуктивность"
+        ],
+        "summary": "Автономный менеджер проектов",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "score": 95
+      },
+      {
+        "id": "project-copaw-бот",
+        "title": "Проект: CoPaw — Бот",
+        "theme": "media",
+        "themeLabel": "Медиа и контент",
+        "lifeArea": "работа",
+        "lifeAreaLabel": "Работа",
+        "relatedProject": "CoPaw — Бот",
+        "ideaCount": 1,
+        "ideaIds": [
+          "idea6"
+        ],
+        "ideaTitles": [
+          "Голосовой ассистент в Telegram"
+        ],
+        "routeBias": "project_update",
+        "routeBiasLabel": "Обновить проект",
+        "topTags": [
+          "Telegram",
+          "голос",
+          "STT",
+          "TTS"
+        ],
+        "summary": "Голосовой ассистент в Telegram",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "score": 94
+      },
+      {
+        "id": "project-видео-для-гранта",
+        "title": "Проект: Видео для гранта",
+        "theme": "education",
+        "themeLabel": "Образование",
+        "lifeArea": "я",
+        "lifeAreaLabel": "Я",
+        "relatedProject": "Видео для гранта",
+        "ideaCount": 1,
+        "ideaIds": [
+          "idea3"
+        ],
+        "ideaTitles": [
+          "Автоматический видео-продакшн"
+        ],
+        "routeBias": "project_update",
+        "routeBiasLabel": "Обновить проект",
+        "topTags": [
+          "видео",
+          "Remotion",
+          "TTS",
+          "автоматизация"
+        ],
+        "summary": "Автоматический видео-продакшн",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "score": 94
+      },
+      {
+        "id": "project-генератор-идей",
+        "title": "Проект: Генератор идей",
+        "theme": "family",
+        "themeLabel": "Семья и дом",
+        "lifeArea": "семья",
+        "lifeAreaLabel": "Семья",
+        "relatedProject": "Генератор идей",
+        "ideaCount": 1,
+        "ideaIds": [
+          "idea7"
+        ],
+        "ideaTitles": [
+          "Биржа идей (IdeaForge v2)"
+        ],
+        "routeBias": "project_update",
+        "routeBiasLabel": "Обновить проект",
+        "topTags": [
+          "идеи",
+          "коллаборация",
+          "поиск"
+        ],
+        "summary": "Биржа идей (IdeaForge v2)",
+        "nextStep": "Обновить карточку проекта: добавить суть идеи, теги и ближайший эксперимент.",
+        "score": 93
+      }
+    ],
+    "recommendations": [
+      "Сначала разбирать идеи с явной привязкой к проектам: они быстрее всего превращаются в действие.",
+      "Skill-кандидаты поднимать только там, где виден повторяемый паттерн, а не разовый интерес.",
+      "Новые проектные гипотезы оформлять через один ближайший эксперимент, а не через длинный backlog.",
+      "Проект: ИИ-агент для гимназии — 2 идей, базовый исход: Обновить проект",
+      "Проект: Карта технологий — 1 идей, базовый исход: Обновить проект",
+      "Проект: Самосовершенствующиеся агенты — 1 идей, базовый исход: Обновить проект",
+      "Проект: CoPaw — Бот — 1 идей, базовый исход: Обновить проект",
+      "Проект: Видео для гранта — 1 идей, базовый исход: Обновить проект"
+    ]
+  },
+  "projectGroups": [
+    {
+      "id": "news-aggregators",
+      "title": "Агрегаторы новостей и мониторинг",
+      "projectCount": 5,
+      "projectIds": [
+        "tgaggregator",
+        "interest-monitoring-loop",
+        "мой-дашборд",
+        "copaw-бот",
+        "генератор-идей"
+      ],
+      "projectTitles": [
+        "Telegram-агрегатор",
+        "Контур мониторинга интересной информации",
+        "Мой Дашборд",
+        "CoPaw — Бот",
+        "Генератор идей"
+      ],
+      "topTopics": [
+        "manual",
+        "agents"
+      ],
+      "activeProjects": 3,
+      "researchProjects": 0
+    },
+    {
+      "id": "idea-generators",
+      "title": "Генераторы идей и визуализация",
+      "projectCount": 2,
+      "projectIds": [
+        "tech-radar-skill",
+        "карта-технологий"
+      ],
+      "projectTitles": [
+        "Навык Tech Radar",
+        "Карта технологий"
+      ],
+      "topTopics": [
+        "antigravity",
+        "manual"
+      ],
+      "activeProjects": 2,
+      "researchProjects": 0
+    },
+    {
+      "id": "ai-system-growth",
+      "title": "Развитие ИИ-системы (ядро/база знаний)",
+      "projectCount": 4,
+      "projectIds": [
+        "appscout",
+        "ai-agent-core-workspace",
+        "antigravity-dashboard-workspace",
+        "system-interest-map"
+      ],
+      "projectTitles": [
+        "Разведка приложений",
+        "Основное рабочее пространство ИИ-агента",
+        "Рабочее пространство дашборда Antigravity",
+        "Системная карта интересов"
+      ],
+      "topTopics": [
+        "products",
+        "agents",
+        "antigravity"
+      ],
+      "activeProjects": 4,
+      "researchProjects": 0
+    },
+    {
+      "id": "ai-agents",
+      "title": "ИИ-агенты и автоматизация",
+      "projectCount": 2,
+      "projectIds": [
+        "самосовершенствующиеся-агенты",
+        "skills"
+      ],
+      "projectTitles": [
+        "Самосовершенствующиеся агенты",
+        "Навыки"
+      ],
+      "topTopics": [
+        "manual"
+      ],
+      "activeProjects": 1,
+      "researchProjects": 1
+    },
+    {
+      "id": "work-projects",
+      "title": "Рабочие проекты (Гимназия/Бизнес)",
+      "projectCount": 9,
+      "projectIds": [
+        "davydov-phantom",
+        "grant-presentation",
+        "gymnasium-landing",
+        "interactive-panels-rating",
+        "smartmeeting-backend",
+        "kora-strategy",
+        "ии-агент-для-гимназии",
+        "видео-для-гранта",
+        "презентация-образование-2035"
+      ],
+      "projectTitles": [
+        "Фантом Давыдова",
+        "Грантовая презентация",
+        "Лендинг гимназии",
+        "Рейтинг интерактивных панелей",
+        "Умное совещание: сервер",
+        "Стратегия КОРА",
+        "ИИ-агент для гимназии",
+        "Видео для гранта"
+      ],
+      "topTopics": [
+        "education",
+        "manual",
+        "products"
+      ],
+      "activeProjects": 6,
+      "researchProjects": 1
+    }
+  ],
+  "archives": [
+    {
+      "kind": "chat",
+      "id": "2c707542-1913-4bd7-9571-bd8e77f2c0d3",
+      "title": "Untitled chat (2c707542)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "76f503eb-4bbc-4703-bef4-2de49e7bea3c",
+      "title": "Untitled chat (76f503eb)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "7eba577e-467a-4a48-adaa-66e95002d55c",
+      "title": "Untitled chat (7eba577e)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "61117d13-75f0-44c5-b351-9beb4c8fb88f",
+      "title": "Untitled chat (61117d13)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "31c9b0d9-967e-4e9f-9116-481fcd41b730",
+      "title": "Untitled chat (31c9b0d9)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "76e6d62c-4b74-4645-a5ce-828c2c90527b",
+      "title": "Untitled chat (76e6d62c)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "d7c29297-c014-4292-87d8-4b8d78892494",
+      "title": "Untitled chat (d7c29297)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "b01cdb05-cb2e-4d94-b20f-f7270bba8e97",
+      "title": "Untitled chat (b01cdb05)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "d1d4bf76-c78c-41a9-9c57-24b6114359b3",
+      "title": "Untitled chat (d1d4bf76)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "3df48b6e-f230-4d42-abf9-ba967f569e96",
+      "title": "Untitled chat (3df48b6e)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "b0585502-7a08-4896-844c-2a1965e3bece",
+      "title": "Untitled chat (b0585502)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "c2c6087b-b03d-4803-adc0-5975a0790fef",
+      "title": "Untitled chat (c2c6087b)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "5fbe1d46-b6b8-49bc-89be-e4e1645c99d8",
+      "title": "Untitled chat (5fbe1d46)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "dba3e3ef-fb1d-4c2c-9169-c3fe7a11e84f",
+      "title": "Untitled chat (dba3e3ef)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "3e81e56a-918e-40b5-9bba-f6c13b721225",
+      "title": "Untitled chat (3e81e56a)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "be3e7016-aad9-4af5-bb9d-77f0814f3136",
+      "title": "Untitled chat (be3e7016)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "cf9df6c2-9fa2-4427-b604-02015ad9b581",
+      "title": "Untitled chat (cf9df6c2)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "39648d73-be78-4027-ad0e-ddfc4bac26c3",
+      "title": "Untitled chat (39648d73)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "918d56e8-6bec-480c-a3fa-b2bdaef456bf",
+      "title": "Untitled chat (918d56e8)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "e1ba4023-776b-4005-a4f6-2807d027b9f5",
+      "title": "Untitled chat (e1ba4023)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "d2154b18-1f48-42a3-ab77-ac8cf6046d3e",
+      "title": "Untitled chat (d2154b18)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "237751ce-23fc-4f20-b4cf-0fdfe2710614",
+      "title": "Untitled chat (237751ce)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "193faeac-3a8a-4606-8418-0d6dc8fcd43a",
+      "title": "Untitled chat (193faeac)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "chat",
+      "id": "fc9dbb56-ff10-41b7-a058-06df763eaf18",
+      "title": "Untitled chat (fc9dbb56)",
+      "reason": "unrecovered_or_meaningless",
+      "recoveryStatus": "unrecovered"
+    },
+    {
+      "kind": "project",
+      "id": "agent-second-brain",
+      "title": "Второй мозг агента",
+      "reason": "non_recovered_or_weak",
+      "migrationStatus": "missing_source_and_destination"
+    },
+    {
+      "kind": "project",
+      "id": "agent-second-brain-recovered-fragments",
+      "title": "Второй мозг агента: восстановленные фрагменты",
+      "reason": "non_recovered_or_weak",
+      "migrationStatus": "recovered_fragments_only"
+    },
+    {
+      "kind": "project",
+      "id": "smartmeeting-web",
+      "title": "Умное совещание: веб-интерфейс",
+      "reason": "merged_into_project",
+      "mergedInto": "smartmeeting-backend"
+    },
+    {
+      "kind": "project",
+      "id": "antigravity-dashboard-prototype",
+      "title": "Прототип дашборда Antigravity",
+      "reason": "merged_into_project",
+      "mergedInto": "antigravity-dashboard-workspace"
+    }
+  ],
+  "consolidation": {
+    "archivedProjects": 4,
+    "archivedChats": 24,
+    "projectMerges": 2,
+    "chatMerges": 0
+  },
+  "projects": [
+    {
+      "id": "tgaggregator",
+      "title": "Telegram-агрегатор",
+      "originalTitle": "TGAggregator",
+      "sourceTitle": "TGAggregator",
+      "description": "Телеграм-агрегатор новостей.",
+      "status": "active",
+      "progress": 80,
+      "category": "AI / Агенты",
+      "topic": "agents",
+      "tags": [
+        "agents",
+        "migrated",
+        "chat-linked"
+      ],
+      "lastUpdated": "2026-03-05",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей. ; Телеграм-агрегатор новостей.",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Приложения\\TGAggregator",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\agents\\tg_aggregator",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "788f80be-fece-49a6-b3f1-f1b7013af149",
+        "8474fc38-f361-4e7e-afcd-d8f6fc20b4d8"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 3,
+      "relatedWorkflowsCount": 4,
+      "relatedWorkflowIds": [
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "news-aggregators",
+      "groupTitle": "Агрегаторы новостей и мониторинг"
+    },
+    {
+      "id": "interest-monitoring-loop",
+      "title": "Контур мониторинга интересной информации",
+      "originalTitle": "",
+      "sourceTitle": "Interest Monitoring Loop",
+      "description": "Постоянный процесс поиска, сжатия, маршрутизации и обновления информации под активные проекты и новые идеи.",
+      "status": "active",
+      "progress": 35,
+      "category": "Личная система",
+      "topic": "manual",
+      "tags": [
+        "monitoring",
+        "triage",
+        "ideas-to-projects",
+        "manual",
+        "priority-system"
+      ],
+      "lastUpdated": "2026-03-10",
+      "keyTasks": [
+        {
+          "task": "Собрать постоянный sync-контур",
+          "done": true
+        },
+        {
+          "task": "Добавить мониторинговый блок в дашборд",
+          "done": false
+        },
+        {
+          "task": "Подготовить живые парсеры Telegram и YouTube",
+          "done": false
+        }
+      ],
+      "notes": "До подключения живых парсеров обновляет экспортированные и локально доступные источники.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 0,
+      "relatedWorkflowsCount": 0,
+      "relatedWorkflowIds": [],
+      "groupId": "news-aggregators",
+      "groupTitle": "Агрегаторы новостей и мониторинг"
+    },
+    {
+      "id": "мой-дашборд",
+      "title": "Мой Дашборд",
+      "originalTitle": "",
+      "sourceTitle": "Мой Дашборд",
+      "description": "Единый UI для отображения всех проектов, новостей, агентов и идей. Кроссплатформенный (Desktop + Mobile).",
+      "status": "active",
+      "progress": 15,
+      "category": "Инфраструктура",
+      "topic": "manual",
+      "tags": [
+        "дашборд",
+        "PWA",
+        "React Flow",
+        "Supabase",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-05",
+      "keyTasks": [
+        {
+          "task": "HTML-прототип дашборда",
+          "done": true
+        },
+        {
+          "task": "Интерактивная Mind-Map",
+          "done": false
+        },
+        {
+          "task": "Подключение Supabase Realtime",
+          "done": false
+        },
+        {
+          "task": "Голосовой ввод (Whisper WASM)",
+          "done": false
+        },
+        {
+          "task": "RSS-агрегатор",
+          "done": false
+        },
+        {
+          "task": "PWA и оффлайн",
+          "done": false
+        }
+      ],
+      "notes": "Архитектура описана в трёх документах. Рекомендован стек: SvelteKit + Supabase + tldraw.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [
+        "e13b0857-d937-42e4-a3a9-323827e41efe"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 1,
+      "relatedWorkflowsCount": 4,
+      "webLinks": [
+        {
+          "label": "Локальная страница",
+          "url": "file:///C:/Users/Admin/.gemini/antigravity/scratch/dashboard/index.html"
+        }
+      ],
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5"
+      ],
+      "groupId": "news-aggregators",
+      "groupTitle": "Агрегаторы новостей и мониторинг"
+    },
+    {
+      "id": "copaw-бот",
+      "title": "CoPaw — Бот",
+      "originalTitle": "",
+      "sourceTitle": "CoPaw — Бот",
+      "description": "Телеграм-бот с интеграцией LLM для обработки текстовых и голосовых сообщений. Работает через прокси.",
+      "status": "paused",
+      "progress": 60,
+      "category": "AI / Боты",
+      "topic": "manual",
+      "tags": [
+        "Telegram",
+        "LLM",
+        "Gemini",
+        "OpenRouter",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-04",
+      "keyTasks": [
+        {
+          "task": "Интеграция с Telegram API",
+          "done": true
+        },
+        {
+          "task": "Подключение LLM",
+          "done": true
+        },
+        {
+          "task": "Настройка прокси",
+          "done": true
+        },
+        {
+          "task": "Голосовые сообщения",
+          "done": false
+        },
+        {
+          "task": "Обработка ошибок",
+          "done": false
+        }
+      ],
+      "notes": "Проблемы: прокси, лимиты бесплатных моделей, кодировка. Решения задокументированы.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [
+        "dfbe1752-0165-47dc-9014-15f4c232a9aa"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 1,
+      "relatedWorkflowsCount": 4,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5"
+      ],
+      "groupId": "news-aggregators",
+      "groupTitle": "Агрегаторы новостей и мониторинг"
+    },
+    {
+      "id": "генератор-идей",
+      "title": "Генератор идей",
+      "originalTitle": "",
+      "sourceTitle": "Генератор идей",
+      "description": "IdeaForge: генерация, оценка и развитие идей. Бэклог: голос, анализ источников, дедупликация.",
+      "status": "backlog",
+      "progress": 50,
+      "category": "Продуктивность",
+      "topic": "manual",
+      "tags": [
+        "идеи",
+        "голос",
+        "STT",
+        "GitHub",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-03",
+      "keyTasks": [
+        {
+          "task": "Базовый функционал",
+          "done": true
+        },
+        {
+          "task": "Голосовой ввод (STT)",
+          "done": false
+        },
+        {
+          "task": "Анализ источников",
+          "done": false
+        },
+        {
+          "task": "Авто-перевод и саммари",
+          "done": false
+        },
+        {
+          "task": "Дедупликация идей",
+          "done": false
+        }
+      ],
+      "notes": "Новые фичи в бэклоге: голос и анализ источников.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 0,
+      "relatedWorkflowsCount": 4,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5"
+      ],
+      "groupId": "news-aggregators",
+      "groupTitle": "Агрегаторы новостей и мониторинг"
+    },
+    {
+      "id": "карта-технологий",
+      "title": "Карта технологий",
+      "originalTitle": "",
+      "sourceTitle": "Карта технологий",
+      "description": "Tech Radar: база данных технологий, лучших практик и решений проблем из всех проектов.",
+      "status": "active",
+      "progress": 20,
+      "category": "Инфраструктура",
+      "topic": "manual",
+      "tags": [
+        "скилл",
+        "Antigravity",
+        "best-practices",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-05",
+      "keyTasks": [
+        {
+          "task": "SKILL.md — инструкция для агента",
+          "done": true
+        },
+        {
+          "task": "Первичное сканирование",
+          "done": true
+        },
+        {
+          "task": "Формирование tech_radar.json",
+          "done": false
+        },
+        {
+          "task": "Периодическое обновление",
+          "done": false
+        },
+        {
+          "task": "Виджет в дашборде",
+          "done": false
+        }
+      ],
+      "notes": "Категории: Adopted, Trialing, Assess, Hold.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 0,
+      "relatedWorkflowsCount": 4,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5"
+      ],
+      "groupId": "idea-generators",
+      "groupTitle": "Генераторы идей и визуализация"
+    },
+    {
+      "id": "tech-radar-skill",
+      "title": "Навык Tech Radar",
+      "originalTitle": "Tech Radar Skill",
+      "sourceTitle": "Tech Radar Skill",
+      "description": "Локальный skill tech_radar.",
+      "status": "active",
+      "progress": 80,
+      "category": "Инфраструктура",
+      "topic": "antigravity",
+      "tags": [
+        "antigravity",
+        "migrated"
+      ],
+      "lastUpdated": "2026-03-09",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": false
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar. ; Локальный skill tech_radar.",
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\skills\\tech_radar",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\antigravity\\skills\\tech_radar",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "6a822a41-907f-4acf-8998-502627f5883d"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 1,
+      "relatedWorkflowsCount": 4,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5"
+      ],
+      "groupId": "idea-generators",
+      "groupTitle": "Генераторы идей и визуализация"
+    },
+    {
+      "id": "самосовершенствующиеся-агенты",
+      "title": "Самосовершенствующиеся агенты",
+      "originalTitle": "",
+      "sourceTitle": "Самосовершенствующиеся агенты",
+      "description": "Skill-conductor: самообучающиеся ИИ-агенты с критиком и обратной связью для Antigravity.",
+      "status": "active",
+      "progress": 35,
+      "category": "AI / Агенты",
+      "topic": "manual",
+      "tags": [
+        "агенты",
+        "скиллы",
+        "критик",
+        "Antigravity",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-04",
+      "keyTasks": [
+        {
+          "task": "Адаптация skill-conductor",
+          "done": true
+        },
+        {
+          "task": "Скилл task-executor",
+          "done": true
+        },
+        {
+          "task": "Скилл safety-guardrails",
+          "done": false
+        },
+        {
+          "task": "Улучшение critic_agent",
+          "done": false
+        },
+        {
+          "task": "Feedback loop",
+          "done": false
+        }
+      ],
+      "notes": "Уровень автономии B: агент планирует, пользователь подтверждает.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [
+        "5764591f-8e31-4f9c-8f98-47999f6d4aea",
+        "788f80be-fece-49a6-b3f1-f1b7013af149",
+        "dfbe1752-0165-47dc-9014-15f4c232a9aa"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 3,
+      "relatedWorkflowsCount": 10,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5",
+        "improve-skills-md-6",
+        "improve-skills-md-7",
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "ai-agents",
+      "groupTitle": "ИИ-агенты и автоматизация"
+    },
+    {
+      "id": "skills",
+      "title": "Навыки",
+      "originalTitle": "skills",
+      "sourceTitle": "skills",
+      "description": "Автообнаруженный проект из project_archive.",
+      "status": "research",
+      "progress": 25,
+      "category": "Инфраструктура",
+      "topic": "manual",
+      "tags": [
+        "autodiscovered",
+        "antigravity",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-09",
+      "keyTasks": [
+        {
+          "task": "Проект обнаружен в project_archive",
+          "done": true
+        },
+        {
+          "task": "Требуется уточнить карточку проекта",
+          "done": false
+        }
+      ],
+      "notes": "",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 0,
+      "relatedWorkflowsCount": 0,
+      "relatedWorkflowIds": [],
+      "groupId": "ai-agents",
+      "groupTitle": "ИИ-агенты и автоматизация"
+    },
+    {
+      "id": "grant-presentation",
+      "title": "Грантовая презентация",
+      "originalTitle": "Grant Presentation",
+      "sourceTitle": "Grant Presentation",
+      "description": "Грантовая презентация и связанные материалы.",
+      "status": "active",
+      "progress": 80,
+      "category": "Образование",
+      "topic": "education",
+      "tags": [
+        "education",
+        "migrated"
+      ],
+      "lastUpdated": "2026-03-09",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": false
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы. ; Грантовая презентация и связанные материалы.",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\grant_presentation",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\education\\grant_presentation",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "229bfcfd-d695-48f6-a137-f80cee20a141",
+        "5404366a-f29c-4c7c-a095-db4122e8ca1c",
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "788f80be-fece-49a6-b3f1-f1b7013af149"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 4,
+      "relatedWorkflowsCount": 7,
+      "webLinks": [
+        {
+          "label": "Веб-презентация",
+          "url": "file:///D:/%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%94%D0%B8%D1%81%D0%BA/Yandex.Disk/%D0%9F%D0%A0%D0%9E%D0%95%D0%9A%D0%A2%D0%AB/%D0%93%D1%80%D0%B0%D0%BD%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%B3%D0%B8%D0%BC%D0%BD%D0%B0%D0%B7%D0%B8%D0%B8%20%D0%94%D0%B0%D0%B2%D1%8B%D0%B4%D0%BE%D0%B2%D0%B0/%D0%98%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%BD%D1%8B%D0%B9%20%D0%B3%D1%80%D0%B0%D0%BD%D1%82/technostart_presentation.html"
+        }
+      ],
+      "relatedWorkflowIds": [
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5",
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "gymnasium-landing",
+      "title": "Лендинг гимназии",
+      "originalTitle": "Gymnasium Landing",
+      "sourceTitle": "Gymnasium Landing",
+      "description": "Лендинг гимназии.",
+      "status": "active",
+      "progress": 80,
+      "category": "Образование",
+      "topic": "education",
+      "tags": [
+        "education",
+        "migrated",
+        "chat-linked"
+      ],
+      "lastUpdated": "2026-02-27",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии. ; Лендинг гимназии.",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\gymnasium_landing",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\education\\gymnasium_landing",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "06d2a6bb-4117-40b2-b0dc-da47d655191e",
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "788f80be-fece-49a6-b3f1-f1b7013af149"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 3,
+      "relatedWorkflowsCount": 4,
+      "webLinks": [
+        {
+          "label": "Сайт проекта",
+          "url": "https://gimnaziya-davydova-vv-20260307-175501.netlify.app"
+        }
+      ],
+      "relatedWorkflowIds": [
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "interactive-panels-rating",
+      "title": "Рейтинг интерактивных панелей",
+      "originalTitle": "Interactive Panels Rating",
+      "sourceTitle": "Interactive Panels Rating",
+      "description": "Сайт/рейтинг интерактивных панелей.",
+      "status": "active",
+      "progress": 80,
+      "category": "Продукты",
+      "topic": "products",
+      "tags": [
+        "products",
+        "migrated",
+        "chat-linked"
+      ],
+      "lastUpdated": "2026-02-20",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей. ; Сайт/рейтинг интерактивных панелей.",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\интерактивные доски\\interactive-panels-rating",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\products\\interactive_panels_rating",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "44c45ddd-51ff-45a2-aa29-cda35ae944f9",
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "788f80be-fece-49a6-b3f1-f1b7013af149",
+        "7f90261d-6f66-4c24-93e0-8f6780adb370"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 4,
+      "relatedWorkflowsCount": 4,
+      "webLinks": [
+        {
+          "label": "Локальная страница",
+          "url": "file:///D:/%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%94%D0%B8%D1%81%D0%BA/Yandex.Disk/%D0%9F%D0%A0%D0%9E%D0%95%D0%9A%D0%A2%D0%AB/AI_Workspace/project_archive/products/interactive_panels_rating/index.html"
+        }
+      ],
+      "relatedWorkflowIds": [
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "kora-strategy",
+      "title": "Стратегия КОРА",
+      "originalTitle": "KORA Strategy",
+      "sourceTitle": "KORA Strategy",
+      "description": "Материалы по стратегии KORA.",
+      "status": "active",
+      "progress": 80,
+      "category": "Бизнес",
+      "topic": "business",
+      "tags": [
+        "business",
+        "migrated"
+      ],
+      "lastUpdated": "2026-03-09",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": false
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA. ; Материалы по стратегии KORA.",
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\kora_strategy",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\business\\kora_strategy",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "6a822a41-907f-4acf-8998-502627f5883d"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 1,
+      "relatedWorkflowsCount": 4,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5"
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "smartmeeting-backend",
+      "title": "Умное совещание: сервер",
+      "originalTitle": "SmartMeeting Backend",
+      "sourceTitle": "SmartMeeting Backend",
+      "description": "Backend проекта Умное совещание. Интегрировано: Frontend/PWA проекта Умное совещание. Интегрировано: Автообнаруженный проект из project_archive.",
+      "status": "active",
+      "progress": 80,
+      "category": "Продукты",
+      "topic": "products",
+      "tags": [
+        "products",
+        "migrated",
+        "autodiscovered",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-09",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": false
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс | Интегрировано из: Умное совещание ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс ; Backend проекта Умное совещание. | Интегрировано из: Умное совещание: веб-интерфейс",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Умное совещание\\backend",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\products\\smartmeeting\\backend",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "3c1b423b-139c-4f5f-9474-53fdadff57fe",
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "788f80be-fece-49a6-b3f1-f1b7013af149"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 3,
+      "relatedWorkflowsCount": 4,
+      "webLinks": [
+        {
+          "label": "Локальная страница",
+          "url": "file:///F:/%D0%94%D0%98%D0%9C%D0%90/%D0%9F%D0%A0%D0%9E%D0%95%D0%9A%D0%A2%D0%AB/%D0%A3%D0%BC%D0%BD%D0%BE%D0%B5%20%D1%81%D0%BE%D0%B2%D0%B5%D1%89%D0%B0%D0%BD%D0%B8%D0%B5/web/index.html"
+        }
+      ],
+      "relatedWorkflowIds": [
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "mergedFrom": [
+        {
+          "id": "smartmeeting-web",
+          "title": "Умное совещание: веб-интерфейс",
+          "summary": "Frontend/PWA проекта Умное совещание."
+        }
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "davydov-phantom",
+      "title": "Фантом Давыдова",
+      "originalTitle": "Davydov Phantom",
+      "sourceTitle": "Davydov Phantom",
+      "description": "Основной код проекта Фантом Давыдова.",
+      "status": "active",
+      "progress": 80,
+      "category": "Образование",
+      "topic": "education",
+      "tags": [
+        "education",
+        "migrated",
+        "chat-linked",
+        "workflow-linked"
+      ],
+      "lastUpdated": "2026-03-05",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": true
+        }
+      ],
+      "notes": "Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова. ; Основной код проекта Фантом Давыдова.",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\davydov_phantom",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\education\\davydov_phantom",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "191b61c0-23c3-49cd-a2ab-49b6f80d510b",
+        "52cb3d8c-1196-4e92-b1af-b2668c608a97",
+        "5404366a-f29c-4c7c-a095-db4122e8ca1c",
+        "67c37490-16e8-4a81-91a0-77cb4aad2691",
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "788f80be-fece-49a6-b3f1-f1b7013af149",
+        "d3e079ad-1b74-4be5-806b-7b96f71a548d"
+      ],
+      "relatedWorkflowPaths": [
+        "f:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\davydov_phantom\\docs\\n8n_search_workflow.md"
+      ],
+      "relatedChatsCount": 7,
+      "relatedWorkflowsCount": 15,
+      "webLinks": [
+        {
+          "label": "Локальная страница",
+          "url": "file:///D:/%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%94%D0%B8%D1%81%D0%BA/Yandex.Disk/%D0%9F%D0%A0%D0%9E%D0%95%D0%9A%D0%A2%D0%AB/AI_Workspace/project_archive/education/davydov_phantom/grok_test.html"
+        }
+      ],
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5",
+        "iphone-webhook-json-8",
+        "n8n_search_workflow-md-10",
+        "n8n_search_workflow-md-9",
+        "nano-banana-bot-json-11",
+        "notebooklm-agent-15",
+        "notebooklm-agent-md-12",
+        "remind-ideas-16",
+        "remind-ideas-3",
+        "skill_news_monitor-17",
+        "skill_news_monitor-md-13",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "ии-агент-для-гимназии",
+      "title": "ИИ-агент для гимназии",
+      "originalTitle": "",
+      "sourceTitle": "ИИ-агент для гимназии",
+      "description": "Автономный агент для стратегии развития гимназии Давыдова: исследование, цифровой двойник, дорожная карта.",
+      "status": "research",
+      "progress": 40,
+      "category": "Образование",
+      "topic": "manual",
+      "tags": [
+        "образование",
+        "гимназия",
+        "цифровой двойник",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-04",
+      "keyTasks": [
+        {
+          "task": "Исследовательский промпт",
+          "done": true
+        },
+        {
+          "task": "Отчёт о гимназии",
+          "done": true
+        },
+        {
+          "task": "Архитектура агента",
+          "done": false
+        },
+        {
+          "task": "Дорожная карта",
+          "done": false
+        },
+        {
+          "task": "Веб-презентация",
+          "done": false
+        }
+      ],
+      "notes": "Прагматичный подход, постепенный переход к open-source.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 0,
+      "relatedWorkflowsCount": 4,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5"
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "видео-для-гранта",
+      "title": "Видео для гранта",
+      "originalTitle": "",
+      "sourceTitle": "Видео для гранта",
+      "description": "Конвертация HTML-презентации в MP4 через Remotion: парсинг → слайды → озвучка → рендер.",
+      "status": "paused",
+      "progress": 25,
+      "category": "Медиа",
+      "topic": "manual",
+      "tags": [
+        "Remotion",
+        "видео",
+        "грант",
+        "презентация",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-02",
+      "keyTasks": [
+        {
+          "task": "Парсинг HTML (extract_slides.py)",
+          "done": false
+        },
+        {
+          "task": "Инициализация Remotion",
+          "done": false
+        },
+        {
+          "task": "Компоненты слайдов",
+          "done": false
+        },
+        {
+          "task": "Генерация озвучки (TTS)",
+          "done": false
+        },
+        {
+          "task": "Рендеринг MP4",
+          "done": false
+        }
+      ],
+      "notes": "План утверждён. Следующий шаг: extract_slides.py + init Remotion.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [
+        "229bfcfd-d695-48f6-a137-f80cee20a141",
+        "788f80be-fece-49a6-b3f1-f1b7013af149"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 2,
+      "relatedWorkflowsCount": 8,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5",
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "презентация-образование-2035",
+      "title": "Презентация «Образование 2035»",
+      "originalTitle": "",
+      "sourceTitle": "Презентация «Образование 2035»",
+      "description": "Интерактивная HTML-презентация для президентского гранта.",
+      "status": "done",
+      "progress": 95,
+      "category": "Гранты",
+      "topic": "manual",
+      "tags": [
+        "презентация",
+        "HTML",
+        "образование",
+        "грант",
+        "manual"
+      ],
+      "lastUpdated": "2026-03-02",
+      "keyTasks": [
+        {
+          "task": "Основная презентация",
+          "done": true
+        },
+        {
+          "task": "Слайд «Образование 2035»",
+          "done": true
+        },
+        {
+          "task": "Восстановление иллюстраций",
+          "done": true
+        },
+        {
+          "task": "Финальная полировка",
+          "done": false
+        }
+      ],
+      "notes": "Почти готов. Осталась финальная полировка.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [
+        "229bfcfd-d695-48f6-a137-f80cee20a141",
+        "5404366a-f29c-4c7c-a095-db4122e8ca1c",
+        "788f80be-fece-49a6-b3f1-f1b7013af149"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 3,
+      "relatedWorkflowsCount": 8,
+      "webLinks": [
+        {
+          "label": "Локальная страница",
+          "url": "file:///F:/%D0%94%D0%98%D0%9C%D0%90/%D0%9F%D0%A0%D0%9E%D0%95%D0%9A%D0%A2%D0%AB/%D0%A4%D0%B0%D0%BD%D1%82%D0%BE%D0%BC%20%D0%94%D0%B0%D0%B2%D1%8B%D0%B4%D0%BE%D0%B2%D0%B0%20%D0%92.%D0%92/grant_presentation/index.html"
+        }
+      ],
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5",
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "work-projects",
+      "groupTitle": "Рабочие проекты (Гимназия/Бизнес)"
+    },
+    {
+      "id": "ai-agent-core-workspace",
+      "title": "Основное рабочее пространство ИИ-агента",
+      "originalTitle": "AI Agent Core Workspace",
+      "sourceTitle": "AI Agent Core Workspace",
+      "description": "Основной рабочий каталог агента и workflows.",
+      "status": "active",
+      "progress": 80,
+      "category": "AI / Агенты",
+      "topic": "agents",
+      "tags": [
+        "agents",
+        "migrated"
+      ],
+      "lastUpdated": "2026-03-09",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": false
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows. ; Основной рабочий каталог агента и workflows.",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\ИИ агент на компьютер",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\agents\\ai_agent_core",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "5764591f-8e31-4f9c-8f98-47999f6d4aea",
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "788f80be-fece-49a6-b3f1-f1b7013af149",
+        "dfbe1752-0165-47dc-9014-15f4c232a9aa"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 4,
+      "relatedWorkflowsCount": 10,
+      "relatedWorkflowIds": [
+        "improve-skills-18",
+        "improve-skills-md-6",
+        "improve-skills-md-7",
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "search-with-mcp-19",
+        "send-telegram-message-20",
+        "send-voice-message-21",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "ai-system-growth",
+      "groupTitle": "Развитие ИИ-системы (ядро/база знаний)"
+    },
+    {
+      "id": "antigravity-dashboard-workspace",
+      "title": "Рабочее пространство дашборда Antigravity",
+      "originalTitle": "Antigravity Dashboard Workspace",
+      "sourceTitle": "Antigravity Dashboard Workspace",
+      "description": "Текущий рабочий scratch-каталог. Интегрировано: Ранний прототип дашборда.",
+      "status": "active",
+      "progress": 80,
+      "category": "Инфраструктура",
+      "topic": "antigravity",
+      "tags": [
+        "antigravity",
+        "migrated"
+      ],
+      "lastUpdated": "2026-03-09",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": false
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity ; Текущий рабочий scratch-каталог. | Интегрировано из: Прототип дашборда Antigravity",
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\Мой Дашборд",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\antigravity\\my_dashboard",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "e13b0857-d937-42e4-a3a9-323827e41efe"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 2,
+      "relatedWorkflowsCount": 4,
+      "webLinks": [
+        {
+          "label": "Локальная страница",
+          "url": "file:///D:/%D0%AF%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%94%D0%B8%D1%81%D0%BA/Yandex.Disk/%D0%9F%D0%A0%D0%9E%D0%95%D0%9A%D0%A2%D0%AB/AI_Workspace/project_archive/antigravity/my_dashboard/index.html"
+        }
+      ],
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5"
+      ],
+      "mergedFrom": [
+        {
+          "id": "antigravity-dashboard-prototype",
+          "title": "Прототип дашборда Antigravity",
+          "summary": "Ранний прототип дашборда."
+        }
+      ],
+      "groupId": "ai-system-growth",
+      "groupTitle": "Развитие ИИ-системы (ядро/база знаний)"
+    },
+    {
+      "id": "appscout",
+      "title": "Разведка приложений",
+      "originalTitle": "AppScout",
+      "sourceTitle": "AppScout",
+      "description": "Поиск open-source приложений по идее.",
+      "status": "active",
+      "progress": 80,
+      "category": "Продукты",
+      "topic": "products",
+      "tags": [
+        "products",
+        "migrated",
+        "chat-linked"
+      ],
+      "lastUpdated": "2026-03-05",
+      "keyTasks": [
+        {
+          "task": "Проверен исходный путь проекта",
+          "done": true
+        },
+        {
+          "task": "Папка проекта доступна в project_archive",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные чаты",
+          "done": true
+        },
+        {
+          "task": "Привязаны связанные workflows",
+          "done": false
+        }
+      ],
+      "notes": "Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее. ; Поиск open-source приложений по идее.",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Приложения\\AppScout",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\products\\appscout",
+      "sourceExists": true,
+      "destinationExists": true,
+      "migrationStatus": "migrated",
+      "relatedChatIds": [
+        "67c37490-16e8-4a81-91a0-77cb4aad2691",
+        "6a822a41-907f-4acf-8998-502627f5883d",
+        "788f80be-fece-49a6-b3f1-f1b7013af149"
+      ],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 3,
+      "relatedWorkflowsCount": 8,
+      "relatedWorkflowIds": [
+        "api-keys-1",
+        "deploy-2",
+        "deploy_russia-md-4",
+        "deploy_russia-md-5",
+        "iphone-webhook-json-8",
+        "nano-banana-bot-json-11",
+        "remind-ideas-3",
+        "youtube-transcript-json-14"
+      ],
+      "groupId": "ai-system-growth",
+      "groupTitle": "Развитие ИИ-системы (ядро/база знаний)"
+    },
+    {
+      "id": "system-interest-map",
+      "title": "Системная карта интересов",
+      "originalTitle": "",
+      "sourceTitle": "System Interest Map",
+      "description": "Редактируемый профиль интересов, ролей, фильтров шума и критериев отбора новой информации.",
+      "status": "active",
+      "progress": 40,
+      "category": "Личная система",
+      "topic": "manual",
+      "tags": [
+        "profile",
+        "knowledge-base",
+        "monitoring",
+        "manual",
+        "priority-system"
+      ],
+      "lastUpdated": "2026-03-10",
+      "keyTasks": [
+        {
+          "task": "Собрать роли, темы и сигналы интереса",
+          "done": true
+        },
+        {
+          "task": "Настроить правила маршрутизации новой информации",
+          "done": true
+        },
+        {
+          "task": "Связать профиль с дашбордом и Obsidian",
+          "done": false
+        }
+      ],
+      "notes": "Используется как источник правил для дашборда, Obsidian и будущих парсеров.",
+      "sourcePath": "",
+      "destinationPath": "",
+      "sourceExists": false,
+      "destinationExists": false,
+      "migrationStatus": "manual_only",
+      "relatedChatIds": [],
+      "relatedWorkflowPaths": [],
+      "relatedChatsCount": 0,
+      "relatedWorkflowsCount": 0,
+      "relatedWorkflowIds": [],
+      "groupId": "ai-system-growth",
+      "groupTitle": "Развитие ИИ-системы (ядро/база знаний)"
+    }
+  ]
+}

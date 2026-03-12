@@ -1,0 +1,141 @@
+{
+  "destinationRoot": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive",
+  "reportDirectory": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\_migration_reports",
+  "items": [
+    {
+      "name": "Davydov Phantom",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\davydov_phantom",
+      "relativeDestination": "education\\davydov_phantom",
+      "kind": "directory",
+      "enabled": true,
+      "group": "education",
+      "notes": "Основной код проекта Фантом Давыдова."
+    },
+    {
+      "name": "Grant Presentation",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\grant_presentation",
+      "relativeDestination": "education\\grant_presentation",
+      "kind": "directory",
+      "enabled": true,
+      "group": "education",
+      "notes": "Грантовая презентация и связанные материалы."
+    },
+    {
+      "name": "Gymnasium Landing",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\gymnasium_landing",
+      "relativeDestination": "education\\gymnasium_landing",
+      "kind": "directory",
+      "enabled": true,
+      "group": "education",
+      "notes": "Лендинг гимназии."
+    },
+    {
+      "name": "Interactive Panels Rating",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\интерактивные доски\\interactive-panels-rating",
+      "relativeDestination": "products\\interactive_panels_rating",
+      "kind": "directory",
+      "enabled": true,
+      "group": "products",
+      "notes": "Сайт/рейтинг интерактивных панелей."
+    },
+    {
+      "name": "AppScout",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Приложения\\AppScout",
+      "relativeDestination": "products\\appscout",
+      "kind": "directory",
+      "enabled": true,
+      "group": "products",
+      "notes": "Поиск open-source приложений по идее."
+    },
+    {
+      "name": "TGAggregator",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Приложения\\TGAggregator",
+      "relativeDestination": "agents\\tg_aggregator",
+      "kind": "directory",
+      "enabled": true,
+      "group": "agents",
+      "notes": "Телеграм-агрегатор новостей."
+    },
+    {
+      "name": "SmartMeeting Backend",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Умное совещание\\backend",
+      "relativeDestination": "products\\smartmeeting\\backend",
+      "kind": "directory",
+      "enabled": true,
+      "group": "products",
+      "notes": "Backend проекта Умное совещание."
+    },
+    {
+      "name": "SmartMeeting Web",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Умное совещание\\web",
+      "relativeDestination": "products\\smartmeeting\\web",
+      "kind": "directory",
+      "enabled": true,
+      "group": "products",
+      "notes": "Frontend/PWA проекта Умное совещание."
+    },
+    {
+      "name": "AI Agent Core Workspace",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\ИИ агент на компьютер",
+      "relativeDestination": "agents\\ai_agent_core",
+      "kind": "directory",
+      "enabled": true,
+      "group": "agents",
+      "notes": "Основной рабочий каталог агента и workflows."
+    },
+    {
+      "name": "Agent Second Brain",
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\agent-second-brain",
+      "relativeDestination": "agents\\agent_second_brain",
+      "kind": "directory",
+      "enabled": true,
+      "group": "agents",
+      "notes": "Локальная ветка/эксперимент agent-second-brain."
+    },
+    {
+      "name": "Antigravity Dashboard Workspace",
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\Мой Дашборд",
+      "relativeDestination": "antigravity\\my_dashboard",
+      "kind": "directory",
+      "enabled": true,
+      "group": "antigravity",
+      "notes": "Текущий рабочий scratch-каталог."
+    },
+    {
+      "name": "Antigravity Dashboard Prototype",
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\dashboard",
+      "relativeDestination": "antigravity\\dashboard_prototype",
+      "kind": "directory",
+      "enabled": true,
+      "group": "antigravity",
+      "notes": "Ранний прототип дашборда."
+    },
+    {
+      "name": "Tech Radar Skill",
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\skills\\tech_radar",
+      "relativeDestination": "antigravity\\skills\\tech_radar",
+      "kind": "directory",
+      "enabled": true,
+      "group": "antigravity",
+      "notes": "Локальный skill tech_radar."
+    },
+    {
+      "name": "KORA Strategy",
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\kora_strategy",
+      "relativeDestination": "business\\kora_strategy",
+      "kind": "directory",
+      "enabled": true,
+      "group": "business",
+      "notes": "Материалы по стратегии KORA."
+    },
+    {
+      "name": "CoPaw Config",
+      "sourcePath": "C:\\Users\\Admin\\.copaw",
+      "relativeDestination": "configs\\copaw",
+      "kind": "directory",
+      "enabled": false,
+      "group": "configs",
+      "notes": "Опционально: конфиг и память CoPaw. Отключено по умолчанию."
+    }
+  ]
+}

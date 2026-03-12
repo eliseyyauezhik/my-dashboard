@@ -1,0 +1,1187 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ТехноСтарт — Проект на Президентский грант</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Color Palette for a Government/Tech Grant */
+            --bg-body: #f3f4f6;
+            /* Very subtle gray background */
+            --bg-slide: #ffffff;
+            --text-main: #1f2937;
+            /* Very dark gray for soft high contrast */
+            --text-muted: #6b7280;
+            --text-light: #9ca3af;
+
+            --accent-primary: #38bdf8;
+            /* Light blue */
+            /* Deep reliable blue */
+            --accent-hover: #0284c7;
+            --accent-light: #f0f9ff;
+
+            --border-light: #e5e7eb;
+            --border-heavy: #d1d5db;
+
+            /* Typography */
+            --font-headings: 'Outfit', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-body);
+            color: var(--text-main);
+
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .slides {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 40px 16px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Base Slide Structure */
+        .slide {
+            background: var(--bg-slide);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 50px 60px;
+            position: relative;
+            page-break-inside: avoid;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            /* Soft, premium shadow */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 98vh;
+            /* Force them to act like printable A4 pages */
+        }
+
+        /* Slide Number Indicator */
+        .slide-num {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-family: var(--font-headings);
+
+            color: var(--text-light);
+
+            letter-spacing: 0.5px;
+        }
+
+        /* Typography Hierarchy */
+        .slide h2 {
+            font-family: var(--font-headings);
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #111827;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .slide h3 {
+            font-family: var(--font-headings);
+
+            margin: 28px 0 16px;
+            color: #374151;
+
+        }
+
+        .slide h4 {
+            font-family: var(--font-headings);
+
+            margin-bottom: 12px;
+            color: #4b5563;
+        }
+
+        /* Body Text */
+        .slide p,
+        .slide li {
+
+            margin-bottom: 14px;
+
+            color: var(--text-main);
+
+        }
+
+        /* Footnotes & Captions */
+        .slide .footnote,
+        .slide small,
+        .slide .score-footnote {
+
+            color: var(--text-muted) !important;
+
+        }
+
+        /* Lists */
+        .slide ul {
+            margin-left: 24px;
+            margin-bottom: 20px;
+        }
+
+        .slide li {
+            padding-left: 6px;
+        }
+
+        .slide li::marker {
+            color: var(--accent-primary);
+        }
+
+        /* Interactive Elements / Pills */
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .pill {
+            background: var(--accent-light);
+            color: var(--accent-primary);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            padding: 8px 18px;
+            border-radius: 100px;
+
+            font-family: var(--font-headings);
+            letter-spacing: 0.3px;
+        }
+
+        /* Score Bars (Readiness) */
+        .score-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+        }
+
+        .score-label {
+            min-width: 180px;
+
+            color: #374151;
+            font-family: var(--font-headings);
+        }
+
+        .score-bar {
+            flex-grow: 1;
+            height: 24px;
+            background: #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .score-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            color: white;
+
+            font-family: var(--font-headings);
+            transition: width 1s ease-out;
+        }
+
+        /* Tags */
+        .tag {
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 6px;
+
+            font-family: var(--font-headings);
+        }
+
+        .tag-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            /* Changed for rounded corners */
+            border-spacing: 0;
+            margin-top: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        th {
+            background: #f8fafc;
+            font-family: var(--font-headings);
+
+            color: #1e293b;
+            padding: 14px 16px;
+
+            border-bottom: 2px solid var(--border-light);
+            text-align: left;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-light);
+
+            vertical-align: top;
+            color: #475569;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Alternating row colors off by default, relies on inline styles. But we can override them to look better */
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .slides {
+                padding: 0;
+                gap: 0;
+            }
+
+            .slide {
+                box-shadow: none;
+                border: none;
+                min-height: 100vh;
+                margin-bottom: 0;
+                padding: 1cm;
+                page-break-after: always;
+                border-radius: 0;
+            }
+
+            .download-btn {
+                display: none !important;
+            }
+        }
+
+        /* Download Buttons */
+        .download-group {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .download-btn {
+            background: var(--accent-primary);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family: var(--font-headings);
+            font-size: 0.85rem;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(4px);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+        }
+
+        .download-btn-2 {
+            background: #f59e0b;
+            color: white !important;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+        }
+
+        .download-btn-2:hover {
+            background: #d97706;
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="slides">
+
+        <!-- SLIDE 1: TITLE -->
+        <div class="slide" style="text-align:center;padding:60px 36px; display:flex; flex-direction:column;">
+            <span class="slide-num">1</span>
+
+            <div style="flex-grow: 1; display:flex; flex-direction:column; justify-content:center;">
+                <p style="color:var(--muted);margin-bottom:24px">Заявка на грант Фонда президентских
+                    грантов
+                    · 2-й конкурс 2026</p>
+                <h2 style="font-size: 4rem !important; font-weight: 700; margin-bottom: 8px; color: #111827; letter-spacing: -2px;">
+                    ТехноСтарт</h2>
+                <p style="color:#444;max-width:700px;margin:0 auto;">Городские
+                    фестивали
+                    профессиональных проб по робототехнике<br>для школьников Набережных Челнов</p>
+            </div>
+
+            <div style="margin-top: 20px; padding-top: 20px;">
+                <p style="color:var(--muted);margin-bottom:0">Заявитель: Гимназия им. В.В. Давыдова ·
+                    г. Набережные Челны, Республика Татарстан</p>
+            </div>
+        </div>
+
+
+        <!-- SLIDE 3: PROBLEM -->
+        <div class="slide">
+            <span class="slide-num">2</span>
+            <h2>Проблема</h2>
+            <p><strong>Глобальные тренды:</strong> Развитие технологий (робототехника, нейросети, автоматизированные
+                линии) радикально меняет формат работы с техникой. На первый план выходит ультимативное требование к
+                <strong>качеству инженерного мышления</strong> — способности не просто обслуживать, но и проектировать,
+                управлять сложными интеллектуальными системами. Формирование такого мышления со школьной скамьи сегодня
+                — ключевое условие сохранения технологического суверенитета страны.
+            </p>
+            <p style="margin-top:8px;margin-bottom:16px;"><strong>Региональная потребность:</strong> Современная
+                промышленность испытывает колоссальный кадровый голод. Это критично для крупных индустриальных кластеров
+                — Набережных Челнов, Елабуги (ОЭЗ «Алабуга»), всего Татарстана и России в целом. Экономика региона,
+                опирающаяся на промышленных гигантов (таких как ПАО «КАМАЗ»), остро нуждается в поколениях инженеров с
+                развитым системным мышлением.</p>
+
+            <div class="footnote"
+                style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px; margin-top:20px;">
+                <p
+                    style=" color:#6b6b65; margin-top:-10px; margin-bottom:14px;  background:#fffbeb; border-radius:6px; padding:7px 12px;">
+                    <strong style="color:#555;">Источники:</strong>
+                    <a href="http://kremlin.ru/acts/bank/50542" target="_blank"
+                        style="color:#6b6b65;text-decoration:none;border-bottom:1px dashed #aaa;">Указ №309, 2024</a> —
+                    цель
+                    100 роботов / 10 000 работников к 2030&thinsp;г.&nbsp;&middot;&nbsp;
+                    <a href="https://www.government.ru/rugovclassifier/843/events/" target="_blank"
+                        style="color:#6b6b65;text-decoration:none;border-bottom:1px dashed #aaa;">Нацпроект «Средства
+                        производства»</a> — 350&thinsp;млрд руб.&nbsp;&middot;&nbsp;
+                    <a href="http://www.kremlin.ru/acts/bank/50684" target="_blank"
+                        style="color:#6b6b65;text-decoration:none;border-bottom:1px dashed #aaa;">Стратегия НТР, Указ
+                        №803</a> — интел. труд&nbsp;&middot; Минпромторг РФ (дефицит 2&thinsp;млн инженеров)
+                </p>
+            </div>
+
+        </div>
+
+        <!-- SLIDE 3b: PROBLEM CONT. -->
+        <div class="slide">
+            <span class="slide-num">3</span>
+            <h2>Проблема: Препятствия инженерному мышлению</h2>
+            <ul>
+                <li><strong>Технологические («клиповое мышление»):</strong> Беспрецедентная информационная
+                    перегрузка и
+                    постоянный скроллинг коротких видео (Reels, TikTok) вызывают когнитивное истощение. У молодежи
+                    формируется фрагментарное восприятие: возникают критические трудности с длительной
+                    концентрацией,
+                    глубоким анализом и осмыслением сложных систем (навык Deep Work).</li>
+                <li><strong>Социальные:</strong> Информационный вакуум в семьях (незнание перспектив работы на
+                    <em>чистых</em> высокотехнологичных производствах) и устаревшие стереотипы общества («завод —
+                    это
+                    непрестижно»).
+                </li>
+                <li><strong>Образовательные:</strong> Дефицит созидательного опыта. Большинство школьников не имеют
+                    возможности работать руками, конструировать и видеть физический результат интеллектуального
+                    труда.
+                </li>
+            </ul>
+
+
+        </div>
+
+        <!-- SLIDE 4: SOLUTION -->
+        <div class="slide">
+            <span class="slide-num">4</span>
+            <h2>Решение: Фестивали профессиональных проб</h2>
+            <p>Цикл из <strong>4 городских фестивалей</strong> по робототехнике на базе школ
+                г.&thinsp;Набережные Челны. Каждый фестиваль — 50 участников, 8–10 кл., практика + живой контакт с
+                индустрией.</p>
+
+            <h3>Ключевые активности</h3>
+            <div class="pill-row" style="margin-bottom:12px;">
+                <div class="pill">🔧 Пробы: механика, электроника, программирование, 3d моделирование и печать</div>
+            </div>
+            <div class="pill-row">
+                <div class="pill">🎯 Деловые игры: карьерный путь</div>
+                <div class="pill">🏭 Встречи с инженерами реальных производств</div>
+            </div>
+
+            <div
+                style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:6px;padding:12px 16px;margin-top:14px;">
+                <p style="margin-bottom:6px;color:#0369a1;"><strong>Почему именно этот формат —
+                        обосновано
+                        наукой и практикой ФПГ</strong></p>
+                <p style="margin-bottom:5px;color:#3d3d3a;">Метод профессиональных проб — доказанный
+                    инструмент профориентации
+                    (<a href="https://www.instrao.ru/" target="_blank"
+                        style="color:#6b6b65;text-decoration:none;border-bottom:1px dashed #aaa;">ИНСТРАО РАО</a>,
+                    методрекомендации Минпросвещения 2019).
+                    Исследования НИУ ВШЭ (2021–2023): практики в <strong>7–10 раз эффективнее</strong> пассивного
+                    просвещения.</p>
+                <p style="margin-bottom:5px;color:#3d3d3a;">Технические практики активируют сразу
+                    несколько систем мозга, развивают <em>«послепроизвольное внимание»</em>
+                    и служат доказанным противоядием клиповому мышлению (иссл. UCSF/IJMRA, КубГУ по нейропластичности).
+                </p>
+                <p style="margin:0;color:#3d3d3a;">ФПГ системно поддерживает этот подход: «Технобол»
+                    (2025), «33Ампера» (2021), «Инж. каникулы» (2022)
+                    — все победители с формулой: <strong>100% практика + наставники с производства + измеримый
+                        результат.</strong></p>
+            </div>
+        </div>
+
+        <!-- SLIDE 4б: APPLICANT INFO CARD -->
+        <div class="slide" style="padding: 0; display: flex; flex-direction: row;">
+            
+            <!-- LEFT COLUMN (TEXT) -->
+            <div style="flex: 1; padding: 50px 40px 50px 60px; display: flex; flex-direction: column; justify-content: flex-start;">
+                <span class="slide-num" style="top: 24px; right: auto; left: 32px;">5</span>
+                <p style="color:var(--accent-primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px; margin-top:20px; font-size:1.2rem; font-weight:700;">
+                    Исполнитель проекта</p>
+                <h2 style="margin-bottom:6px; font-size:3.5rem; font-weight:800; line-height:1.1;">Гимназия им. В.В. Давыдова</h2>
+                <p style="color:var(--muted);margin-bottom:20px;">Первая частная школа Республики
+                    Татарстан (осн. 1990) <span style="margin:0 10px;">|</span> <a href="https://gimnazia-davydova.ru" target="_blank" style="font-weight:600;">gimnazia-davydova.ru</a></p>
+
+                <h3 style="margin-top: 0;">Сквозная методология: теоретическое и проектное мышление</h3>
+                <p>35-летний опыт системы развивающего обучения Эльконина — Давыдова.
+                    <strong>Единственная школа в регионе</strong>, выстроившая сквозную методологию формирования теоретического и проектного мышления на всех ступенях:
+                </p>
+                <ul style="margin-bottom:20px;">
+                    <li><strong>Младшая школа:</strong> теоретическое мышление (ребёнок — деятель)</li>
+                    <li><strong>Средняя школа:</strong> проектная деятельность, нетиповые задачи</li>
+                    <li><strong>Старшая школа:</strong> осознанная профориентация + тьюторство</li>
+                </ul>
+
+                <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px; margin-top: auto;">
+                    <h4 style="margin-bottom:12px;color:#334155;">Научно-практические проекты</h4>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                        <div><strong style="color:#0f172a;">«Школьная академия наук»</strong>
+                            <p style="color:#475569;margin-bottom:0;font-size:0.9rem;">Лаборатории + «Малые Давыдовские чтения».</p>
+                        </div>
+                        <div><strong style="color:#0f172a;">Инженерное направление</strong>
+                            <p style="color:#475569;margin-bottom:0;font-size:0.9rem;">Кванториум, IT-Парк; техн. смены.</p>
+                        </div>
+                        <div><strong style="color:#0f172a;">«Бесконфликтное общение»</strong>
+                            <p style="color:#475569;margin-bottom:0;font-size:0.9rem;">Кейсы коммуникации подростков.</p>
+                        </div>
+                        <div><strong style="color:#0f172a;">«Диалог поколений»</strong>
+                            <p style="color:#475569;margin-bottom:0;font-size:0.9rem;">Краеведческий проект Н.Челнов.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN (IMAGE FULL HEIGHT) -->
+            <div style="flex: 0 0 350px; position: relative;">
+                <img loading="lazy" decoding="async" src="gymnasium_photo.png" alt="Фото Гимназии им. В.В. Давыдова"
+                    style="width: 100%; height: 100%; object-fit: cover; border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+            </div>
+
+        </div>
+
+
+
+        <!-- SLIDE 4в: TEAM SECTION -->
+        <div class="slide">
+            <span class="slide-num">6</span>
+            <p style="color:var(--accent-primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Команда
+                проекта</p>
+            <h2 style="margin-bottom:24px;">Ключевые эксперты и наставники</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+
+                <!-- Card 1 -->
+                <div
+                    style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 12px; padding: 20px; display: flex; gap: 16px; align-items: start;">
+                    <img loading="lazy" decoding="async" src="Татьяна Александровна.jpg" alt="Татьяна Сунгатуллина" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border-light);">
+                    <div>
+                        <h3 style="margin: 0 0 4px; font-size: 1.1rem; color: #111827;">Татьяна Сунгатуллина</h3>
+                        <p style="margin: 0 0 8px; font-size: 0.9rem; color: #d97706; font-weight: 500;">Руководитель
+                            проекта / Директор</p>
+                        <p style="margin: 0; font-size: 0.85rem; color: #475569; line-height: 1.4;">Преподаватель высшей
+                            категории. Награждена Почётными грамотами МО РТ и РФ. 35 лет опыта в сфере развивающего
+                            обучения.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 12px; padding: 20px; display: flex; gap: 16px; align-items: start;">
+                    <img loading="lazy" decoding="async" src="Вера Анатольевна.jpg" alt="Вера Патракеева" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border-light);">
+                    <div>
+                        <h3 style="margin: 0 0 4px; font-size: 1.1rem; color: #111827;">Вера Патракеева</h3>
+                        <p style="margin: 0 0 8px; font-size: 0.9rem; color: #0284c7; font-weight: 500;">Зам. директора
+                            по воспит. работе</p>
+                        <p style="margin: 0; font-size: 0.85rem; color: #475569; line-height: 1.4;">Психолог высшей
+                            категории, учитель физики и естествознания. Куратор программ мотивации подростков и деловых
+                            игр.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 12px; padding: 20px; display: flex; gap: 16px; align-items: start;">
+                    <img loading="lazy" decoding="async" src="Сибгатуллина Елена Владимировна.jfif" alt="Елена Сибгатуллина" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border-light);">
+                    <div>
+                        <h3 style="margin: 0 0 4px; font-size: 1.1rem; color: #111827;">Елена Сибгатуллина</h3>
+                        <p style="margin: 0 0 8px; font-size: 0.9rem; color: #d97706; font-weight: 500;">Зам. директора
+                            по развитию</p>
+                        <p style="margin: 0; font-size: 0.85rem; color: #475569; line-height: 1.4;">Педагог-психолог
+                            высшей категории. Эксперт по стратегическому развитию образовательных проектов и межшкольных
+                            партнёрств.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    style="background: #f8fafc; border: 1px solid var(--border-light); border-radius: 12px; padding: 20px; display: flex; gap: 16px; align-items: start;">
+                    <img loading="lazy" decoding="async" src="Деняпкина Эльза Маратовна.jfif" alt="Эльза Деняпкина" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border-light);">
+                    <div>
+                        <h3 style="margin: 0 0 4px; font-size: 1.1rem; color: #111827;">Эльза Деняпкина</h3>
+                        <p style="margin: 0 0 8px; font-size: 0.9rem; color: #0284c7; font-weight: 500;">Зам. директора
+                            по метод. работе</p>
+                        <p style="margin: 0; font-size: 0.85rem; color: #475569; line-height: 1.4;">Педагог-психолог
+                            высшей категории. Отвечает за методологическую упаковку профессиональных проб и оценку её
+                            качества.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 (Repina) -->
+                <div
+                    style="background: #f0f9ff; border: 2px solid #bae6fd; border-radius: 12px; padding: 20px; display: flex; gap: 16px; align-items: start;">
+                    <img loading="lazy" decoding="async" src="Репина Ольга Константиновна.png" alt="Ольга Репина" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid #0284c7; box-shadow: 0 4px 12px rgba(56,189,248,0.3);">
+                    <div>
+                        <h3 style="margin: 0 0 4px; font-size: 1.1rem; color: #0f172a;">Ольга Репина</h3>
+                        <p style="margin: 0 0 8px; font-size: 0.9rem; color: #0284c7; font-weight: 600;">Научный
+                            консульт. / Эксперт</p>
+                        <p
+                            style="margin: 0 0 12px; font-size: 0.85rem; color: #334155; line-height: 1.4;">
+                            Кандидат психологических наук, директор Центра компетенций АНО ДПО «Академия менеджмента».
+                            Спикер, эксперт Университета Талантов. Автор научных публикаций по педагогике и оценке
+                            профессиональных компетенций в базе PsyJournals.ru.</p>
+                        <div style="display: flex; gap: 8px;">
+                            <span class="pill"
+                                style="font-size: 0.75rem; padding: 4px 10px; background: white;">Методология
+                                оценки</span>
+                            <span class="pill"
+                                style="font-size: 0.75rem; padding: 4px 10px; background: white;">Профориентация</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SLIDE: STAGES OVERVIEW -->
+        <div class="slide">
+            <span class="slide-num">7</span>
+            <h2 style="margin-bottom:20px;">Дорожная карта проекта</h2>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+                <!-- Этап 1 -->
+                <div
+                    style="border-left:4px solid #f59e0b;padding:10px 16px;background:#fffbeb;border-radius:0 8px 8px 0;">
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;">
+                        <strong><strong style="font-family:var(--font-headings); font-size:1.15rem; color:#111827;">Этап
+                                1 —</strong> Подготовительный</strong>
+                        <span style="color:var(--muted);">фев. — апр. 2025</span>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+                        <span class="pill"
+                            style="background:#fef3c7;border-color:#fcd34d;color:#92400e;padding:4px 12px;">Разработка
+                            программы профпроб</span>
+                        <span class="pill"
+                            style="background:#fef3c7;border-color:#fcd34d;color:#92400e;padding:4px 12px;">Набор
+                            и обучение волонтёров</span>
+                        <span class="pill"
+                            style="background:#fef3c7;border-color:#fcd34d;color:#92400e;padding:4px 12px;">Изготовление
+                            оборудования</span>
+                        <span class="pill"
+                            style="background:#fef3c7;border-color:#fcd34d;color:#92400e;padding:4px 12px;">Информ.
+                            кампания (200 уч-ков)</span>
+                    </div>
+                </div>
+                <!-- Этап 2 -->
+                <div
+                    style="border-left:4px solid #0ea5e9;padding:10px 16px;background:#f0f9ff;border-radius:0 8px 8px 0;">
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;">
+                        <strong><strong style="font-family:var(--font-headings); font-size:1.15rem; color:#111827;">Этап
+                                2 —</strong> Основной: 4 фестиваля</strong>
+                        <span style="color:var(--muted);">апр. — нояб. 2025</span>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+                        <span class="pill"
+                            style="background:#e0f2fe;border-color:#7dd3fc;color:#075985;padding:4px 12px;">Фестиваль
+                            I (апр.–апр.)</span>
+                        <span class="pill"
+                            style="background:#e0f2fe;border-color:#7dd3fc;color:#075985;padding:4px 12px;">Фестиваль
+                            II (сент.)</span>
+                        <span class="pill"
+                            style="background:#e0f2fe;border-color:#7dd3fc;color:#075985;padding:4px 12px;">Фестиваль
+                            III (окт.)</span>
+                        <span class="pill"
+                            style="background:#e0f2fe;border-color:#7dd3fc;color:#075985;padding:4px 12px;">Фестиваль
+                            IV (нояб.)</span>
+                    </div>
+                    <p style="color:var(--muted);margin-top:6px;">По 50 участников на каждом · пробы +
+                        встречи с инженерами + деловые игры</p>
+                </div>
+                <!-- Этап 3 -->
+                <div
+                    style="border-left:4px solid #38bdf8;padding:10px 16px;background:#f0f9ff;border-radius:0 8px 8px 0;">
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;">
+                        <strong><strong style="font-family:var(--font-headings); font-size:1.15rem; color:#111827;">Этап
+                                3 —</strong> Подведение итогов</strong>
+                        <span style="color:var(--muted);">дек. 2025</span>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+                        <span class="pill"
+                            style="background:#e0f2fe;border-color:#7dd3fc;color:#0369a1;padding:4px 12px;">Итоговое
+                            анкетирование (150 уч.)</span>
+                        <span class="pill"
+                            style="background:#e0f2fe;border-color:#7dd3fc;color:#0369a1;padding:4px 12px;">Сборник
+                            работ участников</span>
+                        <span class="pill"
+                            style="background:#e0f2fe;border-color:#7dd3fc;color:#0369a1;padding:4px 12px;">Отчётная
+                            публикация (5 СМИ)</span>
+                    </div>
+                </div>
+                <!-- Этап 4 -->
+                <div
+                    style="border-left:4px solid #f59e0b;padding:10px 16px;background:#fffbeb;border-radius:0 8px 8px 0;">
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;">
+                        <strong><strong style="font-family:var(--font-headings); font-size:1.15rem; color:#111827;">Этап
+                                4 —</strong> Аналитика и отчётность</strong>
+                        <span style="color:var(--muted);">янв. — фев. 2026</span>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+                        <span class="pill"
+                            style="background:#fef3c7;border-color:#fcd34d;color:#78350f;padding:4px 12px;">Отчёт
+                            по KPI (≥30 уч. → инж. направления)</span>
+                        <span class="pill"
+                            style="background:#fef3c7;border-color:#fcd34d;color:#78350f;padding:4px 12px;">Финансовый
+                            отчёт</span>
+                        <span class="pill"
+                            style="background:#fef3c7;border-color:#fcd34d;color:#78350f;padding:4px 12px;">Методическое
+                            пособие</span>
+                    </div>
+                </div>
+                <!-- Этап 5 -->
+                <div
+                    style="border-left:4px solid #f97316;padding:10px 16px;background:#fff7ed;border-radius:0 8px 8px 0;">
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;">
+                        <strong><strong style="font-family:var(--font-headings); font-size:1.15rem; color:#111827;">Этап
+                                5 —</strong> Масштабирование</strong>
+                        <span style="color:var(--muted);">с марта 2026</span>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+                        <span class="pill"
+                            style="background:#ffedd5;border-color:#fdba74;color:#c2410c;padding:4px 12px;">Тиражирование
+                            (6+ городов РТ)</span>
+                        <span class="pill"
+                            style="background:#ffedd5;border-color:#fdba74;color:#c2410c;padding:4px 12px;">Открытые
+                            материалы курса</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- SLIDE 8: RESULTS -->
+        <div class="slide">
+            <span class="slide-num">8</span>
+            <h2>Ожидаемые результаты и KPI</h2>
+            <p style="margin-bottom:18px;color:var(--muted);">Проект ориентирован не на разовое событие, а на измеримый рост интереса школьников к инженерным направлениям и на создание повторяемой модели профориентации для школ Набережных Челнов.</p>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:22px 0 26px;">
+                <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:14px;padding:18px;">
+                    <div style="font-size:2rem;font-weight:800;color:#1d4ed8;line-height:1;">200</div>
+                    <div style="margin-top:6px;font-weight:600;color:#1e3a8a;">участников 8-10 классов</div>
+                    <p style="margin-top:10px;font-size:.92rem;color:#475569;">Не менее 200 школьников пройдут цикл инженерных профессиональных проб на базе Гимназии и школ-партнеров.</p>
+                </div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:18px;">
+                    <div style="font-size:2rem;font-weight:800;color:#15803d;line-height:1;">4</div>
+                    <div style="margin-top:6px;font-weight:600;color:#166534;">городских фестиваля</div>
+                    <p style="margin-top:10px;font-size:.92rem;color:#475569;">Механика, электроника, программирование и прикладные инженерные практики с наставниками из отрасли.</p>
+                </div>
+                <div style="background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:18px;">
+                    <div style="font-size:2rem;font-weight:800;color:#c2410c;line-height:1;">+25%</div>
+                    <div style="margin-top:6px;font-weight:600;color:#9a3412;">рост интереса к инженерии</div>
+                    <p style="margin-top:10px;font-size:.92rem;color:#475569;">Измеряется анкетированием "до/после" по отношению к инженерным профессиям и готовности выбирать технический трек.</p>
+                </div>
+                <div style="background:#faf5ff;border:1px solid #d8b4fe;border-radius:14px;padding:18px;">
+                    <div style="font-size:2rem;font-weight:800;color:#7e22ce;line-height:1;">6+</div>
+                    <div style="margin-top:6px;font-weight:600;color:#6b21a8;">партнеров в контуре проекта</div>
+                    <p style="margin-top:10px;font-size:.92rem;color:#475569;">Индустриальные, образовательные и школьные партнеры участвуют в фестивалях, наставничестве и тиражировании модели.</p>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start;">
+                <div style="background:#f8fafc;border:1px solid var(--border-light);border-radius:14px;padding:18px;">
+                    <h3 style="margin-bottom:12px;color:#0f172a;">Количественные и качественные эффекты</h3>
+                    <ul style="margin:0;padding-left:18px;line-height:1.6;">
+                        <li>не менее 200 участников из 8-10 классов;</li>
+                        <li>не менее 4 полноценных фестивалей профессиональных проб;</li>
+                        <li>рост информированности о технических образовательных траекториях не менее чем на 30%;</li>
+                        <li>формирование базы методических материалов для повторного запуска и тиражирования;</li>
+                        <li>появление у школьников подтвержденного созидательного опыта, контакта с инженерами и понимания карьерных маршрутов.</li>
+                    </ul>
+                </div>
+                <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:18px;">
+                    <h3 style="margin-bottom:12px;color:#92400e;">Как верифицируется результат</h3>
+                    <ul style="margin:0;padding-left:18px;line-height:1.6;">
+                        <li>входное и итоговое анкетирование;</li>
+                        <li>регистрация участников и листы присутствия;</li>
+                        <li>пакет партнерских писем и актов участия;</li>
+                        <li>публичные публикации и итоговый отчет проекта;</li>
+                        <li>методический пакет для следующего цикла и школ-партнеров.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: RESOURCES -->
+        <div class="slide">
+            <span class="slide-num">9</span>
+            <h2>Ресурсная модель, партнеры и устойчивость</h2>
+            <p style="margin-bottom:18px;color:var(--muted);">В презентации фиксируется логика ресурсного обеспечения проекта. Точные суммы и постатейная смета выносятся в бюджетную форму заявки и приложения, чтобы не перегружать слайды и не подменять смету общими тезисами.</p>
+
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;">
+                <div style="background:#f8fafc;border:1px solid var(--border-light);border-radius:14px;padding:18px;">
+                    <h3 style="margin-bottom:12px;color:#0f172a;">Средства гранта</h3>
+                    <ul style="margin:0;padding-left:18px;line-height:1.6;">
+                        <li>оборудование и расходные материалы для профпроб;</li>
+                        <li>оплата труда методистов, координаторов и профильных наставников;</li>
+                        <li>информационное сопровождение и упаковка результатов;</li>
+                        <li>организационные расходы, напрямую связанные с календарным планом.</li>
+                    </ul>
+                </div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:18px;">
+                    <h3 style="margin-bottom:12px;color:#166534;">Собственный вклад и партнеры</h3>
+                    <ul style="margin:0;padding-left:18px;line-height:1.6;">
+                        <li>помещения, инфраструктура и кадровый ресурс Гимназии;</li>
+                        <li>вклад школ-партнеров в набор и сопровождение участников;</li>
+                        <li>индустриальное участие ПАО "КАМАЗ" и профильных экспертов;</li>
+                        <li>партнерский контур СПО/вузов для демонстрации образовательных маршрутов.</li>
+                    </ul>
+                </div>
+                <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:14px;padding:18px;">
+                    <h3 style="margin-bottom:12px;color:#1d4ed8;">Устойчивость после гранта</h3>
+                    <ul style="margin:0;padding-left:18px;line-height:1.6;">
+                        <li>повторяемый формат фестивалей и готовый сценарный пакет;</li>
+                        <li>открытые методические материалы и публичный отчет;</li>
+                        <li>встраивание практик в профориентационную работу Гимназии;</li>
+                        <li>масштабирование модели на школы Набережных Челнов и Республики Татарстан.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top:22px;background:#fff7ed;border:1px solid #fdba74;border-radius:14px;padding:18px;">
+                <strong style="display:block;margin-bottom:8px;color:#9a3412;">Информационная открытость проекта</strong>
+                <p style="margin:0;color:#7c2d12;line-height:1.6;">Ход реализации и результаты проекта публикуются на ресурсах Гимназии, в городских медиа и партнерских каналах. Публичная отчетность усиливает доверие к проекту, подтверждает социальный эффект и поддерживает следующий цикл набора участников.</p>
+            </div>
+        </div>
+
+        <!-- APPENDIX 1: SURVEY INFOGRAPHICS -->
+            <div style="margin-top:40px;padding-top:24px;border-top:2px solid var(--border);">
+                <p style="text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:16px;">
+                    Приложение 1 &mdash; Результаты профориентационного опроса</p>
+
+                <div class="slide" style="box-shadow:none;border:1px solid var(--border);">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items:flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+                        <div>
+                            <h2 style="margin-bottom: 8px;">Аналитика предпрофессиональных интересов школьников</h2>
+                            <p style="color:var(--muted); margin:0;">Анкетирование проведено в октябре 2024 года на базе
+                                Гимназии им. В.В. Давыдова.</p>
+                        </div>
+                        <div
+                            style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px 20px; border-radius: 8px; text-align: center;">
+                            <div
+                                style="font-size: 2rem; font-family: var(--font-headings); font-weight: bold; color: #166534; line-height: 1;">
+                                148</div>
+                            <div
+                                style="font-size: 0.85rem; color: #15803d; font-weight: 500; margin-top: 4px; text-transform: uppercase;">
+                                участников (8-10 кл.)</div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+
+                        <!-- Col 1: Demo & General -->
+                        <div>
+                            <div style="background: #f8fafc; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                                <h3 style="font-size: 1.05rem; margin-bottom: 16px; color: #1e293b;">Демография</h3>
+                                <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 16px;">
+                                    <div style="flex: 1; text-align: center;">
+                                        <div style="font-size: 1.5rem; font-weight: bold; color: #6366f1;">55%</div>
+                                        <div style="font-size: 0.8rem; color: #64748b;">Женщины</div>
+                                    </div>
+                                    <div style="width: 1px; height: 30px; background: #cbd5e1;"></div>
+                                    <div style="flex: 1; text-align: center;">
+                                        <div style="font-size: 1.5rem; font-weight: bold; color: #0ea5e9;">45%</div>
+                                        <div style="font-size: 0.8rem; color: #64748b;">Мужчины</div>
+                                    </div>
+                                </div>
+                                <div
+                                    style="margin-bottom: 8px; font-size: 0.9rem; display: flex; justify-content: space-between;">
+                                    <span>10 классы</span> <span style="font-weight: 600; color: #334155;">37.8%</span>
+                                </div>
+                                <div
+                                    style="margin-bottom: 8px; font-size: 0.9rem; display: flex; justify-content: space-between;">
+                                    <span>8 классы</span> <span style="font-weight: 600; color: #334155;">32.4%</span>
+                                </div>
+                                <div style="font-size: 0.9rem; display: flex; justify-content: space-between;">
+                                    <span>9 классы</span> <span style="font-weight: 600; color: #334155;">29.7%</span>
+                                </div>
+                            </div>
+
+                            <div style="background: #fffbeb; border-radius: 12px; padding: 16px;">
+                                <h3 style="font-size: 1.05rem; margin-bottom: 16px; color: #b45309;">Рассматривают ли
+                                    работу на производстве как успешную карьеру?</h3>
+                                <div class="score-row" style="margin-bottom: 8px;">
+                                    <span class="score-label" style="flex: 0 0 100px;">Скорее да</span>
+                                    <div class="score-bar" style="background:#fef3c7; height:20px;">
+                                        <div class="score-fill"
+                                            style="width:40.5%; background:#f59e0b; padding-left:8px; font-size:0.8rem;">
+                                            40.5%</div>
+                                    </div>
+                                </div>
+                                <div class="score-row">
+                                    <span class="score-label" style="flex: 0 0 100px;">Скорее нет</span>
+                                    <div class="score-bar" style="background:#fef3c7; height:20px;">
+                                        <div class="score-fill"
+                                            style="width:59.5%; background:#fbbf24; padding-left:8px; font-size:0.8rem;">
+                                            59.5%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Col 2: Skills & Views -->
+                        <div>
+                            <div style="background: #f0f9ff; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                                <h3 style="font-size: 1.05rem; margin-bottom: 16px; color: #0369a1;">Какими навыками
+                                    обладают сейчас? (самооценка)</h3>
+                                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                    <span class="pill" style="background: #bae6fd; color: #0369a1;">Работа с текстом
+                                        (30%)</span>
+                                    <span class="pill" style="background: #bae6fd; color: #0369a1;">Педагогика
+                                        (25%)</span>
+                                    <span class="pill" style="background: #e0f2fe; color: #0369a1;">Аналитика
+                                        (15%)</span>
+                                    <span class="pill" style="background: #e0f2fe; color: #0369a1;">Креатив (15%)</span>
+                                    <span class="pill"
+                                        style="background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd;">Психология
+                                        (10%)</span>
+                                </div>
+                            </div>
+
+                            <div style="background: #f8fafc; border-radius: 12px; padding: 16px;">
+                                <h3 style="font-size: 1.05rem; margin-bottom: 16px; color: #1e293b;">Созидательный опыт
+                                    (создавали что-то руками)</h3>
+
+                                <div class="score-row" style="margin-bottom: 12px;">
+                                    <span class="score-label" style="flex: 0 0 140px;">Никогда</span>
+                                    <div class="score-bar" style="background:#e2e8f0; height:20px;">
+                                        <div class="score-fill"
+                                            style="width:43%; background:#cbd5e1; color:#334155; padding-left:8px; font-size:0.8rem;">
+                                            43%</div>
+                                    </div>
+                                </div>
+                                <div class="score-row" style="margin-bottom: 12px;">
+                                    <span class="score-label" style="flex: 0 0 140px;">Да, пару раз</span>
+                                    <div class="score-bar" style="background:#e2e8f0; height:20px;">
+                                        <div class="score-fill"
+                                            style="width:35.7%; background:#94a3b8; color:#fff; padding-left:8px; font-size:0.8rem;">
+                                            35.7%</div>
+                                    </div>
+                                </div>
+                                <div class="score-row">
+                                    <span class="score-label" style="flex: 0 0 140px;">Регулярно (хобби)</span>
+                                    <div class="score-bar" style="background:#e2e8f0; height:20px;">
+                                        <div class="score-fill"
+                                            style="width:21.3%; background:#3b82f6; color:#fff; padding-left:8px; font-size:0.8rem;">
+                                            21.3%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPENDIX 2: EVENTS PLAN -->
+            <div style="margin-top:40px;padding-top:24px;border-top:2px solid var(--border);">
+                <p style="text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:16px;">
+                    Приложение 2 &mdash; Перечень мероприятий проекта «ТехноСтарт»</p>
+                <div class="slide" style="box-shadow:none;border:1px solid var(--border);">
+                    <h2>План мероприятий: 5 этапов</h2>
+                    <div style="overflow-x:auto;">
+                        <table style="width:100%;border-collapse:collapse;margin-top:12px;min-width:600px;">
+                            <thead>
+                                <tr style="background:#fffbeb;">
+                                    <th
+                                        style="padding:8px 12px;text-align:left;border-bottom:2px solid #ddd;width:22%;">
+                                        Этап
+                                    </th>
+                                    <th
+                                        style="padding:8px 12px;text-align:left;border-bottom:2px solid #ddd;width:15%;">
+                                        Сроки
+                                    </th>
+                                    <th style="padding:8px 12px;text-align:left;border-bottom:2px solid #ddd;">
+                                        Мероприятия
+                                    </th>
+                                    <th
+                                        style="padding:8px 12px;text-align:left;border-bottom:2px solid #ddd;width:25%;">
+                                        Ожидаемый
+                                        результат</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background:#f0f9ff;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;color:#3730a3;"
+                                        rowspan="4">Этап 1<br>Подготовительный</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;color:var(--muted);">
+                                        01.02 —
+                                        15.03.2025</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;">Разработка программы
+                                        профпроб,
+                                        материалов и сценария фестиваля</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;">Готовые программы;
+                                        наборы
+                                        оборудования</td>
+                                </tr>
+                                <tr style="background:#f0f9ff;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;color:var(--muted);">
+                                        01.02 —
+                                        01.04.2025</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;">Формирование команды:
+                                        набор
+                                        волонтёров и наставников</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;">5 педагогов; 10
+                                        наставников с
+                                        производства</td>
+                                </tr>
+                                <tr style="background:#f0f9ff;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;color:var(--muted);">
+                                        01.02 —
+                                        15.03.2025</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;">Изготовление
+                                        оборудования,
+                                        приобретение расходников</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5e5f0;">3 комплекта; 1
+                                        комплект
+                                        запасных
+                                    </td>
+                                </tr>
+                                <tr style="background:#f0f9ff;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e0e0f0;color:var(--muted);">
+                                        01.03 —
+                                        01.04.2025</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e0e0f0;">Информационная
+                                        кампания:
+                                        школьники
+                                        8–10 кл., родители, СМИ</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e0e0f0;">Охвач аудитории 200+
+                                        чел.
+                                    </td>
+                                </tr>
+                                <tr style="background:#e8f5ff;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;color:#075985;"
+                                        rowspan="4">Этап 2<br>4 Фестиваля</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;color:var(--muted);">
+                                        15.04 —
+                                        30.04.2025</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;">Фестиваль I:
+                                        профпробы,
+                                        встречи с
+                                        инженерами, деловые игры</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;">50 участников,
+                                        вход/выходное
+                                        анкетирование</td>
+                                </tr>
+                                <tr style="background:#e8f5ff;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;color:var(--muted);">
+                                        01.09 —
+                                        30.09.2025</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;">Фестиваль II</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;">50 участников</td>
+                                </tr>
+                                <tr style="background:#e8f5ff;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;color:var(--muted);">
+                                        01.10 —
+                                        31.10.2025</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;">Фестиваль III</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #c7e2f5;">50 участников</td>
+                                </tr>
+                                <tr style="background:#e8f5ff;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b0d5ef;color:var(--muted);">
+                                        01.11 —
+                                        30.11.2025</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b0d5ef;">Фестиваль IV</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b0d5ef;">50 участников &mdash;
+                                        итого:
+                                        <strong>200 уч.</strong> за цикл
+                                    </td>
+                                </tr>
+
+                                <tr style="background:#f0fdf4;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b2d8c2;color:#14532d;"
+                                        rowspan="3">Этап 3<br>Подведение итогов</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b2d8c2;color:var(--muted);">10
+                                        —
+                                        25.12.2025
+                                    </td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b2d8c2;">Итоговое анкетирование
+                                        150
+                                        участников</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b2d8c2;">Данные о росте
+                                        интереса к
+                                        инж.
+                                        профессиям</td>
+                                </tr>
+                                <tr style="background:#f0fdf4;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b2d8c2;color:var(--muted);">15
+                                        —
+                                        25.12.2025
+                                    </td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b2d8c2;">Сборник работ (20 уч.
+                                        × 50
+                                        стр.)
+                                    </td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #b2d8c2;">Изданный сборник
+                                        участников
+                                    </td>
+                                </tr>
+                                <tr style="background:#f0fdf4;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #aaced0;color:var(--muted);">15
+                                        —
+                                        30.12.2025
+                                    </td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #aaced0;">Отчётная публикация в
+                                        5
+                                        СМИ
+                                    </td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #aaced0;">Публичный отчёт; 5
+                                        статей
+                                    </td>
+                                </tr>
+                                <tr style="background:#fffbeb;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5d5a0;color:#78350f;"
+                                        rowspan="3">Этап 4<br>Аналитика</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5d5a0;color:var(--muted);">
+                                        10.01 —
+                                        31.01.2026</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5d5a0;">Отчёт по KPI (цель: ≥
+                                        30%
+                                        уч.
+                                        выбрали инж. направление)</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5d5a0;">Отчёт для ФПГ</td>
+                                </tr>
+                                <tr style="background:#fffbeb;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5d5a0;color:var(--muted);">
+                                        10.01 —
+                                        15.02.2026</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5d5a0;">Финансовый отчёт, акты
+                                        оснастения
+                                        спонсора</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #e5d5a0;">Закрытая (сданная)
+                                        отчётность
+                                    </td>
+                                </tr>
+                                <tr style="background:#fffbeb;">
+                                    <td style="padding:8px 12px;border-bottom:1px solid #d5c070;color:var(--muted);">
+                                        15.02 —
+                                        28.02.2026</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #d5c070;">Методическое пособие
+                                        для
+                                        тиражирования</td>
+                                    <td style="padding:8px 12px;border-bottom:1px solid #d5c070;">Готовое пособие (30+
+                                        стр.)
+                                    </td>
+                                </tr>
+                                <tr style="background:#fdf2f8;">
+                                    <td style="padding:8px 12px;color:#831843;" rowspan="2">Этап
+                                        5<br>Масштабирование</td>
+                                    <td style="padding:8px 12px;color:var(--muted);">01.05 — 31.05.2027</td>
+                                    <td style="padding:8px 12px;">Тиражирование на 6+ городов РТ (вкл. Елабуга, НнК)ч
+                                    </td>
+                                    <td style="padding:8px 12px;">Охват ≥ 20 мун. образован.организаций</td>
+                                </tr>
+                                <tr style="background:#fdf2f8;">
+                                    <td style="padding:8px 12px;color:var(--muted);">01.05 — 31.05.2027</td>
+                                    <td style="padding:8px 12px;">Открытые материалы курса (опубликованы)</td>
+                                    <td style="padding:8px 12px;">Свободный доступ; возм. подача след. гранта</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- APPENDIX 2: INFOGRAPHIC -->
+            <div style="margin-top:40px;padding-top:24px;border-top:2px solid var(--border);">
+                <p style="text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:16px;">
+                    Приложение 3 &mdash; Инфографика результатов опроса
+                </p>
+                                <figure style="margin:0; background:#f8fafc; border:1px solid var(--border-light); border-radius:14px; padding:16px;">
+                    <img loading="lazy" decoding="async" src="1 Инфографика результата опроса.png" alt="Инфографика по результатам опроса школьников" style="width:100%;height:auto;border-radius:10px;display:block;">
+                    <figcaption style="margin-top:10px;color:var(--muted);font-size:.92rem;line-height:1.45;">
+                        Инфографика добавлена в статическом виде для стабильной офлайн-работы без внешних JavaScript-зависимостей.
+                    </figcaption>
+                    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;">
+                        <a href="1 Инфографика результата опроса.png" download class="download-btn" style="padding:8px 14px;font-size:.9rem;">Скачать PNG инфографики</a>
+                        <a href="Результаты по опросу.pptx" download class="download-btn download-btn-2" style="padding:8px 14px;font-size:.9rem;">Скачать PPTX с диаграммами</a>
+                    </div>
+                </figure>
+            </div>
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+

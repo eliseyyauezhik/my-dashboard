@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "title": "Универсальный регламент агентной работы",
+  "summary": "Центральный стандарт взаимодействия агентов и пользователя вокруг базы знаний, дашборда, project archive, idea inbox и контуров мониторинга.",
+  "dataRoots": {
+    "dashboardWorkspace": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\Мой Дашборд",
+    "knowledgeBase": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase",
+    "projectArchive": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive",
+    "ideaInbox": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\Мой Дашборд\\data\\idea_inbox.json",
+    "systemProfile": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\Мой Дашборд\\config\\personal_system_profile.json"
+  },
+  "sourceOfTruth": [
+    "Основная база знаний хранится в KnowledgeBase и синхронизируется через Яндекс.Диск.",
+    "Дашборд является витриной и операционным слоем, но не заменяет саму базу знаний.",
+    "Новые идеи сначала попадают в idea inbox, а затем после sync становятся частью общего контура.",
+    "Русское название является основным отображаемым именем проекта; английское сохраняется в originalTitle."
+  ],
+  "agentPrinciples": [
+    "Перед записью новой информации агент обязан определить: проект, idea inbox, reference-note, skill-candidate или архив.",
+    "Нельзя плодить новую сущность, если уже существует близкий проект, идея или заметка.",
+    "Любая новая запись должна быть суперсжатой: суть, применение, связи, теги, следующий шаг.",
+    "Для обратимых операций предпочтительны snapshot и явные журналы изменений.",
+    "Изменения в KnowledgeBase и проектах должны быть прослеживаемыми и воспроизводимыми."
+  ],
+  "writePolicy": {
+    "newIdeas": "Все новые идеи и комментарии сначала идут в data/idea_inbox.json или через /api/idea-inbox.",
+    "projectUpdates": "Прямое обновление карточек проектов допускается только после классификации и привязки к существующему контексту.",
+    "referenceNotes": "Полезная, но не проектная информация оформляется как компактная заметка в базе знаний.",
+    "skills": "Новый skill создается только по повторяющемуся паттерну, а не по единичной находке.",
+    "destructiveOperations": "Restore, массовые перезаписи и внешние изменения требуют snapshot и явного подтверждения."
+  },
+  "routingOutcomes": [
+    "обновление существующего проекта",
+    "новая идея в idea inbox",
+    "новая reference-note в базе знаний",
+    "кандидат в новый или обновленный skill",
+    "архив / low-signal storage"
+  ],
+  "backupPolicy": {
+    "beforeMajorChange": "Перед крупными изменениями проекта или базы создается snapshot.",
+    "workspaceSnapshot": "Рабочее пространство дашборда snapshot-ится через scripts/versioning/snapshot.ps1.",
+    "knowledgeBaseSnapshot": "Для KnowledgeBase используется тот же snapshot-скрипт с явным указанием пути.",
+    "restoreSafety": "Перед restore автоматически создается pre_restore snapshot.",
+    "cadence": {
+      "daily": "проверка наличия последнего snapshot для активных рабочих каталогов",
+      "weekly": "полный snapshot дашборда и KnowledgeBase",
+      "monthly": "контрольная проверка возможности восстановления"
+    }
+  },
+  "reviewPolicy": {
+    "daily": [
+      "разобрать idea inbox",
+      "посмотреть новые сигналы мониторинга",
+      "проверить, что sync не сломан"
+    ],
+    "weekly": [
+      "обновить статусы активных проектов",
+      "пересмотреть skill-candidates",
+      "проверить дубликаты и шумовые ветки"
+    ],
+    "monthly": [
+      "провести ревизию структуры базы знаний",
+      "удалить или архивировать мертвые ветки",
+      "обновить системную карту интересов"
+    ],
+    "quarterly": [
+      "оценить эволюцию агентных протоколов",
+      "пересмотреть архитектуру мониторинга и хранения",
+      "проверить целесообразность внешних сервисов"
+    ]
+  },
+  "securityPolicy": {
+    "secretScan": "Периодически искать token/api_key/secret/password и открытые ключи в workspace и базе.",
+    "credentialHandling": "Ключи и токены не должны жить в контентных заметках и экспортируемых артефактах.",
+    "exposedFiles": "JSON/MD/py/js с секретами должны выноситься в env или локальные закрытые конфиги.",
+    "scheduledTasks": "Периодически проверять, что автозадачи sync/audit существуют и используют ожидаемые скрипты.",
+    "recovery": "После сбоев проверять, что dashboard_data.json, projects.json и ключевые заметки Obsidian консистентны."
+  },
+  "qualityChecks": [
+    "python -m py_compile для ключевых python-скриптов",
+    "node --check для app.js и mindmap.js",
+    "HTTP 200 на index.html и mindmap.html",
+    "наличие критичных заметок в KnowledgeBase",
+    "валидность dashboard_data.json, projects.json и idea_inbox.json"
+  ],
+  "automationLoops": [
+    {
+      "name": "Interest Monitoring",
+      "script": "scripts/dashboard/sync_all_sources.ps1",
+      "task": "scripts/dashboard/register_interest_monitoring_task.ps1",
+      "purpose": "Обновление дашборда, Telegram intelligence и мониторинговых рекомендаций."
+    },
+    {
+      "name": "Governance Audit",
+      "script": "scripts/governance/run_governance_audit.ps1",
+      "task": "scripts/governance/register_governance_audit_task.ps1",
+      "purpose": "Проверка целостности, snapshot-политики, критичных файлов и следов утечки секретов."
+    }
+  ],
+  "knownRisks": [
+    "утечки секретов через скрипты или заметки с открытыми токенами",
+    "дублирование идей и проектов без маршрутизации",
+    "рассинхрон между дашбордом и KnowledgeBase",
+    "рост архива без регулярной ревизии и сжатия"
+  ],
+  "agreementPoints": [
+    "База знаний и протоколы считаются частью продукта, а не вспомогательной документацией.",
+    "Каждый агент должен читать этот регламент до работы с KnowledgeBase, project archive и idea inbox.",
+    "Новые сервисы и внешние мосты подключаются только после оценки пользы, рисков и точки истины.",
+    "Сначала сохраняется управляемость и восстановимость системы, потом расширяется автоматизация."
+  ]
+}

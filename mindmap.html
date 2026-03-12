@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карта смыслов — AI Workspace</title>
+  <meta name="description" content="Укрупненная карта проектов, идей и связанных веток с возможностью добавлять новые гипотезы.">
+  <link rel="stylesheet" href="mindmap.css">
+</head>
+<body>
+  <header class="map-header">
+    <div class="map-title-wrap">
+      <h1>Карта смыслов</h1>
+      <div class="map-subtitle" id="mapMeta">Загрузка данных…</div>
+    </div>
+    <div class="map-actions">
+      <input id="searchInput" type="text" placeholder="Поиск по группам, проектам и идеям">
+      <button id="expandAllBtn" type="button">Развернуть всё</button>
+      <button id="collapseAllBtn" type="button">Свернуть всё</button>
+      <a href="index.html">← В дашборд</a>
+    </div>
+  </header>
+
+  <div class="file-protocol-banner" id="fileProtocolBanner" hidden>
+    <div class="file-protocol-title">Карта открыта как file:// — браузер блокирует загрузку данных</div>
+    <div class="file-protocol-actions">
+      <a class="file-protocol-link" href="http://127.0.0.1:8891/mindmap.html">Открыть локальный сервер</a>
+      <span class="file-protocol-hint">Если сервер не запущен: <code>.\start_dashboard.ps1 -Open</code></span>
+    </div>
+  </div>
+
+  <main class="map-main">
+    <section class="tree-panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Укрупненные ветки</div>
+          <div class="panel-note">Сначала смысловые кластеры, затем проекты, затем связанные идеи, чаты и workflows.</div>
+        </div>
+      </div>
+      <div class="tree-canvas" id="treeCanvas"></div>
+    </section>
+
+    <aside class="map-sidebar">
+      <section class="sidebar-block">
+        <div class="sidebar-title">Детали ветки</div>
+        <div id="nodeDetails" class="sidebar-details">
+          Выберите группу, проект или идею, чтобы увидеть контекст и связи.
+        </div>
+      </section>
+
+      <section class="sidebar-block">
+        <div class="sidebar-title">Новая идея / комментарий</div>
+        <form id="ideaForm" class="idea-form">
+          <label>
+            <span>Название</span>
+            <input id="ideaTitle" type="text" placeholder="Например: Радар грантов для гимназии" required>
+          </label>
+          <label>
+            <span>Группа</span>
+            <select id="ideaGroup"></select>
+          </label>
+          <label>
+            <span>Связанный проект</span>
+            <input id="ideaRelatedProject" type="text" placeholder="Необязательно">
+          </label>
+          <label>
+            <span>Суть / комментарий</span>
+            <textarea id="ideaDescription" rows="5" placeholder="Суть, применение, следующий шаг"></textarea>
+          </label>
+          <label>
+            <span>Теги</span>
+            <input id="ideaTags" type="text" placeholder="ai, гранты, мониторинг">
+          </label>
+          <button id="ideaSubmit" type="submit">Сохранить в idea inbox</button>
+        </form>
+        <div id="ideaFormStatus" class="form-status">
+          Для прямого сохранения используйте локальный сервер дашборда с API.
+        </div>
+      </section>
+
+      <section class="sidebar-block">
+        <div class="sidebar-title">Как использовать</div>
+        <div class="sidebar-details compact">
+          <div>1. Держите верхний уровень карты укрупненным: по смыслу, а не по файлам.</div>
+          <div>2. Новые идеи заносите как короткие гипотезы, а не как длинные заметки.</div>
+          <div>3. Связывайте идею с существующим проектом, если связь уже есть.</div>
+          <div>4. Используйте мониторинговый блок на главной странице для решений о новых skills и проектах.</div>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="mindmap.js"></script>
+</body>
+</html>
