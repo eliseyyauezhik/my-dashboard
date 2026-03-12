@@ -1,0 +1,131 @@
+{
+    "name": "Hub Telegram Intake",
+    "nodes": [
+        {
+            "parameters": {
+                "updates": [
+                    "message"
+                ],
+                "additionalFields": {}
+            },
+            "id": "node-telegram",
+            "name": "Telegram Trigger",
+            "type": "n8n-nodes-base.telegramTrigger",
+            "typeVersion": 1.1,
+            "position": [
+                200,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "string": [
+                        {
+                            "value1": "={{ $json.message.text }}",
+                            "operation": "isNotEmpty"
+                        }
+                    ]
+                }
+            },
+            "id": "node-if",
+            "name": "If message has text",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                400,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "resource": "message",
+                "prompt": "=Ты — умный классификатор сигналов. Прочитай входящее сообщение и верни ТОЛЬКО валидный JSON (без markdown-оборачиваний ```json).\n\nСООБЩЕНИЕ ОТ ПОЛЬЗОВАТЕЛЯ:\n{{ $json.message.text }}\n\nФОРМАТ JSON:\n{\n  \"summary\": \"Суть в 1 предложении\",\n  \"tags\": [\"тег1\", \"тег2\"],\n  \"life_area\": \"работа\",\n  \"theme\": \"AI/Обучение/Психология...\",\n  \"signal_type\": \"news\",\n  \"relevance_score\": 75,\n  \"route\": \"project_update\",\n  \"routed_to_project\": \"Название проекта (если есть связь)\",\n  \"next_step\": \"Что сделать (или пустая строка)\"\n}\n\nВАЖНО: relevance_score от 0 (мусор) до 100 (супер важно для проектов).\nlife_area строго одно из: 'работа', 'я', 'семья'.\nroute строго одно из: 'project_update', 'new_idea', 'skill_candidate', 'reference_note', 'archive', 'pending'.",
+                "model": "gemini-1.5-flash"
+            },
+            "id": "node-gemini",
+            "name": "Google Gemini",
+            "type": "n8n-nodes-base.googleGemini",
+            "typeVersion": 1,
+            "position": [
+                620,
+                280
+            ]
+        },
+        {
+            "parameters": {
+                "jsCode": "try {\n  const raw = $input.first().json.text || $input.first().json.message?.content || $input.first().json.data || '';\n  const cleaned = raw.replace(/```json\\n?/g, '').replace(/```\\n?/g, '').trim();\n  const parsed = JSON.parse(cleaned);\n  \n  const row = {\n    original_text: $('Telegram Trigger').item.json.message.text,\n    summary: parsed.summary || 'Без описания',\n    tags: parsed.tags || [],\n    life_area: parsed.life_area || 'работа',\n    theme: parsed.theme || '',\n    signal_type: parsed.signal_type || 'news',\n    relevance_score: parsed.relevance_score || 0,\n    route: parsed.route || 'pending',\n    routed_to_project: parsed.routed_to_project || null,\n    next_step: parsed.next_step || '',\n    original_date: new Date($('Telegram Trigger').item.json.message.date * 1000).toISOString(),\n    source_id: null // пока без авто-матчинга источников для простоты\n  };\n  return { json: row };\n} catch (err) {\n  throw new Error('LLM did not return valid JSON: ' + err.message + '. Raw response: ' + $input.first().json.text);\n}"
+            },
+            "id": "node-code",
+            "name": "Parse JSON",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                840,
+                280
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "insert",
+                "table": "signals",
+                "columns": "",
+                "options": {}
+            },
+            "id": "node-supabase",
+            "name": "Supabase Insert",
+            "type": "n8n-nodes-base.supabase",
+            "typeVersion": 1,
+            "position": [
+                1080,
+                280
+            ]
+        }
+    ],
+    "connections": {
+        "Telegram Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "If message has text",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "If message has text": {
+            "main": [
+                [
+                    {
+                        "node": "Google Gemini",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Google Gemini": {
+            "main": [
+                [
+                    {
+                        "node": "Parse JSON",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Parse JSON": {
+            "main": [
+                [
+                    {
+                        "node": "Supabase Insert",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

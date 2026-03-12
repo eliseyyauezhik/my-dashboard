@@ -59,10 +59,23 @@ Write-Output "DASHBOARD_SERVER: $url"
 if ($effectiveHost -eq "0.0.0.0") {
   $ips = Get-NetIPAddress -AddressFamily IPv4 |
     Where-Object { $_.IPAddress -notlike '169.254*' -and $_.IPAddress -ne '127.0.0.1' } |
-    Select-Object -ExpandProperty IPAddress
-  foreach ($ip in $ips) {
+    Select-Object InterfaceAlias, IPAddress
+  $profiles = Get-NetConnectionProfile -ErrorAction SilentlyContinue | Group-Object -Property InterfaceAlias -AsHashTable -AsString
+
+  foreach ($entry in $ips) {
+    $ip = $entry.IPAddress
+    $alias = $entry.InterfaceAlias
+    $category = $profiles[$alias].NetworkCategory
+    if ($category -eq "Public") {
+      Write-Output "LAN_WARN: Interface '$alias' is Public. Windows Firewall will likely block phone access until you switch to Private or add a firewall rule."
+      Write-Output "LAN_TIP: Switch to Private (Settings -> Network) OR run as Admin: Set-NetConnectionProfile -InterfaceAlias '$alias' -NetworkCategory Private"
+    }
     Write-Output "LAN_URL: http://$ip`:$selectedPort/index.html"
   }
+
+  Write-Output "LAN_TIP: If LAN_URL does not open from phone, allow inbound TCP port $selectedPort in Windows Firewall (run PowerShell as Admin)."
+  Write-Output "LAN_TIP: Private only (recommended): New-NetFirewallRule -DisplayName 'My Dashboard $selectedPort' -Direction Inbound -Action Allow -Protocol TCP -LocalPort $selectedPort -Profile Private"
+  Write-Output "LAN_TIP: Public too (risky): New-NetFirewallRule -DisplayName 'My Dashboard $selectedPort (Public)' -Direction Inbound -Action Allow -Protocol TCP -LocalPort $selectedPort -Profile Public"
 }
 
 Push-Location $workspaceRoot

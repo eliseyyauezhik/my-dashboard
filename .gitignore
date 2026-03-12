@@ -20,6 +20,12 @@ node_modules/
 __pycache__/
 *.pyc
 
+# Secrets
+.env/
+.env
+*.env
+supabase.txt
+
 # IDE
 .vscode/
 .idea/
