@@ -38,6 +38,19 @@
   let currentGroupFilter = "all";
   let currentPanel = "projectsPanel";
   let searchQuery = "";
+  let currentSignalFilter = "all";
+  let signalsData = [];
+
+  // --- Supabase Client ---
+  const _cfg = window.DASHBOARD_CONFIG || {};
+  let supabaseClient = null;
+  try {
+    if (_cfg.SUPABASE_URL && _cfg.SUPABASE_KEY && typeof supabase !== 'undefined' && supabase.createClient) {
+      supabaseClient = supabase.createClient(_cfg.SUPABASE_URL, _cfg.SUPABASE_KEY);
+    }
+  } catch (e) {
+    console.warn('Supabase SDK not loaded:', e);
+  }
 
   const STATUS_LABELS = {
     active: "В работе",
@@ -319,6 +332,107 @@
     `;
   }
 
+  // --- Signals (Supabase) ---
+
+  async function loadSignals() {
+    if (!supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient
+        .from('signals')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(50);
+      if (error) throw error;
+      signalsData = data || [];
+    } catch (err) {
+      console.warn('Failed to load signals from Supabase:', err);
+    }
+  }
+
+  function renderSignalCard(signal) {
+    const routeLabels = {
+      project_update: 'Проект', new_idea: 'Идея', skill_candidate: 'Навык',
+      reference_note: 'Заметка', archive: 'Архив', pending: 'Входящее',
+    };
+    const routeColors = {
+      project_update: '#34d399', new_idea: '#60a5fa', skill_candidate: '#f472b6',
+      reference_note: '#a78bfa', archive: '#94a3b8', pending: '#fbbf24',
+    };
+    const typeIcons = {
+      news: '📰', tool: '🔧', idea: '💡', pattern: '🔁', resource: '📦', event: '📅',
+    };
+
+    const route = signal.route || 'pending';
+    const routeLabel = routeLabels[route] || route;
+    const routeColor = routeColors[route] || '#94a3b8';
+    const typeIcon = typeIcons[signal.signal_type] || '📋';
+    const score = signal.relevance_score || 0;
+    const tags = (signal.tags || []).slice(0, 4);
+    const dateStr = signal.created_at
+      ? new Date(signal.created_at).toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+      : '';
+
+    return `
+      <div class="signal-card" data-signal-id="${signal.id}">
+        <div class="signal-card-header">
+          <span class="signal-route-badge" style="--route-color: ${routeColor}">${routeLabel}</span>
+          <span class="signal-type">${typeIcon}</span>
+          <span class="signal-date">${dateStr}</span>
+        </div>
+        <div class="signal-summary">${signal.summary || 'Без описания'}</div>
+        ${signal.next_step ? `<div class="signal-next-step">→ ${signal.next_step}</div>` : ''}
+        <div class="signal-footer">
+          <div class="signal-tags">${tags.map(t => `<span class="signal-tag">${t}</span>`).join('')}</div>
+          <div class="signal-relevance" title="Релевантность: ${score}%">
+            <div class="signal-relevance-bar">
+              <div class="signal-relevance-fill" style="width:${score}%; background: ${score >= 70 ? '#34d399' : score >= 40 ? '#fbbf24' : '#94a3b8'}"></div>
+            </div>
+            <span class="signal-score">${score}</span>
+          </div>
+        </div>
+        ${signal.routed_to_project ? `<div class="signal-project">📌 ${signal.routed_to_project}</div>` : ''}
+      </div>`;
+  }
+
+  function renderSignals() {
+    const feed = document.getElementById('signalFeed');
+    const badge = document.getElementById('signalCountBadge');
+    if (!feed) return;
+
+    const filtered = currentSignalFilter === 'all'
+      ? signalsData
+      : signalsData.filter(s => s.route === currentSignalFilter);
+
+    if (badge) badge.textContent = signalsData.length ? `(${signalsData.length})` : '';
+
+    if (!filtered.length) {
+      feed.innerHTML = '<div class="no-results">Нет сигналов' +
+        (currentSignalFilter !== 'all' ? ' в этой категории' : '') +
+        '. Отправьте сообщение вашему Telegram-боту!</div>';
+      return;
+    }
+
+    feed.innerHTML = filtered.map(renderSignalCard).join('');
+
+    // Update overview counter
+    renderOverview();
+  }
+
+  function subscribeToSignals() {
+    if (!supabaseClient) return;
+    try {
+      supabaseClient
+        .channel('signals-realtime')
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'signals' }, (payload) => {
+          signalsData.unshift(payload.new);
+          renderSignals();
+        })
+        .subscribe();
+    } catch (err) {
+      console.warn('Realtime subscription failed:', err);
+    }
+  }
+
   function getGroupScopedProjects() {
     if (currentGroupFilter === "all") return projectsData;
     return projectsData.filter((project) => project.groupId === currentGroupFilter);
@@ -335,23 +449,22 @@
     const activeCount =
       currentGroupFilter === "all"
         ? dashboardStats.activeProjects ??
-          projectsData.filter((project) => String(project.status).toLowerCase() === "active").length
+        projectsData.filter((project) => String(project.status).toLowerCase() === "active").length
         : scopedProjects.filter((project) => String(project.status).toLowerCase() === "active").length;
     const missingCount =
       currentGroupFilter === "all"
         ? dashboardStats.missingProjects ??
-          projectsData.filter((project) => String(project.migrationStatus || "").includes("missing")).length
+        projectsData.filter((project) => String(project.migrationStatus || "").includes("missing")).length
         : scopedProjects.filter((project) => String(project.migrationStatus || "").includes("missing")).length;
     const telegramSources = telegramData.stats?.uniqueSources ?? 0;
-    const telegramDuplicates = telegramData.stats?.duplicateExports ?? 0;
 
     const cards = [
       { label: "Проекты", value: projectsCount },
       { label: "Активные", value: activeCount },
+      { label: "Сигналы", value: signalsData.length, accent: true },
       { label: "Чаты", value: chatsCount },
       { label: "Workflows", value: workflowsCount },
       { label: "Telegram", value: telegramSources },
-      { label: "Дубликаты", value: telegramDuplicates || missingCount },
     ];
 
     el.innerHTML = cards
@@ -454,16 +567,15 @@
             </div>
             <div class="card-desc">${project.description || ""}</div>
             ${webLinks ? `<div class="project-links">${webLinks}</div>` : ""}
-            ${
-              project.tasks
-                ? `
+            ${project.tasks
+            ? `
               <div class="project-tasks">
                 ${(project.tasks.todo || []).map(t => `<div class="task-todo">☐ ${t}</div>`).join('')}
                 ${(project.tasks.done || []).map(t => `<div class="task-done">☑ ${t}</div>`).join('')}
               </div>
             `
-                : ""
-            }
+            : ""
+          }
             <div class="progress-container">
               <div class="progress-bar">
                 <div class="progress-fill ${progressClass}" style="width:${project.progress || 0}%"></div>
@@ -622,15 +734,15 @@
     container.innerHTML = `
       <div class="intel-overview-grid">
         ${cards
-          .map(
-            (card) => `
+        .map(
+          (card) => `
               <div class="overview-card">
                 <div class="overview-value">${card.value}</div>
                 <div class="overview-label">${card.label}</div>
               </div>
             `
-          )
-          .join("")}
+        )
+        .join("")}
       </div>
       <div class="intel-note">${summary.overview || ""}</div>
       <div class="intel-text-block">
@@ -802,15 +914,15 @@
       consolidationEl.innerHTML = `
         <div class="intel-overview-grid">
           ${cards
-            .map(
-              (card) => `
+          .map(
+            (card) => `
                 <div class="overview-card">
                   <div class="overview-value">${card.value}</div>
                   <div class="overview-label">${card.label}</div>
                 </div>
               `
-            )
-            .join("")}
+          )
+          .join("")}
         </div>
       `;
       const metricCards = consolidationEl.querySelectorAll(".overview-card");
@@ -862,15 +974,15 @@
         summaryEl.innerHTML = `
           <div class="intel-overview-grid">
             ${cards
-              .map(
-                (card) => `
+            .map(
+              (card) => `
                   <div class="overview-card">
                     <div class="overview-value">${card.value}</div>
                     <div class="overview-label">${card.label}</div>
                   </div>
                 `
-              )
-              .join("")}
+            )
+            .join("")}
           </div>
         `;
       }
@@ -1103,6 +1215,18 @@
         closeIdeaModal();
       }
     });
+
+    // Signal filter buttons
+    const signalFilters = document.getElementById('signalFilters');
+    if (signalFilters) {
+      signalFilters.addEventListener('click', function (event) {
+        const btn = event.target.closest('.signal-filter');
+        if (!btn) return;
+        currentSignalFilter = btn.dataset.route;
+        signalFilters.querySelectorAll('.signal-filter').forEach(b => b.classList.toggle('active', b === btn));
+        renderSignals();
+      });
+    }
   }
 
   async function init() {
@@ -1144,6 +1268,11 @@
       renderUpgrades();
       switchPanel(currentPanel);
       bindEvents();
+
+      // Load signals from Supabase
+      await loadSignals();
+      renderSignals();
+      subscribeToSignals();
     } catch (err) {
       console.error("Load error:", err);
       const grid = document.getElementById("projectGrid");

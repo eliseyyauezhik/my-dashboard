@@ -195,6 +195,7 @@
 
       <div class="dashboard-tabs" id="mainTabs">
         <button class="dashboard-tab active" type="button" data-panel="projectsPanel">Проекты</button>
+        <button class="dashboard-tab" type="button" data-panel="signalsPanel">Сигналы</button>
         <button class="dashboard-tab" type="button" data-panel="intelligencePanel">Информационный контур</button>
         <button class="dashboard-tab" type="button" data-panel="ideasPanel">Идеи и развитие</button>
       </div>
@@ -219,6 +220,20 @@
 
 
       </section>
+      <section class="dashboard-panel" id="signalsPanel">
+        <div class="section-title">Лента сигналов <span class="signal-count-badge" id="signalCountBadge"></span></div>
+        <div class="signal-filters" id="signalFilters">
+          <button class="signal-filter active" data-route="all">Все</button>
+          <button class="signal-filter" data-route="project_update">Проекты</button>
+          <button class="signal-filter" data-route="new_idea">Идеи</button>
+          <button class="signal-filter" data-route="skill_candidate">Навыки</button>
+          <button class="signal-filter" data-route="reference_note">Заметки</button>
+        </div>
+        <div class="signal-feed" id="signalFeed">
+          <div class="no-results">Загрузка сигналов...</div>
+        </div>
+      </section>
+
       <section class="dashboard-panel" id="intelligencePanel">
         <div class="section-title">Telegram Intelligence</div>
         <div class="intel-layout">
@@ -323,6 +338,9 @@
       </div>
     </div>
   </div><!-- /dashboard-content -->
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
     (function () {
