@@ -1,55 +1,48 @@
 (function () {
   "use strict";
 
+  // === State ===
   let projectsData = [];
-  let upgradePathsData = [];
   let ideasData = [];
-  let chatsData = [];
-  let workflowsData = [];
+  let goalsData = [];
+  let notesData = [];
+  let signalsData = [];
   let projectGroupsData = [];
-  let archivesData = [];
-  let consolidationData = {};
-  let dashboardStats = {};
-  let telegramData = {
-    stats: {},
-    summary: {},
-    sources: [],
-    areaBuckets: [],
-    skillSuggestions: [],
-    projectSuggestions: [],
-    processingProtocol: [],
-  };
+  let projectRelationsData = [];
   let monitoringData = {
     profile: {},
-    stats: {},
-    processingProtocol: [],
     routingRules: [],
     recommendations: [],
     skillSuggestions: [],
     projectSuggestions: [],
   };
-  let ideaRouterData = {
-    summary: {},
-    queue: [],
-    clusters: [],
-    recommendations: [],
-  };
-  let currentFilter = "all";
-  let currentGroupFilter = "all";
-  let currentPanel = "projectsPanel";
-  let searchQuery = "";
+  let currentPanel = "overviewPanel";
+  let currentProjectArea = "all";
   let currentSignalFilter = "all";
-  let signalsData = [];
+  let currentIdeaPriority = "all";
+  let searchQuery = "";
 
   // --- Supabase Client ---
-  const _cfg = window.DASHBOARD_CONFIG || {};
   let supabaseClient = null;
-  try {
-    if (_cfg.SUPABASE_URL && _cfg.SUPABASE_KEY && typeof supabase !== 'undefined' && supabase.createClient) {
-      supabaseClient = supabase.createClient(_cfg.SUPABASE_URL, _cfg.SUPABASE_KEY);
+
+  function initSupabase() {
+    if (typeof window.DASHBOARD_CONFIG === "undefined") {
+      console.warn("DASHBOARD_CONFIG not found — Supabase disabled");
+      return;
     }
-  } catch (e) {
-    console.warn('Supabase SDK not loaded:', e);
+    if (typeof supabase === "undefined" || !supabase.createClient) {
+      console.warn("Supabase SDK not loaded");
+      return;
+    }
+    try {
+      supabaseClient = supabase.createClient(
+        window.DASHBOARD_CONFIG.SUPABASE_URL,
+        window.DASHBOARD_CONFIG.SUPABASE_KEY
+      );
+      console.log("✓ Supabase client ready");
+    } catch (e) {
+      console.error("Supabase init error:", e);
+    }
   }
 
   const STATUS_LABELS = {
@@ -60,1233 +53,1015 @@
     done: "Готово",
   };
 
-  const PRIORITY_LABELS = {
-    high: "Высокий",
-    medium: "Средний",
-    low: "Низкий",
+  const STATUS_COLORS = {
+    active: "#22c55e",
+    paused: "#f59e0b",
+    research: "#8b5cf6",
+    backlog: "#64748b",
+    done: "#06b6d4",
   };
 
-  function isFileProtocol() {
-    return typeof window !== "undefined" && window.location && window.location.protocol === "file:";
-  }
+  const PRIORITY_LABELS = { high: "🔥 Высокий", medium: "⚡ Средний", low: "💤 Низкий" };
 
-  function renderFileProtocolHint() {
-    if (!isFileProtocol()) return;
-    const el = document.getElementById("syncInfo");
-    if (el) {
-      el.textContent =
-        "Открыто как file:// — браузер блокирует загрузку JSON. Запустите сервер: .\\start_dashboard.ps1 -Open";
-    }
-    const banner = document.getElementById("fileProtocolBanner");
-    if (banner) {
-      banner.hidden = false;
-    }
-  }
+  const GROUP_ICONS = {
+    "news-aggregators": "📡",
+    "idea-generators": "💡",
+    "ai-system-growth": "🧠",
+    "ai-agents": "🤖",
+    "work-projects": "🏫",
+  };
 
-  async function loadDashboardData() {
-    const sources = ["data/dashboard_data.json", "projects.json"];
-    let lastError = null;
-    for (const source of sources) {
-      try {
-        const res = await fetch(source, { cache: "no-store" });
-        if (!res.ok) continue;
-        const data = await res.json();
-        return { data, source };
-      } catch (err) {
-        lastError = err;
-      }
-    }
-    throw lastError || new Error("Не удалось загрузить основные данные дашборда");
-  }
-
-  async function loadOptionalJson(source) {
-    try {
-      const res = await fetch(source, { cache: "no-store" });
-      if (!res.ok) return null;
-      return await res.json();
-    } catch (err) {
-      console.warn(`Optional source not loaded: ${source}`, err);
-      return null;
-    }
-  }
-
-  async function loadFirstOptionalJson(sources) {
-    for (const source of sources) {
-      const data = await loadOptionalJson(source);
-      if (data) return data;
-    }
-    return null;
-  }
-
-  function mergeIdeas(baseIdeas, inboxPayload) {
-    const extras = Array.isArray(inboxPayload?.ideas) ? inboxPayload.ideas : [];
-    const result = [...(baseIdeas || [])];
-    const seen = new Set(result.map((idea) => String(idea.id || idea.title || "").toLowerCase()));
-    extras.forEach((idea) => {
-      const key = String(idea.id || idea.title || "").toLowerCase();
-      if (!key || seen.has(key)) return;
-      seen.add(key);
-      result.push({
-        id: idea.id || key,
-        title: idea.title || "Новая идея",
-        description: idea.description || idea.comment || "",
-        tags: Array.isArray(idea.tags) ? idea.tags : [],
-        priority: idea.priority || "medium",
-        relatedProject: idea.relatedProject || "",
-        addedDate: idea.addedDate || "",
-      });
-    });
-    return result;
-  }
-
-  function toDateLabel(dateStr) {
-    const d = dateStr ? new Date(dateStr) : new Date();
-    if (Number.isNaN(d.getTime())) return dateStr || "—";
-    return d.toLocaleDateString("ru-RU", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  }
-
-  function renderDate(dateStr) {
-    const el = document.getElementById("headerDate");
-    if (!el) return;
-    const d = dateStr ? new Date(dateStr) : new Date();
-    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-    el.textContent = d.toLocaleDateString("ru-RU", options);
-  }
-
-  function renderSyncInfo(generatedAt, source) {
-    const el = document.getElementById("syncInfo");
-    if (!el) return;
-    const ts = generatedAt ? toDateLabel(generatedAt) : "нет метки";
-    const telegramTs = telegramData.meta?.generatedAt ? ` · Telegram: ${toDateLabel(telegramData.meta.generatedAt)}` : "";
-    el.textContent = `Источник: ${source} · Обновлено: ${ts}${telegramTs}`;
-  }
-
+  // === Theme ===
   function applyTheme(theme) {
-    const body = document.body;
-    if (!body) return;
-    const normalized = theme === "dark" ? "dark" : "light";
-    body.setAttribute("data-theme", normalized);
-    localStorage.setItem("dashboardTheme", normalized);
-    const toggle = document.getElementById("themeToggle");
-    if (toggle) {
-      toggle.textContent = normalized === "dark" ? "Тема: ночь" : "Тема: день";
-    }
+    document.body.setAttribute("data-theme", theme);
+    localStorage.setItem("dashboard-theme", theme);
+    const btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = theme === "dark" ? "Тема: ночь" : "Тема: день";
   }
 
   function initTheme() {
-    let theme = localStorage.getItem("dashboardTheme");
-    if (!theme) {
-      theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    }
-    applyTheme(theme);
+    const saved = localStorage.getItem("dashboard-theme");
+    const prefer = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    applyTheme(saved || prefer);
   }
 
+  // === Tab Switching ===
   function switchPanel(panelId) {
     currentPanel = panelId;
-    document.querySelectorAll(".dashboard-tab").forEach((button) => {
-      button.classList.toggle("active", button.dataset.panel === panelId);
-    });
-    document.querySelectorAll(".dashboard-panel").forEach((panel) => {
-      panel.classList.toggle("active", panel.id === panelId);
-    });
+    document.querySelectorAll(".dashboard-panel").forEach((p) => p.classList.remove("active"));
+    document.querySelectorAll(".dashboard-tab").forEach((t) => t.classList.remove("active"));
+    const panel = document.getElementById(panelId);
+    if (panel) panel.classList.add("active");
+    const tab = document.querySelector(`[data-panel="${panelId}"]`);
+    if (tab) tab.classList.add("active");
   }
 
-  function cleanupLegacySections() {
-    const projectsPanel = document.getElementById("projectsPanel");
-    if (projectsPanel) {
-      const legacyFeedLayout = projectsPanel.querySelector(".feed-layout");
-      if (legacyFeedLayout) {
-        const title = legacyFeedLayout.previousElementSibling;
-        if (title && title.classList.contains("section-title")) {
-          title.remove();
-        }
-        legacyFeedLayout.remove();
-      }
-    }
-    const consolidationEl = document.getElementById("consolidationSummary");
-    if (consolidationEl) {
-      const maybeSubtitle = consolidationEl.nextElementSibling;
-      if (maybeSubtitle && maybeSubtitle.classList.contains("intel-subtitle")) {
-        maybeSubtitle.remove();
-      }
-    }
-  }
-
-  function renderProjectGroupTabs() {
-    const container = document.getElementById("projectGroupTabs");
-    if (!container) return;
-    const groups = projectGroupsData || [];
-    if (!groups.length) {
-      container.innerHTML = "";
-      currentGroupFilter = "all";
-      return;
-    }
-    if (currentGroupFilter !== "all" && !groups.some((group) => group.id === currentGroupFilter)) {
-      currentGroupFilter = "all";
-    }
-    const allCount = projectsData.length;
-    const items = [{ id: "all", title: "Все категории", projectCount: allCount }, ...groups];
-    container.innerHTML = items
-      .map(
-        (item) => `
-          <button type="button" class="group-tab${currentGroupFilter === item.id ? " active" : ""}" data-group="${item.id}">
-            ${item.title} <span class="count">${item.projectCount || 0}</span>
-          </button>
-        `
-      )
-      .join("");
-  }
-
-  function buildProjectSubtitle(project) {
-    const category = project.category || "Без категории";
-    return project.originalTitle ? `${category} (${project.originalTitle})` : category;
-  }
-
-  function renderProtocolItems(targetId, items, mode) {
-    const list = document.getElementById(targetId);
-    if (!list) return;
-    if (!items || !items.length) {
-      list.innerHTML = '<div class="no-results">Нет данных</div>';
-      return;
-    }
-
-    list.innerHTML = items
-      .map((item) => {
-        if (mode === "routing") {
-          return `
-            <div class="protocol-item">
-              <div class="protocol-step">${item.when || ""}</div>
-              <div class="protocol-detail"><strong>${item.route || ""}</strong>${item.action ? ` · ${item.action}` : ""}</div>
-            </div>
-          `;
-        }
-        return `
-          <div class="protocol-item">
-            <div class="protocol-step">${item.step || ""}</div>
-            <div class="protocol-detail">${item.detail || ""}</div>
-          </div>
-        `;
-      })
-      .join("");
-  }
-
-  function renderSimpleTextList(targetId, items) {
-    const list = document.getElementById(targetId);
-    if (!list) return;
-    if (!items || !items.length) {
-      list.innerHTML = '<div class="no-results">Нет данных</div>';
-      return;
-    }
-
-    list.innerHTML = items
-      .map(
-        (item) => `
-          <div class="protocol-item">
-            <div class="protocol-detail">${item}</div>
-          </div>
-        `
-      )
-      .join("");
-  }
-
-  function renderSystemProfile() {
-    const container = document.getElementById("systemProfileCard");
-    if (!container) return;
-    const profile = monitoringData.profile || {};
-    const stats = monitoringData.stats || {};
-    if (!profile.summary) {
-      container.innerHTML = '<div class="no-results">Профиль интересов еще не собран</div>';
-      return;
-    }
-
-    const roles = (profile.roles || []).slice(0, 6).map((item) => `<span class="tag">${item}</span>`).join("");
-    const themes = (profile.focusThemes || []).slice(0, 6).map((item) => `<span class="tag">${item}</span>`).join("");
-    const focus = (profile.currentFocusProjects || []).slice(0, 5).join(", ");
-    const sources = (profile.sourceHighlights || []).slice(0, 5).join(", ");
-    const cadence = (profile.reviewCadence || [])
-      .map((item) => `${item.label}: ${item.value}`)
-      .join(" · ");
-
-    container.innerHTML = `
-      <div class="feed-card intel-card">
-        <div class="feed-top">
-          <span class="feed-title">${profile.title || "Системная карта интересов"}</span>
-          <span class="feed-pill neutral">${stats.activeProjects || 0} активных</span>
-        </div>
-        <div class="feed-desc">${profile.summary || ""}</div>
-        <div class="card-tags">${roles}</div>
-        <div class="card-tags">${themes}</div>
-        <div class="feed-meta">${focus ? `Фокус: ${focus}` : "Фокус пока не определен"}</div>
-        <div class="feed-meta">${sources ? `Источники: ${sources}` : "Источники появятся после sync"}</div>
-        <div class="feed-bottom">
-          <span>идей: ${stats.ideas || 0}</span>
-          <span>источников: ${stats.trackedSources || 0}</span>
-          <span>архив: ${(stats.archivedProjects || 0) + (stats.archivedChats || 0)}</span>
-        </div>
-        ${cadence ? `<div class="feed-meta">${cadence}</div>` : ""}
-      </div>
-    `;
-  }
-
-  // --- Signals (Supabase) ---
-
-  async function loadSignals() {
-    if (!supabaseClient) return;
+  // === Data Loading ===
+  async function loadOptionalJson(source) {
     try {
-      const { data, error } = await supabaseClient
-        .from('signals')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .limit(50);
-      if (error) throw error;
-      signalsData = data || [];
+      const r = await fetch(source, { cache: "no-store" });
+      if (!r.ok) return null;
+      return await r.json();
+    } catch { return null; }
+  }
+
+  async function loadDashboardData() {
+    const data = await loadOptionalJson("projects.json");
+    if (!data) return;
+    projectsData = data.projects || [];
+    projectGroupsData = data.projectGroups || [];
+
+    // Monitoring & intelligence
+    const m = data.monitoring || {};
+    monitoringData.profile = m.profile || {};
+    monitoringData.routingRules = m.routingRules || [];
+    monitoringData.recommendations = m.recommendations || [];
+    monitoringData.skillSuggestions = m.skillSuggestions || [];
+    monitoringData.projectSuggestions = m.projectSuggestions || [];
+  }
+
+  // === Load from Supabase ===
+  async function loadFromSupabase() {
+    if (!supabaseClient) return;
+
+    try {
+      const results = await Promise.all([
+        supabaseClient.from("projects").select("*").order("title"),
+        supabaseClient.from("ideas").select("*").order("relevance_score", { ascending: false }),
+        supabaseClient.from("goals").select("*"),
+        supabaseClient.from("notes").select("*").order("created_at", { ascending: false }),
+        supabaseClient.from("signals").select("*").order("created_at", { ascending: false }).limit(50),
+        supabaseClient.from("project_relations").select("*")
+      ]);
+
+      const [sProj, sIdeas, sGoals, sNotes, sSignals, sRels] = results.map(r => r.data || null);
+
+      if (sProj) projectsData = sProj;
+      if (sIdeas) ideasData = sIdeas;
+      if (sGoals) goalsData = sGoals;
+      if (sNotes) notesData = sNotes;
+      if (sSignals) signalsData = sSignals;
+      if (sRels) projectRelationsData = sRels;
     } catch (err) {
-      console.warn('Failed to load signals from Supabase:', err);
+      console.error("Error loading from Supabase:", err);
     }
   }
 
-  function renderSignalCard(signal) {
-    const routeLabels = {
-      project_update: 'Проект', new_idea: 'Идея', skill_candidate: 'Навык',
-      reference_note: 'Заметка', archive: 'Архив', pending: 'Входящее',
-    };
-    const routeColors = {
-      project_update: '#34d399', new_idea: '#60a5fa', skill_candidate: '#f472b6',
-      reference_note: '#a78bfa', archive: '#94a3b8', pending: '#fbbf24',
-    };
-    const typeIcons = {
-      news: '📰', tool: '🔧', idea: '💡', pattern: '🔁', resource: '📦', event: '📅',
-    };
-
-    const route = signal.route || 'pending';
-    const routeLabel = routeLabels[route] || route;
-    const routeColor = routeColors[route] || '#94a3b8';
-    const typeIcon = typeIcons[signal.signal_type] || '📋';
-    const score = signal.relevance_score || 0;
-    const tags = (signal.tags || []).slice(0, 4);
-    const dateStr = signal.created_at
-      ? new Date(signal.created_at).toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
-      : '';
-
-    return `
-      <div class="signal-card" data-signal-id="${signal.id}">
-        <div class="signal-card-header">
-          <span class="signal-route-badge" style="--route-color: ${routeColor}">${routeLabel}</span>
-          <span class="signal-type">${typeIcon}</span>
-          <span class="signal-date">${dateStr}</span>
-        </div>
-        <div class="signal-summary">${signal.summary || 'Без описания'}</div>
-        ${signal.next_step ? `<div class="signal-next-step">→ ${signal.next_step}</div>` : ''}
-        <div class="signal-footer">
-          <div class="signal-tags">${tags.map(t => `<span class="signal-tag">${t}</span>`).join('')}</div>
-          <div class="signal-relevance" title="Релевантность: ${score}%">
-            <div class="signal-relevance-bar">
-              <div class="signal-relevance-fill" style="width:${score}%; background: ${score >= 70 ? '#34d399' : score >= 40 ? '#fbbf24' : '#94a3b8'}"></div>
-            </div>
-            <span class="signal-score">${score}</span>
-          </div>
-        </div>
-        ${signal.routed_to_project ? `<div class="signal-project">📌 ${signal.routed_to_project}</div>` : ''}
-      </div>`;
-  }
-
-  function renderSignals() {
-    const feed = document.getElementById('signalFeed');
-    const badge = document.getElementById('signalCountBadge');
-    if (!feed) return;
-
-    const filtered = currentSignalFilter === 'all'
-      ? signalsData
-      : signalsData.filter(s => s.route === currentSignalFilter);
-
-    if (badge) badge.textContent = signalsData.length ? `(${signalsData.length})` : '';
-
-    if (!filtered.length) {
-      feed.innerHTML = '<div class="no-results">Нет сигналов' +
-        (currentSignalFilter !== 'all' ? ' в этой категории' : '') +
-        '. Отправьте сообщение вашему Telegram-боту!</div>';
-      return;
-    }
-
-    feed.innerHTML = filtered.map(renderSignalCard).join('');
-
-    // Update overview counter
-    renderOverview();
-  }
-
+  // === Subscribe to Realtime ===
   function subscribeToSignals() {
     if (!supabaseClient) return;
-    try {
-      supabaseClient
-        .channel('signals-realtime')
-        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'signals' }, (payload) => {
-          signalsData.unshift(payload.new);
-          renderSignals();
-        })
-        .subscribe();
-    } catch (err) {
-      console.warn('Realtime subscription failed:', err);
-    }
+    supabaseClient
+      .channel("signals-realtime")
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "signals" }, (payload) => {
+        signalsData.unshift(payload.new);
+        renderSignals();
+        updateInboxBadge();
+      })
+      .subscribe();
   }
 
-  function getGroupScopedProjects() {
-    if (currentGroupFilter === "all") return projectsData;
-    return projectsData.filter((project) => project.groupId === currentGroupFilter);
-  }
-
-  function renderOverview() {
-    const el = document.getElementById("overviewGrid");
+  // ============================================================
+  //  OVERVIEW TAB
+  // ============================================================
+  function renderOverviewStats() {
+    const el = document.getElementById("overviewStats");
     if (!el) return;
 
-    const scopedProjects = getGroupScopedProjects();
-    const projectsCount = currentGroupFilter === "all" ? dashboardStats.projects ?? projectsData.length : scopedProjects.length;
-    const chatsCount = dashboardStats.chats ?? chatsData.length;
-    const workflowsCount = dashboardStats.workflows ?? workflowsData.length;
-    const activeCount =
-      currentGroupFilter === "all"
-        ? dashboardStats.activeProjects ??
-        projectsData.filter((project) => String(project.status).toLowerCase() === "active").length
-        : scopedProjects.filter((project) => String(project.status).toLowerCase() === "active").length;
-    const missingCount =
-      currentGroupFilter === "all"
-        ? dashboardStats.missingProjects ??
-        projectsData.filter((project) => String(project.migrationStatus || "").includes("missing")).length
-        : scopedProjects.filter((project) => String(project.migrationStatus || "").includes("missing")).length;
-    const telegramSources = telegramData.stats?.uniqueSources ?? 0;
+    const active = projectsData.filter((p) => p.status === "active").length;
+    const total = projectsData.length;
+    const ideasCount = ideasData.length;
+    const signalsCount = signalsData.length;
 
-    const cards = [
-      { label: "Проекты", value: projectsCount },
-      { label: "Активные", value: activeCount },
-      { label: "Сигналы", value: signalsData.length, accent: true },
-      { label: "Чаты", value: chatsCount },
-      { label: "Workflows", value: workflowsCount },
-      { label: "Telegram", value: telegramSources },
-    ];
-
-    el.innerHTML = cards
-      .map(
-        (card) => `
-        <div class="overview-card">
-          <div class="overview-value">${card.value}</div>
-          <div class="overview-label">${card.label}</div>
-        </div>
-      `
-      )
-      .join("");
+    el.innerHTML = `
+      <div class="stat-card"><div class="stat-value">${active}</div><div class="stat-label">Активных проектов</div></div>
+      <div class="stat-card"><div class="stat-value">${total}</div><div class="stat-label">Всего проектов</div></div>
+      <div class="stat-card"><div class="stat-value">${ideasCount}</div><div class="stat-label">Идей</div></div>
+      <div class="stat-card"><div class="stat-value">${signalsCount}</div><div class="stat-label">Сигналов</div></div>
+      <div class="stat-card"><div class="stat-value">${goalsData.length}</div><div class="stat-label">Целей</div></div>
+    `;
   }
 
-  function renderStats() {
-    const scoped = getGroupScopedProjects();
-    const counts = { all: scoped.length };
-    scoped.forEach((project) => {
-      counts[project.status] = (counts[project.status] || 0) + 1;
+  // === Mind Map (SVG Graph) ===
+  function renderMindMap() {
+    const svg = document.getElementById("mindMapSvg");
+    if (!svg) return;
+
+    const container = document.getElementById("mindMapContainer");
+    const width = container.clientWidth || 900;
+    const height = 500;
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    svg.innerHTML = "";
+
+    // 1. Build Node Map
+    const nodeMap = new Map();
+    // Add central node
+    nodeMap.set("root", { id: "root", title: "Digital Twin", type: "root", x: width / 2, y: height / 2 });
+
+    // Fallback: If no relations loaded yet, we build pseudo-relations based on groups
+    const effectiveRelations = projectRelationsData.length > 0 ? projectRelationsData : projectsData.map(p => ({
+      from_id: p.id,
+      to_id: p.group_id ? `group-${p.group_id}` : "root",
+      relation: "part_of"
+    }));
+
+    // Add projects
+    projectsData.forEach(p => {
+      nodeMap.set(p.id, {
+        id: p.id, title: p.title, type: "project", status: p.status,
+        x: width / 2 + (Math.random() - 0.5) * 100, y: height / 2 + (Math.random() - 0.5) * 100
+      });
     });
 
-    const bar = document.getElementById("statsBar");
-    if (!bar) return;
-
-    const chips = [
-      { key: "all", label: "Все", dotClass: "all-dot" },
-      { key: "active", label: "В работе", dotClass: "active-dot" },
-      { key: "research", label: "Исследование", dotClass: "research-dot" },
-      { key: "paused", label: "Пауза", dotClass: "paused-dot" },
-      { key: "backlog", label: "Бэклог", dotClass: "backlog-dot" },
-      { key: "done", label: "Готово", dotClass: "done-dot" },
-    ];
-
-    bar.innerHTML = chips
-      .map((chip) => {
-        const count = counts[chip.key] || 0;
-        if (chip.key !== "all" && count === 0) return "";
-        const active = currentFilter === chip.key ? " active" : "";
-        return `
-          <button class="stat-chip${active}" data-filter="${chip.key}">
-            <span class="stat-dot ${chip.dotClass}"></span>
-            ${chip.label} <span class="count">${count}</span>
-          </button>
-        `;
-      })
-      .join("");
-  }
-
-  function getFilteredProjects() {
-    const scoped = getGroupScopedProjects();
-    return scoped.filter((project) => {
-      const matchFilter = currentFilter === "all" || project.status === currentFilter;
-      if (!searchQuery) return matchFilter;
-      const q = searchQuery.toLowerCase();
-      const haystack = [
-        project.title,
-        project.originalTitle,
-        project.description,
-        project.category,
-        project.topic,
-        ...(Array.isArray(project.tags) ? project.tags : []),
-      ]
-        .join(" ")
-        .toLowerCase();
-      return matchFilter && haystack.includes(q);
-    });
-  }
-
-  function renderProjects() {
-    const grid = document.getElementById("projectGrid");
-    if (!grid) return;
-    const filtered = getFilteredProjects();
-
-    if (!filtered.length) {
-      grid.innerHTML = '<div class="no-results">Проекты не найдены</div>';
-      return;
+    // Add groups if we are using fallback
+    if (projectRelationsData.length === 0) {
+      const groups = new Set(projectsData.map(p => p.group_id).filter(Boolean));
+      groups.forEach(gid => {
+        const groupTitle = projectsData.find(p => p.group_id === gid)?.group_title || gid;
+        nodeMap.set(`group-${gid}`, { id: `group-${gid}`, title: groupTitle, type: "group", x: width / 2, y: height / 2 });
+        effectiveRelations.push({ from_id: `group-${gid}`, to_id: "root", relation: "part_of" });
+      });
+    } else {
+      // Connect isolated projects to root
+      const connectedNodes = new Set();
+      effectiveRelations.forEach(r => { connectedNodes.add(r.from_id); connectedNodes.add(r.to_id); });
+      projectsData.forEach(p => {
+        if (!connectedNodes.has(p.id)) {
+          effectiveRelations.push({ from_id: p.id, to_id: "root", relation: "related" });
+        }
+      });
     }
 
-    grid.innerHTML = filtered
-      .map((project) => {
-        const tasksDone = Array.isArray(project.keyTasks) ? project.keyTasks.filter((task) => task.done).length : 0;
-        const tasksTotal = Array.isArray(project.keyTasks) ? project.keyTasks.length : 0;
-        const progressClass = project.progress >= 70 ? "high" : project.progress >= 30 ? "medium" : "low";
-        const tagsHtml = (project.tags || []).slice(0, 5).map((tag) => `<span class="tag">${tag}</span>`).join("");
-        const webLinks = (project.webLinks || [])
-          .slice(0, 2)
-          .map(
-            (link) =>
-              `<a class="project-link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label || "Сайт проекта"}</a>`
-          )
-          .join("");
-        return `
-          <div class="project-card" data-id="${project.id}">
-            <div class="card-header">
-              <div>
-                <div class="card-title">${project.title}</div>
-                <div class="card-category">${buildProjectSubtitle(project)}</div>
-              </div>
-              <span class="status-badge status-${project.status}">${STATUS_LABELS[project.status] || project.status}</span>
-            </div>
-            <div class="card-desc">${project.description || ""}</div>
-            ${webLinks ? `<div class="project-links">${webLinks}</div>` : ""}
-            ${project.tasks
-            ? `
-              <div class="project-tasks">
-                ${(project.tasks.todo || []).map(t => `<div class="task-todo">☐ ${t}</div>`).join('')}
-                ${(project.tasks.done || []).map(t => `<div class="task-done">☑ ${t}</div>`).join('')}
-              </div>
-            `
-            : ""
+    // 2. Simple Force Layout Simulation (Iterative)
+    const nodes = Array.from(nodeMap.values());
+    const edges = effectiveRelations.filter(r => nodeMap.has(r.from_id) && nodeMap.has(r.to_id)).map(r => ({
+      source: nodeMap.get(r.from_id),
+      target: nodeMap.get(r.to_id)
+    }));
+
+    // Fix root
+    const root = nodeMap.get("root");
+    root.x = width / 2;
+    root.y = height / 2;
+
+    const iterations = 100;
+    const k = Math.sqrt((width * height) / nodes.length); // optimal distance
+
+    for (let i = 0; i < iterations; i++) {
+      // Repulsion
+      for (let a = 0; a < nodes.length; a++) {
+        for (let b = a + 1; b < nodes.length; b++) {
+          let dx = nodes[a].x - nodes[b].x;
+          let dy = nodes[a].y - nodes[b].y;
+          let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          if (dist < k * 2) {
+            let force = (k * k) / dist;
+            let fx = (dx / dist) * force;
+            let fy = (dy / dist) * force;
+            if (nodes[a] !== root) { nodes[a].x += fx * 0.1; nodes[a].y += fy * 0.1; }
+            if (nodes[b] !== root) { nodes[b].x -= fx * 0.1; nodes[b].y -= fy * 0.1; }
           }
-            <div class="progress-container">
-              <div class="progress-bar">
-                <div class="progress-fill ${progressClass}" style="width:${project.progress || 0}%"></div>
-              </div>
-              <span class="progress-label">${project.progress || 0}%</span>
-            </div>
-            <div class="card-tags">${tagsHtml}</div>
-            <div class="card-footer">
-              <span class="card-tasks">☑ ${tasksDone}/${tasksTotal} задач</span>
-              <span>${project.lastUpdated || "—"}</span>
-            </div>
-            <div class="card-footer card-meta-row">
-              <span>💬 ${project.relatedChatsCount || 0}</span>
-              <span>🔃 ${project.relatedWorkflowsCount || 0}</span>
-              <span>${project.topic || ""}</span>
-            </div>
-          </div>
-        `;
-      })
-      .join("");
-  }
+        }
+      }
 
-  function renderChats() {
-    const list = document.getElementById("chatList");
-    if (!list) return;
-    if (!chatsData.length) {
-      list.innerHTML = '<div class="no-results">Нет данных по чатам</div>';
-      return;
+      // Attraction
+      edges.forEach(e => {
+        let dx = e.source.x - e.target.x;
+        let dy = e.source.y - e.target.y;
+        let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        let force = (dist * dist) / k;
+        let fx = (dx / dist) * force;
+        let fy = (dy / dist) * force;
+        if (e.source !== root) { e.source.x -= fx * 0.05; e.source.y -= fy * 0.05; }
+        if (e.target !== root) { e.target.x += fx * 0.05; e.target.y += fy * 0.05; }
+      });
+
+      // Center gravity
+      nodes.forEach(n => {
+        if (n !== root) {
+          n.x += (width / 2 - n.x) * 0.02;
+          n.y += (height / 2 - n.y) * 0.02;
+        }
+      });
     }
 
-    list.innerHTML = chatsData
-      .slice(0, 16)
-      .map((chat) => {
-        const statusClass = chat.recoveryStatus === "recovered" ? "ok" : "warn";
-        return `
-          <div class="feed-card">
-            <div class="feed-top">
-              <span class="feed-title">${chat.title || chat.id}</span>
-              <span class="feed-pill ${statusClass}">${chat.recoveryStatus || "n/a"}</span>
-            </div>
-            <div class="feed-meta">${chat.date || "—"} · ${chat.theme || "Без темы"}</div>
-            <div class="feed-desc">${chat.summary || ""}</div>
-            <div class="feed-bottom">
-              <span>ID: ${chat.id}</span>
-              <span>Связей: ${(chat.relatedProjectIds || []).length}</span>
-            </div>
-          </div>
-        `;
-      })
-      .join("");
+    // 3. Render
+    edges.forEach(e => addLine(svg, e.source.x, e.source.y, e.target.x, e.target.y, "var(--border)"));
+    nodes.forEach(n => {
+      if (n.type === "root") {
+        addNode(svg, n.x, n.y, n.title, 14, "var(--accent)", "#fff", 24);
+      } else if (n.type === "group") {
+        addNode(svg, n.x, n.y, n.title, 10, "var(--bg-card)", "var(--text-primary)", 18);
+      } else {
+        const color = STATUS_COLORS[n.status] || "#64748b";
+        addLeafNode(svg, n.x, n.y, n.title, 8, color, n.id);
+      }
+    });
   }
 
-  function renderWorkflows() {
-    const list = document.getElementById("workflowList");
-    if (!list) return;
-    if (!workflowsData.length) {
-      list.innerHTML = '<div class="no-results">Нет данных по workflows</div>';
-      return;
-    }
-
-    list.innerHTML = workflowsData
-      .slice(0, 16)
-      .map(
-        (workflow) => `
-          <div class="feed-card">
-            <div class="feed-top">
-              <span class="feed-title">${workflow.name}</span>
-              <span class="feed-pill neutral">${(workflow.relatedProjectIds || []).length} проектов</span>
-            </div>
-            <div class="feed-meta">${workflow.source || "source: n/a"}</div>
-            <div class="feed-desc">${workflow.notes || ""}</div>
-            <div class="feed-bottom">
-              <span>${workflow.path || "path: n/a"}</span>
-            </div>
-          </div>
-        `
-      )
-      .join("");
+  function addLine(svg, x1, y1, x2, y2, color) {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", x1); line.setAttribute("y1", y1);
+    line.setAttribute("x2", x2); line.setAttribute("y2", y2);
+    line.setAttribute("stroke", color);
+    line.setAttribute("stroke-width", "2.5");
+    line.setAttribute("opacity", "0.7");
+    svg.appendChild(line);
   }
 
-  function renderIdeas() {
-    const grid = document.getElementById("ideasGrid");
-    if (!grid) return;
-    if (!ideasData.length) {
-      grid.innerHTML = "";
-      return;
-    }
+  function addNode(svg, x, y, label, fontSize, bg, textColor, r) {
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("transform", `translate(${x}, ${y})`);
 
-    grid.innerHTML = ideasData
-      .map((idea) => {
-        const tagsHtml = (idea.tags || []).slice(0, 3).map((tag) => `<span class="tag">${tag}</span>`).join("");
-        return `
-          <div class="idea-card" data-idea-id="${idea.id}">
-            <div class="idea-card-header">
-              <div class="idea-card-title">${idea.title}</div>
-              <span class="priority-dot priority-${idea.priority}" title="${PRIORITY_LABELS[idea.priority] || ""} приоритет"></span>
-            </div>
-            ${idea.routeLabel ? `<div class="idea-route-line"><span class="route-pill">${idea.routeLabel}</span>${idea.themeLabel ? `<span>${idea.themeLabel}</span>` : ""}</div>` : ""}
-            <div class="idea-card-desc">${idea.description}</div>
-            ${idea.routingNextStep ? `<div class="idea-card-next">${idea.routingNextStep}</div>` : ""}
-            <div class="idea-card-footer">
-              <div class="card-tags">${tagsHtml}</div>
-              ${idea.relatedProject ? `<span class="idea-related">→ ${idea.relatedProject}</span>` : ""}
-            </div>
-          </div>
-        `;
-      })
-      .join("");
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("r", r);
+    circle.setAttribute("fill", bg);
+    circle.setAttribute("stroke", "var(--border)");
+    circle.setAttribute("stroke-width", "1.5");
+    g.appendChild(circle);
+
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("dy", r + 16);
+    text.setAttribute("fill", textColor);
+    text.setAttribute("font-size", fontSize);
+    text.setAttribute("font-family", "var(--font)");
+    text.textContent = label.length > 25 ? label.substring(0, 23) + "…" : label;
+    g.appendChild(text);
+
+    svg.appendChild(g);
   }
 
-  function renderUpgrades() {
-    const grid = document.getElementById("upgradeGrid");
-    if (!grid || !upgradePathsData.length) {
-      if (grid) grid.innerHTML = "";
-      return;
-    }
+  function addLeafNode(svg, x, y, label, fontSize, color, projectId) {
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("transform", `translate(${x}, ${y})`);
+    g.style.cursor = "pointer";
+    g.addEventListener("click", () => openProjectModal(projectId));
 
-    grid.innerHTML = upgradePathsData
-      .map(
-        (upgrade) => `
-          <div class="upgrade-card">
-            <div class="upgrade-card-title">⬆ ${upgrade.title}</div>
-            <div class="upgrade-card-desc">${upgrade.description}</div>
-            <div class="upgrade-meta">
-              <span>⏱ ${upgrade.timeEstimate}</span>
-              <span>🔧 ${upgrade.complexity}</span>
-            </div>
-          </div>
-        `
-      )
-      .join("");
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("r", 6);
+    circle.setAttribute("fill", color);
+    circle.setAttribute("stroke", "#fff");
+    circle.setAttribute("stroke-width", "1");
+    g.appendChild(circle);
+
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("dy", 18);
+    text.setAttribute("fill", "var(--text-secondary)");
+    text.setAttribute("font-size", fontSize);
+    text.setAttribute("font-family", "var(--font)");
+    text.textContent = label.length > 20 ? label.substring(0, 18) + "…" : label;
+    g.appendChild(text);
+
+    svg.appendChild(g);
   }
 
-  function renderTelegramSummary() {
-    const container = document.getElementById("telegramSummary");
+  // ============================================================
+  //  PROJECTS TAB (Accordion)
+  // ============================================================
+  function renderProjectAccordion() {
+    const container = document.getElementById("projectAccordion");
     if (!container) return;
 
-    if (!telegramData.sources || !telegramData.sources.length) {
-      container.innerHTML = '<div class="no-results">Telegram intelligence пока не сгенерирован</div>';
-      return;
+    // Group projects
+    const groups = {};
+    const ungrouped = [];
+    for (const p of projectsData) {
+      if (currentProjectArea !== "all" && p.life_area !== currentProjectArea) continue;
+      if (searchQuery && !p.title.toLowerCase().includes(searchQuery)) continue;
+      if (p.group_id) {
+        if (!groups[p.group_id]) groups[p.group_id] = { title: p.group_title || p.group_id, projects: [] };
+        groups[p.group_id].projects.push(p);
+      } else {
+        ungrouped.push(p);
+      }
     }
 
-    const summary = telegramData.summary || {};
-    const stats = telegramData.stats || {};
+    const safeTitle = (t) => t.replace(/["()]/g, '');
 
-    const cards = [
-      { label: "Источники", value: stats.uniqueSources || telegramData.sources.length },
-      { label: "Экспорты", value: stats.exportsScanned || 0 },
-      { label: "Дубликаты", value: stats.duplicateExports || 0 },
-      { label: "Сообщения", value: stats.messageCount || 0 },
-    ];
+    let html = "";
+    for (const [gid, g] of Object.entries(groups)) {
+      const icon = GROUP_ICONS[gid] || "📂";
+      const activeCount = g.projects.filter((p) => p.status === "active").length;
 
-    const recommendations = (summary.recommendations || []).slice(0, 3);
-    const risks = (summary.risks || []).slice(0, 2);
+      // Build group specific schema
+      let groupSchemaHtml = "";
+      const groupProjIds = new Set(g.projects.map(p => p.id));
+      const internalRelations = projectRelationsData.filter(r => groupProjIds.has(r.from_id) && groupProjIds.has(r.to_id));
 
-    container.innerHTML = `
-      <div class="intel-overview-grid">
-        ${cards
-        .map(
-          (card) => `
-              <div class="overview-card">
-                <div class="overview-value">${card.value}</div>
-                <div class="overview-label">${card.label}</div>
+      if (internalRelations.length > 0) {
+        let mermaidStr = "graph LR\n";
+        internalRelations.forEach(r => {
+          const fTitle = g.projects.find(x => x.id === r.from_id)?.title || r.from_id;
+          const tTitle = g.projects.find(x => x.id === r.to_id)?.title || r.to_id;
+          const relLabel = RELATION_LABELS[r.relation] || r.relation;
+          mermaidStr += `  ID_${r.from_id}["${safeTitle(fTitle)}"] -->|${relLabel}| ID_${r.to_id}["${safeTitle(tTitle)}"]\n`;
+        });
+
+        groupSchemaHtml = `
+          <div class="group-schema-container" style="background:var(--bg); border-bottom:1px solid var(--border-light); padding:16px; margin-bottom:12px;">
+            <div style="font-size:0.85rem; font-weight:600; color:var(--text-secondary); margin-bottom:12px;">Внутренняя архитектура группы (исключение дублирования):</div>
+            <div class="mermaid">${mermaidStr}</div>
+          </div>
+        `;
+      } else {
+        // Create a simple loose nodes schema if $>1 projects feature no specific relations yet
+        if (g.projects.length > 1) {
+          let mermaidStr = "graph LR\n";
+          g.projects.forEach(p => { mermaidStr += `  ID_${p.id}["${safeTitle(p.title)}"]\n`; });
+          groupSchemaHtml = `
+              <div class="group-schema-container" style="background:var(--bg); border-bottom:1px solid var(--border-light); padding:16px; margin-bottom:12px;">
+                <div style="font-size:0.85rem; font-weight:600; color:var(--text-secondary); margin-bottom:12px;">Состав группы (связи не заданы):</div>
+                <div class="mermaid">${mermaidStr}</div>
               </div>
-            `
-        )
-        .join("")}
-      </div>
-      <div class="intel-note">${summary.overview || ""}</div>
-      <div class="intel-text-block">
-        <div class="intel-subtitle">Что делать дальше</div>
-        ${recommendations.map((item) => `<div class="protocol-item"><strong>${item}</strong></div>`).join("")}
-      </div>
-      <div class="intel-text-block intel-risk-block">
-        <div class="intel-subtitle">Риски процесса</div>
-        ${risks.map((item) => `<div class="protocol-item">${item}</div>`).join("")}
+            `;
+        }
+      }
+
+      html += `
+        <div class="accordion-group" data-group="${gid}">
+          <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="accordion-icon">${icon}</span>
+            <span class="accordion-title">${g.title}</span>
+            <span class="accordion-count">${activeCount} активных / ${g.projects.length} всего</span>
+            <span class="accordion-chevron">▸</span>
+          </div>
+          <div class="accordion-body">
+            ${groupSchemaHtml}
+            ${g.projects.map((p) => renderProjectCard(p)).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    if (ungrouped.length) {
+      html += `
+        <div class="accordion-group open" data-group="ungrouped">
+          <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="accordion-icon">📌</span>
+            <span class="accordion-title">Без группы</span>
+            <span class="accordion-count">${ungrouped.length}</span>
+            <span class="accordion-chevron">▸</span>
+          </div>
+          <div class="accordion-body">
+            ${ungrouped.map((p) => renderProjectCard(p)).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    container.innerHTML = html || '<div class="no-results">Нет проектов по фильтру</div>';
+
+    // Auto-render new mermaid schemas
+    requestAnimationFrame(() => {
+      try {
+        if (window.mermaid) mermaid.init(undefined, container.querySelectorAll('.mermaid'));
+      } catch (e) {
+        console.warn("Mermaid init error via accordion", e);
+      }
+    });
+  }
+
+  function renderProjectCard(p) {
+    const statusLabel = STATUS_LABELS[p.status] || p.status;
+    const statusColor = STATUS_COLORS[p.status] || "#64748b";
+    const progress = p.progress || 0;
+    const tags = (p.tags || []).slice(0, 3).map((t) => `<span class="tag-chip">${t}</span>`).join("");
+    const areaEmoji = p.life_area === "работа" ? "💼" : p.life_area === "я" ? "🧠" : p.life_area === "семья" ? "👨‍👩‍👧‍👦" : "";
+
+    return `
+      <div class="project-card" onclick="window._openProject('${p.id}')">
+        <div class="project-card-header">
+          <span class="project-card-title">${areaEmoji} ${p.title}</span>
+          <span class="status-dot" style="background:${statusColor}" title="${statusLabel}"></span>
+        </div>
+        ${p.description ? `<div class="project-card-desc">${p.description.substring(0, 100)}${p.description.length > 100 ? "…" : ""}</div>` : ""}
+        <div class="project-card-footer">
+          <div class="project-card-tags">${tags}</div>
+          ${progress > 0 ? `<div class="mini-progress"><div class="mini-progress-fill" style="width:${progress}%"></div></div>` : ""}
+        </div>
       </div>
     `;
   }
 
-  function renderTelegramSources() {
-    const grid = document.getElementById("telegramSourceGrid");
-    if (!grid) return;
-    const sources = telegramData.sources || [];
-    if (!sources.length) {
-      grid.innerHTML = "";
-      return;
-    }
+  // ============================================================
+  //  INBOX TAB (Signals)
+  // ============================================================
+  function renderSignalCard(signal) {
+    const routeColors = {
+      project_update: "#22c55e",
+      new_idea: "#f59e0b",
+      skill_candidate: "#8b5cf6",
+      reference_note: "#06b6d4",
+      archive: "#64748b",
+      pending: "#94a3b8",
+    };
+    const routeLabels = {
+      project_update: "Проект",
+      new_idea: "Идея",
+      skill_candidate: "Навык",
+      reference_note: "Заметка",
+      archive: "Архив",
+      pending: "Ожидание",
+    };
 
-    grid.innerHTML = sources
-      .slice(0, 8)
-      .map((source) => {
-        const tags = (source.topKeywords || []).slice(0, 4).map((tag) => `<span class="tag">${tag}</span>`).join("");
-        return `
-          <div class="feed-card intel-card">
-            <div class="feed-top">
-              <span class="feed-title">${source.title}</span>
-              <span class="feed-pill neutral">${source.rankScore}/100</span>
-            </div>
-            <div class="feed-meta">${source.lifeAreaLabel} · ${source.themeLabel} · ${source.messageCount} сообщений</div>
-            <div class="feed-desc">${source.summary}</div>
-            <div class="card-tags">${tags}</div>
-            <div class="feed-bottom">
-              <span>${toDateLabel(source.lastDate)}</span>
-              <span>дублей: ${source.duplicateCount || 0}</span>
-            </div>
-          </div>
-        `;
-      })
-      .join("");
-  }
+    const color = routeColors[signal.route] || "#64748b";
+    const routeLabel = routeLabels[signal.route] || signal.route || "—";
+    const tags = (signal.tags || []).map((t) => `<span class="tag-chip">${t}</span>`).join("");
+    const score = signal.relevance_score || 0;
+    const date = signal.created_at ? new Date(signal.created_at).toLocaleDateString("ru-RU", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
+    const isHot = score >= 70;
 
-  function renderTelegramAreas() {
-    const grid = document.getElementById("telegramAreaGrid");
-    if (!grid) return;
-    const buckets = telegramData.areaBuckets || [];
-    if (!buckets.length) {
-      grid.innerHTML = '<div class="no-results">Нет распределения по зонам</div>';
-      return;
-    }
-
-    grid.innerHTML = buckets
-      .map(
-        (bucket) => `
-          <div class="intel-bucket-card">
-            <div class="intel-bucket-top">
-              <div class="intel-bucket-title">${bucket.label}</div>
-              <div class="feed-pill neutral">${bucket.count}</div>
-            </div>
-            <div class="feed-meta">${(bucket.topThemes || []).join(" · ")}</div>
-            <div class="feed-desc">${(bucket.sourceTitles || []).slice(0, 4).join(", ")}</div>
-          </div>
-        `
-      )
-      .join("");
-  }
-
-  function renderSuggestions(targetId, items, kind) {
-    const grid = document.getElementById(targetId);
-    if (!grid) return;
-    if (!items || !items.length) {
-      grid.innerHTML = '<div class="no-results">Нет предложений</div>';
-      return;
-    }
-
-    grid.innerHTML = items
-      .map((item) => {
-        const meta = kind === "skill" ? (item.basedOn || []).slice(0, 3).join(", ") : `${item.category || ""}`;
-        const badge = kind === "skill" ? item.code || item.id || "skill" : meta || "project";
-        return `
-          <div class="feed-card intel-card">
-            <div class="feed-top">
-              <span class="feed-title">${item.title}</span>
-              <span class="feed-pill neutral">${badge}</span>
-            </div>
-            <div class="feed-desc">${item.summary || ""}</div>
-            <div class="feed-meta">${item.why || meta || ""}</div>
-          </div>
-        `;
-      })
-      .join("");
-  }
-
-  function renderProtocol() {
-    const list = document.getElementById("processingProtocolList");
-    if (!list) return;
-    const steps = telegramData.processingProtocol || [];
-    if (!steps.length) {
-      list.innerHTML = '<div class="no-results">Нет протокола</div>';
-      return;
-    }
-
-    list.innerHTML = steps
-      .map(
-        (item) => `
-          <div class="protocol-item">
-            <div class="protocol-step">${item.step}</div>
-            <div class="protocol-detail">${item.detail}</div>
-          </div>
-        `
-      )
-      .join("");
-  }
-
-  function renderTelegramIntel() {
-    renderTelegramSummary();
-    renderTelegramSources();
-    renderTelegramAreas();
-    renderSuggestions("skillSuggestionGrid", telegramData.skillSuggestions || [], "skill");
-    renderSuggestions("projectSuggestionGrid", telegramData.projectSuggestions || [], "project");
-    renderProtocol();
-  }
-
-  function renderMonitoringIntel() {
-    renderSystemProfile();
-    renderProtocolItems("systemProtocolList", monitoringData.processingProtocol || [], "protocol");
-    renderProtocolItems("systemRoutingList", monitoringData.routingRules || [], "routing");
-    renderSuggestions("monitorSkillGrid", monitoringData.skillSuggestions || [], "skill");
-    renderSuggestions("monitorProjectGrid", monitoringData.projectSuggestions || [], "project");
-    renderSimpleTextList("monitorRecommendationList", monitoringData.recommendations || []);
-  }
-
-  function renderProjectGroupsAndArchive() {
-    const groupGrid = document.getElementById("projectGroupGrid");
-    const consolidationEl = document.getElementById("consolidationSummary");
-    const archiveList = null;
-
-    if (groupGrid) {
-      if (!projectGroupsData.length) {
-        groupGrid.innerHTML = '<div class="no-results">Группы пока не собраны</div>';
-      } else {
-        groupGrid.innerHTML = projectGroupsData
-          .map(
-            (group) => `
-              <div class="feed-card intel-card">
-                <div class="feed-top">
-                  <span class="feed-title">${group.title}</span>
-                  <span class="feed-pill neutral">${group.projectCount || 0}</span>
-                </div>
-                <div class="feed-meta">Активных: ${group.activeProjects || 0} · Исследование: ${group.researchProjects || 0}</div>
-                <div class="feed-desc">${(group.projectTitles || []).slice(0, 4).join(", ")}</div>
-              </div>
-            `
-          )
-          .join("");
-      }
-    }
-
-    if (consolidationEl) {
-      const cards = [
-        { label: "Архив проектов", value: consolidationData.archivedProjects || 0 },
-        { label: "Архив чатов", value: consolidationData.archivedChats || 0 },
-        { label: "Merge проектов", value: consolidationData.projectMerges || 0 },
-        { label: "Merge чатов", value: consolidationData.chatMerges || 0 },
-      ];
-      consolidationEl.innerHTML = `
-        <div class="intel-overview-grid">
-          ${cards
-          .map(
-            (card) => `
-                <div class="overview-card">
-                  <div class="overview-value">${card.value}</div>
-                  <div class="overview-label">${card.label}</div>
-                </div>
-              `
-          )
-          .join("")}
+    // Action buttons based on status
+    let actionHtml = '';
+    if (signal.action_taken) {
+      actionHtml = `<div class="signal-action-done">✓ Обработано: ${signal.action_taken}</div>`;
+    } else {
+      actionHtml = `
+        <div class="signal-actions">
+          <button class="signal-action-btn" onclick="window._handleSignalAction('${signal.id}', 'idea')">💡 В Идею</button>
+          <button class="signal-action-btn" onclick="window._handleSignalAction('${signal.id}', 'note')">📝 В Заметку</button>
+          <button class="signal-action-btn btn-ignore" onclick="window._handleSignalAction('${signal.id}', 'ignore')">✕ Скрыть</button>
         </div>
       `;
-      const metricCards = consolidationEl.querySelectorAll(".overview-card");
-      if (metricCards.length >= 4) {
-        metricCards[0].remove();
-        metricCards[1].remove();
-      }
     }
 
-    if (false) {
-      if (!archivesData.length) {
-        archiveList.innerHTML = '<div class="no-results">Архив пуст</div>';
-      } else {
-        archiveList.innerHTML = archivesData
-          .slice(0, 24)
-          .map(
-            (item) => `
-              <div class="protocol-item">
-                <div class="protocol-step">[${item.kind || "source"}] ${item.title || item.id || "source"}</div>
-                <div class="protocol-detail">${item.reason || ""}${item.mergedInto ? ` → ${item.mergedInto}` : ""}</div>
-              </div>
-            `
-          )
-          .join("");
-      }
-    }
+    return `
+      <div class="signal-card ${isHot ? "signal-hot" : ""}" id="signal-${signal.id}">
+        <div class="signal-card-header">
+          <span class="signal-route-badge" style="background:${color}">${routeLabel}</span>
+          <span class="signal-date">${date}</span>
+        </div>
+        <div class="signal-summary">${signal.summary || signal.original_text || "—"}</div>
+        ${tags ? `<div class="signal-tags">${tags}</div>` : ""}
+        <div class="signal-meta">
+          <div class="relevance-bar"><div class="relevance-fill" style="width:${score}%;background:${score >= 70 ? "#22c55e" : score >= 40 ? "#f59e0b" : "#64748b"}"></div></div>
+          <span class="relevance-label">${score}%</span>
+        </div>
+        ${actionHtml}
+      </div>
+    `;
   }
 
-  function renderIdeaRouter() {
-    const summaryEl = document.getElementById("ideaRouterSummary");
-    const queueEl = document.getElementById("ideaRouterQueue");
-    const clusterEl = document.getElementById("ideaRouterClusterGrid");
-    const summary = ideaRouterData.summary || {};
-    const queue = ideaRouterData.queue || [];
-    const clusters = ideaRouterData.clusters || [];
+  // Expose to window for inline onclick
+  window._handleSignalAction = async function (signalId, actionType) {
+    if (!supabaseClient) return alert("Supabase не подключен");
+    try {
+      // 1. Mark signal as processed
+      const actionName = actionType === 'idea' ? 'Создана идея' : actionType === 'note' ? 'Создана заметка' : 'Проигнорировано';
 
-    if (summaryEl) {
-      if (!summary.totalIdeas) {
-        summaryEl.innerHTML = '<div class="no-results">Idea router пока не собран</div>';
-      } else {
-        const cards = [
-          { label: "Идей", value: summary.totalIdeas || 0 },
-          { label: "Проект", value: summary.routedToProject || 0 },
-          { label: "Skills", value: summary.skillCandidates || 0 },
-          { label: "Гипотезы", value: summary.projectHypotheses || 0 },
-          { label: "Заметки", value: summary.referenceNotes || 0 },
-          { label: "Архив", value: summary.archiveItems || 0 },
-        ];
-        summaryEl.innerHTML = `
-          <div class="intel-overview-grid">
-            ${cards
-            .map(
-              (card) => `
-                  <div class="overview-card">
-                    <div class="overview-value">${card.value}</div>
-                    <div class="overview-label">${card.label}</div>
-                  </div>
-                `
-            )
-            .join("")}
+      const { error } = await supabaseClient
+        .from('signals')
+        .update({ action_taken: actionName })
+        .eq('id', signalId);
+
+      if (error) throw error;
+
+      // 2. Optimistic UI update
+      const signal = signalsData.find(s => s.id === signalId);
+      if (signal) signal.action_taken = actionName;
+      renderSignals();
+
+      // 3. Create actual entity (mock for now until backend is fully wired to create API)
+      if (actionType !== 'ignore') {
+        alert(actionName + " (Заглушка: Здесь будет вызов создания записи в БД)");
+      }
+    } catch (err) {
+      console.error("Signal action error:", err);
+      alert("Ошибка: " + err.message);
+    }
+  };
+
+  function renderSignals() {
+    const container = document.getElementById("signalFeed");
+    if (!container) return;
+
+    let filtered = signalsData;
+    if (currentSignalFilter !== "all") {
+      filtered = signalsData.filter((s) => s.route === currentSignalFilter);
+    }
+
+    if (!filtered.length) {
+      container.innerHTML = '<div class="no-results">Нет сигналов</div>';
+      return;
+    }
+    container.innerHTML = filtered.map((s) => renderSignalCard(s)).join("");
+  }
+
+  function updateInboxBadge() {
+    const badge = document.getElementById("inboxBadge");
+    const countBadge = document.getElementById("signalCountBadge");
+    if (badge) badge.textContent = signalsData.length > 0 ? signalsData.length : "";
+    if (countBadge) countBadge.textContent = signalsData.length > 0 ? signalsData.length : "";
+  }
+
+  // ============================================================
+  //  LIBRARY TAB
+  // ============================================================
+  function renderGoals() {
+    const el = document.getElementById("goalsGrid");
+    if (!el) return;
+
+    const areaIcons = { работа: "💼", я: "🧠", семья: "👨‍👩‍👧‍👦" };
+    const areaColors = { работа: "#3b82f6", я: "#8b5cf6", семья: "#f59e0b" };
+
+    el.innerHTML = goalsData.map((g) => `
+      <div class="goal-card" style="border-left: 3px solid ${areaColors[g.life_area] || "#64748b"}">
+        <div class="goal-header">
+          <span class="goal-area">${areaIcons[g.life_area] || "📌"} ${g.life_area}</span>
+          <span class="goal-status">${g.status === "active" ? "🟢 Активна" : "⏸ Пауза"}</span>
+        </div>
+        <div class="goal-title">${g.title}</div>
+        <div class="goal-desc">${g.description || ""}</div>
+        ${g.focus_themes ? `<div class="goal-themes">${g.focus_themes.map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>` : ""}
+        ${g.project_ids && g.project_ids.length ? `<div class="goal-projects">${g.project_ids.length} связанных проектов</div>` : ""}
+      </div>
+    `).join("") || '<div class="empty-state">Нет целей</div>';
+  }
+
+  function renderIdeasLibrary() {
+    const el = document.getElementById("ideasGrid");
+    const badge = document.getElementById("ideasCountBadge");
+    if (!el) return;
+
+    let filtered = ideasData;
+    if (currentIdeaPriority !== "all") {
+      filtered = ideasData.filter((i) => i.priority === currentIdeaPriority);
+    }
+
+    if (badge) badge.textContent = ideasData.length || "";
+
+    el.innerHTML = filtered.map((idea) => {
+      const priorityColor = idea.priority === "high" ? "#ef4444" : idea.priority === "medium" ? "#f59e0b" : "#64748b";
+      const tags = (idea.tags || []).map((t) => `<span class="tag-chip">${t}</span>`).join("");
+      return `
+        <div class="idea-card" onclick="window._openIdea('${idea.id}')">
+          <div class="idea-card-header">
+            <span class="idea-priority-dot" style="background:${priorityColor}"></span>
+            <span class="idea-title">${idea.title}</span>
           </div>
-        `;
-      }
-    }
-
-    if (queueEl) {
-      if (!queue.length) {
-        queueEl.innerHTML = '<div class="no-results">Очередь пока пуста</div>';
-      } else {
-        queueEl.innerHTML = queue
-          .map(
-            (item) => `
-              <div class="protocol-item idea-route-item">
-                <div class="protocol-step">${item.title}</div>
-                <div class="protocol-detail">
-                  <span class="route-pill">${item.routeLabel}</span>
-                  ${item.relatedProject ? `<strong>→ ${item.relatedProject}</strong> · ` : ""}
-                  ${item.reason}
-                </div>
-                <div class="route-next-step">${item.nextStep || ""}</div>
-              </div>
-            `
-          )
-          .join("");
-      }
-    }
-
-    if (clusterEl) {
-      if (!clusters.length) {
-        clusterEl.innerHTML = '<div class="no-results">Нет кластеров идей</div>';
-      } else {
-        clusterEl.innerHTML = clusters
-          .map(
-            (cluster) => `
-              <div class="feed-card intel-card idea-cluster-card">
-                <div class="feed-top">
-                  <span class="feed-title">${cluster.title}</span>
-                  <span class="feed-pill neutral">${cluster.ideaCount}</span>
-                </div>
-                <div class="feed-meta">${cluster.lifeAreaLabel || "—"} · ${cluster.themeLabel || "—"}</div>
-                <div class="feed-desc">${cluster.summary || ""}</div>
-                <div class="card-tags">${(cluster.topTags || []).slice(0, 4).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
-                <div class="feed-bottom">
-                  <span>${cluster.routeBiasLabel || ""}</span>
-                  <span>${cluster.nextStep || ""}</span>
-                </div>
-              </div>
-            `
-          )
-          .join("");
-      }
-    }
+          <div class="idea-desc">${(idea.description || "").substring(0, 120)}${(idea.description || "").length > 120 ? "…" : ""}</div>
+          ${idea.related_project ? `<div class="idea-related">↗ ${idea.related_project}</div>` : ""}
+          <div class="idea-tags">${tags}</div>
+          <div class="idea-footer">
+            <span class="idea-score">${idea.relevance_score || 0}%</span>
+            ${idea.next_step ? `<span class="idea-next">→ ${idea.next_step.substring(0, 50)}…</span>` : ""}
+          </div>
+        </div>
+      `;
+    }).join("") || '<div class="no-results">Нет идей по фильтру</div>';
   }
 
+  function renderNotes() {
+    const el = document.getElementById("notesGrid");
+    const badge = document.getElementById("notesCountBadge");
+    if (!el) return;
+
+    if (badge) badge.textContent = notesData.length || "";
+
+    if (!notesData.length) {
+      el.innerHTML = '<div class="empty-state">Заметки будут появляться из сигналов и ручного добавления</div>';
+      return;
+    }
+
+    el.innerHTML = notesData.map((n) => `
+      <div class="note-card">
+        <div class="note-title">${n.title}</div>
+        <div class="note-content">${(n.content || "").substring(0, 150)}</div>
+        <div class="note-tags">${(n.tags || []).map((t) => `<span class="tag-chip">${t}</span>`).join("")}</div>
+      </div>
+    `).join("");
+  }
+
+  // ============================================================
+  //  ASSISTANT TAB
+  // ============================================================
+  function renderSystemProfile() {
+    const el = document.getElementById("systemProfileCard");
+    if (!el || !monitoringData.profile.title) return;
+    const p = monitoringData.profile;
+
+    el.innerHTML = `
+      <div class="profile-card">
+        <div class="profile-title">${p.title}</div>
+        <div class="profile-summary">${p.summary || ""}</div>
+        ${p.roles ? `<div class="profile-roles">${p.roles.map((r) => `<span class="role-tag">${r}</span>`).join("")}</div>` : ""}
+        ${p.lifeAreas ? `<div class="profile-areas">${p.lifeAreas.map((a) => `
+          <div class="area-chip">
+            <strong>${a.label}</strong>: ${a.focus}
+          </div>
+        `).join("")}</div>` : ""}
+      </div>
+    `;
+  }
+
+  function renderRoutingRules() {
+    const el = document.getElementById("systemRoutingList");
+    if (!el) return;
+    const rules = monitoringData.routingRules || [];
+    el.innerHTML = rules.map((r) => `
+      <div class="protocol-item">
+        <div class="protocol-when">${r.when}</div>
+        <div class="protocol-route">→ ${r.route}</div>
+        <div class="protocol-action">${r.action}</div>
+      </div>
+    `).join("") || '<div class="empty-state">Нет правил</div>';
+  }
+
+  function renderSkillSuggestions() {
+    const el = document.getElementById("monitorSkillGrid");
+    if (!el) return;
+    const items = monitoringData.skillSuggestions || [];
+    el.innerHTML = items.map((s) => `
+      <div class="suggestion-card">
+        <div class="suggestion-title">🛠 ${s.title}</div>
+        <div class="suggestion-summary">${s.summary || ""}</div>
+        <div class="suggestion-why">${s.why || ""}</div>
+      </div>
+    `).join("") || '<div class="empty-state">Нет предложений</div>';
+  }
+
+  function renderProjectSuggestions() {
+    const el = document.getElementById("monitorProjectGrid");
+    if (!el) return;
+    const items = monitoringData.projectSuggestions || [];
+    el.innerHTML = items.map((s) => `
+      <div class="suggestion-card">
+        <div class="suggestion-title">🧪 ${s.title}</div>
+        <div class="suggestion-summary">${s.summary || ""}</div>
+        <div class="suggestion-why">${s.why || ""}</div>
+      </div>
+    `).join("") || '<div class="empty-state">Нет гипотез</div>';
+  }
+
+  function renderRecommendations() {
+    const container = document.getElementById("asstRecommendations");
+    if (!container) return;
+    const recs = monitoringData.recommendations || [];
+
+    // Add Report Generation Button for Digital Twin
+    const headerHtml = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 class="intel-subtitle" style="margin:0;">Активные действия (Скиллы)</h3>
+      </div>
+      <div class="suggestion-card" style="margin-bottom:16px; border-color:var(--accent);">
+        <div class="suggestion-title">Сгенерировать AI-Отчет</div>
+        <div class="suggestion-summary">Проанализировать все входящие сигналы за последние 24 часа и составить саммари для фокуса.</div>
+        <button class="auth-btn" style="margin-top:10px; width:auto; padding:6px 16px; font-size:0.8rem;" onclick="alert('Скилл в разработке: Здесь AI агент проанализирует данные и выдаст ответ.')">⚡ Запустить анализ</button>
+      </div>
+      <h3 class="intel-subtitle">Рекомендации системы</h3>
+    `;
+
+    if (!recs.length) {
+      container.innerHTML = headerHtml + '<div class="empty-state">Нет новых рекомендаций</div>';
+      return;
+    }
+
+    container.innerHTML = headerHtml + `<div style="display:grid;gap:8px;">` +
+      recs.map((r) => `<div class="recommendation-item">💡 ${r}</div>`).join("") +
+      `</div>`;
+  }
+
+  // ============================================================
+  //  MODALS
+  // ============================================================
   function openProjectModal(projectId) {
-    const project = projectsData.find((item) => item.id === projectId);
-    if (!project) return;
+    const p = projectsData.find((x) => x.id === projectId);
+    if (!p) return;
 
-    document.getElementById("modalTitle").textContent = project.title;
-    document.getElementById("modalCategory").textContent = `${buildProjectSubtitle(project)} · ${project.topic || ""}`;
-    document.getElementById("modalStatus").textContent = STATUS_LABELS[project.status] || project.status;
-    document.getElementById("modalStatus").className = "status-badge status-" + project.status;
-    document.getElementById("modalDesc").textContent = project.description || "";
-    document.getElementById("modalProgress").style.width = (project.progress || 0) + "%";
-    document.getElementById("modalProgress").className =
-      "progress-fill " + ((project.progress || 0) >= 70 ? "high" : (project.progress || 0) >= 30 ? "medium" : "low");
-    document.getElementById("modalProgressLabel").textContent = (project.progress || 0) + "%";
+    document.getElementById("modalTitle").textContent = p.title;
+    const statusEl = document.getElementById("modalStatus");
+    statusEl.textContent = STATUS_LABELS[p.status] || p.status;
+    statusEl.style.background = STATUS_COLORS[p.status] || "#64748b";
+    statusEl.style.color = "#fff";
 
-    const taskList = document.getElementById("modalTasks");
-    if (project.keyTasks && project.keyTasks.length > 0) {
-      taskList.innerHTML = project.keyTasks
-        .map(
-          (task) => `
-            <li class="task-item">
-              <span class="task-check ${task.done ? "checked" : ""}">${task.done ? "✓" : ""}</span>
-              <span class="task-text ${task.done ? "done-task" : ""}">${task.task}</span>
-            </li>
-          `
-        )
-        .join("");
-    } else {
-      taskList.innerHTML = '<li class="task-item" style="color:var(--text-muted)">Нет задач</li>';
+    // Build Holistic System Context from Graph
+    const outgoing = projectRelationsData.filter(r => r.from_id === projectId);
+    const incoming = projectRelationsData.filter(r => r.to_id === projectId);
+    const safeTitle = (t) => t.replace(/["()]/g, '');
+
+    let contextHtml = "";
+    if (outgoing.length > 0 || incoming.length > 0) {
+      let mermaidStr = "graph LR\n";
+      mermaidStr += `  Current["${safeTitle(p.title)}"]:::current\n`;
+
+      incoming.forEach(r => {
+        const fromProj = projectsData.find(x => x.id === r.from_id)?.title || r.from_id;
+        const relLabel = RELATION_LABELS[r.relation] || r.relation;
+        mermaidStr += `  ID_${r.from_id}["${safeTitle(fromProj)}"] -->|${relLabel}| Current\n`;
+      });
+      outgoing.forEach(r => {
+        const toProj = projectsData.find(x => x.id === r.to_id)?.title || r.to_id;
+        const relLabel = RELATION_LABELS[r.relation] || r.relation;
+        mermaidStr += `  Current -->|${relLabel}| ID_${r.to_id}["${safeTitle(toProj)}"]\n`;
+      });
+
+      mermaidStr += `  classDef current fill:#3b82f6,color:#fff,stroke:#2563eb,stroke-width:2px;`;
+
+      contextHtml = `
+        <div class="modal-section" style="margin-top:16px;">
+          <div class="modal-section-title" style="margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            Холистичный контекст
+          </div>
+          <div style="background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border-light); padding:16px;">
+            <p style="margin-top:0; margin-bottom:12px; font-size:0.85rem; color:var(--text-secondary);">Место проекта в общей экосистеме:</p>
+            <div class="mermaid">${mermaidStr}</div>
+          </div>
+        </div>
+      `;
     }
 
-    const notesEl = document.getElementById("modalNotes");
-    const fullNotes = [project.notes, project.sourcePath ? `Source: ${project.sourcePath}` : "", project.destinationPath ? `Destination: ${project.destinationPath}` : ""]
-      .filter(Boolean)
-      .join("\n");
-    if (fullNotes) {
-      notesEl.textContent = fullNotes;
-      document.getElementById("modalNotesWrap").style.display = "";
+    // Build History & Tasks
+    const historyHtml = `
+      <div class="modal-section" style="margin-top:16px;">
+        <div class="modal-section-title">⌛ История разработки</div>
+        <div class="modal-desc" style="font-style:italic; border-left:3px solid var(--border); padding-left:12px; margin-top:8px;">
+          Данные об истории разработки пока агрегируются из Заметок и Telegram-сигналов. 
+          <br><span style="font-size:0.8em; color:var(--accent); cursor:pointer;" onclick="alert('Скилл AI-анализа историй в разработке')">⚡ Сгенерировать историю через AI</span>
+        </div>
+      </div>
+    `;
+
+    const tasksHtml = `
+      <div class="modal-section" style="margin-top:16px;">
+        <div class="modal-section-title">Предстоящие задачи</div>
+        <ul class="task-list" style="margin-top:8px;">
+          ${(p.tasks || []).map(t => `<li class="${t.done ? "done" : ""}">${t.done ? "✅" : "⬜"} ${t.text}</li>`).join("") || "<li><i>Нет активных задач</i></li>"}
+        </ul>
+      </div>
+    `;
+
+    // Future plans / essence
+    let futureHtml = "";
+    if (p.status === 'completed' || p.status === 'active') {
+      futureHtml = `
+        <div class="modal-section" style="margin-top:16px; background:var(--research-light); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--research);">
+          <div class="modal-section-title" style="color:var(--research);">🚀 Вектор развития (Суть)</div>
+          <div style="font-size:0.85rem; margin-top:6px; color:var(--text-primary);">
+            ${p.description || "Определяется в процессе. Основная задача — бесшовная интеграция с 'Мозгом'."}
+          </div>
+        </div>
+      `;
     } else {
-      document.getElementById("modalNotesWrap").style.display = "none";
+      futureHtml = `
+        <div class="modal-section" style="margin-top:16px;">
+          <div class="modal-section-title">Суть проекта</div>
+          <div class="modal-desc" style="margin-top:4px;">${p.description || "Нет описания."}</div>
+        </div>
+      `;
     }
 
-    document.getElementById("modalTags").innerHTML = (project.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("");
-    document.getElementById("modalOverlay").classList.add("open");
-    document.body.style.overflow = "hidden";
+    // Inject content
+    document.getElementById("modalContentBody").innerHTML = `
+      <div class="progress-container" style="margin-bottom:12px;">
+        <div class="progress-bar"><div class="progress-fill" style="width:${p.progress || 0}%"></div></div>
+        <span class="progress-label">${p.progress || 0}%</span>
+      </div>
+      ${futureHtml}
+      ${contextHtml}
+      ${historyHtml}
+      ${tasksHtml}
+    `;
+
+    document.getElementById("modalOverlay").classList.add("active");
+
+    // Auto-render modal mermaid schemas
+    requestAnimationFrame(() => {
+      try {
+        if (window.mermaid) mermaid.init(undefined, document.getElementById("modalContentBody").querySelectorAll('.mermaid'));
+      } catch (e) { console.warn("Mermaid modal render error", e); }
+    });
   }
 
   function closeProjectModal() {
-    document.getElementById("modalOverlay").classList.remove("open");
-    document.body.style.overflow = "";
+    document.getElementById("modalOverlay").classList.remove("active");
   }
 
   function openIdeaModal(ideaId) {
-    const idea = ideasData.find((item) => item.id === ideaId);
+    const idea = ideasData.find((x) => x.id === ideaId);
     if (!idea) return;
 
-    document.getElementById("ideaModalTitle").textContent = "💡 " + idea.title;
-    document.getElementById("ideaModalDesc").textContent = [idea.description, idea.routingNextStep].filter(Boolean).join(" ");
-    document.getElementById("ideaModalTags").innerHTML = (idea.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("");
-    document.getElementById("ideaModalDate").textContent = "Добавлено: " + (idea.addedDate || "—");
+    document.getElementById("ideaModalTitle").textContent = idea.title;
+    document.getElementById("ideaModalDesc").textContent = idea.description || "";
+    document.getElementById("ideaModalRelated").textContent = idea.related_project
+      ? `Связанный проект: ${idea.related_project}`
+      : "";
+    document.getElementById("ideaModalTags").innerHTML = (idea.tags || []).map((t) => `<span class="modal-tag">${t}</span>`).join("");
+    document.getElementById("ideaModalDate").textContent = idea.added_date
+      ? `Добавлено: ${idea.added_date}`
+      : "";
 
-    const related = document.getElementById("ideaModalRelated");
-    const routeBits = [];
-    if (idea.routeLabel) routeBits.push("<strong>Исход:</strong> " + idea.routeLabel);
-    if (idea.relatedProject) routeBits.push("<strong>Связанный проект:</strong> " + idea.relatedProject);
-    if (idea.lifeAreaLabel || idea.themeLabel) {
-      routeBits.push("<strong>Контур:</strong> " + [idea.lifeAreaLabel, idea.themeLabel].filter(Boolean).join(" / "));
-    }
-    if (idea.routingReason) routeBits.push(idea.routingReason);
-    if (routeBits.length) {
-      related.innerHTML = "<strong>Связанный проект:</strong> " + idea.relatedProject;
-      related.innerHTML = routeBits.join("<br>");
-      related.style.display = "";
-    } else {
-      related.style.display = "none";
-    }
-
-    document.getElementById("ideaModalOverlay").classList.add("open");
-    document.body.style.overflow = "hidden";
+    document.getElementById("ideaModalOverlay").classList.add("active");
   }
 
   function closeIdeaModal() {
-    document.getElementById("ideaModalOverlay").classList.remove("open");
-    document.body.style.overflow = "";
+    document.getElementById("ideaModalOverlay").classList.remove("active");
   }
 
+  // Expose to onclick
+  window._openProject = openProjectModal;
+  window._openIdea = openIdeaModal;
+
+  // ============================================================
+  //  EVENTS
+  // ============================================================
   function bindEvents() {
-    const statsBar = document.getElementById("statsBar");
-    if (statsBar) {
-      statsBar.addEventListener("click", function (event) {
-        const chip = event.target.closest(".stat-chip");
-        if (!chip) return;
-        currentFilter = chip.dataset.filter;
-        renderStats();
-        renderOverview();
-        renderProjects();
-      });
-    }
+    // Theme toggle
+    document.getElementById("themeToggle")?.addEventListener("click", () => {
+      const current = document.body.getAttribute("data-theme");
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
 
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) {
-      searchInput.addEventListener("input", function (event) {
-        searchQuery = event.target.value.trim();
-        renderProjects();
-      });
-    }
+    // Tab switching
+    document.querySelectorAll(".dashboard-tab").forEach((tab) => {
+      tab.addEventListener("click", () => switchPanel(tab.dataset.panel));
+    });
 
-    const groupTabs = document.getElementById("projectGroupTabs");
-    if (groupTabs) {
-      groupTabs.addEventListener("click", function (event) {
-        const tab = event.target.closest(".group-tab");
-        if (!tab) return;
-        currentGroupFilter = tab.dataset.group || "all";
-        renderProjectGroupTabs();
-        renderOverview();
-        renderStats();
-        renderProjects();
-      });
-    }
+    // Project area filter
+    document.getElementById("projectFilters")?.addEventListener("click", (e) => {
+      const btn = e.target.closest(".filter-pill");
+      if (!btn) return;
+      document.querySelectorAll("#projectFilters .filter-pill").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentProjectArea = btn.dataset.area;
+      renderProjectAccordion();
+    });
 
-    const mainTabs = document.getElementById("mainTabs");
-    if (mainTabs) {
-      mainTabs.addEventListener("click", function (event) {
-        const tab = event.target.closest(".dashboard-tab");
-        if (!tab) return;
-        switchPanel(tab.dataset.panel);
-      });
-    }
+    // Signal filter
+    document.getElementById("signalFilters")?.addEventListener("click", (e) => {
+      const btn = e.target.closest(".signal-filter");
+      if (!btn) return;
+      document.querySelectorAll("#signalFilters .signal-filter").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentSignalFilter = btn.dataset.route;
+      renderSignals();
+    });
 
-    const themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-      themeToggle.addEventListener("click", function () {
-        const current = document.body.getAttribute("data-theme") || "light";
-        applyTheme(current === "dark" ? "light" : "dark");
-      });
-    }
+    // Ideas priority filter
+    document.getElementById("ideasFilter")?.addEventListener("click", (e) => {
+      const btn = e.target.closest(".filter-pill");
+      if (!btn) return;
+      document.querySelectorAll("#ideasFilter .filter-pill").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentIdeaPriority = btn.dataset.priority;
+      renderIdeasLibrary();
+    });
 
-    const projectGrid = document.getElementById("projectGrid");
-    if (projectGrid) {
-      projectGrid.addEventListener("click", function (event) {
-        const card = event.target.closest(".project-card");
-        if (!card) return;
-        openProjectModal(card.dataset.id);
-      });
-    }
+    // Search
+    document.getElementById("searchInput")?.addEventListener("input", (e) => {
+      searchQuery = (e.target.value || "").toLowerCase();
+      renderProjectAccordion();
+    });
 
-    const ideasGrid = document.getElementById("ideasGrid");
-    if (ideasGrid) {
-      ideasGrid.addEventListener("click", function (event) {
-        const card = event.target.closest(".idea-card");
-        if (!card) return;
-        openIdeaModal(card.dataset.ideaId);
-      });
-    }
+    // Modal close
+    document.getElementById("modalClose")?.addEventListener("click", closeProjectModal);
+    document.getElementById("modalOverlay")?.addEventListener("click", (e) => {
+      if (e.target.id === "modalOverlay") closeProjectModal();
+    });
+    document.getElementById("ideaModalClose")?.addEventListener("click", closeIdeaModal);
+    document.getElementById("ideaModalOverlay")?.addEventListener("click", (e) => {
+      if (e.target.id === "ideaModalOverlay") closeIdeaModal();
+    });
 
-    const modalClose = document.getElementById("modalClose");
-    const modalOverlay = document.getElementById("modalOverlay");
-    if (modalClose) modalClose.addEventListener("click", closeProjectModal);
-    if (modalOverlay) {
-      modalOverlay.addEventListener("click", function (event) {
-        if (event.target === this) closeProjectModal();
-      });
-    }
-
-    const ideaModalClose = document.getElementById("ideaModalClose");
-    const ideaModalOverlay = document.getElementById("ideaModalOverlay");
-    if (ideaModalClose) ideaModalClose.addEventListener("click", closeIdeaModal);
-    if (ideaModalOverlay) {
-      ideaModalOverlay.addEventListener("click", function (event) {
-        if (event.target === this) closeIdeaModal();
-      });
-    }
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
+    // Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
         closeProjectModal();
         closeIdeaModal();
       }
     });
+  }
 
-    // Signal filter buttons
-    const signalFilters = document.getElementById('signalFilters');
-    if (signalFilters) {
-      signalFilters.addEventListener('click', function (event) {
-        const btn = event.target.closest('.signal-filter');
-        if (!btn) return;
-        currentSignalFilter = btn.dataset.route;
-        signalFilters.querySelectorAll('.signal-filter').forEach(b => b.classList.toggle('active', b === btn));
-        renderSignals();
+  // ============================================================
+  //  RENDER ALL
+  // ============================================================
+  function renderAll() {
+    // Date
+    const dateEl = document.getElementById("headerDate");
+    if (dateEl) {
+      dateEl.textContent = new Date().toLocaleDateString("ru-RU", {
+        weekday: "long", year: "numeric", month: "long", day: "numeric",
       });
     }
+
+    // Overview
+    renderOverviewStats();
+    renderMindMap();
+
+    // Projects
+    renderProjectAccordion();
+
+    // Inbox
+    renderSignals();
+    updateInboxBadge();
+
+    // Library
+    renderGoals();
+    renderIdeasLibrary();
+    renderNotes();
+
+    // Assistant
+    renderSystemProfile();
+    renderRoutingRules();
+    renderSkillSuggestions();
+    renderProjectSuggestions();
+    renderRecommendations();
   }
 
+  // ============================================================
+  //  INIT
+  // ============================================================
   async function init() {
+    console.log('[Dashboard] init() started');
     try {
-      renderFileProtocolHint();
-      const [{ data, source }, optionalTelegram, optionalIdeaInbox] = await Promise.all([
-        loadDashboardData(),
-        loadOptionalJson("data/telegram_intelligence.json"),
-        loadFirstOptionalJson(["/api/idea-inbox", "data/idea_inbox.json"]),
-      ]);
-
-      projectsData = data.projects || [];
-      upgradePathsData = data.upgradePaths || [];
-      ideasData = mergeIdeas(data.ideas || [], optionalIdeaInbox);
-      chatsData = data.chats || [];
-      workflowsData = data.workflows || [];
-      dashboardStats = data.stats || {};
-      monitoringData = data.monitoring || monitoringData;
-      projectGroupsData = data.projectGroups || monitoringData.projectGroups || [];
-      consolidationData = data.consolidation || monitoringData.consolidation || {};
-      ideaRouterData = data.ideaRouter || ideaRouterData;
-      if (optionalTelegram) {
-        telegramData = optionalTelegram;
-      }
-
       initTheme();
-      cleanupLegacySections();
-      renderDate(data.meta?.lastUpdated);
-      renderSyncInfo(data.meta?.generatedAt, source);
-      renderProjectGroupTabs();
-      renderOverview();
-      renderStats();
-      renderProjects();
-      renderTelegramIntel();
-      renderMonitoringIntel();
-      renderProjectGroupsAndArchive();
-      renderIdeaRouter();
-      renderIdeas();
-      renderUpgrades();
-      switchPanel(currentPanel);
-      bindEvents();
+      console.log('[Dashboard] theme ok');
 
-      // Load signals from Supabase
-      await loadSignals();
-      renderSignals();
-      subscribeToSignals();
-    } catch (err) {
-      console.error("Load error:", err);
-      const grid = document.getElementById("projectGrid");
-      if (grid) {
-        if (isFileProtocol()) {
-          grid.innerHTML =
-            '<div class="no-results no-results--error">Дашборд открыт как <code>file://</code>, поэтому браузер блокирует загрузку <code>data/*.json</code>.<br>Запустите локальный сервер и откройте <code>http://127.0.0.1:8891/index.html</code>:<br><code>python scripts/dashboard/dashboard_server.py --port 8891</code></div>';
-        } else {
-          grid.innerHTML =
-            '<div class="no-results no-results--error">Ошибка загрузки данных. Проверьте наличие и валидность <code>data/dashboard_data.json</code> и <code>data/telegram_intelligence.json</code>. Для стабильной работы открывайте дашборд через локальный сервер: <code>python scripts/dashboard/dashboard_server.py --port 8891</code></div>';
-        }
+      if (window.mermaid) {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+          securityLevel: 'loose'
+        });
       }
+
+      initSupabase();
+      console.log('[Dashboard] supabase init ok');
+
+      bindEvents();
+      console.log('[Dashboard] events bound');
+
+      // Load local JSON first (for monitoring profile, etc.)
+      await loadDashboardData();
+      console.log('[Dashboard] local JSON loaded, projects:', projectsData.length);
+
+      // Load enriched data from Supabase
+      await loadFromSupabase();
+      console.log('[Dashboard] supabase loaded — projects:', projectsData.length, 'ideas:', ideasData.length, 'goals:', goalsData.length, 'signals:', signalsData.length);
+
+      // Render everything
+      renderAll();
+      console.log('[Dashboard] renderAll() done');
+
+      // Subscribe to realtime
+      subscribeToSignals();
+
+      // Handle window resize for mind map
+      window.addEventListener('resize', () => {
+        if (currentPanel === 'overviewPanel') renderMindMap();
+      });
+
+      console.log('[Dashboard] init() complete ✓');
+    } catch (err) {
+      console.error('[Dashboard] FATAL ERROR in init():', err);
+      // Show visible error so user doesn't see blank page
+      const errBanner = document.createElement('div');
+      errBanner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#ef4444;color:#fff;padding:16px 20px;font-family:monospace;font-size:13px;white-space:pre-wrap;max-height:40vh;overflow:auto;';
+      errBanner.textContent = '❌ Dashboard init error:\n' + (err && err.stack ? err.stack : String(err));
+      document.body.appendChild(errBanner);
     }
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener('DOMContentLoaded', init);
 })();

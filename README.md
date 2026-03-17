@@ -50,3 +50,8 @@ python .\scripts\dashboard\sync_workspace_data.py
 ## Хостинг
 
 См. `docs/hosting.md`.
+
+Для постоянного доступа с телефона через 4G оптимальный путь: `GitHub Pages` для статики + прокси/CDN перед ним, если нужен свой домен или сетевой слой.
+Операционная памятка: `docs/remote_access_4g.md`.
+Публичная выгрузка теперь собирается через `scripts/dashboard/build_public_site.mjs` и скрывает локальные пути из JSON.
+Если домен и прокси у вас уже в Cloudflare, используйте `Cloudflare Pages`: инструкция в `docs/cloudflare_pages_setup.md`.

@@ -14,6 +14,7 @@
   const ideaDescription = document.getElementById("ideaDescription");
   const ideaTags = document.getElementById("ideaTags");
   const ideaFormStatus = document.getElementById("ideaFormStatus");
+  const LOCAL_IDEA_DRAFTS_KEY = "dashboardLocalIdeaDrafts";
 
   function isFileProtocol() {
     return typeof window !== "undefined" && window.location && window.location.protocol === "file:";
@@ -74,6 +75,7 @@
     groups: [],
     selected: null,
     query: "",
+    hasIdeaInboxApi: false,
   };
 
   function normalize(text) {
@@ -110,6 +112,47 @@
 
   async function loadIdeaInbox() {
     return (await fetchJson(["/api/idea-inbox", "data/idea_inbox.json"])) || { ideas: [] };
+  }
+
+  async function detectIdeaInboxApi() {
+    try {
+      const response = await fetch("/api/idea-inbox", { cache: "no-store" });
+      return response.ok;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function loadLocalIdeaDrafts() {
+    try {
+      const raw = localStorage.getItem(LOCAL_IDEA_DRAFTS_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+      console.warn("Local idea drafts unavailable", err);
+      return [];
+    }
+  }
+
+  function persistLocalIdeaDraft(idea) {
+    const drafts = loadLocalIdeaDrafts();
+    drafts.unshift(idea);
+    localStorage.setItem(LOCAL_IDEA_DRAFTS_KEY, JSON.stringify(drafts.slice(0, 50)));
+  }
+
+  function createLocalIdea(payload) {
+    return {
+      id: `local-${Date.now()}`,
+      title: payload.title,
+      group: payload.group,
+      relatedProject: payload.relatedProject,
+      description: payload.description,
+      tags: payload.tags,
+      priority: payload.priority,
+      addedDate: new Date().toISOString().slice(0, 10),
+      source: "browser_local_draft",
+      isLocalDraft: true,
+    };
   }
 
   function groupForProject(project) {
@@ -287,10 +330,11 @@
   }
 
   function renderIdeaNode(idea) {
+    const suffix = idea.isLocalDraft ? " · локальный черновик" : "";
     return `
       <div class="idea-item node-selectable" data-kind="idea" data-title="${escapeHtml(idea.title)}">
         <div class="idea-item-title">${escapeHtml(idea.title)}</div>
-        <div class="idea-item-meta">${escapeHtml(idea.description || "Черновик идеи без описания")}</div>
+        <div class="idea-item-meta">${escapeHtml((idea.description || "Черновик идеи без описания") + suffix)}</div>
       </div>
     `;
   }
@@ -527,9 +571,18 @@
       setFormStatus("Идея сохранена в idea inbox. Она уже видна на карте и подхватится общим sync.", "ok");
     } catch (err) {
       console.error(err);
+      const localIdea = createLocalIdea(payload);
+      persistLocalIdeaDraft(localIdea);
+      state.inbox.ideas.unshift(localIdea);
+      buildGroups();
+      fillGroupSelect();
+      renderTree();
+      updateMeta();
+      ideaForm.reset();
+      ideaGroup.value = payload.group;
       setFormStatus(
-        "Не удалось сохранить идею через API. Для прямой записи запустите `python scripts/dashboard/dashboard_server.py --port 8891` и откройте дашборд через этот сервер.",
-        "error"
+        "API недоступен: идея сохранена только локально в браузере этого устройства. Для общего sync используйте локальный сервер или перенесите черновик в data/idea_inbox.json.",
+        "warning"
       );
     }
   }
@@ -557,15 +610,31 @@
 
   async function init() {
     try {
-      state.dashboard = await loadDashboard();
-      state.inbox = await loadIdeaInbox();
+      const [dashboard, inbox, hasIdeaInboxApi] = await Promise.all([
+        loadDashboard(),
+        loadIdeaInbox(),
+        detectIdeaInboxApi(),
+      ]);
+      const localDrafts = loadLocalIdeaDrafts();
+      state.dashboard = dashboard;
+      state.inbox = {
+        ideas: mergeIdeas(inbox.ideas || [], localDrafts),
+      };
+      state.hasIdeaInboxApi = hasIdeaInboxApi;
       buildGroups();
       fillGroupSelect();
       renderTree();
       updateMeta();
       bindControls();
       showGroupDetails(state.groups[0]?.id || "");
-      setFormStatus("Сохраняйте новые ветки как короткие гипотезы. Для прямой записи нужен интерактивный сервер дашборда.", "");
+      if (!state.hasIdeaInboxApi && !isFileProtocol()) {
+        setFormStatus(
+          "Публичный режим: просмотр работает, а новые идеи сохраняются как локальные черновики в браузере.",
+          "warning"
+        );
+      } else {
+        setFormStatus("Сохраняйте новые ветки как короткие гипотезы. Для прямой записи нужен интерактивный сервер дашборда.", "");
+      }
     } catch (err) {
       console.error(err);
       metaEl.textContent = "Ошибка загрузки карты";

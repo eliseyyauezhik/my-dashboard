@@ -120,7 +120,53 @@ body {
   color: var(--text-muted);
 }
 
-/* --- Search --- */
+/* --- Section Title --- */
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- Main Content Area --- */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+}
+
+/* --- Theme Toggle --- */
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font);
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- Header actions --- */
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
 .search-box {
   display: flex;
   align-items: center;
@@ -581,7 +627,8 @@ body {
   overflow-y: auto;
 }
 
-.modal-overlay.open {
+.modal-overlay.open,
+.modal-overlay.active {
   display: flex;
 }
 
@@ -1069,7 +1116,7 @@ body {
   color: var(--text-muted);
 }
 
-#consolidationSummary + .intel-subtitle {
+#consolidationSummary+.intel-subtitle {
   display: none;
 }
 
@@ -1228,7 +1275,8 @@ body {
   margin-bottom: 4px;
 }
 
-.task-todo, .task-done {
+.task-todo,
+.task-done {
   font-size: 0.78rem;
   line-height: 1.3;
 }
@@ -1408,4 +1456,709 @@ body[data-theme="dark"] .signal-tag {
   margin-top: 6px;
   padding-top: 6px;
   border-top: 1px solid var(--border-light);
+}
+
+.signal-hot {
+  border-left: 3px solid #22c55e;
+}
+
+.signal-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.signal-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-light);
+  flex-wrap: wrap;
+}
+
+.signal-action-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font);
+}
+
+.signal-action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.signal-action-btn.btn-ignore:hover {
+  border-color: var(--idea-low);
+  color: var(--idea-low);
+  background: var(--idea-low-bg);
+}
+
+.signal-action-done {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-light);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--success);
+}
+
+.relevance-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--border-light);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.relevance-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.relevance-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 24px;
+}
+
+/* ============================================
+   Tab Enhancements
+   ============================================ */
+
+.tab-icon {
+  margin-right: 2px;
+}
+
+.tab-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  padding: 1px 6px;
+  margin-left: 4px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.tab-badge:empty {
+  display: none;
+}
+
+.count-badge {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   Overview Stats
+   ============================================ */
+
+.overview-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  transition: border-color 0.15s;
+}
+
+.stat-card:hover {
+  border-color: var(--accent);
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+/* ============================================
+   Mind Map
+   ============================================ */
+
+.mindmap-container {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+#mindMapSvg {
+  display: block;
+}
+
+/* ============================================
+   Filter Pills
+   ============================================ */
+
+.project-filters,
+.ideas-filter {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.filter-pill {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-pill.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ============================================
+   Accordion
+   ============================================ */
+
+.accordion-container {
+  display: grid;
+  gap: 12px;
+}
+
+.accordion-group {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.accordion-group:hover {
+  border-color: var(--accent);
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.accordion-header:hover {
+  background: var(--bg);
+}
+
+.accordion-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.accordion-title {
+  font-size: 0.92rem;
+  font-weight: 650;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.accordion-count {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.accordion-chevron {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.accordion-group.open .accordion-chevron {
+  transform: rotate(90deg);
+}
+
+.accordion-body {
+  display: none;
+  padding: 0 16px 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.accordion-group:not(.open) .accordion-body {
+  display: none;
+}
+
+.accordion-group.open .accordion-body {
+  display: grid;
+}
+
+/* ============================================
+   Project Cards (in accordion)
+   ============================================ */
+
+.project-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(79, 109, 245, 0.06);
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.project-card-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.project-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.project-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.project-card-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.tag-chip {
+  font-size: 0.66rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+body[data-theme="dark"] .tag-chip {
+  background: rgba(79, 109, 245, 0.12);
+}
+
+.mini-progress {
+  width: 50px;
+  height: 3px;
+  background: var(--border-light);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.mini-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ============================================
+   Goals
+   ============================================ */
+
+.goals-grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.goal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.goal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.goal-area {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.goal-status {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.goal-title {
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.goal-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+
+.goal-themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.goal-projects {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   Ideas (Library)
+   ============================================ */
+
+.idea-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.idea-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(79, 109, 245, 0.06);
+}
+
+.idea-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.idea-priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.idea-title {
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--text-primary);
+}
+
+.idea-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.idea-related {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.idea-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.idea-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.idea-score {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.idea-next {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+/* ============================================
+   Notes
+   ============================================ */
+
+.notes-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.note-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.note-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.note-content {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.note-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   Library
+   ============================================ */
+
+.library-grid {
+  display: grid;
+  gap: 28px;
+}
+
+.library-section {
+  /* scoped section */
+}
+
+/* ============================================
+   Assistant
+   ============================================ */
+
+.assistant-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.assistant-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+/* --- Profile Card --- */
+.profile-card {
+  /* ... */
+}
+
+.profile-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.profile-summary {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.profile-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.role-tag {
+  font-size: 0.7rem;
+  padding: 3px 9px;
+  border-radius: 12px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+body[data-theme="dark"] .role-tag {
+  background: rgba(79, 109, 245, 0.12);
+}
+
+.profile-areas {
+  display: grid;
+  gap: 6px;
+}
+
+.area-chip {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+}
+
+/* --- Suggestions --- */
+.suggestion-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  background: var(--bg);
+}
+
+.suggestion-title {
+  font-size: 0.86rem;
+  font-weight: 650;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.suggestion-summary {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+
+.suggestion-why {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --- Routing Protocol --- */
+.protocol-when {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+  font-size: 0.82rem;
+}
+
+.protocol-route {
+  color: var(--accent);
+  font-size: 0.78rem;
+  margin-bottom: 3px;
+}
+
+.protocol-action {
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+}
+
+/* --- Recommendations --- */
+.recommendation-item {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: var(--bg);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* --- Empty States --- */
+.empty-state {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   Responsive Overrides
+   ============================================ */
+
+@media (max-width: 768px) {
+  .overview-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .accordion-body {
+    padding: 0 10px 10px;
+  }
+
+  .assistant-grid {
+    gap: 16px;
+  }
 }

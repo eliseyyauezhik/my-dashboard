@@ -378,6 +378,10 @@ body {
   color: #b91c1c;
 }
 
+.form-status.warning {
+  color: var(--warn);
+}
+
 .empty-state {
   padding: 18px;
   border-radius: 16px;
