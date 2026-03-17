@@ -15,7 +15,7 @@ This keeps the dashboard reachable from 4G at all times without depending on the
 - Build command: `node scripts/dashboard/build_public_site.mjs --output-dir dist`
 - Build output directory: `dist`
 - Root directory: `/`
-- Production branch: `main`
+- Production branch: `master`
 
 ## What the build produces
 
