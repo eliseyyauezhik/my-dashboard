@@ -1,0 +1,2743 @@
+{
+  "meta": {
+    "generatedAt": "2026-03-20T02:51:38",
+    "vaultRoot": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase",
+    "version": "1.0-project-registry"
+  },
+  "projects": [
+    {
+      "id": "tgaggregator",
+      "title": "Telegram-агрегатор",
+      "status": "active",
+      "topic": "agents",
+      "kbNote": {
+        "id": "tgaggregator",
+        "title": "Telegram-агрегатор",
+        "noteName": "tgaggregator",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\tgaggregator.md",
+        "relativePath": "Projects/AI Workspace/tgaggregator.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/tgaggregator.md"
+      },
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Приложения\\TGAggregator",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\agents\\tg_aggregator",
+      "relatedChats": [
+        {
+          "id": "0d6d2d8d-5ac1-4ce6-93dc-5323a01cea54",
+          "title": "Task: Этап 2 — Поднятие MCP-моста (NotebookLM ↔ Antigravity)",
+          "noteName": "task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d.md",
+          "relativePath": "Chats/AI Workspace/task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-%D1%8D%D1%82%D0%B0%D0%BF-2-%D0%BF%D0%BE%D0%B4%D0%BD%D1%8F%D1%82%D0%B8%D0%B5-mcp-%D0%BC%D0%BE%D1%81%D1%82%D0%B0-notebooklm-antigravity-0d6d2d8d.md"
+        },
+        {
+          "id": "2786d2fb-2e3d-4e6e-bf85-a2c0c73b2dbc",
+          "title": "AI News Monitoring n8n Workflow",
+          "noteName": "ai-news-monitoring-n8n-workflow-2786d2fb",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\ai-news-monitoring-n8n-workflow-2786d2fb.md",
+          "relativePath": "Chats/AI Workspace/ai-news-monitoring-n8n-workflow-2786d2fb.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/ai-news-monitoring-n8n-workflow-2786d2fb.md"
+        },
+        {
+          "id": "42be4a4f-52f6-4678-bd95-ad606cbdb7f8",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-42be4a4f",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-42be4a4f.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-42be4a4f.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-42be4a4f.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        },
+        {
+          "id": "8474fc38-f361-4e7e-afcd-d8f6fc20b4d8",
+          "title": "TG News Aggregator — Задачи",
+          "noteName": "tg-news-aggregator-задачи-8474fc38",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\tg-news-aggregator-задачи-8474fc38.md",
+          "relativePath": "Chats/AI Workspace/tg-news-aggregator-задачи-8474fc38.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/tg-news-aggregator-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8-8474fc38.md"
+        },
+        {
+          "id": "869639b2-3e14-465b-8a8e-8605d8bb762c",
+          "title": "Фаза 6: Библиотека знаний + Редизайн + Ассистент",
+          "noteName": "фаза-6-библиотека-знаний-редизайн-ассистент-869639b2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\фаза-6-библиотека-знаний-редизайн-ассистент-869639b2.md",
+          "relativePath": "Chats/AI Workspace/фаза-6-библиотека-знаний-редизайн-ассистент-869639b2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%84%D0%B0%D0%B7%D0%B0-6-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0-%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9-%D1%80%D0%B5%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82-869639b2.md"
+        },
+        {
+          "id": "8fa5cf5f-8a75-4f7e-a0cd-11501bd93284",
+          "title": "Project Analysis and Meta-System Architecture",
+          "noteName": "project-analysis-and-meta-system-architecture-8fa5cf5f",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\project-analysis-and-meta-system-architecture-8fa5cf5f.md",
+          "relativePath": "Chats/AI Workspace/project-analysis-and-meta-system-architecture-8fa5cf5f.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/project-analysis-and-meta-system-architecture-8fa5cf5f.md"
+        },
+        {
+          "id": "d6b04e15-51c9-4155-99c5-5d6eb0a09777",
+          "title": "Task Plan: Ideas from Video",
+          "noteName": "task-plan-ideas-from-video-d6b04e15",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-plan-ideas-from-video-d6b04e15.md",
+          "relativePath": "Chats/AI Workspace/task-plan-ideas-from-video-d6b04e15.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-plan-ideas-from-video-d6b04e15.md"
+        },
+        {
+          "id": "f7aaf886-8ff5-4b8e-9282-392295f76ba8",
+          "title": "Knowledge Hub Infrastructure Setup",
+          "noteName": "knowledge-hub-infrastructure-setup-f7aaf886",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\knowledge-hub-infrastructure-setup-f7aaf886.md",
+          "relativePath": "Chats/AI Workspace/knowledge-hub-infrastructure-setup-f7aaf886.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/knowledge-hub-infrastructure-setup-f7aaf886.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные workflows",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/tgaggregator.md",
+          "dashboard": "#project:tgaggregator"
+        }
+      },
+      "launchContract": {
+        "projectId": "tgaggregator",
+        "nextStep": "Привязаны связанные workflows",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Telegram-агрегатор\nproject_id: tgaggregator\nСтатус: active\nТема: agents\nСледующий шаг: Привязаны связанные workflows\nKB note: Projects/AI Workspace/tgaggregator.md\nОписание: Телеграм-агрегатор новостей.\nСвязанные чаты: Task: Этап 2 — Поднятие MCP-моста (NotebookLM ↔ Antigravity), AI News Monitoring n8n Workflow, Untitled chat, Organize AI Projects Workspace, Untitled chat\nСвязанные workflows: iphone webhook.json, Nano Banana Bot.json, /remind-ideas, Youtube Transcript.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "interest-monitoring-loop",
+      "title": "Контур мониторинга интересной информации",
+      "status": "active",
+      "topic": "manual",
+      "kbNote": {
+        "id": "interest-monitoring-loop",
+        "title": "Контур мониторинга интересной информации",
+        "noteName": "interest-monitoring-loop",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\interest-monitoring-loop.md",
+        "relativePath": "Projects/AI Workspace/interest-monitoring-loop.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/interest-monitoring-loop.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [
+        {
+          "id": "2786d2fb-2e3d-4e6e-bf85-a2c0c73b2dbc",
+          "title": "AI News Monitoring n8n Workflow",
+          "noteName": "ai-news-monitoring-n8n-workflow-2786d2fb",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\ai-news-monitoring-n8n-workflow-2786d2fb.md",
+          "relativePath": "Chats/AI Workspace/ai-news-monitoring-n8n-workflow-2786d2fb.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/ai-news-monitoring-n8n-workflow-2786d2fb.md"
+        },
+        {
+          "id": "42be4a4f-52f6-4678-bd95-ad606cbdb7f8",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-42be4a4f",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-42be4a4f.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-42be4a4f.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-42be4a4f.md"
+        },
+        {
+          "id": "869639b2-3e14-465b-8a8e-8605d8bb762c",
+          "title": "Фаза 6: Библиотека знаний + Редизайн + Ассистент",
+          "noteName": "фаза-6-библиотека-знаний-редизайн-ассистент-869639b2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\фаза-6-библиотека-знаний-редизайн-ассистент-869639b2.md",
+          "relativePath": "Chats/AI Workspace/фаза-6-библиотека-знаний-редизайн-ассистент-869639b2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%84%D0%B0%D0%B7%D0%B0-6-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0-%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9-%D1%80%D0%B5%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82-869639b2.md"
+        },
+        {
+          "id": "d6b04e15-51c9-4155-99c5-5d6eb0a09777",
+          "title": "Task Plan: Ideas from Video",
+          "noteName": "task-plan-ideas-from-video-d6b04e15",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-plan-ideas-from-video-d6b04e15.md",
+          "relativePath": "Chats/AI Workspace/task-plan-ideas-from-video-d6b04e15.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-plan-ideas-from-video-d6b04e15.md"
+        },
+        {
+          "id": "f7aaf886-8ff5-4b8e-9282-392295f76ba8",
+          "title": "Knowledge Hub Infrastructure Setup",
+          "noteName": "knowledge-hub-infrastructure-setup-f7aaf886",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\knowledge-hub-infrastructure-setup-f7aaf886.md",
+          "relativePath": "Chats/AI Workspace/knowledge-hub-infrastructure-setup-f7aaf886.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/knowledge-hub-infrastructure-setup-f7aaf886.md"
+        }
+      ],
+      "relatedWorkflows": [],
+      "projectMode": {
+        "nextStep": "Добавить мониторинговый блок в дашборд",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/interest-monitoring-loop.md",
+          "dashboard": "#project:interest-monitoring-loop"
+        }
+      },
+      "launchContract": {
+        "projectId": "interest-monitoring-loop",
+        "nextStep": "Добавить мониторинговый блок в дашборд",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Контур мониторинга интересной информации\nproject_id: interest-monitoring-loop\nСтатус: active\nТема: manual\nСледующий шаг: Добавить мониторинговый блок в дашборд\nKB note: Projects/AI Workspace/interest-monitoring-loop.md\nОписание: Постоянный процесс поиска, сжатия, маршрутизации и обновления информации под активные проекты и новые идеи.\nСвязанные чаты: AI News Monitoring n8n Workflow, Untitled chat, Фаза 6: Библиотека знаний + Редизайн + Ассистент, Task Plan: Ideas from Video, Knowledge Hub Infrastructure Setup\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "мой-дашборд",
+      "title": "Мой Дашборд",
+      "status": "active",
+      "topic": "manual",
+      "kbNote": {
+        "id": "мой-дашборд",
+        "title": "Мой Дашборд",
+        "noteName": "мой-дашборд",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\мой-дашборд.md",
+        "relativePath": "Projects/AI Workspace/мой-дашборд.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%BC%D0%BE%D0%B9-%D0%B4%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [
+        {
+          "id": "e13b0857-d937-42e4-a3a9-323827e41efe",
+          "title": "Task List",
+          "noteName": "task-list-e13b0857",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-list-e13b0857.md",
+          "relativePath": "Chats/AI Workspace/task-list-e13b0857.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-list-e13b0857.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Интерактивная Mind-Map",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%BC%D0%BE%D0%B9-%D0%B4%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4.md",
+          "dashboard": "#project:мой-дашборд"
+        }
+      },
+      "launchContract": {
+        "projectId": "мой-дашборд",
+        "nextStep": "Интерактивная Mind-Map",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Мой Дашборд\nproject_id: мой-дашборд\nСтатус: active\nТема: manual\nСледующий шаг: Интерактивная Mind-Map\nKB note: Projects/AI Workspace/мой-дашборд.md\nОписание: Единый UI для отображения всех проектов, новостей, агентов и идей. Кроссплатформенный (Desktop + Mobile).\nСвязанные чаты: Task List\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "copaw-бот",
+      "title": "CoPaw — Бот",
+      "status": "paused",
+      "topic": "manual",
+      "kbNote": {
+        "id": "copaw-бот",
+        "title": "CoPaw — Бот",
+        "noteName": "copaw-бот",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\copaw-бот.md",
+        "relativePath": "Projects/AI Workspace/copaw-бот.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/copaw-%D0%B1%D0%BE%D1%82.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [
+        {
+          "id": "dfbe1752-0165-47dc-9014-15f4c232a9aa",
+          "title": "Проект: CoPaw + Дополнения",
+          "noteName": "проект-copaw-дополнения-dfbe1752",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\проект-copaw-дополнения-dfbe1752.md",
+          "relativePath": "Chats/AI Workspace/проект-copaw-дополнения-dfbe1752.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-copaw-%D0%B4%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-dfbe1752.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Голосовые сообщения",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/copaw-%D0%B1%D0%BE%D1%82.md",
+          "dashboard": "#project:copaw-бот"
+        }
+      },
+      "launchContract": {
+        "projectId": "copaw-бот",
+        "nextStep": "Голосовые сообщения",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: CoPaw — Бот\nproject_id: copaw-бот\nСтатус: paused\nТема: manual\nСледующий шаг: Голосовые сообщения\nKB note: Projects/AI Workspace/copaw-бот.md\nОписание: Телеграм-бот с интеграцией LLM для обработки текстовых и голосовых сообщений. Работает через прокси.\nСвязанные чаты: Проект: CoPaw + Дополнения\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "генератор-идей",
+      "title": "Генератор идей",
+      "status": "backlog",
+      "topic": "manual",
+      "kbNote": {
+        "id": "генератор-идей",
+        "title": "Генератор идей",
+        "noteName": "генератор-идей",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\генератор-идей.md",
+        "relativePath": "Projects/AI Workspace/генератор-идей.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80-%D0%B8%D0%B4%D0%B5%D0%B9.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Голосовой ввод (STT)",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80-%D0%B8%D0%B4%D0%B5%D0%B9.md",
+          "dashboard": "#project:генератор-идей"
+        }
+      },
+      "launchContract": {
+        "projectId": "генератор-идей",
+        "nextStep": "Голосовой ввод (STT)",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Генератор идей\nproject_id: генератор-идей\nСтатус: backlog\nТема: manual\nСледующий шаг: Голосовой ввод (STT)\nKB note: Projects/AI Workspace/генератор-идей.md\nОписание: IdeaForge: генерация, оценка и развитие идей. Бэклог: голос, анализ источников, дедупликация.\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "карта-технологий",
+      "title": "Карта технологий",
+      "status": "active",
+      "topic": "manual",
+      "kbNote": {
+        "id": "карта-технологий",
+        "title": "Карта технологий",
+        "noteName": "карта-технологий",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\карта-технологий.md",
+        "relativePath": "Projects/AI Workspace/карта-технологий.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%BA%D0%B0%D1%80%D1%82%D0%B0-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B9.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Формирование tech_radar.json",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%BA%D0%B0%D1%80%D1%82%D0%B0-%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D0%B9.md",
+          "dashboard": "#project:карта-технологий"
+        }
+      },
+      "launchContract": {
+        "projectId": "карта-технологий",
+        "nextStep": "Формирование tech_radar.json",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Карта технологий\nproject_id: карта-технологий\nСтатус: active\nТема: manual\nСледующий шаг: Формирование tech_radar.json\nKB note: Projects/AI Workspace/карта-технологий.md\nОписание: Tech Radar: база данных технологий, лучших практик и решений проблем из всех проектов.\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "tech-radar-skill",
+      "title": "Навык Tech Radar",
+      "status": "active",
+      "topic": "antigravity",
+      "kbNote": {
+        "id": "tech-radar-skill",
+        "title": "Навык Tech Radar",
+        "noteName": "tech-radar-skill",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\tech-radar-skill.md",
+        "relativePath": "Projects/AI Workspace/tech-radar-skill.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/tech-radar-skill.md"
+      },
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\skills\\tech_radar",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\antigravity\\skills\\tech_radar",
+      "relatedChats": [
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/tech-radar-skill.md",
+          "dashboard": "#project:tech-radar-skill"
+        }
+      },
+      "launchContract": {
+        "projectId": "tech-radar-skill",
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Навык Tech Radar\nproject_id: tech-radar-skill\nСтатус: active\nТема: antigravity\nСледующий шаг: Привязаны связанные чаты\nKB note: Projects/AI Workspace/tech-radar-skill.md\nОписание: Локальный skill tech_radar.\nСвязанные чаты: Organize AI Projects Workspace\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "самосовершенствующиеся-агенты",
+      "title": "Самосовершенствующиеся агенты",
+      "status": "active",
+      "topic": "manual",
+      "kbNote": {
+        "id": "самосовершенствующиеся-агенты",
+        "title": "Самосовершенствующиеся агенты",
+        "noteName": "самосовершенствующиеся-агенты",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\самосовершенствующиеся-агенты.md",
+        "relativePath": "Projects/AI Workspace/самосовершенствующиеся-агенты.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D1%81%D0%B0%D0%BC%D0%BE%D1%81%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%89%D0%B8%D0%B5%D1%81%D1%8F-%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D1%8B.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [
+        {
+          "id": "5764591f-8e31-4f9c-8f98-47999f6d4aea",
+          "title": "Task Log — Самосовершенствующаяся система агентов",
+          "noteName": "task-log-самосовершенствующаяся-система-агентов-5764591f",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-log-самосовершенствующаяся-система-агентов-5764591f.md",
+          "relativePath": "Chats/AI Workspace/task-log-самосовершенствующаяся-система-агентов-5764591f.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-log-%D1%81%D0%B0%D0%BC%D0%BE%D1%81%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%89%D0%B0%D1%8F%D1%81%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%BE%D0%B2-5764591f.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        },
+        {
+          "id": "dfbe1752-0165-47dc-9014-15f4c232a9aa",
+          "title": "Проект: CoPaw + Дополнения",
+          "noteName": "проект-copaw-дополнения-dfbe1752",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\проект-copaw-дополнения-dfbe1752.md",
+          "relativePath": "Chats/AI Workspace/проект-copaw-дополнения-dfbe1752.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-copaw-%D0%B4%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-dfbe1752.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        },
+        {
+          "id": "improve-skills-md-6",
+          "title": "improve-skills.md",
+          "noteName": "improve-skills-md-6",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\improve-skills-md-6.md",
+          "relativePath": "Workflows/AI Workspace/improve-skills-md-6.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/improve-skills-md-6.md"
+        },
+        {
+          "id": "improve-skills-md-7",
+          "title": "improve-skills.md",
+          "noteName": "improve-skills-md-7",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\improve-skills-md-7.md",
+          "relativePath": "Workflows/AI Workspace/improve-skills-md-7.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/improve-skills-md-7.md"
+        },
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Скилл safety-guardrails",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D1%81%D0%B0%D0%BC%D0%BE%D1%81%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%89%D0%B8%D0%B5%D1%81%D1%8F-%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D1%8B.md",
+          "dashboard": "#project:самосовершенствующиеся-агенты"
+        }
+      },
+      "launchContract": {
+        "projectId": "самосовершенствующиеся-агенты",
+        "nextStep": "Скилл safety-guardrails",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Самосовершенствующиеся агенты\nproject_id: самосовершенствующиеся-агенты\nСтатус: active\nТема: manual\nСледующий шаг: Скилл safety-guardrails\nKB note: Projects/AI Workspace/самосовершенствующиеся-агенты.md\nОписание: Skill-conductor: самообучающиеся ИИ-агенты с критиком и обратной связью для Antigravity.\nСвязанные чаты: Task Log — Самосовершенствующаяся система агентов, Untitled chat, Проект: CoPaw + Дополнения\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md, improve-skills.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "skills",
+      "title": "Навыки",
+      "status": "research",
+      "topic": "manual",
+      "kbNote": {
+        "id": "skills",
+        "title": "Навыки",
+        "noteName": "skills",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\skills.md",
+        "relativePath": "Projects/AI Workspace/skills.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/skills.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [],
+      "relatedWorkflows": [],
+      "projectMode": {
+        "nextStep": "Требуется уточнить карточку проекта",
+        "allowedTools": [
+          "vault",
+          "dashboard"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/skills.md",
+          "dashboard": "#project:skills"
+        }
+      },
+      "launchContract": {
+        "projectId": "skills",
+        "nextStep": "Требуется уточнить карточку проекта",
+        "allowedTools": [
+          "vault",
+          "dashboard"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Навыки\nproject_id: skills\nСтатус: research\nТема: manual\nСледующий шаг: Требуется уточнить карточку проекта\nKB note: Projects/AI Workspace/skills.md\nОписание: Автообнаруженный проект из project_archive.\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "grant-presentation",
+      "title": "Грантовая презентация",
+      "status": "active",
+      "topic": "education",
+      "kbNote": {
+        "id": "grant-presentation",
+        "title": "Грантовая презентация",
+        "noteName": "grant-presentation",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\grant-presentation.md",
+        "relativePath": "Projects/AI Workspace/grant-presentation.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/grant-presentation.md"
+      },
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\grant_presentation",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\education\\grant_presentation",
+      "relatedChats": [
+        {
+          "id": "229bfcfd-d695-48f6-a137-f80cee20a141",
+          "title": "Task: Implementing Grant Video Generation (Idea 2)",
+          "noteName": "task-implementing-grant-video-generation-idea-2-229bfcfd",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-implementing-grant-video-generation-idea-2-229bfcfd.md",
+          "relativePath": "Chats/AI Workspace/task-implementing-grant-video-generation-idea-2-229bfcfd.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-implementing-grant-video-generation-idea-2-229bfcfd.md"
+        },
+        {
+          "id": "5404366a-f29c-4c7c-a095-db4122e8ca1c",
+          "title": "- [x] Check latest development activity in `development_log.md`",
+          "noteName": "x-check-latest-development-activity-in-development_log-md-5404366a",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\x-check-latest-development-activity-in-development_log-md-5404366a.md",
+          "relativePath": "Chats/AI Workspace/x-check-latest-development-activity-in-development_log-md-5404366a.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/x-check-latest-development-activity-in-development_log-md-5404366a.md"
+        },
+        {
+          "id": "558dc772-769b-4003-bd50-bc37d2285431",
+          "title": "Enriched Grant Presentation - Part 2",
+          "noteName": "enriched-grant-presentation-part-2-558dc772",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\enriched-grant-presentation-part-2-558dc772.md",
+          "relativePath": "Chats/AI Workspace/enriched-grant-presentation-part-2-558dc772.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/enriched-grant-presentation-part-2-558dc772.md"
+        },
+        {
+          "id": "5a6d7514-5b45-4161-9cff-61547d975c51",
+          "title": "Презентация — Раунд 2",
+          "noteName": "презентация-раунд-2-5a6d7514",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\презентация-раунд-2-5a6d7514.md",
+          "relativePath": "Chats/AI Workspace/презентация-раунд-2-5a6d7514.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-%D1%80%D0%B0%D1%83%D0%BD%D0%B4-2-5a6d7514.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "72cbb964-5510-4b07-90ec-5ddc4b99ffa3",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-72cbb964",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-72cbb964.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-72cbb964.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-72cbb964.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        },
+        {
+          "id": "8360a1c4-2fe7-4f34-8ffa-9a44c22cb9f4",
+          "title": "Website Visual and Content Updates",
+          "noteName": "website-visual-and-content-updates-8360a1c4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\website-visual-and-content-updates-8360a1c4.md",
+          "relativePath": "Chats/AI Workspace/website-visual-and-content-updates-8360a1c4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/website-visual-and-content-updates-8360a1c4.md"
+        },
+        {
+          "id": "fd17427b-c668-481d-8162-f738b1684471",
+          "title": "План создания веб-презентации \"Архитектор Развития\" (v2.0)",
+          "noteName": "план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b.md",
+          "relativePath": "Chats/AI Workspace/план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D0%BB%D0%B0%D0%BD-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B2%D0%B5%D0%B1-%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8F-v2-0-fd17427b.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        },
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/grant-presentation.md",
+          "dashboard": "#project:grant-presentation"
+        }
+      },
+      "launchContract": {
+        "projectId": "grant-presentation",
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Грантовая презентация\nproject_id: grant-presentation\nСтатус: active\nТема: education\nСледующий шаг: Привязаны связанные чаты\nKB note: Projects/AI Workspace/grant-presentation.md\nОписание: Грантовая презентация и связанные материалы.\nСвязанные чаты: Task: Implementing Grant Video Generation (Idea 2), - [x] Check latest development activity in `development_log.md`, Enriched Grant Presentation - Part 2, Презентация — Раунд 2, Organize AI Projects Workspace\nСвязанные workflows: /deploy, deploy_russia.md, deploy_russia.md, iphone webhook.json, Nano Banana Bot.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "gymnasium-landing",
+      "title": "Лендинг гимназии",
+      "status": "active",
+      "topic": "education",
+      "kbNote": {
+        "id": "gymnasium-landing",
+        "title": "Лендинг гимназии",
+        "noteName": "gymnasium-landing",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\gymnasium-landing.md",
+        "relativePath": "Projects/AI Workspace/gymnasium-landing.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/gymnasium-landing.md"
+      },
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\gymnasium_landing",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\education\\gymnasium_landing",
+      "relatedChats": [
+        {
+          "id": "06d2a6bb-4117-40b2-b0dc-da47d655191e",
+          "title": "Landing Page Update Task List",
+          "noteName": "landing-page-update-task-list-06d2a6bb",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\landing-page-update-task-list-06d2a6bb.md",
+          "relativePath": "Chats/AI Workspace/landing-page-update-task-list-06d2a6bb.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/landing-page-update-task-list-06d2a6bb.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "72cbb964-5510-4b07-90ec-5ddc4b99ffa3",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-72cbb964",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-72cbb964.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-72cbb964.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-72cbb964.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        },
+        {
+          "id": "8360a1c4-2fe7-4f34-8ffa-9a44c22cb9f4",
+          "title": "Website Visual and Content Updates",
+          "noteName": "website-visual-and-content-updates-8360a1c4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\website-visual-and-content-updates-8360a1c4.md",
+          "relativePath": "Chats/AI Workspace/website-visual-and-content-updates-8360a1c4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/website-visual-and-content-updates-8360a1c4.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные workflows",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/gymnasium-landing.md",
+          "dashboard": "#project:gymnasium-landing"
+        }
+      },
+      "launchContract": {
+        "projectId": "gymnasium-landing",
+        "nextStep": "Привязаны связанные workflows",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Лендинг гимназии\nproject_id: gymnasium-landing\nСтатус: active\nТема: education\nСледующий шаг: Привязаны связанные workflows\nKB note: Projects/AI Workspace/gymnasium-landing.md\nОписание: Лендинг гимназии.\nСвязанные чаты: Landing Page Update Task List, Organize AI Projects Workspace, Untitled chat, Untitled chat, Website Visual and Content Updates\nСвязанные workflows: iphone webhook.json, Nano Banana Bot.json, /remind-ideas, Youtube Transcript.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "interactive-panels-rating",
+      "title": "Рейтинг интерактивных панелей",
+      "status": "active",
+      "topic": "products",
+      "kbNote": {
+        "id": "interactive-panels-rating",
+        "title": "Рейтинг интерактивных панелей",
+        "noteName": "interactive-panels-rating",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\interactive-panels-rating.md",
+        "relativePath": "Projects/AI Workspace/interactive-panels-rating.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/interactive-panels-rating.md"
+      },
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\интерактивные доски\\interactive-panels-rating",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\products\\interactive_panels_rating",
+      "relatedChats": [
+        {
+          "id": "44c45ddd-51ff-45a2-aa29-cda35ae944f9",
+          "title": "Deployment Task",
+          "noteName": "deployment-task-44c45ddd",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\deployment-task-44c45ddd.md",
+          "relativePath": "Chats/AI Workspace/deployment-task-44c45ddd.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/deployment-task-44c45ddd.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        },
+        {
+          "id": "7f90261d-6f66-4c24-93e0-8f6780adb370",
+          "title": "Task: Interactive Catalog for Educational Digital Products",
+          "noteName": "task-interactive-catalog-for-educational-digital-products-7f90261d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-interactive-catalog-for-educational-digital-products-7f90261d.md",
+          "relativePath": "Chats/AI Workspace/task-interactive-catalog-for-educational-digital-products-7f90261d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-interactive-catalog-for-educational-digital-products-7f90261d.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные workflows",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/interactive-panels-rating.md",
+          "dashboard": "#project:interactive-panels-rating"
+        }
+      },
+      "launchContract": {
+        "projectId": "interactive-panels-rating",
+        "nextStep": "Привязаны связанные workflows",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Рейтинг интерактивных панелей\nproject_id: interactive-panels-rating\nСтатус: active\nТема: products\nСледующий шаг: Привязаны связанные workflows\nKB note: Projects/AI Workspace/interactive-panels-rating.md\nОписание: Сайт/рейтинг интерактивных панелей.\nСвязанные чаты: Deployment Task, Organize AI Projects Workspace, Untitled chat, Task: Interactive Catalog for Educational Digital Products\nСвязанные workflows: iphone webhook.json, Nano Banana Bot.json, /remind-ideas, Youtube Transcript.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "kora-strategy",
+      "title": "Стратегия КОРА",
+      "status": "active",
+      "topic": "business",
+      "kbNote": {
+        "id": "kora-strategy",
+        "title": "Стратегия КОРА",
+        "noteName": "kora-strategy",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\kora-strategy.md",
+        "relativePath": "Projects/AI Workspace/kora-strategy.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/kora-strategy.md"
+      },
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\kora_strategy",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\business\\kora_strategy",
+      "relatedChats": [
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "97dd1035-6afb-4a32-912e-d3c4e4fa5cde",
+          "title": "KORA Group — Digital Transformation Strategic Report",
+          "noteName": "kora-group-digital-transformation-strategic-report-97dd1035",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\kora-group-digital-transformation-strategic-report-97dd1035.md",
+          "relativePath": "Chats/AI Workspace/kora-group-digital-transformation-strategic-report-97dd1035.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/kora-group-digital-transformation-strategic-report-97dd1035.md"
+        },
+        {
+          "id": "a1c01283-9844-462a-8865-a8dde7a0d218",
+          "title": "Task: Save Business System Prompt",
+          "noteName": "task-save-business-system-prompt-a1c01283",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-save-business-system-prompt-a1c01283.md",
+          "relativePath": "Chats/AI Workspace/task-save-business-system-prompt-a1c01283.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-save-business-system-prompt-a1c01283.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/kora-strategy.md",
+          "dashboard": "#project:kora-strategy"
+        }
+      },
+      "launchContract": {
+        "projectId": "kora-strategy",
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Стратегия КОРА\nproject_id: kora-strategy\nСтатус: active\nТема: business\nСледующий шаг: Привязаны связанные чаты\nKB note: Projects/AI Workspace/kora-strategy.md\nОписание: Материалы по стратегии KORA.\nСвязанные чаты: Organize AI Projects Workspace, KORA Group — Digital Transformation Strategic Report, Task: Save Business System Prompt\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "smartmeeting-backend",
+      "title": "Умное совещание: сервер",
+      "status": "active",
+      "topic": "products",
+      "kbNote": {
+        "id": "smartmeeting-backend",
+        "title": "Умное совещание: сервер",
+        "noteName": "smartmeeting-backend",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\smartmeeting-backend.md",
+        "relativePath": "Projects/AI Workspace/smartmeeting-backend.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/smartmeeting-backend.md"
+      },
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Умное совещание\\backend",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\products\\smartmeeting\\backend",
+      "relatedChats": [
+        {
+          "id": "3c1b423b-139c-4f5f-9474-53fdadff57fe",
+          "title": "SmartMeeting Project Tasks",
+          "noteName": "smartmeeting-project-tasks-3c1b423b",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\smartmeeting-project-tasks-3c1b423b.md",
+          "relativePath": "Chats/AI Workspace/smartmeeting-project-tasks-3c1b423b.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/smartmeeting-project-tasks-3c1b423b.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/smartmeeting-backend.md",
+          "dashboard": "#project:smartmeeting-backend"
+        }
+      },
+      "launchContract": {
+        "projectId": "smartmeeting-backend",
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Умное совещание: сервер\nproject_id: smartmeeting-backend\nСтатус: active\nТема: products\nСледующий шаг: Привязаны связанные чаты\nKB note: Projects/AI Workspace/smartmeeting-backend.md\nОписание: Backend проекта Умное совещание. Интегрировано: Frontend/PWA проекта Умное совещание. Интегрировано: Автообнаруженный проект из project_archive.\nСвязанные чаты: SmartMeeting Project Tasks, Organize AI Projects Workspace, Untitled chat\nСвязанные workflows: iphone webhook.json, Nano Banana Bot.json, /remind-ideas, Youtube Transcript.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "davydov-phantom",
+      "title": "Фантом Давыдова",
+      "status": "active",
+      "topic": "education",
+      "kbNote": {
+        "id": "davydov-phantom",
+        "title": "Фантом Давыдова",
+        "noteName": "davydov-phantom",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\davydov-phantom.md",
+        "relativePath": "Projects/AI Workspace/davydov-phantom.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/davydov-phantom.md"
+      },
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Фантом Давыдова В.В\\davydov_phantom",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\education\\davydov_phantom",
+      "relatedChats": [
+        {
+          "id": "191b61c0-23c3-49cd-a2ab-49b6f80d510b",
+          "title": "Task: Add AI Physics Teacher Requirements",
+          "noteName": "task-add-ai-physics-teacher-requirements-191b61c0",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-add-ai-physics-teacher-requirements-191b61c0.md",
+          "relativePath": "Chats/AI Workspace/task-add-ai-physics-teacher-requirements-191b61c0.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-add-ai-physics-teacher-requirements-191b61c0.md"
+        },
+        {
+          "id": "52cb3d8c-1196-4e92-b1af-b2668c608a97",
+          "title": "Task List - Grant Development (AI for School)",
+          "noteName": "task-list-grant-development-ai-for-school-52cb3d8c",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-list-grant-development-ai-for-school-52cb3d8c.md",
+          "relativePath": "Chats/AI Workspace/task-list-grant-development-ai-for-school-52cb3d8c.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-list-grant-development-ai-for-school-52cb3d8c.md"
+        },
+        {
+          "id": "5404366a-f29c-4c7c-a095-db4122e8ca1c",
+          "title": "- [x] Check latest development activity in `development_log.md`",
+          "noteName": "x-check-latest-development-activity-in-development_log-md-5404366a",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\x-check-latest-development-activity-in-development_log-md-5404366a.md",
+          "relativePath": "Chats/AI Workspace/x-check-latest-development-activity-in-development_log-md-5404366a.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/x-check-latest-development-activity-in-development_log-md-5404366a.md"
+        },
+        {
+          "id": "558dc772-769b-4003-bd50-bc37d2285431",
+          "title": "Enriched Grant Presentation - Part 2",
+          "noteName": "enriched-grant-presentation-part-2-558dc772",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\enriched-grant-presentation-part-2-558dc772.md",
+          "relativePath": "Chats/AI Workspace/enriched-grant-presentation-part-2-558dc772.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/enriched-grant-presentation-part-2-558dc772.md"
+        },
+        {
+          "id": "67c37490-16e8-4a81-91a0-77cb4aad2691",
+          "title": "Проект: AppScout — Поиск Open-Source приложений по идее",
+          "noteName": "проект-appscout-поиск-open-source-приложений-по-идее-67c37490",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\проект-appscout-поиск-open-source-приложений-по-идее-67c37490.md",
+          "relativePath": "Chats/AI Workspace/проект-appscout-поиск-open-source-приложений-по-идее-67c37490.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-appscout-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-open-source-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9-%D0%BF%D0%BE-%D0%B8%D0%B4%D0%B5%D0%B5-67c37490.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "72cbb964-5510-4b07-90ec-5ddc4b99ffa3",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-72cbb964",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-72cbb964.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-72cbb964.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-72cbb964.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        },
+        {
+          "id": "8360a1c4-2fe7-4f34-8ffa-9a44c22cb9f4",
+          "title": "Website Visual and Content Updates",
+          "noteName": "website-visual-and-content-updates-8360a1c4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\website-visual-and-content-updates-8360a1c4.md",
+          "relativePath": "Chats/AI Workspace/website-visual-and-content-updates-8360a1c4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/website-visual-and-content-updates-8360a1c4.md"
+        },
+        {
+          "id": "d3e079ad-1b74-4be5-806b-7b96f71a548d",
+          "title": "Фаза 1: Поисковик Фантома — Интернет-поиск",
+          "noteName": "фаза-1-поисковик-фантома-интернет-поиск-d3e079ad",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\фаза-1-поисковик-фантома-интернет-поиск-d3e079ad.md",
+          "relativePath": "Chats/AI Workspace/фаза-1-поисковик-фантома-интернет-поиск-d3e079ad.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%84%D0%B0%D0%B7%D0%B0-1-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%B8%D0%BA-%D1%84%D0%B0%D0%BD%D1%82%D0%BE%D0%BC%D0%B0-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-d3e079ad.md"
+        },
+        {
+          "id": "fd17427b-c668-481d-8162-f738b1684471",
+          "title": "План создания веб-презентации \"Архитектор Развития\" (v2.0)",
+          "noteName": "план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b.md",
+          "relativePath": "Chats/AI Workspace/план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D0%BB%D0%B0%D0%BD-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B2%D0%B5%D0%B1-%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8F-v2-0-fd17427b.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        },
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "n8n_search_workflow-md-10",
+          "title": "n8n_search_workflow.md",
+          "noteName": "n8n_search_workflow-md-10",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\n8n_search_workflow-md-10.md",
+          "relativePath": "Workflows/AI Workspace/n8n_search_workflow-md-10.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/n8n_search_workflow-md-10.md"
+        },
+        {
+          "id": "n8n_search_workflow-md-9",
+          "title": "n8n_search_workflow.md",
+          "noteName": "n8n_search_workflow-md-9",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\n8n_search_workflow-md-9.md",
+          "relativePath": "Workflows/AI Workspace/n8n_search_workflow-md-9.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/n8n_search_workflow-md-9.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "notebooklm-agent-15",
+          "title": "notebooklm-agent.md",
+          "noteName": "notebooklm-agent-md-15",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\notebooklm-agent-md-15.md",
+          "relativePath": "Workflows/AI Workspace/notebooklm-agent-md-15.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/notebooklm-agent-md-15.md"
+        },
+        {
+          "id": "notebooklm-agent-md-12",
+          "title": "notebooklm-agent.md",
+          "noteName": "notebooklm-agent-md-12",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\notebooklm-agent-md-12.md",
+          "relativePath": "Workflows/AI Workspace/notebooklm-agent-md-12.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/notebooklm-agent-md-12.md"
+        },
+        {
+          "id": "remind-ideas-16",
+          "title": "remind-ideas.md",
+          "noteName": "remind-ideas-md-16",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-md-16.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-md-16.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-md-16.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "skill_news_monitor-17",
+          "title": "skill_news_monitor.md",
+          "noteName": "skill_news_monitor-md-17",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\skill_news_monitor-md-17.md",
+          "relativePath": "Workflows/AI Workspace/skill_news_monitor-md-17.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/skill_news_monitor-md-17.md"
+        },
+        {
+          "id": "skill_news_monitor-md-13",
+          "title": "skill_news_monitor.md",
+          "noteName": "skill_news_monitor-md-13",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\skill_news_monitor-md-13.md",
+          "relativePath": "Workflows/AI Workspace/skill_news_monitor-md-13.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/skill_news_monitor-md-13.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Проверить текущий контекст проекта и выбрать следующий шаг.",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/davydov-phantom.md",
+          "dashboard": "#project:davydov-phantom"
+        }
+      },
+      "launchContract": {
+        "projectId": "davydov-phantom",
+        "nextStep": "Проверить текущий контекст проекта и выбрать следующий шаг.",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Фантом Давыдова\nproject_id: davydov-phantom\nСтатус: active\nТема: education\nСледующий шаг: Проверить текущий контекст проекта и выбрать следующий шаг.\nKB note: Projects/AI Workspace/davydov-phantom.md\nОписание: Основной код проекта Фантом Давыдова.\nСвязанные чаты: Task: Add AI Physics Teacher Requirements, Task List - Grant Development (AI for School), - [x] Check latest development activity in `development_log.md`, Enriched Grant Presentation - Part 2, Проект: AppScout — Поиск Open-Source приложений по идее\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md, iphone webhook.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "ии-агент-для-гимназии",
+      "title": "ИИ-агент для гимназии",
+      "status": "research",
+      "topic": "manual",
+      "kbNote": {
+        "id": "ии-агент-для-гимназии",
+        "title": "ИИ-агент для гимназии",
+        "noteName": "ии-агент-для-гимназии",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\ии-агент-для-гимназии.md",
+        "relativePath": "Projects/AI Workspace/ии-агент-для-гимназии.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%B8%D0%B8-%D0%B0%D0%B3%D0%B5%D0%BD%D1%82-%D0%B4%D0%BB%D1%8F-%D0%B3%D0%B8%D0%BC%D0%BD%D0%B0%D0%B7%D0%B8%D0%B8.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [
+        {
+          "id": "fd17427b-c668-481d-8162-f738b1684471",
+          "title": "План создания веб-презентации \"Архитектор Развития\" (v2.0)",
+          "noteName": "план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b.md",
+          "relativePath": "Chats/AI Workspace/план-создания-веб-презентации-архитектор-развития-v2-0-fd17427b.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D0%BB%D0%B0%D0%BD-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B2%D0%B5%D0%B1-%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8F-v2-0-fd17427b.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Архитектура агента",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%B8%D0%B8-%D0%B0%D0%B3%D0%B5%D0%BD%D1%82-%D0%B4%D0%BB%D1%8F-%D0%B3%D0%B8%D0%BC%D0%BD%D0%B0%D0%B7%D0%B8%D0%B8.md",
+          "dashboard": "#project:ии-агент-для-гимназии"
+        }
+      },
+      "launchContract": {
+        "projectId": "ии-агент-для-гимназии",
+        "nextStep": "Архитектура агента",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: ИИ-агент для гимназии\nproject_id: ии-агент-для-гимназии\nСтатус: research\nТема: manual\nСледующий шаг: Архитектура агента\nKB note: Projects/AI Workspace/ии-агент-для-гимназии.md\nОписание: Автономный агент для стратегии развития гимназии Давыдова: исследование, цифровой двойник, дорожная карта.\nСвязанные чаты: План создания веб-презентации \"Архитектор Развития\" (v2.0)\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "видео-для-гранта",
+      "title": "Видео для гранта",
+      "status": "paused",
+      "topic": "manual",
+      "kbNote": {
+        "id": "видео-для-гранта",
+        "title": "Видео для гранта",
+        "noteName": "видео-для-гранта",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\видео-для-гранта.md",
+        "relativePath": "Projects/AI Workspace/видео-для-гранта.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE-%D0%B4%D0%BB%D1%8F-%D0%B3%D1%80%D0%B0%D0%BD%D1%82%D0%B0.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [
+        {
+          "id": "229bfcfd-d695-48f6-a137-f80cee20a141",
+          "title": "Task: Implementing Grant Video Generation (Idea 2)",
+          "noteName": "task-implementing-grant-video-generation-idea-2-229bfcfd",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-implementing-grant-video-generation-idea-2-229bfcfd.md",
+          "relativePath": "Chats/AI Workspace/task-implementing-grant-video-generation-idea-2-229bfcfd.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-implementing-grant-video-generation-idea-2-229bfcfd.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        },
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Парсинг HTML (extract_slides.py)",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE-%D0%B4%D0%BB%D1%8F-%D0%B3%D1%80%D0%B0%D0%BD%D1%82%D0%B0.md",
+          "dashboard": "#project:видео-для-гранта"
+        }
+      },
+      "launchContract": {
+        "projectId": "видео-для-гранта",
+        "nextStep": "Парсинг HTML (extract_slides.py)",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Видео для гранта\nproject_id: видео-для-гранта\nСтатус: paused\nТема: manual\nСледующий шаг: Парсинг HTML (extract_slides.py)\nKB note: Projects/AI Workspace/видео-для-гранта.md\nОписание: Конвертация HTML-презентации в MP4 через Remotion: парсинг → слайды → озвучка → рендер.\nСвязанные чаты: Task: Implementing Grant Video Generation (Idea 2), Untitled chat\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md, iphone webhook.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "презентация-образование-2035",
+      "title": "Презентация «Образование 2035»",
+      "status": "done",
+      "topic": "manual",
+      "kbNote": {
+        "id": "презентация-образование-2035",
+        "title": "Презентация «Образование 2035»",
+        "noteName": "презентация-образование-2035",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\презентация-образование-2035.md",
+        "relativePath": "Projects/AI Workspace/презентация-образование-2035.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-2035.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [
+        {
+          "id": "229bfcfd-d695-48f6-a137-f80cee20a141",
+          "title": "Task: Implementing Grant Video Generation (Idea 2)",
+          "noteName": "task-implementing-grant-video-generation-idea-2-229bfcfd",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-implementing-grant-video-generation-idea-2-229bfcfd.md",
+          "relativePath": "Chats/AI Workspace/task-implementing-grant-video-generation-idea-2-229bfcfd.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-implementing-grant-video-generation-idea-2-229bfcfd.md"
+        },
+        {
+          "id": "5404366a-f29c-4c7c-a095-db4122e8ca1c",
+          "title": "- [x] Check latest development activity in `development_log.md`",
+          "noteName": "x-check-latest-development-activity-in-development_log-md-5404366a",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\x-check-latest-development-activity-in-development_log-md-5404366a.md",
+          "relativePath": "Chats/AI Workspace/x-check-latest-development-activity-in-development_log-md-5404366a.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/x-check-latest-development-activity-in-development_log-md-5404366a.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        },
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Финальная полировка",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F-%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-2035.md",
+          "dashboard": "#project:презентация-образование-2035"
+        }
+      },
+      "launchContract": {
+        "projectId": "презентация-образование-2035",
+        "nextStep": "Финальная полировка",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Презентация «Образование 2035»\nproject_id: презентация-образование-2035\nСтатус: done\nТема: manual\nСледующий шаг: Финальная полировка\nKB note: Projects/AI Workspace/презентация-образование-2035.md\nОписание: Интерактивная HTML-презентация для президентского гранта.\nСвязанные чаты: Task: Implementing Grant Video Generation (Idea 2), - [x] Check latest development activity in `development_log.md`, Untitled chat\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md, iphone webhook.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "ai-agent-core-workspace",
+      "title": "Основное рабочее пространство ИИ-агента",
+      "status": "active",
+      "topic": "agents",
+      "kbNote": {
+        "id": "ai-agent-core-workspace",
+        "title": "Основное рабочее пространство ИИ-агента",
+        "noteName": "ai-agent-core-workspace",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\ai-agent-core-workspace.md",
+        "relativePath": "Projects/AI Workspace/ai-agent-core-workspace.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/ai-agent-core-workspace.md"
+      },
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\ИИ агент на компьютер",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\agents\\ai_agent_core",
+      "relatedChats": [
+        {
+          "id": "5321ebb6-d175-4b28-933a-975595963304",
+          "title": "Этап 2: Настройка MCP-сервера NotebookLM",
+          "noteName": "этап-2-настройка-mcp-сервера-notebooklm-5321ebb6",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\этап-2-настройка-mcp-сервера-notebooklm-5321ebb6.md",
+          "relativePath": "Chats/AI Workspace/этап-2-настройка-mcp-сервера-notebooklm-5321ebb6.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%8D%D1%82%D0%B0%D0%BF-2-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-mcp-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0-notebooklm-5321ebb6.md"
+        },
+        {
+          "id": "5764591f-8e31-4f9c-8f98-47999f6d4aea",
+          "title": "Task Log — Самосовершенствующаяся система агентов",
+          "noteName": "task-log-самосовершенствующаяся-система-агентов-5764591f",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-log-самосовершенствующаяся-система-агентов-5764591f.md",
+          "relativePath": "Chats/AI Workspace/task-log-самосовершенствующаяся-система-агентов-5764591f.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-log-%D1%81%D0%B0%D0%BC%D0%BE%D1%81%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%89%D0%B0%D1%8F%D1%81%D1%8F-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%BE%D0%B2-5764591f.md"
+        },
+        {
+          "id": "5d4c6451-5427-4f81-9e14-5c831512c38d",
+          "title": "Task: Configure NotebookLM MCP",
+          "noteName": "task-configure-notebooklm-mcp-5d4c6451",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-configure-notebooklm-mcp-5d4c6451.md",
+          "relativePath": "Chats/AI Workspace/task-configure-notebooklm-mcp-5d4c6451.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-configure-notebooklm-mcp-5d4c6451.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "7399722d-bd40-4792-a3cf-758dd50572fd",
+          "title": "Отчет об аудите системы протоколов IDE",
+          "noteName": "отчет-об-аудите-системы-протоколов-ide-7399722d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\отчет-об-аудите-системы-протоколов-ide-7399722d.md",
+          "relativePath": "Chats/AI Workspace/отчет-об-аудите-системы-протоколов-ide-7399722d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BE%D1%82%D1%87%D0%B5%D1%82-%D0%BE%D0%B1-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D0%BE%D0%B2-ide-7399722d.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        },
+        {
+          "id": "8fa5cf5f-8a75-4f7e-a0cd-11501bd93284",
+          "title": "Project Analysis and Meta-System Architecture",
+          "noteName": "project-analysis-and-meta-system-architecture-8fa5cf5f",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\project-analysis-and-meta-system-architecture-8fa5cf5f.md",
+          "relativePath": "Chats/AI Workspace/project-analysis-and-meta-system-architecture-8fa5cf5f.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/project-analysis-and-meta-system-architecture-8fa5cf5f.md"
+        },
+        {
+          "id": "a1c01283-9844-462a-8865-a8dde7a0d218",
+          "title": "Task: Save Business System Prompt",
+          "noteName": "task-save-business-system-prompt-a1c01283",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-save-business-system-prompt-a1c01283.md",
+          "relativePath": "Chats/AI Workspace/task-save-business-system-prompt-a1c01283.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-save-business-system-prompt-a1c01283.md"
+        },
+        {
+          "id": "d2e8b42d-c399-4f0c-b142-69063da7012b",
+          "title": "task",
+          "noteName": "task-d2e8b42d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-d2e8b42d.md",
+          "relativePath": "Chats/AI Workspace/task-d2e8b42d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-d2e8b42d.md"
+        },
+        {
+          "id": "daf7270c-243a-47e6-b810-1dc28842b8df",
+          "title": "Фаза 1: Инициализация Базы Знаний Obsidian",
+          "noteName": "фаза-1-инициализация-базы-знаний-obsidian-daf7270c",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\фаза-1-инициализация-базы-знаний-obsidian-daf7270c.md",
+          "relativePath": "Chats/AI Workspace/фаза-1-инициализация-базы-знаний-obsidian-daf7270c.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%84%D0%B0%D0%B7%D0%B0-1-%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9-obsidian-daf7270c.md"
+        },
+        {
+          "id": "dfbe1752-0165-47dc-9014-15f4c232a9aa",
+          "title": "Проект: CoPaw + Дополнения",
+          "noteName": "проект-copaw-дополнения-dfbe1752",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\проект-copaw-дополнения-dfbe1752.md",
+          "relativePath": "Chats/AI Workspace/проект-copaw-дополнения-dfbe1752.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-copaw-%D0%B4%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-dfbe1752.md"
+        },
+        {
+          "id": "e17d18b1-341e-4953-9681-2808ade445bc",
+          "title": "Task: Stage 2 - NotebookLM MCP Integration",
+          "noteName": "task-stage-2-notebooklm-mcp-integration-e17d18b1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-stage-2-notebooklm-mcp-integration-e17d18b1.md",
+          "relativePath": "Chats/AI Workspace/task-stage-2-notebooklm-mcp-integration-e17d18b1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-stage-2-notebooklm-mcp-integration-e17d18b1.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "improve-skills-18",
+          "title": "improve-skills.md",
+          "noteName": "improve-skills-md-18",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\improve-skills-md-18.md",
+          "relativePath": "Workflows/AI Workspace/improve-skills-md-18.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/improve-skills-md-18.md"
+        },
+        {
+          "id": "improve-skills-md-6",
+          "title": "improve-skills.md",
+          "noteName": "improve-skills-md-6",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\improve-skills-md-6.md",
+          "relativePath": "Workflows/AI Workspace/improve-skills-md-6.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/improve-skills-md-6.md"
+        },
+        {
+          "id": "improve-skills-md-7",
+          "title": "improve-skills.md",
+          "noteName": "improve-skills-md-7",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\improve-skills-md-7.md",
+          "relativePath": "Workflows/AI Workspace/improve-skills-md-7.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/improve-skills-md-7.md"
+        },
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "search-with-mcp-19",
+          "title": "search-with-mcp.md",
+          "noteName": "search-with-mcp-md-19",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\search-with-mcp-md-19.md",
+          "relativePath": "Workflows/AI Workspace/search-with-mcp-md-19.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/search-with-mcp-md-19.md"
+        },
+        {
+          "id": "send-telegram-message-20",
+          "title": "send-telegram-message.md",
+          "noteName": "send-telegram-message-md-20",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\send-telegram-message-md-20.md",
+          "relativePath": "Workflows/AI Workspace/send-telegram-message-md-20.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/send-telegram-message-md-20.md"
+        },
+        {
+          "id": "send-voice-message-21",
+          "title": "send-voice-message.md",
+          "noteName": "send-voice-message-md-21",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\send-voice-message-md-21.md",
+          "relativePath": "Workflows/AI Workspace/send-voice-message-md-21.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/send-voice-message-md-21.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/ai-agent-core-workspace.md",
+          "dashboard": "#project:ai-agent-core-workspace"
+        }
+      },
+      "launchContract": {
+        "projectId": "ai-agent-core-workspace",
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Основное рабочее пространство ИИ-агента\nproject_id: ai-agent-core-workspace\nСтатус: active\nТема: agents\nСледующий шаг: Привязаны связанные чаты\nKB note: Projects/AI Workspace/ai-agent-core-workspace.md\nОписание: Основной рабочий каталог агента и workflows.\nСвязанные чаты: Этап 2: Настройка MCP-сервера NotebookLM, Task Log — Самосовершенствующаяся система агентов, Task: Configure NotebookLM MCP, Organize AI Projects Workspace, Отчет об аудите системы протоколов IDE\nСвязанные workflows: improve-skills.md, improve-skills.md, improve-skills.md, iphone webhook.json, Nano Banana Bot.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "antigravity-dashboard-workspace",
+      "title": "Рабочее пространство дашборда Antigravity",
+      "status": "active",
+      "topic": "antigravity",
+      "kbNote": {
+        "id": "antigravity-dashboard-workspace",
+        "title": "Рабочее пространство дашборда Antigravity",
+        "noteName": "antigravity-dashboard-workspace",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\antigravity-dashboard-workspace.md",
+        "relativePath": "Projects/AI Workspace/antigravity-dashboard-workspace.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/antigravity-dashboard-workspace.md"
+      },
+      "sourcePath": "C:\\Users\\Admin\\.gemini\\antigravity\\scratch\\Мой Дашборд",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\antigravity\\my_dashboard",
+      "relatedChats": [
+        {
+          "id": "0d6d2d8d-5ac1-4ce6-93dc-5323a01cea54",
+          "title": "Task: Этап 2 — Поднятие MCP-моста (NotebookLM ↔ Antigravity)",
+          "noteName": "task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d.md",
+          "relativePath": "Chats/AI Workspace/task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-%D1%8D%D1%82%D0%B0%D0%BF-2-%D0%BF%D0%BE%D0%B4%D0%BD%D1%8F%D1%82%D0%B8%D0%B5-mcp-%D0%BC%D0%BE%D1%81%D1%82%D0%B0-notebooklm-antigravity-0d6d2d8d.md"
+        },
+        {
+          "id": "5321ebb6-d175-4b28-933a-975595963304",
+          "title": "Этап 2: Настройка MCP-сервера NotebookLM",
+          "noteName": "этап-2-настройка-mcp-сервера-notebooklm-5321ebb6",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\этап-2-настройка-mcp-сервера-notebooklm-5321ebb6.md",
+          "relativePath": "Chats/AI Workspace/этап-2-настройка-mcp-сервера-notebooklm-5321ebb6.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%8D%D1%82%D0%B0%D0%BF-2-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-mcp-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0-notebooklm-5321ebb6.md"
+        },
+        {
+          "id": "5d4c6451-5427-4f81-9e14-5c831512c38d",
+          "title": "Task: Configure NotebookLM MCP",
+          "noteName": "task-configure-notebooklm-mcp-5d4c6451",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-configure-notebooklm-mcp-5d4c6451.md",
+          "relativePath": "Chats/AI Workspace/task-configure-notebooklm-mcp-5d4c6451.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-configure-notebooklm-mcp-5d4c6451.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "7399722d-bd40-4792-a3cf-758dd50572fd",
+          "title": "Отчет об аудите системы протоколов IDE",
+          "noteName": "отчет-об-аудите-системы-протоколов-ide-7399722d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\отчет-об-аудите-системы-протоколов-ide-7399722d.md",
+          "relativePath": "Chats/AI Workspace/отчет-об-аудите-системы-протоколов-ide-7399722d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BE%D1%82%D1%87%D0%B5%D1%82-%D0%BE%D0%B1-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D0%BE%D0%B2-ide-7399722d.md"
+        },
+        {
+          "id": "d2e8b42d-c399-4f0c-b142-69063da7012b",
+          "title": "task",
+          "noteName": "task-d2e8b42d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-d2e8b42d.md",
+          "relativePath": "Chats/AI Workspace/task-d2e8b42d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-d2e8b42d.md"
+        },
+        {
+          "id": "daf7270c-243a-47e6-b810-1dc28842b8df",
+          "title": "Фаза 1: Инициализация Базы Знаний Obsidian",
+          "noteName": "фаза-1-инициализация-базы-знаний-obsidian-daf7270c",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\фаза-1-инициализация-базы-знаний-obsidian-daf7270c.md",
+          "relativePath": "Chats/AI Workspace/фаза-1-инициализация-базы-знаний-obsidian-daf7270c.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%84%D0%B0%D0%B7%D0%B0-1-%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9-obsidian-daf7270c.md"
+        },
+        {
+          "id": "e13b0857-d937-42e4-a3a9-323827e41efe",
+          "title": "Task List",
+          "noteName": "task-list-e13b0857",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-list-e13b0857.md",
+          "relativePath": "Chats/AI Workspace/task-list-e13b0857.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-list-e13b0857.md"
+        },
+        {
+          "id": "e17d18b1-341e-4953-9681-2808ade445bc",
+          "title": "Task: Stage 2 - NotebookLM MCP Integration",
+          "noteName": "task-stage-2-notebooklm-mcp-integration-e17d18b1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-stage-2-notebooklm-mcp-integration-e17d18b1.md",
+          "relativePath": "Chats/AI Workspace/task-stage-2-notebooklm-mcp-integration-e17d18b1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-stage-2-notebooklm-mcp-integration-e17d18b1.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/antigravity-dashboard-workspace.md",
+          "dashboard": "#project:antigravity-dashboard-workspace"
+        }
+      },
+      "launchContract": {
+        "projectId": "antigravity-dashboard-workspace",
+        "nextStep": "Привязаны связанные чаты",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Рабочее пространство дашборда Antigravity\nproject_id: antigravity-dashboard-workspace\nСтатус: active\nТема: antigravity\nСледующий шаг: Привязаны связанные чаты\nKB note: Projects/AI Workspace/antigravity-dashboard-workspace.md\nОписание: Текущий рабочий scratch-каталог. Интегрировано: Ранний прототип дашборда.\nСвязанные чаты: Task: Этап 2 — Поднятие MCP-моста (NotebookLM ↔ Antigravity), Этап 2: Настройка MCP-сервера NotebookLM, Task: Configure NotebookLM MCP, Organize AI Projects Workspace, Отчет об аудите системы протоколов IDE\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "appscout",
+      "title": "Разведка приложений",
+      "status": "active",
+      "topic": "products",
+      "kbNote": {
+        "id": "appscout",
+        "title": "Разведка приложений",
+        "noteName": "appscout",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\appscout.md",
+        "relativePath": "Projects/AI Workspace/appscout.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/appscout.md"
+      },
+      "sourcePath": "F:\\ДИМА\\ПРОЕКТЫ\\Приложения\\AppScout",
+      "destinationPath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\AI_Workspace\\project_archive\\products\\appscout",
+      "relatedChats": [
+        {
+          "id": "67c37490-16e8-4a81-91a0-77cb4aad2691",
+          "title": "Проект: AppScout — Поиск Open-Source приложений по идее",
+          "noteName": "проект-appscout-поиск-open-source-приложений-по-идее-67c37490",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\проект-appscout-поиск-open-source-приложений-по-идее-67c37490.md",
+          "relativePath": "Chats/AI Workspace/проект-appscout-поиск-open-source-приложений-по-идее-67c37490.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-appscout-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-open-source-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9-%D0%BF%D0%BE-%D0%B8%D0%B4%D0%B5%D0%B5-67c37490.md"
+        },
+        {
+          "id": "6a822a41-907f-4acf-8998-502627f5883d",
+          "title": "Organize AI Projects Workspace",
+          "noteName": "organize-ai-projects-workspace-6a822a41",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\organize-ai-projects-workspace-6a822a41.md",
+          "relativePath": "Chats/AI Workspace/organize-ai-projects-workspace-6a822a41.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/organize-ai-projects-workspace-6a822a41.md"
+        },
+        {
+          "id": "788f80be-fece-49a6-b3f1-f1b7013af149",
+          "title": "Untitled chat",
+          "noteName": "untitled-chat-788f80be",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\untitled-chat-788f80be.md",
+          "relativePath": "Chats/AI Workspace/untitled-chat-788f80be.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/untitled-chat-788f80be.md"
+        }
+      ],
+      "relatedWorkflows": [
+        {
+          "id": "api-keys-1",
+          "title": "/api-keys",
+          "noteName": "api-keys-1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\api-keys-1.md",
+          "relativePath": "Workflows/AI Workspace/api-keys-1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/api-keys-1.md"
+        },
+        {
+          "id": "deploy-2",
+          "title": "/deploy",
+          "noteName": "deploy-2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy-2.md",
+          "relativePath": "Workflows/AI Workspace/deploy-2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy-2.md"
+        },
+        {
+          "id": "deploy_russia-md-4",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-4",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-4.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-4.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-4.md"
+        },
+        {
+          "id": "deploy_russia-md-5",
+          "title": "deploy_russia.md",
+          "noteName": "deploy_russia-md-5",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\deploy_russia-md-5.md",
+          "relativePath": "Workflows/AI Workspace/deploy_russia-md-5.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/deploy_russia-md-5.md"
+        },
+        {
+          "id": "iphone-webhook-json-8",
+          "title": "iphone webhook.json",
+          "noteName": "iphone-webhook-json-8",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\iphone-webhook-json-8.md",
+          "relativePath": "Workflows/AI Workspace/iphone-webhook-json-8.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/iphone-webhook-json-8.md"
+        },
+        {
+          "id": "nano-banana-bot-json-11",
+          "title": "Nano Banana Bot.json",
+          "noteName": "nano-banana-bot-json-11",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\nano-banana-bot-json-11.md",
+          "relativePath": "Workflows/AI Workspace/nano-banana-bot-json-11.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/nano-banana-bot-json-11.md"
+        },
+        {
+          "id": "remind-ideas-3",
+          "title": "/remind-ideas",
+          "noteName": "remind-ideas-3",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\remind-ideas-3.md",
+          "relativePath": "Workflows/AI Workspace/remind-ideas-3.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/remind-ideas-3.md"
+        },
+        {
+          "id": "youtube-transcript-json-14",
+          "title": "Youtube Transcript.json",
+          "noteName": "youtube-transcript-json-14",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Workflows\\AI Workspace\\youtube-transcript-json-14.md",
+          "relativePath": "Workflows/AI Workspace/youtube-transcript-json-14.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Workflows/AI%20Workspace/youtube-transcript-json-14.md"
+        }
+      ],
+      "projectMode": {
+        "nextStep": "Привязаны связанные workflows",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/appscout.md",
+          "dashboard": "#project:appscout"
+        }
+      },
+      "launchContract": {
+        "projectId": "appscout",
+        "nextStep": "Привязаны связанные workflows",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history",
+          "workflow-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Разведка приложений\nproject_id: appscout\nСтатус: active\nТема: products\nСледующий шаг: Привязаны связанные workflows\nKB note: Projects/AI Workspace/appscout.md\nОписание: Поиск open-source приложений по идее.\nСвязанные чаты: Проект: AppScout — Поиск Open-Source приложений по идее, Organize AI Projects Workspace, Untitled chat\nСвязанные workflows: /api-keys, /deploy, deploy_russia.md, deploy_russia.md, iphone webhook.json\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    },
+    {
+      "id": "system-interest-map",
+      "title": "Системная карта интересов",
+      "status": "active",
+      "topic": "manual",
+      "kbNote": {
+        "id": "system-interest-map",
+        "title": "Системная карта интересов",
+        "noteName": "system-interest-map",
+        "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Projects\\AI Workspace\\system-interest-map.md",
+        "relativePath": "Projects/AI Workspace/system-interest-map.md",
+        "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/system-interest-map.md"
+      },
+      "sourcePath": "",
+      "destinationPath": "",
+      "relatedChats": [
+        {
+          "id": "0d6d2d8d-5ac1-4ce6-93dc-5323a01cea54",
+          "title": "Task: Этап 2 — Поднятие MCP-моста (NotebookLM ↔ Antigravity)",
+          "noteName": "task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d.md",
+          "relativePath": "Chats/AI Workspace/task-этап-2-поднятие-mcp-моста-notebooklm-antigravity-0d6d2d8d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-%D1%8D%D1%82%D0%B0%D0%BF-2-%D0%BF%D0%BE%D0%B4%D0%BD%D1%8F%D1%82%D0%B8%D0%B5-mcp-%D0%BC%D0%BE%D1%81%D1%82%D0%B0-notebooklm-antigravity-0d6d2d8d.md"
+        },
+        {
+          "id": "5321ebb6-d175-4b28-933a-975595963304",
+          "title": "Этап 2: Настройка MCP-сервера NotebookLM",
+          "noteName": "этап-2-настройка-mcp-сервера-notebooklm-5321ebb6",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\этап-2-настройка-mcp-сервера-notebooklm-5321ebb6.md",
+          "relativePath": "Chats/AI Workspace/этап-2-настройка-mcp-сервера-notebooklm-5321ebb6.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%8D%D1%82%D0%B0%D0%BF-2-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-mcp-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0-notebooklm-5321ebb6.md"
+        },
+        {
+          "id": "5d4c6451-5427-4f81-9e14-5c831512c38d",
+          "title": "Task: Configure NotebookLM MCP",
+          "noteName": "task-configure-notebooklm-mcp-5d4c6451",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-configure-notebooklm-mcp-5d4c6451.md",
+          "relativePath": "Chats/AI Workspace/task-configure-notebooklm-mcp-5d4c6451.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-configure-notebooklm-mcp-5d4c6451.md"
+        },
+        {
+          "id": "7399722d-bd40-4792-a3cf-758dd50572fd",
+          "title": "Отчет об аудите системы протоколов IDE",
+          "noteName": "отчет-об-аудите-системы-протоколов-ide-7399722d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\отчет-об-аудите-системы-протоколов-ide-7399722d.md",
+          "relativePath": "Chats/AI Workspace/отчет-об-аудите-системы-протоколов-ide-7399722d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D0%BE%D1%82%D1%87%D0%B5%D1%82-%D0%BE%D0%B1-%D0%B0%D1%83%D0%B4%D0%B8%D1%82%D0%B5-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D0%BE%D0%B2-ide-7399722d.md"
+        },
+        {
+          "id": "869639b2-3e14-465b-8a8e-8605d8bb762c",
+          "title": "Фаза 6: Библиотека знаний + Редизайн + Ассистент",
+          "noteName": "фаза-6-библиотека-знаний-редизайн-ассистент-869639b2",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\фаза-6-библиотека-знаний-редизайн-ассистент-869639b2.md",
+          "relativePath": "Chats/AI Workspace/фаза-6-библиотека-знаний-редизайн-ассистент-869639b2.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%84%D0%B0%D0%B7%D0%B0-6-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0-%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9-%D1%80%D0%B5%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%B0%D1%81%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BD%D1%82-869639b2.md"
+        },
+        {
+          "id": "8fa5cf5f-8a75-4f7e-a0cd-11501bd93284",
+          "title": "Project Analysis and Meta-System Architecture",
+          "noteName": "project-analysis-and-meta-system-architecture-8fa5cf5f",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\project-analysis-and-meta-system-architecture-8fa5cf5f.md",
+          "relativePath": "Chats/AI Workspace/project-analysis-and-meta-system-architecture-8fa5cf5f.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/project-analysis-and-meta-system-architecture-8fa5cf5f.md"
+        },
+        {
+          "id": "a1c01283-9844-462a-8865-a8dde7a0d218",
+          "title": "Task: Save Business System Prompt",
+          "noteName": "task-save-business-system-prompt-a1c01283",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-save-business-system-prompt-a1c01283.md",
+          "relativePath": "Chats/AI Workspace/task-save-business-system-prompt-a1c01283.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-save-business-system-prompt-a1c01283.md"
+        },
+        {
+          "id": "d2e8b42d-c399-4f0c-b142-69063da7012b",
+          "title": "task",
+          "noteName": "task-d2e8b42d",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-d2e8b42d.md",
+          "relativePath": "Chats/AI Workspace/task-d2e8b42d.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-d2e8b42d.md"
+        },
+        {
+          "id": "d6b04e15-51c9-4155-99c5-5d6eb0a09777",
+          "title": "Task Plan: Ideas from Video",
+          "noteName": "task-plan-ideas-from-video-d6b04e15",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-plan-ideas-from-video-d6b04e15.md",
+          "relativePath": "Chats/AI Workspace/task-plan-ideas-from-video-d6b04e15.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-plan-ideas-from-video-d6b04e15.md"
+        },
+        {
+          "id": "daf7270c-243a-47e6-b810-1dc28842b8df",
+          "title": "Фаза 1: Инициализация Базы Знаний Obsidian",
+          "noteName": "фаза-1-инициализация-базы-знаний-obsidian-daf7270c",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\фаза-1-инициализация-базы-знаний-obsidian-daf7270c.md",
+          "relativePath": "Chats/AI Workspace/фаза-1-инициализация-базы-знаний-obsidian-daf7270c.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/%D1%84%D0%B0%D0%B7%D0%B0-1-%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%B0%D0%B7%D1%8B-%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B9-obsidian-daf7270c.md"
+        },
+        {
+          "id": "e17d18b1-341e-4953-9681-2808ade445bc",
+          "title": "Task: Stage 2 - NotebookLM MCP Integration",
+          "noteName": "task-stage-2-notebooklm-mcp-integration-e17d18b1",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\task-stage-2-notebooklm-mcp-integration-e17d18b1.md",
+          "relativePath": "Chats/AI Workspace/task-stage-2-notebooklm-mcp-integration-e17d18b1.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/task-stage-2-notebooklm-mcp-integration-e17d18b1.md"
+        },
+        {
+          "id": "f7aaf886-8ff5-4b8e-9282-392295f76ba8",
+          "title": "Knowledge Hub Infrastructure Setup",
+          "noteName": "knowledge-hub-infrastructure-setup-f7aaf886",
+          "notePath": "D:\\ЯндексДиск\\Yandex.Disk\\ПРОЕКТЫ\\KnowledgeBase\\Chats\\AI Workspace\\knowledge-hub-infrastructure-setup-f7aaf886.md",
+          "relativePath": "Chats/AI Workspace/knowledge-hub-infrastructure-setup-f7aaf886.md",
+          "obsidianUri": "obsidian://open?vault=KnowledgeBase&file=Chats/AI%20Workspace/knowledge-hub-infrastructure-setup-f7aaf886.md"
+        }
+      ],
+      "relatedWorkflows": [],
+      "projectMode": {
+        "nextStep": "Связать профиль с дашбордом и Obsidian",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history"
+        ],
+        "notebooklmEnabled": false,
+        "entryPoints": {
+          "kb": "obsidian://open?vault=KnowledgeBase&file=Projects/AI%20Workspace/system-interest-map.md",
+          "dashboard": "#project:system-interest-map"
+        }
+      },
+      "launchContract": {
+        "projectId": "system-interest-map",
+        "nextStep": "Связать профиль с дашбордом и Obsidian",
+        "allowedTools": [
+          "vault",
+          "dashboard",
+          "chat-history"
+        ],
+        "notebooklmEnabled": false,
+        "vaultWriteBackRequired": true,
+        "sessionSummaryRequired": true,
+        "prompt": "Проект: Системная карта интересов\nproject_id: system-interest-map\nСтатус: active\nТема: manual\nСледующий шаг: Связать профиль с дашбордом и Obsidian\nKB note: Projects/AI Workspace/system-interest-map.md\nОписание: Редактируемый профиль интересов, ролей, фильтров шума и критериев отбора новой информации.\nСвязанные чаты: Task: Этап 2 — Поднятие MCP-моста (NotebookLM ↔ Antigravity), Этап 2: Настройка MCP-сервера NotebookLM, Task: Configure NotebookLM MCP, Отчет об аудите системы протоколов IDE, Фаза 6: Библиотека знаний + Редизайн + Ассистент\nРежим работы:\n- сначала читать KB note и связанные сущности;\n- не создавать новую сущность без проверки связи с существующим проектом;\n- результат класть обратно в vault и только затем показывать на dashboard;"
+      }
+    }
+  ]
+}

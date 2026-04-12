@@ -1,6 +1,6 @@
 # Чеклист агентной работы
 
-Обновлено: 2026-03-10T03:09:18
+Обновлено: 2026-03-20T02:51:39
 
 ## Перед работой
 - Прочитать `config/agent_data_governance.json` и `config/personal_system_profile.json`.

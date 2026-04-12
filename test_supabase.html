@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Supabase Test</title>
+    <style>
+        body {
+            font-family: system-ui;
+            background: #111;
+            color: #eee;
+            padding: 20px;
+        }
+
+        .log {
+            background: #1a1a2e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .ok {
+            border-left: 4px solid #34d399;
+        }
+
+        .err {
+            border-left: 4px solid #f87171;
+        }
+
+        .warn {
+            border-left: 4px solid #fbbf24;
+        }
+
+        h2 {
+            margin-top: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔍 Диагностика подключения Supabase</h1>
+    <div id="results"></div>
+
+    <script src="config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const out = document.getElementById('results');
+        function log(msg, type = 'ok') {
+            out.innerHTML += `<div class="log ${type}">${msg}</div>`;
+        }
+
+        async function runTests() {
+            // 1. Check config.js
+            log('<b>Шаг 1: config.js</b>');
+            const cfg = window.DASHBOARD_CONFIG;
+            if (cfg && cfg.SUPABASE_URL && cfg.SUPABASE_KEY) {
+                log(`✅ config.js загружен. URL: ${cfg.SUPABASE_URL}`);
+            } else {
+                log('❌ config.js НЕ загружен или пустой! window.DASHBOARD_CONFIG = ' + JSON.stringify(cfg), 'err');
+                return;
+            }
+
+            // 2. Check Supabase SDK
+            log('<b>Шаг 2: Supabase SDK</b>');
+            if (typeof supabase !== 'undefined' && supabase.createClient) {
+                log('✅ Supabase SDK загружен из CDN');
+            } else {
+                log('❌ Supabase SDK НЕ загружен! typeof supabase = ' + typeof supabase, 'err');
+                return;
+            }
+
+            // 3. Create client
+            log('<b>Шаг 3: Создание клиента</b>');
+            let client;
+            try {
+                client = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_KEY);
+                log('✅ Клиент создан');
+            } catch (e) {
+                log('❌ Ошибка создания клиента: ' + e.message, 'err');
+                return;
+            }
+
+            // 4. Query signals
+            log('<b>Шаг 4: Запрос к таблице signals</b>');
+            try {
+                const { data, error } = await client
+                    .from('signals')
+                    .select('id, summary, relevance_score, route, created_at')
+                    .order('created_at', { ascending: false })
+                    .limit(5);
+
+                if (error) {
+                    log('❌ Ошибка запроса: ' + JSON.stringify(error), 'err');
+                } else if (data && data.length) {
+                    log(`✅ Получено ${data.length} сигналов:`);
+                    data.forEach(s => {
+                        log(`&nbsp;&nbsp;📌 [${s.route}] ${s.summary} (score: ${s.relevance_score}, ${new Date(s.created_at).toLocaleString('ru-RU')})`);
+                    });
+                } else {
+                    log('⚠️ Запрос прошёл, но данных нет (пустой массив)', 'warn');
+                }
+            } catch (e) {
+                log('❌ Исключение при запросе: ' + e.message, 'err');
+            }
+
+            // 5. Total count
+            log('<b>Шаг 5: Общее количество</b>');
+            try {
+                const { count, error } = await client
+                    .from('signals')
+                    .select('*', { count: 'exact', head: true });
+                if (error) {
+                    log('❌ Ошибка подсчёта: ' + JSON.stringify(error), 'err');
+                } else {
+                    log(`✅ Всего сигналов в базе: <b>${count}</b>`);
+                }
+            } catch (e) {
+                log('❌ Исключение: ' + e.message, 'err');
+            }
+        }
+
+        runTests();
+    </script>
+</body>
+
+</html>

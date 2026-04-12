@@ -54,7 +54,7 @@
       "label": "Telegram-агрегатор",
       "type": "project",
       "topic": "agents",
-      "size": 15,
+      "size": 20,
       "status": "active"
     },
     {
@@ -62,7 +62,7 @@
       "label": "Контур мониторинга интересной информации",
       "type": "project",
       "topic": "manual",
-      "size": 12,
+      "size": 17,
       "status": "active"
     },
     {
@@ -126,7 +126,7 @@
       "label": "Грантовая презентация",
       "type": "project",
       "topic": "education",
-      "size": 16,
+      "size": 20,
       "status": "active"
     },
     {
@@ -134,7 +134,7 @@
       "label": "Лендинг гимназии",
       "type": "project",
       "topic": "education",
-      "size": 15,
+      "size": 17,
       "status": "active"
     },
     {
@@ -150,7 +150,7 @@
       "label": "Стратегия КОРА",
       "type": "project",
       "topic": "business",
-      "size": 13,
+      "size": 15,
       "status": "active"
     },
     {
@@ -166,7 +166,7 @@
       "label": "Фантом Давыдова",
       "type": "project",
       "topic": "education",
-      "size": 19,
+      "size": 20,
       "status": "active"
     },
     {
@@ -174,7 +174,7 @@
       "label": "ИИ-агент для гимназии",
       "type": "project",
       "topic": "manual",
-      "size": 12,
+      "size": 13,
       "status": "research"
     },
     {
@@ -198,7 +198,7 @@
       "label": "Основное рабочее пространство ИИ-агента",
       "type": "project",
       "topic": "agents",
-      "size": 16,
+      "size": 20,
       "status": "active"
     },
     {
@@ -206,7 +206,7 @@
       "label": "Рабочее пространство дашборда Antigravity",
       "type": "project",
       "topic": "antigravity",
-      "size": 14,
+      "size": 20,
       "status": "active"
     },
     {
@@ -222,7 +222,7 @@
       "label": "Системная карта интересов",
       "type": "project",
       "topic": "manual",
-      "size": 12,
+      "size": 20,
       "status": "active"
     },
     {
@@ -371,6 +371,86 @@
       "type": "workflow",
       "topic": "workflow",
       "size": 10
+    },
+    {
+      "id": "chat-d2e8b42d-c399-4f0c-b142-69063da7012b",
+      "label": "task",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-19"
+    },
+    {
+      "id": "chat-7399722d-bd40-4792-a3cf-758dd50572fd",
+      "label": "Отчет об аудите системы протоколов IDE",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-19"
+    },
+    {
+      "id": "chat-8fa5cf5f-8a75-4f7e-a0cd-11501bd93284",
+      "label": "Project Analysis and Meta-System Architecture",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-18"
+    },
+    {
+      "id": "chat-a1c01283-9844-462a-8865-a8dde7a0d218",
+      "label": "Task: Save Business System Prompt",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-17"
+    },
+    {
+      "id": "chat-e17d18b1-341e-4953-9681-2808ade445bc",
+      "label": "Task: Stage 2 - NotebookLM MCP Integration",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-16"
+    },
+    {
+      "id": "chat-5d4c6451-5427-4f81-9e14-5c831512c38d",
+      "label": "Task: Configure NotebookLM MCP",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-16"
+    },
+    {
+      "id": "chat-d6b04e15-51c9-4155-99c5-5d6eb0a09777",
+      "label": "Task Plan: Ideas from Video",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-15"
+    },
+    {
+      "id": "chat-869639b2-3e14-465b-8a8e-8605d8bb762c",
+      "label": "Фаза 6: Библиотека знаний + Редизайн + Ассистент",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-15"
+    },
+    {
+      "id": "chat-5321ebb6-d175-4b28-933a-975595963304",
+      "label": "Этап 2: Настройка MCP-сервера NotebookLM",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-15"
+    },
+    {
+      "id": "chat-0d6d2d8d-5ac1-4ce6-93dc-5323a01cea54",
+      "label": "Task: Этап 2 — Поднятие MCP-моста (NotebookLM ↔ Antigravity)",
+      "type": "chat",
+      "topic": "Новая сессия",
+      "size": 8,
+      "date": "2026-03-15"
     },
     {
       "id": "chat-f7aaf886-8ff5-4b8e-9282-392295f76ba8",
@@ -755,11 +835,6 @@
       "kind": "contains"
     },
     {
-      "source": "project-agent-second-brain-recovered-fragments",
-      "target": "workflow-api-keys-1",
-      "kind": "workflow"
-    },
-    {
       "source": "project-antigravity-dashboard-workspace",
       "target": "workflow-api-keys-1",
       "kind": "workflow"
@@ -822,11 +897,6 @@
     {
       "source": "project-самосовершенствующиеся-агенты",
       "target": "workflow-api-keys-1",
-      "kind": "workflow"
-    },
-    {
-      "source": "project-agent-second-brain-recovered-fragments",
-      "target": "workflow-deploy-2",
       "kind": "workflow"
     },
     {
@@ -897,11 +967,6 @@
     {
       "source": "project-самосовершенствующиеся-агенты",
       "target": "workflow-deploy-2",
-      "kind": "workflow"
-    },
-    {
-      "source": "project-agent-second-brain",
-      "target": "workflow-remind-ideas-3",
       "kind": "workflow"
     },
     {
@@ -960,11 +1025,6 @@
       "kind": "workflow"
     },
     {
-      "source": "project-agent-second-brain-recovered-fragments",
-      "target": "workflow-deploy_russia-md-4",
-      "kind": "workflow"
-    },
-    {
       "source": "project-antigravity-dashboard-workspace",
       "target": "workflow-deploy_russia-md-4",
       "kind": "workflow"
@@ -1032,11 +1092,6 @@
     {
       "source": "project-самосовершенствующиеся-агенты",
       "target": "workflow-deploy_russia-md-4",
-      "kind": "workflow"
-    },
-    {
-      "source": "project-agent-second-brain-recovered-fragments",
-      "target": "workflow-deploy_russia-md-5",
       "kind": "workflow"
     },
     {
@@ -1135,11 +1190,6 @@
       "kind": "workflow"
     },
     {
-      "source": "project-agent-second-brain",
-      "target": "workflow-iphone-webhook-json-8",
-      "kind": "workflow"
-    },
-    {
       "source": "project-ai-agent-core-workspace",
       "target": "workflow-iphone-webhook-json-8",
       "kind": "workflow"
@@ -1202,11 +1252,6 @@
     {
       "source": "project-davydov-phantom",
       "target": "workflow-n8n_search_workflow-md-10",
-      "kind": "workflow"
-    },
-    {
-      "source": "project-agent-second-brain",
-      "target": "workflow-nano-banana-bot-json-11",
       "kind": "workflow"
     },
     {
@@ -1305,11 +1350,6 @@
       "kind": "workflow"
     },
     {
-      "source": "project-agent-second-brain",
-      "target": "workflow-youtube-transcript-json-14",
-      "kind": "workflow"
-    },
-    {
       "source": "project-ai-agent-core-workspace",
       "target": "workflow-youtube-transcript-json-14",
       "kind": "workflow"
@@ -1365,23 +1405,183 @@
       "kind": "workflow"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-ai-agent-core-workspace",
+      "target": "chat-d2e8b42d-c399-4f0c-b142-69063da7012b",
+      "kind": "chat"
+    },
+    {
+      "source": "project-antigravity-dashboard-workspace",
+      "target": "chat-d2e8b42d-c399-4f0c-b142-69063da7012b",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-d2e8b42d-c399-4f0c-b142-69063da7012b",
+      "kind": "chat"
+    },
+    {
+      "source": "project-ai-agent-core-workspace",
+      "target": "chat-7399722d-bd40-4792-a3cf-758dd50572fd",
+      "kind": "chat"
+    },
+    {
+      "source": "project-antigravity-dashboard-workspace",
+      "target": "chat-7399722d-bd40-4792-a3cf-758dd50572fd",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-7399722d-bd40-4792-a3cf-758dd50572fd",
+      "kind": "chat"
+    },
+    {
+      "source": "project-ai-agent-core-workspace",
+      "target": "chat-8fa5cf5f-8a75-4f7e-a0cd-11501bd93284",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-8fa5cf5f-8a75-4f7e-a0cd-11501bd93284",
+      "kind": "chat"
+    },
+    {
+      "source": "project-tgaggregator",
+      "target": "chat-8fa5cf5f-8a75-4f7e-a0cd-11501bd93284",
+      "kind": "chat"
+    },
+    {
+      "source": "project-ai-agent-core-workspace",
+      "target": "chat-a1c01283-9844-462a-8865-a8dde7a0d218",
+      "kind": "chat"
+    },
+    {
+      "source": "project-kora-strategy",
+      "target": "chat-a1c01283-9844-462a-8865-a8dde7a0d218",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-a1c01283-9844-462a-8865-a8dde7a0d218",
+      "kind": "chat"
+    },
+    {
+      "source": "project-ai-agent-core-workspace",
+      "target": "chat-e17d18b1-341e-4953-9681-2808ade445bc",
+      "kind": "chat"
+    },
+    {
+      "source": "project-antigravity-dashboard-workspace",
+      "target": "chat-e17d18b1-341e-4953-9681-2808ade445bc",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-e17d18b1-341e-4953-9681-2808ade445bc",
+      "kind": "chat"
+    },
+    {
+      "source": "project-ai-agent-core-workspace",
+      "target": "chat-5d4c6451-5427-4f81-9e14-5c831512c38d",
+      "kind": "chat"
+    },
+    {
+      "source": "project-antigravity-dashboard-workspace",
+      "target": "chat-5d4c6451-5427-4f81-9e14-5c831512c38d",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-5d4c6451-5427-4f81-9e14-5c831512c38d",
+      "kind": "chat"
+    },
+    {
+      "source": "project-interest-monitoring-loop",
+      "target": "chat-d6b04e15-51c9-4155-99c5-5d6eb0a09777",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-d6b04e15-51c9-4155-99c5-5d6eb0a09777",
+      "kind": "chat"
+    },
+    {
+      "source": "project-tgaggregator",
+      "target": "chat-d6b04e15-51c9-4155-99c5-5d6eb0a09777",
+      "kind": "chat"
+    },
+    {
+      "source": "project-interest-monitoring-loop",
+      "target": "chat-869639b2-3e14-465b-8a8e-8605d8bb762c",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-869639b2-3e14-465b-8a8e-8605d8bb762c",
+      "kind": "chat"
+    },
+    {
+      "source": "project-tgaggregator",
+      "target": "chat-869639b2-3e14-465b-8a8e-8605d8bb762c",
+      "kind": "chat"
+    },
+    {
+      "source": "project-ai-agent-core-workspace",
+      "target": "chat-5321ebb6-d175-4b28-933a-975595963304",
+      "kind": "chat"
+    },
+    {
+      "source": "project-antigravity-dashboard-workspace",
+      "target": "chat-5321ebb6-d175-4b28-933a-975595963304",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-5321ebb6-d175-4b28-933a-975595963304",
+      "kind": "chat"
+    },
+    {
+      "source": "project-antigravity-dashboard-workspace",
+      "target": "chat-0d6d2d8d-5ac1-4ce6-93dc-5323a01cea54",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
+      "target": "chat-0d6d2d8d-5ac1-4ce6-93dc-5323a01cea54",
+      "kind": "chat"
+    },
+    {
+      "source": "project-tgaggregator",
+      "target": "chat-0d6d2d8d-5ac1-4ce6-93dc-5323a01cea54",
+      "kind": "chat"
+    },
+    {
+      "source": "project-interest-monitoring-loop",
       "target": "chat-f7aaf886-8ff5-4b8e-9282-392295f76ba8",
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-system-interest-map",
+      "target": "chat-f7aaf886-8ff5-4b8e-9282-392295f76ba8",
+      "kind": "chat"
+    },
+    {
+      "source": "project-tgaggregator",
+      "target": "chat-f7aaf886-8ff5-4b8e-9282-392295f76ba8",
+      "kind": "chat"
+    },
+    {
+      "source": "project-davydov-phantom",
       "target": "chat-fd17427b-c668-481d-8162-f738b1684471",
       "kind": "chat"
     },
     {
-      "source": "project-agent-second-brain",
-      "target": "chat-6a822a41-907f-4acf-8998-502627f5883d",
+      "source": "project-grant-presentation",
+      "target": "chat-fd17427b-c668-481d-8162-f738b1684471",
       "kind": "chat"
     },
     {
-      "source": "project-agent-second-brain-recovered-fragments",
-      "target": "chat-6a822a41-907f-4acf-8998-502627f5883d",
+      "source": "project-ии-агент-для-гимназии",
+      "target": "chat-fd17427b-c668-481d-8162-f738b1684471",
       "kind": "chat"
     },
     {
@@ -1445,12 +1645,32 @@
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-davydov-phantom",
       "target": "chat-8360a1c4-2fe7-4f34-8ffa-9a44c22cb9f4",
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-grant-presentation",
+      "target": "chat-8360a1c4-2fe7-4f34-8ffa-9a44c22cb9f4",
+      "kind": "chat"
+    },
+    {
+      "source": "project-gymnasium-landing",
+      "target": "chat-8360a1c4-2fe7-4f34-8ffa-9a44c22cb9f4",
+      "kind": "chat"
+    },
+    {
+      "source": "project-ai-agent-core-workspace",
+      "target": "chat-daf7270c-243a-47e6-b810-1dc28842b8df",
+      "kind": "chat"
+    },
+    {
+      "source": "project-antigravity-dashboard-workspace",
+      "target": "chat-daf7270c-243a-47e6-b810-1dc28842b8df",
+      "kind": "chat"
+    },
+    {
+      "source": "project-system-interest-map",
       "target": "chat-daf7270c-243a-47e6-b810-1dc28842b8df",
       "kind": "chat"
     },
@@ -1495,12 +1715,27 @@
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-davydov-phantom",
       "target": "chat-558dc772-769b-4003-bd50-bc37d2285431",
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-grant-presentation",
+      "target": "chat-558dc772-769b-4003-bd50-bc37d2285431",
+      "kind": "chat"
+    },
+    {
+      "source": "project-davydov-phantom",
+      "target": "chat-72cbb964-5510-4b07-90ec-5ddc4b99ffa3",
+      "kind": "chat"
+    },
+    {
+      "source": "project-grant-presentation",
+      "target": "chat-72cbb964-5510-4b07-90ec-5ddc4b99ffa3",
+      "kind": "chat"
+    },
+    {
+      "source": "project-gymnasium-landing",
       "target": "chat-72cbb964-5510-4b07-90ec-5ddc4b99ffa3",
       "kind": "chat"
     },
@@ -1545,12 +1780,17 @@
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-grant-presentation",
       "target": "chat-5a6d7514-5b45-4161-9cff-61547d975c51",
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-interest-monitoring-loop",
+      "target": "chat-42be4a4f-52f6-4678-bd95-ad606cbdb7f8",
+      "kind": "chat"
+    },
+    {
+      "source": "project-tgaggregator",
       "target": "chat-42be4a4f-52f6-4678-bd95-ad606cbdb7f8",
       "kind": "chat"
     },
@@ -1565,7 +1805,7 @@
       "kind": "chat"
     },
     {
-      "source": "project-agent-second-brain",
+      "source": "root-ai-workspace",
       "target": "chat-70916f7b-9788-4ce8-bfa6-45dabe0a13e3",
       "kind": "chat"
     },
@@ -1582,11 +1822,6 @@
     {
       "source": "project-презентация-образование-2035",
       "target": "chat-5404366a-f29c-4c7c-a095-db4122e8ca1c",
-      "kind": "chat"
-    },
-    {
-      "source": "project-agent-second-brain",
-      "target": "chat-788f80be-fece-49a6-b3f1-f1b7013af149",
       "kind": "chat"
     },
     {
@@ -1655,7 +1890,12 @@
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-interest-monitoring-loop",
+      "target": "chat-2786d2fb-2e3d-4e6e-bf85-a2c0c73b2dbc",
+      "kind": "chat"
+    },
+    {
+      "source": "project-tgaggregator",
       "target": "chat-2786d2fb-2e3d-4e6e-bf85-a2c0c73b2dbc",
       "kind": "chat"
     },
@@ -1670,7 +1910,7 @@
       "kind": "chat"
     },
     {
-      "source": "root-ai-workspace",
+      "source": "project-kora-strategy",
       "target": "chat-97dd1035-6afb-4a32-912e-d3c4e4fa5cde",
       "kind": "chat"
     }

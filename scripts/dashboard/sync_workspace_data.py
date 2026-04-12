@@ -4,12 +4,14 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote
 
 
 DEFAULT_ARCHIVE_DOCS = Path(
@@ -21,6 +23,9 @@ DEFAULT_ARCHIVE_REPORTS = Path(
 DEFAULT_OBSIDIAN_ROOT = Path(r"D:\ЯндексДиск\Yandex.Disk\ПРОЕКТЫ\KnowledgeBase")
 DEFAULT_PROFILE_CONFIG = Path("config/personal_system_profile.json")
 DEFAULT_TELEGRAM_INTELLIGENCE = Path("data/telegram_intelligence.json")
+DEFAULT_MANUAL_BASE = "projects_manual_base.json"
+DEFAULT_PROJECTS_OUT = "projects.json"
+NOTEBOOKLM_AVAILABLE = os.getenv("NOTEBOOKLM_AVAILABLE", "false").strip().lower() == "true"
 
 TOPIC_LABELS = {
     "education": "Образование",
@@ -134,6 +139,17 @@ LIFE_AREA_FALLBACK_LABELS = {
     "работа": "Работа",
 }
 
+PROJECT_HINT_RULES: list[tuple[str, tuple[str, ...]]] = [
+    (r"(notebooklm|nlm\b|mcp\b|mcp-config|mcp_config|batchexecute|google notebooklm)", ("ai-agent-core-workspace", "antigravity-dashboard-workspace")),
+    (r"(obsidian|knowledge hub|knowledge base|vault|kb\b|база знаний|библиотека знаний)", ("ai-agent-core-workspace", "system-interest-map", "antigravity-dashboard-workspace")),
+    (r"(dashboard|дашборд|meta-system|мета-систем|architecture|архитектур|antigravity)", ("antigravity-dashboard-workspace", "system-interest-map", "ai-agent-core-workspace")),
+    (r"(grant|грант|presentation|презентац|архитектор развития)", ("grant-presentation",)),
+    (r"(gymnasium|гимнази|website|landing|лендинг|site update|visual and content)", ("gymnasium-landing",)),
+    (r"(davydov|давыдов)", ("davydov-phantom",)),
+    (r"(\bkora\b|кора|business system|digital transformation strategic)", ("kora-strategy",)),
+    (r"(monitoring|news|n8n|youtube|video|идеи из видео|ai news)", ("interest-monitoring-loop", "tgaggregator")),
+]
+
 
 @dataclass
 class SourceBundle:
@@ -142,9 +158,11 @@ class SourceBundle:
     chats_index: Path
     organization_audit: Path
     base_projects_json: Path
+    obsidian_root: Path
     out_dashboard_json: Path
     out_mindmap_json: Path
     out_projects_json: Path
+    out_project_registry_json: Path
 
 
 def split_semicolon(value: str | None) -> list[str]:
@@ -254,8 +272,472 @@ def write_json(path: Path, payload: Any) -> None:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
 
 
+def unique_nonempty_text(values: list[Any]) -> list[str]:
+    result: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        if isinstance(value, str):
+            parts = split_semicolon(value)
+        else:
+            parts = [str(value or "").strip()]
+        for text in parts:
+            if not text or text in seen:
+                continue
+            seen.add(text)
+            result.append(text)
+    return result
+
+
+def join_unique_notes(*values: Any) -> str:
+    return " ; ".join(unique_nonempty_text(list(values)))
+
+
+def ensure_manual_base_seeded(manual_base_path: Path, generated_projects_path: Path) -> None:
+    if manual_base_path.exists():
+        return
+    payload: dict[str, Any] = {
+        "meta": {
+            "version": "1.0-manual-base",
+            "seededAt": datetime.now().isoformat(timespec="seconds"),
+            "generated": False,
+        },
+        "projects": [],
+        "ideas": [],
+        "upgradePaths": [],
+    }
+    if generated_projects_path.exists() and manual_base_path.resolve() != generated_projects_path.resolve():
+        legacy = read_json(generated_projects_path, {})
+        if isinstance(legacy, dict):
+            payload["projects"] = legacy.get("projects", []) if isinstance(legacy.get("projects"), list) else []
+            payload["ideas"] = legacy.get("ideas", []) if isinstance(legacy.get("ideas"), list) else []
+            payload["upgradePaths"] = (
+                legacy.get("upgradePaths", []) if isinstance(legacy.get("upgradePaths"), list) else []
+            )
+            payload["meta"]["seededFrom"] = str(generated_projects_path)
+    write_json(manual_base_path, payload)
+
+
+def parse_frontmatter(text: str) -> tuple[dict[str, Any], str]:
+    if not text.startswith("---\n"):
+        return {}, text
+    lines = text.splitlines()
+    frontmatter: dict[str, Any] = {}
+    index = 1
+    while index < len(lines):
+        line = lines[index]
+        index += 1
+        if line.strip() == "---":
+            break
+        if ":" not in line:
+            continue
+        key, raw_value = line.split(":", 1)
+        key = key.strip()
+        value = raw_value.strip()
+        if not key:
+            continue
+        if value.startswith('"') and value.endswith('"'):
+            parsed: Any = value[1:-1]
+        elif value.startswith("'") and value.endswith("'"):
+            parsed = value[1:-1]
+        elif value.lower() in {"true", "false"}:
+            parsed = value.lower() == "true"
+        elif re.fullmatch(r"-?\d+", value):
+            parsed = int(value)
+        else:
+            parsed = value
+        frontmatter[key] = parsed
+    body = "\n".join(lines[index:]).lstrip("\n")
+    return frontmatter, body
+
+
+def parse_markdown_sections(body: str) -> dict[str, list[str]]:
+    sections: dict[str, list[str]] = {"_root": []}
+    current = "_root"
+    for line in body.splitlines():
+        match = re.match(r"^##\s+(.+?)\s*$", line)
+        if match:
+            current = match.group(1).strip()
+            sections.setdefault(current, [])
+            continue
+        sections.setdefault(current, []).append(line)
+    return sections
+
+
+def parse_markdown_tasks(lines: list[str]) -> list[dict[str, Any]]:
+    tasks: list[dict[str, Any]] = []
+    for raw in lines:
+        match = re.match(r"^\s*-\s*\[( |x|X)\]\s*(.+?)\s*$", raw)
+        if not match:
+            continue
+        tasks.append({"task": match.group(2).strip(), "done": match.group(1).strip().lower() == "x"})
+    return tasks
+
+
+def parse_wikilinks(lines: list[str]) -> list[str]:
+    names: list[str] = []
+    seen: set[str] = set()
+    for match in re.finditer(r"\[\[([^\]|#]+)", "\n".join(lines)):
+        note_name = match.group(1).strip()
+        key = note_name.casefold()
+        if note_name and key not in seen:
+            seen.add(key)
+            names.append(note_name)
+    return names
+
+
+def first_heading(body: str) -> str:
+    for line in body.splitlines():
+        match = re.match(r"^#\s+(.+?)\s*$", line)
+        if match:
+            return match.group(1).strip()
+    return ""
+
+
+def section_text(sections: dict[str, list[str]], name: str) -> str:
+    lines = [line.strip() for line in sections.get(name, []) if line.strip()]
+    return "\n".join(lines).strip()
+
+
+def build_obsidian_uri(vault_name: str, relative_path: str) -> str:
+    normalized = relative_path.replace("\\", "/")
+    return f"obsidian://open?vault={quote(vault_name)}&file={quote(normalized)}"
+
+
+def build_note_ref(record: dict[str, Any]) -> dict[str, str]:
+    return {
+        "id": str(record["id"]),
+        "title": str(record.get("title") or record.get("noteName") or record["id"]),
+        "noteName": str(record["noteName"]),
+        "notePath": str(record["notePath"]),
+        "relativePath": str(record["relativePath"]),
+        "obsidianUri": str(record["obsidianUri"]),
+    }
+
+
 def contains_cyrillic(value: str | None) -> bool:
     return bool(value and re.search(r"[А-Яа-яЁё]", value))
+
+
+def load_obsidian_entities(obsidian_root: Path) -> dict[str, dict[str, dict[str, Any]]]:
+    vault_name = obsidian_root.name
+    folders = {
+        "projects": obsidian_root / "Projects" / "AI Workspace",
+        "chats": obsidian_root / "Chats" / "AI Workspace",
+        "workflows": obsidian_root / "Workflows" / "AI Workspace",
+    }
+    result: dict[str, dict[str, dict[str, Any]]] = {
+        "projects_by_id": {},
+        "projects_by_note": {},
+        "chats_by_id": {},
+        "chats_by_note": {},
+        "workflows_by_id": {},
+        "workflows_by_note": {},
+    }
+
+    for kind, folder in folders.items():
+        if not folder.exists():
+            continue
+        for note_path in folder.glob("*.md"):
+            if note_path.name == "00_INDEX.md":
+                continue
+            text = note_path.read_text(encoding="utf-8")
+            frontmatter, body = parse_frontmatter(text)
+            sections = parse_markdown_sections(body)
+            note_name = note_path.stem
+            record_id = str(frontmatter.get("id") or note_name).strip()
+            title = (
+                str(frontmatter.get("title") or frontmatter.get("name") or "").strip()
+                or first_heading(body)
+                or note_name
+            )
+            relative_path = str(note_path.relative_to(obsidian_root)).replace("\\", "/")
+            record = {
+                "id": record_id,
+                "title": title,
+                "noteName": note_name,
+                "notePath": note_path,
+                "relativePath": relative_path,
+                "obsidianUri": build_obsidian_uri(vault_name, relative_path),
+                "frontmatter": frontmatter,
+                "sections": sections,
+                "description": section_text(sections, "Описание"),
+                "notes": section_text(sections, "Заметки"),
+                "tasks": parse_markdown_tasks(sections.get("Задачи", [])),
+                "relatedProjectNoteNames": parse_wikilinks(sections.get("Проекты", [])),
+                "relatedChatNoteNames": parse_wikilinks(sections.get("Связанные чаты", [])),
+                "relatedWorkflowNoteNames": parse_wikilinks(sections.get("Связанные workflows", [])),
+            }
+            result[f"{kind}_by_id"][record_id] = record
+            result[f"{kind}_by_note"][note_name.casefold()] = record
+    return result
+
+
+def resolve_note_ids(note_names: list[str], note_lookup: dict[str, dict[str, Any]]) -> set[str]:
+    resolved: set[str] = set()
+    for note_name in note_names:
+        record = note_lookup.get(note_name.casefold())
+        if record:
+            resolved.add(str(record["id"]))
+    return resolved
+
+
+def apply_obsidian_overlays(
+    project_items: list[dict[str, Any]],
+    chat_items: list[dict[str, Any]],
+    workflow_items: list[dict[str, Any]],
+    obsidian_root: Path,
+) -> dict[str, dict[str, dict[str, Any]]]:
+    entities = load_obsidian_entities(obsidian_root)
+
+    for project in project_items:
+        record = entities["projects_by_id"].get(project["id"])
+        if not record:
+            continue
+        project["kbNote"] = build_note_ref(record)
+        frontmatter = record["frontmatter"]
+        if frontmatter.get("title"):
+            project["title"] = str(frontmatter["title"]).strip() or project["title"]
+        if frontmatter.get("topic"):
+            project["topic"] = str(frontmatter["topic"]).strip() or project["topic"]
+        if frontmatter.get("status"):
+            project["status"] = str(frontmatter["status"]).strip() or project["status"]
+        if record.get("description"):
+            project["description"] = record["description"]
+        if record.get("notes"):
+            project["notes"] = join_unique_notes(record["notes"])
+        if record.get("tasks"):
+            project["keyTasks"] = record["tasks"]
+        project["_project_chat_note_names"] = record.get("relatedChatNoteNames", [])
+        project["_project_workflow_note_names"] = record.get("relatedWorkflowNoteNames", [])
+
+    for chat in chat_items:
+        record = entities["chats_by_id"].get(chat["id"])
+        if not record:
+            continue
+        chat["kbNote"] = build_note_ref(record)
+        if record.get("title"):
+            chat["title"] = record["title"]
+        if record["frontmatter"].get("theme"):
+            chat["theme"] = str(record["frontmatter"]["theme"]).strip() or chat["theme"]
+        resolved = resolve_note_ids(record.get("relatedProjectNoteNames", []), entities["projects_by_note"])
+        if resolved:
+            chat["relatedProjectIds"] = sorted(set(chat.get("relatedProjectIds", [])) | resolved)
+
+    for workflow in workflow_items:
+        record = entities["workflows_by_id"].get(workflow["id"])
+        if not record:
+            continue
+        workflow["kbNote"] = build_note_ref(record)
+        if record.get("title"):
+            workflow["name"] = record["title"]
+        if record["frontmatter"].get("source"):
+            workflow["source"] = str(record["frontmatter"]["source"]).strip() or workflow["source"]
+        if record.get("notes"):
+            workflow["notes"] = join_unique_notes(record["notes"])
+        resolved = resolve_note_ids(record.get("relatedProjectNoteNames", []), entities["projects_by_note"])
+        if resolved:
+            workflow["relatedProjectIds"] = sorted(set(workflow.get("relatedProjectIds", [])) | resolved)
+
+    project_to_chat_ids: dict[str, set[str]] = defaultdict(set)
+    project_to_workflow_ids: dict[str, set[str]] = defaultdict(set)
+
+    for chat in chat_items:
+        for project_id in chat.get("relatedProjectIds", []):
+            project_to_chat_ids[project_id].add(chat["id"])
+
+    for workflow in workflow_items:
+        for project_id in workflow.get("relatedProjectIds", []):
+            project_to_workflow_ids[project_id].add(workflow["id"])
+
+    for project in project_items:
+        related_chat_ids = set(project.get("relatedChatIds", []))
+        related_workflow_ids = set(project.get("relatedWorkflowIds", []))
+        related_chat_ids |= project_to_chat_ids.get(project["id"], set())
+        related_workflow_ids |= project_to_workflow_ids.get(project["id"], set())
+        related_chat_ids |= resolve_note_ids(project.pop("_project_chat_note_names", []), entities["chats_by_note"])
+        related_workflow_ids |= resolve_note_ids(
+            project.pop("_project_workflow_note_names", []), entities["workflows_by_note"]
+        )
+        project["relatedChatIds"] = sorted(related_chat_ids)
+        project["relatedWorkflowIds"] = sorted(related_workflow_ids)
+        project["relatedChatsCount"] = len(project["relatedChatIds"])
+        project["relatedWorkflowsCount"] = len(project["relatedWorkflowIds"])
+
+    return entities
+
+
+def next_project_step(project: dict[str, Any]) -> str:
+    for item in project.get("keyTasks", []) or []:
+        if isinstance(item, dict) and not item.get("done"):
+            return str(item.get("task", "")).strip()
+    return "Проверить текущий контекст проекта и выбрать следующий шаг."
+
+
+def build_project_launch_prompt(
+    project: dict[str, Any],
+    chat_refs: list[dict[str, str]],
+    workflow_refs: list[dict[str, str]],
+) -> str:
+    lines = [
+        f"Проект: {project['title']}",
+        f"project_id: {project['id']}",
+        f"Статус: {project.get('status', 'research')}",
+        f"Тема: {project.get('topic', 'manual')}",
+        f"Следующий шаг: {next_project_step(project)}",
+    ]
+    kb_note = project.get("kbNote")
+    if kb_note:
+        lines.append(f"KB note: {kb_note.get('relativePath', '')}")
+    if project.get("description"):
+        lines.append(f"Описание: {summarize_text(project.get('description'), 240)}")
+    if chat_refs:
+        lines.append("Связанные чаты: " + ", ".join(ref["title"] for ref in chat_refs[:5]))
+    if workflow_refs:
+        lines.append("Связанные workflows: " + ", ".join(ref["title"] for ref in workflow_refs[:5]))
+    lines.extend(
+        [
+            "Режим работы:",
+            "- сначала читать KB note и связанные сущности;",
+            "- не создавать новую сущность без проверки связи с существующим проектом;",
+            "- результат класть обратно в vault и только затем показывать на dashboard;",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def build_project_registry(
+    projects: list[dict[str, Any]],
+    chats: list[dict[str, Any]],
+    workflows: list[dict[str, Any]],
+    vault_root: Path,
+) -> dict[str, Any]:
+    chat_by_id = {item["id"]: item for item in chats}
+    workflow_by_id = {item["id"]: item for item in workflows}
+    registry_items: list[dict[str, Any]] = []
+
+    for project in projects:
+        related_chats = [
+            build_note_ref(chat["kbNote"])
+            if chat.get("kbNote")
+            else {"id": chat["id"], "title": chat.get("title", chat["id"])}
+            for chat_id in project.get("relatedChatIds", [])
+            if (chat := chat_by_id.get(chat_id))
+        ]
+        related_workflows = [
+            build_note_ref(workflow["kbNote"])
+            if workflow.get("kbNote")
+            else {"id": workflow["id"], "title": workflow.get("name", workflow["id"])}
+            for workflow_id in project.get("relatedWorkflowIds", [])
+            if (workflow := workflow_by_id.get(workflow_id))
+        ]
+
+        allowed_tools = ["vault", "dashboard"]
+        if related_chats:
+            allowed_tools.append("chat-history")
+        if related_workflows:
+            allowed_tools.append("workflow-history")
+        if NOTEBOOKLM_AVAILABLE:
+            allowed_tools.append("notebooklm")
+
+        registry_items.append(
+            {
+                "id": project["id"],
+                "title": project["title"],
+                "status": project.get("status", "research"),
+                "topic": project.get("topic", "manual"),
+                "kbNote": project.get("kbNote"),
+                "sourcePath": project.get("sourcePath", ""),
+                "destinationPath": project.get("destinationPath", ""),
+                "relatedChats": related_chats,
+                "relatedWorkflows": related_workflows,
+                "projectMode": {
+                    "nextStep": next_project_step(project),
+                    "allowedTools": allowed_tools,
+                    "notebooklmEnabled": NOTEBOOKLM_AVAILABLE,
+                    "entryPoints": {
+                        "kb": (project.get("kbNote") or {}).get("obsidianUri", ""),
+                        "dashboard": f"#project:{project['id']}",
+                    },
+                },
+                "launchContract": {
+                    "projectId": project["id"],
+                    "nextStep": next_project_step(project),
+                    "allowedTools": allowed_tools,
+                    "notebooklmEnabled": NOTEBOOKLM_AVAILABLE,
+                    "vaultWriteBackRequired": True,
+                    "sessionSummaryRequired": True,
+                    "prompt": build_project_launch_prompt(project, related_chats, related_workflows),
+                },
+            }
+        )
+
+    return {
+        "meta": {
+            "generatedAt": datetime.now().isoformat(timespec="seconds"),
+            "vaultRoot": str(vault_root),
+            "version": "1.0-project-registry",
+        },
+        "projects": registry_items,
+    }
+
+
+def build_weekly_project_brief(projects: list[dict[str, Any]], generated_at: str) -> str:
+    today = parse_date(generated_at[:10]) or date.today()
+    recent: list[dict[str, Any]] = []
+    active: list[dict[str, Any]] = []
+    stale: list[dict[str, Any]] = []
+
+    for project in projects:
+        if project.get("status") == "active":
+            active.append(project)
+        updated_at = parse_date(project.get("lastUpdated"))
+        if updated_at and (today - updated_at).days <= 7:
+            recent.append(project)
+        if project.get("status") == "active" and not project.get("relatedChatIds") and not project.get("relatedWorkflowIds"):
+            stale.append(project)
+
+    recent.sort(key=lambda item: item.get("lastUpdated", ""), reverse=True)
+    active.sort(key=lambda item: item.get("progress", 0), reverse=True)
+
+    lines = [
+        "# Weekly Project Brief",
+        "",
+        f"- Сформировано: **{generated_at}**",
+        f"- Активных проектов: **{len(active)}**",
+        f"- Обновлялись за 7 дней: **{len(recent)}**",
+        "",
+        "## Проекты с недавними изменениями",
+    ]
+    if recent:
+        for project in recent[:10]:
+            lines.append(
+                f"- **{project['title']}** — {project.get('status', 'research')}, updated `{project.get('lastUpdated', '')}`, next: {next_project_step(project)}"
+            )
+    else:
+        lines.append("- За последние 7 дней обновления не зафиксированы.")
+
+    lines.extend(["", "## Активный фокус"])
+    for project in active[:8]:
+        lines.append(
+            f"- **{project['title']}** — progress {project.get('progress', 0)}%, chats {project.get('relatedChatsCount', 0)}, workflows {project.get('relatedWorkflowsCount', 0)}"
+        )
+
+    lines.extend(["", "## Риски пустого контекста"])
+    if stale:
+        for project in stale[:8]:
+            lines.append(f"- **{project['title']}** — активен, но без привязанных чатов и workflows.")
+    else:
+        lines.append("- Явно пустых активных контуров не найдено.")
+
+    lines.extend(["", "## Следующие продуктовые шаги"])
+    lines.extend(
+        [
+            "- Довести project registry до единой канонической схемы для dashboard, vault, chats и workflows.",
+            "- Дозаполнить связанные чаты и workflows для активных проектов с пустым контекстом.",
+            "- Поддерживать `project mode` как основной способ запуска агентных сценариев.",
+        ]
+    )
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def load_system_profile(workspace_root: Path) -> dict[str, Any]:
@@ -367,7 +849,8 @@ def pick_latest(patterns: list[Path]) -> Path:
 def resolve_sources(workspace_root: Path, args: argparse.Namespace) -> SourceBundle:
     docs_local = workspace_root / "docs"
     data_local = workspace_root / "data"
-    base_projects_json = workspace_root / "projects.json"
+    base_projects_json = workspace_root / DEFAULT_MANUAL_BASE
+    out_projects_json = workspace_root / DEFAULT_PROJECTS_OUT
 
     organization_candidates = []
     organization_candidates.extend(sorted(docs_local.glob("organization_audit_*.csv")))
@@ -387,11 +870,13 @@ def resolve_sources(workspace_root: Path, args: argparse.Namespace) -> SourceBun
         ),
         organization_audit=pick_latest(organization_candidates),
         base_projects_json=Path(args.base_projects_json) if args.base_projects_json else base_projects_json,
+        obsidian_root=Path(args.obsidian_root) if args.obsidian_root else DEFAULT_OBSIDIAN_ROOT,
         out_dashboard_json=Path(args.out_dashboard_json)
         if args.out_dashboard_json
         else data_local / "dashboard_data.json",
         out_mindmap_json=Path(args.out_mindmap_json) if args.out_mindmap_json else data_local / "mindmap.json",
-        out_projects_json=Path(args.out_projects_json) if args.out_projects_json else base_projects_json,
+        out_projects_json=Path(args.out_projects_json) if args.out_projects_json else out_projects_json,
+        out_project_registry_json=data_local / "project_registry.json",
     )
 
 
@@ -749,6 +1234,200 @@ def text_signature(text: str | None) -> set[str]:
     return {token for token in tokens if token not in stop}
 
 
+def project_alias_strings(project: dict[str, Any]) -> list[str]:
+    values = [
+        str(project.get("id", "")).replace("-", " "),
+        str(project.get("title", "")),
+        str(project.get("originalTitle", "")),
+        str(project.get("sourceTitle", "")),
+    ]
+    aliases: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        clean = re.sub(r"\s+", " ", value).strip()
+        key = clean.casefold()
+        if not clean or key in seen:
+            continue
+        seen.add(key)
+        aliases.append(clean)
+    return aliases
+
+
+def read_text_snippet(path: Path, max_chars: int = 4000) -> str:
+    try:
+        text = path.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        text = path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return ""
+    return text[:max_chars]
+
+
+def collect_chat_evidence_text(chat: dict[str, Any]) -> str:
+    parts = [
+        str(chat.get("title", "")).strip(),
+        str(chat.get("summary", "")).strip(),
+        str(chat.get("theme", "")).strip(),
+    ]
+    for key in ("conversationPath", "brainPath"):
+        raw = str(chat.get(key, "")).strip()
+        if raw and Path(raw).exists() and Path(raw).is_file() and Path(raw).suffix.lower() == ".md":
+            snippet = read_text_snippet(Path(raw), max_chars=2500)
+            if snippet:
+                parts.append(snippet)
+    for raw in (chat.get("referencedPaths", []) or [])[:3]:
+        path = Path(str(raw))
+        if not path.exists() or not path.is_file() or path.suffix.lower() != ".md":
+            continue
+        snippet = read_text_snippet(path, max_chars=2500)
+        if snippet:
+            parts.append(snippet)
+    return "\n".join(part for part in parts if part).strip()
+
+
+def infer_projects_from_hint_rules(text: str, available_project_ids: set[str]) -> set[str]:
+    lowered = text.casefold()
+    matched: set[str] = set()
+    for pattern, project_ids in PROJECT_HINT_RULES:
+        if not re.search(pattern, lowered):
+            continue
+        for project_id in project_ids:
+            if project_id in available_project_ids:
+                matched.add(project_id)
+    return matched
+
+
+def score_chat_project_link(
+    chat: dict[str, Any],
+    project: dict[str, Any],
+    project_alias_paths: dict[str, list[str]],
+    evidence_text: str,
+    hinted_projects: set[str],
+) -> float:
+    score = 0.0
+    lowered = evidence_text.casefold()
+
+    for alias in project_alias_strings(project):
+        alias_lower = alias.casefold()
+        if len(alias_lower) >= 4 and alias_lower in lowered:
+            score += 6.0 if alias == project.get("title") else 4.5
+            break
+
+    chat_signature = text_signature(evidence_text)
+    project_signature = text_signature(
+        " ".join(
+            [
+                str(project.get("title", "")),
+                str(project.get("originalTitle", "")),
+                str(project.get("sourceTitle", "")),
+                str(project.get("description", "")),
+                " ".join(project.get("tags", []) or []),
+            ]
+        )
+    )
+    score += jaccard_similarity(chat_signature, project_signature) * 5.0
+
+    project_id = str(project.get("id", ""))
+    if project_id in hinted_projects:
+        score += 6.0
+
+    path_tokens = [
+        str(chat.get("conversationPath", "")).strip(),
+        str(chat.get("brainPath", "")).strip(),
+        *(str(item).strip() for item in (chat.get("referencedPaths", []) or [])),
+        *(str(item).strip() for item in (chat.get("workflowPaths", []) or [])),
+    ]
+    aliases = project_alias_paths.get(project_id, [])
+    if any(path_related(token, alias) for token in path_tokens for alias in aliases):
+        score += 8.0
+
+    project_topic = str(project.get("topic", "")).strip().casefold()
+    if project_topic and project_topic in lowered:
+        score += 1.5
+
+    return score
+
+
+def autolink_chat_project_ids(
+    chats: list[dict[str, Any]],
+    projects: list[dict[str, Any]],
+    project_alias_paths: dict[str, list[str]],
+) -> int:
+    project_ids = {str(project.get("id", "")) for project in projects}
+    linked_count = 0
+
+    for chat in chats:
+        if chat.get("relatedProjectIds"):
+            continue
+        evidence_text = collect_chat_evidence_text(chat)
+        if not evidence_text:
+            continue
+
+        hinted_projects = infer_projects_from_hint_rules(evidence_text, project_ids)
+        scored: list[tuple[float, str]] = []
+        for project in projects:
+            project_id = str(project.get("id", ""))
+            score = score_chat_project_link(chat, project, project_alias_paths, evidence_text, hinted_projects)
+            if score > 0:
+                scored.append((score, project_id))
+
+        if not scored:
+            continue
+
+        scored.sort(reverse=True)
+        best_score = scored[0][0]
+        selected = [
+            project_id
+            for score, project_id in scored[:6]
+            if score >= 5.5 and (score >= best_score - 1.0 or (project_id in hinted_projects and score >= 5.0))
+        ][:3]
+        if not selected:
+            continue
+
+        chat["relatedProjectIds"] = sorted(set(selected))
+        linked_count += 1
+
+    return linked_count
+
+
+def sanitize_related_project_ids(
+    projects: list[dict[str, Any]],
+    chats: list[dict[str, Any]],
+    workflows: list[dict[str, Any]],
+) -> None:
+    known_project_ids = {str(project.get("id", "")) for project in projects}
+    for chat in chats:
+        chat["relatedProjectIds"] = [pid for pid in chat.get("relatedProjectIds", []) if pid in known_project_ids]
+    for workflow in workflows:
+        workflow["relatedProjectIds"] = [pid for pid in workflow.get("relatedProjectIds", []) if pid in known_project_ids]
+
+
+def rebuild_project_relationships(
+    projects: list[dict[str, Any]],
+    chats: list[dict[str, Any]],
+    workflows: list[dict[str, Any]],
+) -> None:
+    project_to_chat_ids: dict[str, set[str]] = defaultdict(set)
+    project_to_workflow_ids: dict[str, set[str]] = defaultdict(set)
+
+    for chat in chats:
+        for pid in chat.get("relatedProjectIds", []) or []:
+            project_to_chat_ids[pid].add(chat["id"])
+
+    for workflow in workflows:
+        for pid in workflow.get("relatedProjectIds", []) or []:
+            project_to_workflow_ids[pid].add(workflow["id"])
+
+    for project in projects:
+        pid = project["id"]
+        related_chat_ids = sorted(set(project.get("relatedChatIds", [])) | project_to_chat_ids.get(pid, set()))
+        related_workflow_ids = sorted(set(project.get("relatedWorkflowIds", [])) | project_to_workflow_ids.get(pid, set()))
+        project["relatedChatIds"] = related_chat_ids
+        project["relatedChatsCount"] = len(related_chat_ids)
+        project["relatedWorkflowIds"] = related_workflow_ids
+        project["relatedWorkflowsCount"] = len(related_workflow_ids)
+
+
 def jaccard_similarity(a: set[str], b: set[str]) -> float:
     if not a or not b:
         return 0.0
@@ -1082,6 +1761,12 @@ def archive_and_consolidate_sources(
         workflow["relatedProjectIds"] = sorted(set(mapped))
         mapped_chat_ids = [remap_chat_id(cid) for cid in (workflow.get("relatedChatIds", []) or [])]
         workflow["relatedChatIds"] = sorted(set(mapped_chat_ids))
+
+    known_project_ids = {str(project.get("id", "")) for project in projects}
+    for chat in chats:
+        chat["relatedProjectIds"] = [pid for pid in chat.get("relatedProjectIds", []) if pid in known_project_ids]
+    for workflow in workflows:
+        workflow["relatedProjectIds"] = [pid for pid in workflow.get("relatedProjectIds", []) if pid in known_project_ids]
 
     for idea in ideas:
         related = str(idea.get("relatedProject", "")).strip()
@@ -1430,8 +2115,10 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
             tags.append("workflow-linked")
         tags = [t for t in dict.fromkeys([t for t in tags if t])]
 
-        notes = " ; ".join(
-            [x for x in [str(manual.get("notes", "")).strip(), str(row.get("notes", "")).strip()] if x]
+        notes = join_unique_notes(
+            manual.get("notes", ""),
+            row.get("notes", ""),
+            *(linked.get("notes", "") for linked in linked_rows),
         )
         description = (
             str(manual.get("description", "")).strip()
@@ -1527,7 +2214,7 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
             "tags": list(dict.fromkeys([*(manual.get("tags", []) or []), "manual"])),
             "lastUpdated": str(manual.get("lastUpdated", "")).strip() or date.today().isoformat(),
             "keyTasks": manual.get("keyTasks", []),
-            "notes": str(manual.get("notes", "")).strip(),
+            "notes": join_unique_notes(manual.get("notes", "")),
             "sourcePath": "",
             "destinationPath": "",
             "sourceExists": False,
@@ -1682,9 +2369,16 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
 
     workflow_items: list[dict[str, Any]] = []
     project_to_workflow_ids: dict[str, set[str]] = defaultdict(set)
+    seen_workflow_paths: set[str] = set()
 
     for idx, row in enumerate(workflows_rows, start=1):
         name = str(row.get("workflow_name", "")).strip() or f"workflow-{idx}"
+        workflow_path = str(row.get("workflow_path", "")).strip()
+        path_key = normalize_path(workflow_path)
+        if path_key and path_key in seen_workflow_paths:
+            continue
+        if path_key:
+            seen_workflow_paths.add(path_key)
         workflow_id = f"{slugify(name, 'workflow')}-{idx}"
         related_paths = split_semicolon(row.get("related_project_paths"))
         related_chat_ids = split_semicolon(row.get("related_chat_ids"))
@@ -1706,7 +2400,7 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
             {
                 "id": workflow_id,
                 "name": name,
-                "path": str(row.get("workflow_path", "")).strip(),
+                "path": workflow_path,
                 "source": str(row.get("source", "")).strip(),
                 "notes": summarize_text(row.get("notes"), 260),
                 "relatedProjectPaths": related_paths,
@@ -1803,6 +2497,12 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
             chats_by_id[chat_id] = chat_item
             known_chat_ids.add(chat_id)
 
+    inferred_chat_links = autolink_chat_project_ids(chat_items, project_items, project_alias_paths)
+    project_to_chat_ids = defaultdict(set)
+    for chat in chat_items:
+        for pid in chat.get("relatedProjectIds", []) or []:
+            project_to_chat_ids[pid].add(chat["id"])
+
     for project in project_items:
         pid = project["id"]
         chat_ids = sorted(project_to_chat_ids.get(pid, set()) | set(project.get("relatedChatIds", [])))
@@ -1818,6 +2518,10 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
         workflow_items,
         ideas,
     )
+    obsidian_entities = apply_obsidian_overlays(project_items, chat_items, workflow_items, bundle.obsidian_root)
+    inferred_chat_links += autolink_chat_project_ids(chat_items, project_items, project_alias_paths)
+    sanitize_related_project_ids(project_items, chat_items, workflow_items)
+    rebuild_project_relationships(project_items, chat_items, workflow_items)
     project_groups = build_project_groups(project_items)
 
     chat_items.sort(key=lambda c: (parse_date(c.get("date")) or date.min, c.get("id")), reverse=True)
@@ -1826,6 +2530,7 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
     project_items.sort(key=lambda p: (p.get("groupTitle", ""), status_order.get(p["status"], 99), p["title"].casefold()))
 
     ideas, idea_router = build_idea_router(profile, project_items, ideas)
+    project_registry = build_project_registry(project_items, chat_items, workflow_items, bundle.obsidian_root)
     graph = build_graph(project_items, chat_items, workflow_items)
     monitoring = build_monitoring_layer(profile, project_items, ideas, telegram_data, idea_router, consolidation, project_groups)
 
@@ -1833,6 +2538,9 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
         "meta": {
             "generatedAt": datetime.now().isoformat(timespec="seconds"),
             "lastUpdated": date.today().isoformat(),
+            "linking": {
+                "inferredChatLinks": inferred_chat_links,
+            },
             "sources": {
                 "projectsIndex": str(bundle.projects_index),
                 "workflowsIndex": str(bundle.workflows_index),
@@ -1857,6 +2565,12 @@ def build_dataset(bundle: SourceBundle) -> dict[str, Any]:
         "upgradePaths": base.get("upgradePaths", []),
         "monitoring": monitoring,
         "ideaRouter": idea_router,
+        "projectRegistry": project_registry,
+        "obsidianEntities": {
+            "projects": [build_note_ref(record) for _, record in sorted(obsidian_entities["projects_by_id"].items())],
+            "chats": [build_note_ref(record) for _, record in sorted(obsidian_entities["chats_by_id"].items())],
+            "workflows": [build_note_ref(record) for _, record in sorted(obsidian_entities["workflows_by_id"].items())],
+        },
         "archives": consolidation.get("archives", []),
         "consolidation": consolidation.get("summary", {}),
         "graph": graph,
@@ -2256,7 +2970,7 @@ def build_graph(projects: list[dict[str, Any]], chats: list[dict[str, Any]], wor
     return {"nodes": nodes, "edges": edges}
 
 
-def export_obsidian(obsidian_root: Path, data: dict[str, Any]) -> dict[str, int]:
+def export_obsidian(obsidian_root: Path, data: dict[str, Any], refresh_entities: bool = False) -> dict[str, int]:
     projects_dir = obsidian_root / "Projects" / "AI Workspace"
     chats_dir = obsidian_root / "Chats" / "AI Workspace"
     workflows_dir = obsidian_root / "Workflows" / "AI Workspace"
@@ -2265,19 +2979,33 @@ def export_obsidian(obsidian_root: Path, data: dict[str, Any]) -> dict[str, int]
     for folder in (projects_dir, chats_dir, workflows_dir, dashboards_dir, config_dir):
         folder.mkdir(parents=True, exist_ok=True)
 
+    def resolve_note_filename(item: dict[str, Any], fallback_name: str) -> str:
+        kb_note = item.get("kbNote") or {}
+        relative_path = str(kb_note.get("relativePath") or "").strip()
+        if relative_path:
+            return Path(relative_path).name
+        note_name = str(kb_note.get("noteName") or "").strip()
+        if note_name:
+            return f"{note_name}.md"
+        return fallback_name
+
+    def write_entity_note(path: Path, content: str) -> None:
+        if refresh_entities or not path.exists():
+            path.write_text(content, encoding="utf-8")
+
     project_note_name: dict[str, str] = {}
     for p in data["projects"]:
-        note_name = f"{safe_filename(p['id'], 'project')}.md"
+        note_name = resolve_note_filename(p, f"{safe_filename(p['id'], 'project')}.md")
         project_note_name[p["id"]] = note_name
 
     chat_note_name: dict[str, str] = {}
     for c in data["chats"]:
-        note_name = f"{safe_filename(c.get('title') or c['id'], 'chat')}-{c['id'][:8]}.md"
+        note_name = resolve_note_filename(c, f"{safe_filename(c.get('title') or c['id'], 'chat')}-{c['id'][:8]}.md")
         chat_note_name[c["id"]] = note_name
 
     workflow_note_name: dict[str, str] = {}
     for w in data["workflows"]:
-        note_name = f"{safe_filename(w['name'], 'workflow')}-{w['id'].split('-')[-1]}.md"
+        note_name = resolve_note_filename(w, f"{safe_filename(w['name'], 'workflow')}-{w['id'].split('-')[-1]}.md")
         workflow_note_name[w["id"]] = note_name
 
     for p in data["projects"]:
@@ -2333,7 +3061,7 @@ def export_obsidian(obsidian_root: Path, data: dict[str, Any]) -> dict[str, int]
                 else:
                     lines.append(f"- `{wid}`")
 
-        (projects_dir / project_note_name[p["id"]]).write_text("\n".join(lines), encoding="utf-8")
+        write_entity_note(projects_dir / project_note_name[p["id"]], "\n".join(lines))
 
     for c in data["chats"]:
         lines = [
@@ -2359,7 +3087,7 @@ def export_obsidian(obsidian_root: Path, data: dict[str, Any]) -> dict[str, int]
                 note = project_note_name.get(pid)
                 if note:
                     lines.append(f"- [[{note[:-3]}]]")
-        (chats_dir / chat_note_name[c["id"]]).write_text("\n".join(lines), encoding="utf-8")
+        write_entity_note(chats_dir / chat_note_name[c["id"]], "\n".join(lines))
 
     for w in data["workflows"]:
         lines = [
@@ -2383,7 +3111,7 @@ def export_obsidian(obsidian_root: Path, data: dict[str, Any]) -> dict[str, int]
                 note = project_note_name.get(pid)
                 if note:
                     lines.append(f"- [[{note[:-3]}]]")
-        (workflows_dir / workflow_note_name[w["id"]]).write_text("\n".join(lines), encoding="utf-8")
+        write_entity_note(workflows_dir / workflow_note_name[w["id"]], "\n".join(lines))
 
     project_index_lines = [
         "# AI Workspace Projects",
@@ -2493,6 +3221,10 @@ def export_obsidian(obsidian_root: Path, data: dict[str, Any]) -> dict[str, int]
     (dashboards_dir / "Идеи AI Workspace.md").write_text("\n".join(ideas_lines).rstrip() + "\n", encoding="utf-8")
     (dashboards_dir / "Группы проектов AI Workspace.md").write_text("\n".join(groups_lines).rstrip() + "\n", encoding="utf-8")
     (dashboards_dir / "Архив источников AI Workspace.md").write_text("\n".join(archive_lines).rstrip() + "\n", encoding="utf-8")
+    (dashboards_dir / "Weekly Project Brief.md").write_text(
+        build_weekly_project_brief(data.get("projects", []), data["meta"]["generatedAt"]),
+        encoding="utf-8",
+    )
 
     (dashboards_dir / "Маршрутизация идей AI Workspace.md").write_text(build_idea_router_markdown(data), encoding="utf-8")
 
@@ -2515,6 +3247,7 @@ def save_compat_projects_json(path: Path, data: dict[str, Any]) -> None:
         "monitoring": data.get("monitoring", {}),
         "ideaRouter": data.get("ideaRouter", {}),
         "projectGroups": data.get("projectGroups", []),
+        "projectRegistry": data.get("projectRegistry", {}),
         "archives": data.get("archives", []),
         "consolidation": data.get("consolidation", {}),
         "projects": data.get("projects", []),
@@ -2528,12 +3261,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--workflows-index", help="Path to workflows_index.csv")
     parser.add_argument("--chats-index", help="Path to antigravity_chat_index.csv")
     parser.add_argument("--organization-audit", help="Path to organization_audit_*.csv")
-    parser.add_argument("--base-projects-json", help="Path to existing projects.json")
+    parser.add_argument("--base-projects-json", help="Path to manual projects base JSON (default: projects_manual_base.json)")
     parser.add_argument("--out-dashboard-json", help="Path for generated dashboard_data.json")
     parser.add_argument("--out-mindmap-json", help="Path for generated mindmap.json")
-    parser.add_argument("--out-projects-json", help="Path for generated compatibility projects.json")
+    parser.add_argument("--out-projects-json", help="Path for generated compatibility projects.json (default: projects.json)")
+    parser.add_argument("--out-project-registry-json", help="Path for generated project_registry.json")
     parser.add_argument("--obsidian-root", default=str(DEFAULT_OBSIDIAN_ROOT), help="Obsidian vault root path")
     parser.add_argument("--no-obsidian-export", action="store_true", help="Skip markdown export into Obsidian vault")
+    parser.add_argument(
+        "--refresh-obsidian-entities",
+        action="store_true",
+        help="Rewrite existing project/chat/workflow entity notes in Obsidian instead of preserving them",
+    )
     return parser.parse_args()
 
 
@@ -2541,26 +3280,40 @@ def main() -> int:
     args = parse_args()
     workspace_root = Path(__file__).resolve().parents[2]
     bundle = resolve_sources(workspace_root, args)
+    if args.out_project_registry_json:
+        bundle.out_project_registry_json = Path(args.out_project_registry_json)
+    ensure_manual_base_seeded(bundle.base_projects_json, bundle.out_projects_json)
     data = build_dataset(bundle)
     monitoring_report = workspace_root / "docs" / f"information_operating_system_{data['meta']['lastUpdated']}.md"
+    weekly_report = workspace_root / "docs" / "weekly_project_brief.md"
 
     write_json(bundle.out_dashboard_json, data)
     write_json(bundle.out_mindmap_json, data["graph"])
     save_compat_projects_json(bundle.out_projects_json, data)
+    write_json(bundle.out_project_registry_json, data["projectRegistry"])
     monitoring_report.parent.mkdir(parents=True, exist_ok=True)
     monitoring_report.write_text(build_information_ops_markdown(data), encoding="utf-8")
+    weekly_report.write_text(
+        build_weekly_project_brief(data.get("projects", []), data["meta"]["generatedAt"]),
+        encoding="utf-8",
+    )
 
     obsidian_stats = None
     if not args.no_obsidian_export:
-        obsidian_root = Path(args.obsidian_root)
-        obsidian_stats = export_obsidian(obsidian_root, data)
+        obsidian_stats = export_obsidian(
+            bundle.obsidian_root,
+            data,
+            refresh_entities=args.refresh_obsidian_entities,
+        )
 
     print(f"DASHBOARD_JSON: {bundle.out_dashboard_json}")
     print(f"MINDMAP_JSON: {bundle.out_mindmap_json}")
     print(f"PROJECTS_JSON: {bundle.out_projects_json}")
+    print(f"PROJECT_REGISTRY_JSON: {bundle.out_project_registry_json}")
     print(f"MONITORING_REPORT: {monitoring_report}")
+    print(f"WEEKLY_REPORT: {weekly_report}")
     if obsidian_stats is not None:
-        print(f"OBSIDIAN_ROOT: {Path(args.obsidian_root)}")
+        print(f"OBSIDIAN_ROOT: {bundle.obsidian_root}")
         print(
             "OBSIDIAN_NOTES: "
             f"projects={obsidian_stats['project_notes']} "

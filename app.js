@@ -7,6 +7,8 @@
   let goalsData = [];
   let notesData = [];
   let signalsData = [];
+  let projectRegistryData = [];
+  let projectRegistryMap = new Map();
   let projectGroupsData = [];
   let projectRelationsData = [];
   let monitoringData = {
@@ -105,10 +107,96 @@
     } catch { return null; }
   }
 
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function normalizeTask(task) {
+    if (typeof task === "string") return { task, done: false };
+    if (!task || typeof task !== "object") return null;
+    const text = task.task || task.text || "";
+    if (!text) return null;
+    return { task: text, done: Boolean(task.done) };
+  }
+
+  function getProjectTasks(project) {
+    const source = Array.isArray(project?.keyTasks)
+      ? project.keyTasks
+      : Array.isArray(project?.tasks)
+        ? project.tasks
+        : [];
+    return source.map(normalizeTask).filter(Boolean);
+  }
+
+  function getProjectNextStep(project) {
+    const pending = getProjectTasks(project).find((item) => !item.done);
+    if (pending?.task) return pending.task;
+    return project?.projectMode?.nextStep || "Проверить текущий контекст проекта и выбрать следующий шаг.";
+  }
+
+  function setProjectRegistry(registryPayload) {
+    projectRegistryData = Array.isArray(registryPayload?.projects) ? registryPayload.projects : [];
+    projectRegistryMap = new Map(projectRegistryData.map((item) => [item.id, item]));
+  }
+
+  function mergeProjectWithRegistry(project) {
+    const registry = projectRegistryMap.get(project.id);
+    const merged = { ...project };
+    if (registry) {
+      merged.title = registry.title || merged.title;
+      merged.status = registry.status || merged.status;
+      merged.topic = registry.topic || merged.topic;
+      merged.kbNote = registry.kbNote || merged.kbNote || null;
+      merged.relatedChats = registry.relatedChats || merged.relatedChats || [];
+      merged.relatedWorkflows = registry.relatedWorkflows || merged.relatedWorkflows || [];
+      merged.projectMode = registry.projectMode || merged.projectMode || {};
+      merged.launchContract = registry.launchContract || merged.launchContract || {};
+    }
+    merged.keyTasks = getProjectTasks(merged);
+    return merged;
+  }
+
+  function applyProjectRegistry() {
+    projectsData = (projectsData || []).map(mergeProjectWithRegistry);
+  }
+
+  async function copyText(text) {
+    if (!text) return;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      window.prompt("Скопируйте текст вручную:", text);
+    }
+  }
+
+  function renderRegistryLinks(items, emptyLabel) {
+    if (!Array.isArray(items) || items.length === 0) {
+      return `<li><i>${emptyLabel}</i></li>`;
+    }
+    return items
+      .slice(0, 8)
+      .map((item) => {
+        const title = escapeHtml(item.title || item.id || "Без названия");
+        if (item.obsidianUri) {
+          return `<li><a href="${escapeHtml(item.obsidianUri)}" target="_self">${title}</a></li>`;
+        }
+        return `<li>${title}</li>`;
+      })
+      .join("");
+  }
+
   async function loadDashboardData() {
     const data = await loadOptionalJson("projects.json");
     if (!data) return;
+    const registry = await loadOptionalJson("data/project_registry.json");
+    setProjectRegistry(registry || data.projectRegistry || { projects: [] });
     projectsData = data.projects || [];
+    applyProjectRegistry();
     projectGroupsData = data.projectGroups || [];
 
     // Monitoring & intelligence
@@ -142,6 +230,7 @@
       if (sNotes) notesData = sNotes;
       if (sSignals) signalsData = sSignals;
       if (sRels) projectRelationsData = sRels;
+      applyProjectRegistry();
     } catch (err) {
       console.error("Error loading from Supabase:", err);
     }
@@ -479,6 +568,38 @@
         <div class="project-card-footer">
           <div class="project-card-tags">${tags}</div>
           ${progress > 0 ? `<div class="mini-progress"><div class="mini-progress-fill" style="width:${progress}%"></div></div>` : ""}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderProjectCard(p) {
+    const statusLabel = STATUS_LABELS[p.status] || p.status;
+    const statusColor = STATUS_COLORS[p.status] || "#64748b";
+    const progress = p.progress || 0;
+    const tags = (p.tags || []).slice(0, 3).map((t) => `<span class="tag-chip">${t}</span>`).join("");
+    const areaEmoji = p.life_area === "СЂР°Р±РѕС‚Р°" ? "рџ’ј" : p.life_area === "СЏ" ? "рџ§ " : p.life_area === "СЃРµРјСЊСЏ" ? "рџ‘ЁвЂЌрџ‘©вЂЌрџ‘§вЂЌрџ‘¦" : "";
+    const nextStep = escapeHtml(getProjectNextStep(p));
+    const kbButton = p.kbNote?.obsidianUri
+      ? `<button class="auth-btn" style="width:auto;padding:6px 12px;font-size:0.78rem;" onclick="event.stopPropagation(); window._openKbNote('${p.id}')">KB</button>`
+      : "";
+    const relatedCounts = `<span class="tag-chip">чаты: ${p.relatedChats?.length || p.relatedChatsCount || 0}</span><span class="tag-chip">workflows: ${p.relatedWorkflows?.length || p.relatedWorkflowsCount || 0}</span>`;
+
+    return `
+      <div class="project-card" onclick="window._openProject('${p.id}')">
+        <div class="project-card-header">
+          <span class="project-card-title">${areaEmoji} ${p.title}</span>
+          <span class="status-dot" style="background:${statusColor}" title="${statusLabel}"></span>
+        </div>
+        ${p.description ? `<div class="project-card-desc">${p.description.substring(0, 100)}${p.description.length > 100 ? "вЂ¦" : ""}</div>` : ""}
+        <div class="project-card-desc" style="font-size:0.82rem;color:var(--text-secondary);margin-top:8px;"><strong>Следующий шаг:</strong> ${nextStep}</div>
+        <div class="project-card-footer">
+          <div class="project-card-tags">${tags}${relatedCounts}</div>
+          ${progress > 0 ? `<div class="mini-progress"><div class="mini-progress-fill" style="width:${progress}%"></div></div>` : ""}
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+          <button class="auth-btn" style="width:auto;padding:6px 12px;font-size:0.78rem;" onclick="event.stopPropagation(); window._openProject('${p.id}')">Project mode</button>
+          ${kbButton}
         </div>
       </div>
     `;
@@ -878,6 +999,138 @@
     document.getElementById("modalOverlay").classList.remove("active");
   }
 
+  function openProjectModal(projectId) {
+    const p = projectsData.find((x) => x.id === projectId);
+    if (!p) return;
+
+    const tasks = getProjectTasks(p);
+    const relatedChats = Array.isArray(p.relatedChats) ? p.relatedChats : [];
+    const relatedWorkflows = Array.isArray(p.relatedWorkflows) ? p.relatedWorkflows : [];
+    const launchPrompt = p.launchContract?.prompt || "";
+    const kbUri = p.kbNote?.obsidianUri || "";
+
+    document.getElementById("modalTitle").textContent = p.title;
+    const statusEl = document.getElementById("modalStatus");
+    statusEl.textContent = STATUS_LABELS[p.status] || p.status;
+    statusEl.style.background = STATUS_COLORS[p.status] || "#64748b";
+    statusEl.style.color = "#fff";
+
+    const outgoing = projectRelationsData.filter((r) => r.from_id === projectId);
+    const incoming = projectRelationsData.filter((r) => r.to_id === projectId);
+    const safeTitle = (t) => t.replace(/["()]/g, "");
+
+    let contextHtml = "";
+    if (outgoing.length > 0 || incoming.length > 0) {
+      let mermaidStr = "graph LR\n";
+      mermaidStr += `  Current["${safeTitle(p.title)}"]:::current\n`;
+
+      incoming.forEach((r) => {
+        const fromProj = projectsData.find((x) => x.id === r.from_id)?.title || r.from_id;
+        const relLabel = RELATION_LABELS[r.relation] || r.relation;
+        mermaidStr += `  ID_${r.from_id}["${safeTitle(fromProj)}"] -->|${relLabel}| Current\n`;
+      });
+      outgoing.forEach((r) => {
+        const toProj = projectsData.find((x) => x.id === r.to_id)?.title || r.to_id;
+        const relLabel = RELATION_LABELS[r.relation] || r.relation;
+        mermaidStr += `  Current -->|${relLabel}| ID_${r.to_id}["${safeTitle(toProj)}"]\n`;
+      });
+
+      mermaidStr += "  classDef current fill:#3b82f6,color:#fff,stroke:#2563eb,stroke-width:2px;";
+
+      contextHtml = `
+        <div class="modal-section" style="margin-top:16px;">
+          <div class="modal-section-title" style="margin-bottom:8px; display:flex; align-items:center; gap:6px;">Холистичный контекст</div>
+          <div style="background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border-light); padding:16px;">
+            <p style="margin-top:0; margin-bottom:12px; font-size:0.85rem; color:var(--text-secondary);">Место проекта в общей экосистеме:</p>
+            <div class="mermaid">${mermaidStr}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    const projectModeHtml = `
+      <div class="modal-section" style="margin-top:16px;">
+        <div class="modal-section-title">Project mode</div>
+        <div style="background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border-light); padding:16px; display:grid; gap:12px;">
+          <div>
+            <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:4px;">Следующий шаг</div>
+            <div style="font-size:0.92rem;">${escapeHtml(getProjectNextStep(p))}</div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            ${kbUri ? `<button class="auth-btn" style="width:auto;padding:8px 14px;font-size:0.8rem;" onclick="window._openKbNote('${p.id}')">Открыть KB</button>` : ""}
+            ${launchPrompt ? `<button class="auth-btn" style="width:auto;padding:8px 14px;font-size:0.8rem;" onclick="window._copyLaunchPrompt('${p.id}')">Скопировать промпт</button>` : ""}
+          </div>
+          <div>
+            <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:4px;">Связанные чаты</div>
+            <ul class="task-list" style="margin-top:6px;">${renderRegistryLinks(relatedChats, "Нет связанных чатов")}</ul>
+          </div>
+          <div>
+            <div style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:4px;">Связанные workflows</div>
+            <ul class="task-list" style="margin-top:6px;">${renderRegistryLinks(relatedWorkflows, "Нет связанных workflows")}</ul>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const historyHtml = `
+      <div class="modal-section" style="margin-top:16px;">
+        <div class="modal-section-title">⌛ История разработки</div>
+        <div class="modal-desc" style="font-style:italic; border-left:3px solid var(--border); padding-left:12px; margin-top:8px;">
+          История пока собирается из заметок и сигналов. Это слой обзора, а не каноническое хранилище.
+        </div>
+      </div>
+    `;
+
+    const tasksHtml = `
+      <div class="modal-section" style="margin-top:16px;">
+        <div class="modal-section-title">Предстоящие задачи</div>
+        <ul class="task-list" style="margin-top:8px;">
+          ${tasks.map((t) => `<li class="${t.done ? "done" : ""}">${t.done ? "✅" : "⬜"} ${escapeHtml(t.task)}</li>`).join("") || "<li><i>Нет активных задач</i></li>"}
+        </ul>
+      </div>
+    `;
+
+    const futureHtml = (p.status === "done" || p.status === "active")
+      ? `
+        <div class="modal-section" style="margin-top:16px; background:var(--research-light); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--research);">
+          <div class="modal-section-title" style="color:var(--research);">Вектор развития</div>
+          <div style="font-size:0.85rem; margin-top:6px; color:var(--text-primary);">
+            ${p.description || "Основной смысл проекта ещё не зафиксирован в KB."}
+          </div>
+        </div>
+      `
+      : `
+        <div class="modal-section" style="margin-top:16px;">
+          <div class="modal-section-title">Суть проекта</div>
+          <div class="modal-desc" style="margin-top:4px;">${p.description || "Нет описания."}</div>
+        </div>
+      `;
+
+    document.getElementById("modalContentBody").innerHTML = `
+      <div class="progress-container" style="margin-bottom:12px;">
+        <div class="progress-bar"><div class="progress-fill" style="width:${p.progress || 0}%"></div></div>
+        <span class="progress-label">${p.progress || 0}%</span>
+      </div>
+      ${futureHtml}
+      ${projectModeHtml}
+      ${contextHtml}
+      ${historyHtml}
+      ${tasksHtml}
+    `;
+
+    document.getElementById("modalOverlay").classList.add("active");
+
+    requestAnimationFrame(() => {
+      try {
+        if (window.mermaid) {
+          mermaid.init(undefined, document.getElementById("modalContentBody").querySelectorAll(".mermaid"));
+        }
+      } catch (e) {
+        console.warn("Mermaid modal render error", e);
+      }
+    });
+  }
+
   function openIdeaModal(ideaId) {
     const idea = ideasData.find((x) => x.id === ideaId);
     if (!idea) return;
@@ -902,6 +1155,17 @@
   // Expose to onclick
   window._openProject = openProjectModal;
   window._openIdea = openIdeaModal;
+  window._openKbNote = function (projectId) {
+    const project = projectsData.find((item) => item.id === projectId);
+    const uri = project?.kbNote?.obsidianUri;
+    if (uri) window.location.href = uri;
+  };
+  window._copyLaunchPrompt = async function (projectId) {
+    const project = projectsData.find((item) => item.id === projectId);
+    const prompt = project?.launchContract?.prompt;
+    if (!prompt) return;
+    await copyText(prompt);
+  };
 
   // ============================================================
   //  EVENTS
@@ -1034,7 +1298,7 @@
 
       // Load local JSON first (for monitoring profile, etc.)
       await loadDashboardData();
-      console.log('[Dashboard] local JSON loaded, projects:', projectsData.length);
+      console.log('[Dashboard] local JSON loaded, projects:', projectsData.length, 'registry:', projectRegistryData.length);
 
       // Load enriched data from Supabase
       await loadFromSupabase();
